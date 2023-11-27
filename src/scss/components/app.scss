@@ -1,0 +1,47 @@
+// Пример вложенности по БЭМ:
+
+// .header {
+//     &__link {
+//         &_active {
+
+//         }
+//     }
+//     &__title {
+
+//     }
+//     &__subtitle {
+
+//     }
+//     &__image {
+//         &:hover {
+
+//         }
+//     }
+// }
+
+
+
+// Для сравнения, как это выглядит в CSS
+
+// .header {
+
+// };
+// .header__link {
+
+// };
+// .header__link_active {
+
+// };
+// .header__title {
+
+// };
+// .header__subtitle {
+
+// };
+// .header__image {
+
+// };
+// .header__image:hover {
+
+// };
+

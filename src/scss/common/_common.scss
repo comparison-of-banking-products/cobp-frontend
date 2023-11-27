@@ -1,4 +1,8 @@
-@import './variables.scss';
+// Здесь описываем стандартные стили для всех элементов:
+// container, row , flex
+// Можно описать body/root
+// font-family для всей страницы
+// и т.д.
 
 :root {
 	background-color: $body-bg-color;
