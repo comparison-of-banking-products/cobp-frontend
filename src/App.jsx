@@ -1,11 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import PageNotFound from '../PageNotFound/PageNotFound';
-import Main from '../Main/Main';
-import Deposits from '../../pages/Deposits/Deposits';
-import Credits from '../../pages/Credits/Credits';
-import Calculator from '../../pages/Calculator/Calculator';
-import Exchanges from '../../pages/Exchanges/Exchanges';
+import PageNotFound from './components/PageNotFound/PageNotFound';
+import { Main, Deposits, Credits, Calculator, Exchanges } from './pages';
 
 function App() {
 	return (
