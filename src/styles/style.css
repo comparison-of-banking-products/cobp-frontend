@@ -1,7 +1,31 @@
+@font-face {
+	font-family: 'Inter Display';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('../vendor/fonts/Inter-Regular.woff2') format('woff2'),
+		url('../vendor/fonts/Inter-Regular.woff') format('woff');
+}
+@font-face {
+	font-family: 'Inter Display';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('../vendor/fonts/Inter-Medium.woff2') format('woff2'),
+		url('../vendor/fonts/Inter-Medium.woff') format('woff');
+}
+@font-face {
+	font-family: 'Inter Display';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url('../vendor/fonts/Inter-SemiBold.woff2') format('woff2'),
+		url('../vendor/fonts/Inter-SemiBold.woff') format('woff');
+}
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html,
@@ -55,15 +79,15 @@ header,
 nav,
 section,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  text-size-adjust: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	text-size-adjust: none;
 }
 
 footer,
@@ -71,51 +95,61 @@ header,
 nav,
 section,
 main {
-  display: block;
+	display: block;
 }
 
 body {
-  line-height: 1;
+	line-height: 1;
 }
 
 ol,
 ul {
-  list-style: none;
+	list-style: none;
 }
 
 blockquote,
 q {
-  quotes: none;
+	quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
-  content: none;
+	content: '';
+	content: none;
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 input {
-  -webkit-appearance: none;
-  border-radius: 0;
+	-webkit-appearance: none;
+	border-radius: 0;
 }
 
 :root {
-  background-color: #ff0000;
-  font-family: "Inter", "Arial", sans-serif;
-  color: #000;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
+	background-color: #1b1b1d;
+	font-family: 'Inter Display', 'Arial', sans-serif;
+	font-style: normal;
+	color: #f7f7f7;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+}
+
+.title {
+	font-size: 40px;
+	font-weight: 600;
+	line-height: 44px;
+	letter-spacing: -0.4px;
+	color: #f7f7f7;
+	text-transform: none;
 }
 
 /*# sourceMappingURL=style.css.map */

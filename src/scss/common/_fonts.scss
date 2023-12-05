@@ -1,30 +1,20 @@
-// Для подключения шрифтов
+$path: unquote("../vendor/fonts/");
 
+@mixin font-face($font-weight, $woff2, $woff) {
+     font-family: 'Inter Display';
+     font-style:  normal;
+     font-weight: $font-weight;
+     font-display: swap;
+     src: url(quote(#{$path+$woff2})) format("woff2"),
+          url(quote(#{$path+$woff})) format("woff");
+}
 
-// ПРИМЕР:
-// $path: unquote("../vendor/fonts/");
-
-// @mixin font-face($font-weight, $woff2, $woff) {
-//      font-family: 'Inter';
-//      font-style:  normal;
-//      font-weight: $font-weight;
-//      font-display: swap;
-//      src: url(quote(#{$path+$woff2})) format("woff2"),
-//           url(quote(#{$path+$woff})) format("woff");
-// }
-
-// @font-face {
-//      @include font-face(300,"Inter-Light.woff2","Inter-Light.woff" )
-// }
-// @font-face {
-//      @include font-face(400,"Inter-Regular.woff2","Inter-Regular.woff" )
-// }
-// @font-face {
-//      @include font-face(500,"Inter-Medium.woff2","Inter-Medium.woff" )
-// }
-// @font-face {
-//      @include font-face(600,"Inter-SemiBold.woff2","Inter-SemiBold.woff" )
-// }
-// @font-face {
-//      @include font-face(800,"Inter-ExtraBold.woff2","Inter-ExtraBold.woff" )
-// }
+@font-face {
+     @include font-face(400,"Inter-Regular.woff2","Inter-Regular.woff" )
+}
+@font-face {
+     @include font-face(500,"Inter-Medium.woff2","Inter-Medium.woff" )
+}
+@font-face {
+     @include font-face(600,"Inter-SemiBold.woff2","Inter-SemiBold.woff" )
+}

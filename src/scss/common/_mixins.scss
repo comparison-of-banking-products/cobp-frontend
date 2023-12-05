@@ -1,17 +1,15 @@
-// Для миксинов
-
-// ПРИМЕР:
-
-// @mixin font($size, $weight, $color:black, $case:none) {
-//     font-size: $size; 
-//     font-weight: $weight;
-//     color: $color;
-//     text-transform: $case;
-// }
+@mixin font($size, $weight, $line-height, $letter-spacing, $color:black, $case:none) {
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+    color: $color;
+    text-transform: $case;
+}
 
 // ИСПОЛЬЗУЕМ:
 
-// title {
-//     @include font($font-l, $font-bold, $color-black);
-//     white-space: nowrap;
+// .title {
+// 	@include font($font-xl, $font-bold, 44px, -0.4px, $color-white);
+//  и др...
 // }
