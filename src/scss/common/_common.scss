@@ -5,13 +5,17 @@
 // и т.д.
 
 :root {
-	background-color: $body-bg-color;
-	font-family: 'Inter', 'Arial', sans-serif;
-	color: $text-color-white;
+	background-color: $color-bg;
+	font-family: 'Inter Display', 'Arial', sans-serif;
+	color: $color-white;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
+}
+
+.title {
+	@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-white);
 }
