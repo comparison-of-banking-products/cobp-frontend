@@ -1,0 +1,26 @@
+.button__primary {
+	width: 100%;
+	background: $button-primary-color;
+	padding: 16px 24px;
+	border: none;
+	outline: none;
+	border-radius: $primary-border-radius;
+	font-size: $primary-size-text;
+	color: $text-color-white;
+	font-weight: 600;
+	line-height: 20px; /* 125% */
+	text-transform: lowercase;
+	cursor: pointer;
+	transition: opacity 0.3s;
+	&:hover {
+		opacity: 0.8;
+	}
+	&:disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	&_sm {
+		width: 50%;
+	}
+}

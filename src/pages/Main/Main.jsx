@@ -1,7 +1,13 @@
 import React from 'react';
+import { Slider } from '../../components';
 
 function Main() {
-	return <h1 className="main__heading">Main</h1>;
+	return (
+		<>
+			<h1>Пока какой-то текст</h1>
+			<Slider />
+		</>
+	);
 }
 
 export default Main;
