@@ -1,0 +1,26 @@
+.input__primary {
+	width: 100%;
+	background: $color-bg-input;
+	padding: 24px 24px;
+	border: none;
+	outline: none;
+	border-radius: $primary-border-radius;
+	font-size: $font-size-s;
+	color: $color-text-input;
+	font-weight: 500;
+	line-height: 20px; /* 125% */
+	letter-spacing: -0.16px;
+	cursor: pointer;
+
+	// &:hover {
+	// 	opacity: 0.8;
+	// }
+	// &:disabled {
+	// 	opacity: 0.5;
+	// 	pointer-events: none;
+	// }
+
+	// &_sm {
+	// 	width: 50%;
+	// }
+}

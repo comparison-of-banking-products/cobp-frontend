@@ -4,4 +4,5 @@
 @import './navigation';
 @import './pageNotFound';
 @import './searchForm';
-@import './UI/button.scss'; // В случае создании новых scss файлов в данную папку, не забудьте добавить сюда импорт.
+@import './UI/button.scss';
+@import './UI/input.scss'; // В случае создании новых scss файлов в данную папку, не забудьте добавить сюда импорт.
