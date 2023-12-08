@@ -1,6 +1,8 @@
+@import './app.scss';
 @import './common';
 @import './components';
-@import './pages'; // Перед работой запускаем слушатель SCSS, командой:
+@import './pages';
+// Перед работой запускаем слушатель SCSS, командой:
 
 // sass --watch  src/scss/main.scss src/styles/style.css
 

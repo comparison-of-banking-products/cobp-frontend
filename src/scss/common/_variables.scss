@@ -1,9 +1,12 @@
 // Colors
-$primary-bg-color: #131313;
-$second-bg-color: #f2f2f2;
-$body-bg-color: #ff0000;
-$primary-text-color: #0f0f0f;
-$second-text-color: #6a6a6a;
+$color-accent: #5e5ce6;
+$color-light-gray: #4f4e54;
+$color-gray: #353434;
+$color-dark-gray: #2a2a2b;
+$color-bg: #1b1b1d;
+$color-white: #f7f7f7;
+$color-bg-footer: #080814;
+$color-bg-footer-text: #96a8b8;
 
 // Sizes
 $screen-size-sm: 576px;
@@ -15,6 +18,24 @@ $heading-size-h1: 56px;
 $heading-size-h2: 36px;
 $primary-size-text: 16px;
 $second-size-text: 14px;
+
+// Raduis
+$primary-border-radius: 16px;
+$second-border-radius: 32px;
+
+//Fonts size
+$font-size-xs: 14px;
+$font-size-s: 16px;
+$font-size-m: 18px;
+$font-size-ml: 20px;
+$font-size-l: 32px;
+$font-size-xl: 40px;
+$font-size-xxl: 48px;
+
+//Fonts weight
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
 
 // Break points
 // $mobile: 576px;
