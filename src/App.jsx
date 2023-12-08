@@ -1,12 +1,18 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Main from './pages/Main/Main';
+import PageNotFound from './components/PageNotFound/PageNotFound';
+import { Main, Deposits, Credits, Calculator, Exchanges } from './pages';
 
 function App() {
 	return (
 		<div className="page">
 			<Routes>
 				<Route path="/" element={<Main />} />
+				<Route path="/deposits" element={<Deposits />} />
+				<Route path="/credits" element={<Credits />} />
+				<Route path="/calculator" element={<Calculator />} />
+				<Route path="/exchanges" element={<Exchanges />} />
+				<Route path="*" element={<PageNotFound />} />
 			</Routes>
 		</div>
 	);
