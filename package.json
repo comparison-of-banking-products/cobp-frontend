@@ -31,8 +31,6 @@
 		"extends": [
 			"react-app",
 			"react-app/jest",
-			"airbnb",
-			"airbnb/hooks",
 			"prettier"
 		],
 		"rules": {
@@ -69,7 +67,6 @@
 		"babel-plugin-named-exports-order": "0.0.2",
 		"commitizen": "^4.3.0",
 		"cz-conventional-changelog": "^3.3.0",
-		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-prettier": "^8.8.0",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.1",
