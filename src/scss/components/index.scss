@@ -1,9 +1,7 @@
-@import './app';
 @import './footer';
 @import './header';
 @import './main';
 @import './navigation';
 @import './pageNotFound';
 @import './searchForm';
-
-// В случае создании новых scss файлов в данную папку, не забудьте добавить сюда импорт.
+@import './UI/button.scss'; // В случае создании новых scss файлов в данную папку, не забудьте добавить сюда импорт.

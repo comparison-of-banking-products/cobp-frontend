@@ -7,7 +7,8 @@ function Main() {
 		<>
 			<h1>Пока какой-то текст</h1>
 			<Slider />
-            <ProductCards />
+
+    <ProductCards />
 		</>
 	);
 }
