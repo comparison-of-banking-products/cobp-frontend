@@ -1,15 +1,12 @@
 import React from 'react';
-import { Slider } from '../../components';
-import ProductCards from '../../components/ProductCards/ProductCards'
+import { Slider, ProductCards } from '../../components';
 
 function Main() {
 	return (
 		<>
 			<Slider />
-
-    <ProductCards />
+			<ProductCards />
 		</>
 	);
 }
 export default Main;
-

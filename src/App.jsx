@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import PageNotFound from './components/PageNotFound/PageNotFound';
+import { PageNotFound } from '../src/components';
 import { Main, Deposits, Credits, Calculator, Exchanges } from './pages';
 
 function App() {
