@@ -1,6 +1,6 @@
 import React from 'react';
-import ProductCards from '../../components/ProductCards/ProductCards'
 import { Slider } from '../../components';
+import ProductCards from '../../components/ProductCards/ProductCards'
 
 function Main() {
 	return (
@@ -13,3 +13,4 @@ function Main() {
 }
 
 export default Main;
+

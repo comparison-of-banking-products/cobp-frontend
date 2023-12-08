@@ -5,7 +5,7 @@ import arrow from "../../images/icons/arrow-icon.svg";
 function ProductCards() {
 
     return (
-        <div className="product-cards__wrapper">
+        <div className="product-cards">
             <h2 className="product-cards__title">наши продукты</h2>
 
             <div className="product-cards__container">
