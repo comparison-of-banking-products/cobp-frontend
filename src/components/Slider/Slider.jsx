@@ -25,7 +25,7 @@ function Slider() {
 					clickable: true,
 				}}
 				navigation={true}
-				modules={[Autoplay, Pagination]}
+				modules={[Pagination]}
 				className="slider__swiper"
 			>
 				<SwiperSlide className="slider__container slider__credits">
