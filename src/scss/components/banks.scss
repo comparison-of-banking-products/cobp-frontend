@@ -1,8 +1,10 @@
 .banks {
 	max-width: 1200px;
+	margin: 0 auto;
+	opacity: 0.3;
 
 	&__title {
-		color: $color-gray-white;
+		color: $color-slider-dots-active;
 		font-size: $font-size-xl;
 		font-weight: $font-weight-bold;
 		line-height: 44px; /* 110% */
@@ -11,7 +13,7 @@
 	}
 
 	&__lists {
-		margin-top: 14px;
+		margin-top: 16px;
 		display: flex;
 		padding-left: 0;
 	}
@@ -22,7 +24,7 @@
 		justify-content: center;
 		align-items: center;
 		border-radius: $primary-border-radius;
-		background: $color-bg-input;
+		background: $color-bg-slider;
 		margin-right: 8px;
 		list-style-type: none;
 		border: none;
@@ -40,7 +42,7 @@
 	}
 
 	&__caption {
-		color: $color-gray-white;
+		color: $color-slider-dots-active;
 		font-size: $font-size-s;
 		font-weight: $font-weight-bold;
 		line-height: 20px;

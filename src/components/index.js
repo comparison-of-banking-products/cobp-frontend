@@ -4,5 +4,6 @@ import SearcForm from './SearchForm/SearchForm';
 import PageNotFound from './PageNotFound/PageNotFound';
 import Slider from './Slider/Slider';
 import Button from './UI/Button/Button';
+import ProductCards from './ProductCards/ProductCards';
 
-export { Footer, Header, SearcForm, PageNotFound, Slider, Button };
+export { Footer, Header, SearcForm, PageNotFound, ProductCards, Slider, Button };

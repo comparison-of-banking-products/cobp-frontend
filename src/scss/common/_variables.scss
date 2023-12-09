@@ -7,11 +7,13 @@ $color-bg: #1b1b1d;
 $color-white: #f7f7f7;
 $color-bg-footer: #080814;
 $color-bg-footer-text: #96a8b8;
-$color-bg-input: #232325;
+$color-bg-slider: #232325;
 $color-bg-banks: #343435;
 $color-text-input: #636366;
-$color-gray-white: #fbfbfb;
-$color-gray-white2: #76767a;
+$color-slider-dots-active: #fbfbfb;
+$color-slider-dots-active2: #76767a;
+$color-bg-slider-dots: #27272a;
+$color-slider-dots: #8e8e93;
 
 // Sizes
 $screen-size-sm: 576px;
@@ -19,10 +21,6 @@ $screen-size-md: 768px;
 $screen-size-lg: 1040px;
 $screen-size-xl: 1280px;
 $screen-size-xxl: 1440px;
-$heading-size-h1: 56px;
-$heading-size-h2: 36px;
-$primary-size-text: 16px;
-$second-size-text: 14px;
 
 // Raduis
 $primary-border-radius: 16px;
@@ -36,6 +34,12 @@ $font-size-ml: 20px;
 $font-size-l: 32px;
 $font-size-xl: 40px;
 $font-size-xxl: 48px;
+$font-size-xxxl: 64px;
+
+$heading-size-h1: 56px;
+$heading-size-h2: 36px;
+$primary-size-text: 16px;
+$second-size-text: 14px;
 
 //Fonts weight
 $font-weight-regular: 400;
