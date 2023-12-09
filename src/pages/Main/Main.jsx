@@ -1,13 +1,15 @@
 import React from 'react';
 import { Slider } from '../../components';
-import Input from '../../components/UI/Input/Input';
+import Banks from '../../components/Banks/Banks';
+import Support from '../../components/Support/Support';
 
 function Main() {
 	return (
 		<>
 			<h1>Пока какой-то текст</h1>
 			<Slider />
-			<Input></Input>
+			<Banks></Banks>
+			<Support></Support>
 		</>
 	);
 }

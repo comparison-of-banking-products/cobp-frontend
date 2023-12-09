@@ -1,22 +1,16 @@
 import React from 'react';
 
-function Input({ textInput, inputClass, name, type, onClick, disabled }) {
+function Input({ value, inputClass, name, type, onClick, disabled }) {
 	return (
 		<input
 			name={name}
 			type={type}
-			//заменить потом на пропс
-			className="input__primary"
+			className={inputClass}
 			onClick={onClick}
-			//заменить потом на пропс
-			value="поиск по названию банка"
+			value={value}
 			disabled={disabled}
-		>
-			{textInput}
-		</input>
+		/>
 	);
 }
 
 export default Input;
-
-// className={inputClass}
