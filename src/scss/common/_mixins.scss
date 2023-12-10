@@ -1,4 +1,4 @@
-@mixin font($size, $weight, $line-height, $letter-spacing, $color: black, $case: none) {
+@mixin font($size, $weight, $line-height, $letter-spacing, $color: $color-white, $case: none) {
 	font-size: $size;
 	font-weight: $weight;
 	line-height: $line-height;
