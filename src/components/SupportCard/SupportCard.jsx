@@ -17,7 +17,7 @@ function SupportCard() {
 				type="button"
 				btnClass="button__primary"
 				// onClick={onClick}
-				// disabled={disabled}
+				disabled={true}
 				textBtn="спросить"
 			></Button>
 		</li>
