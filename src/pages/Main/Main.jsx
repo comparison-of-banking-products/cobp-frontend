@@ -1,7 +1,5 @@
 import React from 'react';
-import { Slider, ProductCards, Calculator } from '../../components';
-import Banks from '../../components/Banks/Banks';
-import Support from '../../components/Support/Support';
+import { Slider, ProductCards, Calculator, Banks, Support } from '../../components';
 
 function Main() {
 	return (
@@ -9,8 +7,8 @@ function Main() {
 			<Slider />
 			<ProductCards />
 			<Calculator />
-			<Banks></Banks>
-			<Support></Support>
+			<Banks />
+			<Support />
 		</>
 	);
 }

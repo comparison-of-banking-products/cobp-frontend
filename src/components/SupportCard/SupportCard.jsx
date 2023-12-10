@@ -1,11 +1,11 @@
 import React from 'react';
-import bankLogo from '../../images/logo.png';
+import bankLogo from '../../images/bank-logo.png';
 import supportFoto from '../../images/image109533.png';
-import Button from '../UI/Button/Button';
+import { Button } from '../index';
 
 function SupportCard() {
 	return (
-		<>
+		<li className="support__item">
 			<button className="support__banks">
 				<img className="support__image" src={bankLogo} alt="-"></img>
 				<caption className="support__caption">райффайзен банк</caption>
@@ -20,7 +20,7 @@ function SupportCard() {
 				disabled={true}
 				textBtn="спросить"
 			></Button>
-		</>
+		</li>
 	);
 }
 

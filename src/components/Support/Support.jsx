@@ -1,5 +1,5 @@
 import React from 'react';
-import SupportCard from '../SupportCard/SupportCard';
+import { SupportCard } from '../index';
 
 function Support() {
 	return (
@@ -12,15 +12,9 @@ function Support() {
 			</div>
 
 			<ul className="support__lists">
-				<li className="support__item">
-					<SupportCard />
-				</li>
-				<li className="support__item">
-					<SupportCard />
-				</li>
-				<li className="support__item">
-					<SupportCard />
-				</li>
+				<SupportCard />
+				<SupportCard />
+				<SupportCard />
 			</ul>
 		</section>
 	);

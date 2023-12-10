@@ -5,11 +5,7 @@
 	border: none;
 	outline: none;
 	border-radius: $primary-border-radius;
-	font-size: $font-size-s;
-	color: $color-white;
-	font-weight: 600;
-	line-height: 20px; /* 125% */
-	text-transform: lowercase;
+	@include font($font-size-s, $font-weight-bold, 20px, 0px, $color-white, lowercase);
 	cursor: pointer;
 	transition: background 0.3s;
 	&:hover {
@@ -19,8 +15,4 @@
 		opacity: 0.5;
 		pointer-events: none;
 	}
-
-	// &_sm {
-	// 	width: 200px;
-	// }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Input from '../UI/Input/Input';
-import bankLogo from '../../images/logo.png';
+import { Input } from '../index';
+import bankLogo from '../../images/bank-logo.png';
 
 function Banks() {
 	const [searchValue, setSearchValue] = useState('');
