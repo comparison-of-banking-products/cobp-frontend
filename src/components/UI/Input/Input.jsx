@@ -1,6 +1,10 @@
 import React from 'react';
 
-function Input({ value, inputClass, name, type, onClick, disabled }) {
+function Input({ value, inputClass, name, type, onClick, disabled, onChange, placeholder }) {
+	const handleChange = (event) => {
+		onChange(event.target.value);
+	};
+
 	return (
 		<input
 			name={name}
@@ -9,6 +13,8 @@ function Input({ value, inputClass, name, type, onClick, disabled }) {
 			onClick={onClick}
 			value={value}
 			disabled={disabled}
+			onChange={handleChange}
+			placeholder={placeholder}
 		/>
 	);
 }
