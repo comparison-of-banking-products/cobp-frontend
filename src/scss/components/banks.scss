@@ -1,5 +1,6 @@
 .banks {
 	max-width: 1200px;
+	padding-top: 130px;
 	margin: 0 auto;
 	opacity: 0.3;
 
@@ -28,10 +29,7 @@
 		margin-right: 8px;
 		list-style-type: none;
 		border: none;
-
-		&:hover {
-			opacity: 0.8;
-		}
+		pointer-events: none;
 	}
 
 	&__image {
