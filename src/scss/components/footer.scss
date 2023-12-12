@@ -1,118 +1,117 @@
 .footer {
-  background-color: $color-bg-footer;
-  margin: 8px 8px 0 8px;
-  border-radius: 8px;
+	background-color: $color-bg-footer;
+	margin: 8px 8px 0 8px;
+	border-radius: 8px;
 
-  &__container {
-    display: flex;
-    justify-content: space-between;
-    width: 1280px;
-    margin: 0 auto;
-  }
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		width: 1280px;
+		margin: 0 auto;
+	}
 
-  &__specification {
-    max-width: 294px;
-    margin: 40px 0 40px 32px;
-  }
+	&__specification {
+		max-width: 294px;
+		margin: 40px 0 40px 32px;
+	}
 
-  &__logo {
-    display: flex;
-    width: 139px;
-    height: 24px;
-    background-image: url('../../images/logo.svg');
-    transition: opacity 0.3s;
-    flex-shrink: 0;
-    text-decoration: none;
+	&__logo {
+		display: flex;
+		width: 139px;
+		height: 24px;
+		background-image: url('../../images/logo.svg');
+		transition: opacity 0.3s;
+		flex-shrink: 0;
+		text-decoration: none;
 
-    &:hover {
-      opacity: 0.8;
-    }
-  }
+		&:hover {
+			opacity: 0.8;
+		}
+	}
 
-  &__description {
-    @include font($font-size-s, $font-weight-medium, 20px, normal, $color-slider-dots);
+	&__description {
+		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-slider-dots);
 
-    margin: 12px 0 164px 0;
-    letter-spacing: -0.1px;
-  }
+		margin: 12px 0 164px 0;
+		letter-spacing: -0.1px;
+	}
 
-  &__copyright {
-    @include font($font-size-s, $font-weight-medium, 20px, normal, $color-text-input);
-  }
+	&__copyright {
+		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-text-input);
+	}
 
-  &__information {
-    display: flex;
-    flex-direction: column;
-    max-width: 716px;
-    margin: 40px 32px 40px 0;
-  }
+	&__information {
+		display: flex;
+		flex-direction: column;
+		max-width: 716px;
+		margin: 40px 32px 40px 0;
+	}
 
-  &__column {
-    display: flex;
-    margin: 0 0 56px 340px;
-  }
+	&__column {
+		display: flex;
+		margin: 0 0 56px 340px;
+	}
 
-  &__navigation {
-    &:first-child {
-      margin-right: 36px;
-    }
+	&__navigation {
+		&:first-child {
+			margin-right: 36px;
+		}
 
-    display: flex;
-    flex-direction: column;
-    width: 170px;
-  }
+		display: flex;
+		flex-direction: column;
+		width: 170px;
+	}
 
-  &__navigation-link {
-    @include font($font-size-s, $font-weight-medium, 20px, normal, $color-slider-dots);
+	&__navigation-link {
+		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-slider-dots);
 
-    width: 170px;
-    margin-bottom: 12px;
-    text-decoration: none;
+		width: 170px;
+		margin-bottom: 12px;
+		text-decoration: none;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+		&:last-child {
+			margin-bottom: 0;
+		}
 
-    transition: color 0.3s;
+		transition: color 0.3s;
 
-    &:hover {
-      color: $color-slider-dots-active;
-    }
-  }
+		&:hover {
+			color: $color-slider-dots-active;
+		}
+	}
 
-  &__for-user {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 33px;
-  }
+	&__for-user {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 33px;
+	}
 
-  &__for-user-link {
-    @include font($font-size-xs, $font-weight-medium, 18px, normal, $color-slider-dots);
+	&__for-user-link {
+		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-slider-dots);
 
-    text-decoration: none;
-    letter-spacing: -0.1px;
+		text-decoration: none;
+		letter-spacing: -0.1px;
 
-    transition: color 0.3s;
+		transition: color 0.3s;
 
-    &:hover {
-      color: $color-slider-dots-active;
-    }
-  }
+		&:hover {
+			color: $color-slider-dots-active;
+		}
+	}
 
-  &__for-user-number {
-    @include font($font-size-s, $font-weight-medium, 20px, normal, $color-slider-dots);
+	&__for-user-number {
+		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-slider-dots);
 
-    letter-spacing: -0.1px;
-  }
+		letter-spacing: -0.1px;
+	}
 
-  &__footnote {
-    max-height: 36px;
-  }
+	&__footnote {
+		max-height: 36px;
+	}
 
-  &__footnote-text {
-    @include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-input);
+	&__footnote-text {
+		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-input);
 
-    letter-spacing: -0.1px;
-  }
-
+		letter-spacing: -0.1px;
+	}
 }

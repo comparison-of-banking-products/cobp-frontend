@@ -1,73 +1,71 @@
 .exchange-rate {
-  margin: 130px auto 0 auto;
-  max-width: 1200px;
+	margin: 130px auto 0 auto;
+	max-width: 1200px;
 
-  &__title {
-    @include font($font-size-xl, $font-weight-bold, 44px, normal, $color-slider-dots-active);
+	&__title {
+		@include font($font-size-xl, $font-weight-bold, 44px, normal, $color-slider-dots-active);
 
-    text-align: left;
-    margin-bottom: 40px;
-  }
+		text-align: left;
+		margin-bottom: 40px;
+	}
 
-  &__container {
-    background: $color-bg-slider;
-    border-radius: 16px;
-    box-shadow: 0px 0px 8px 0px rgba(28, 28, 30, 0.15);
-    display: flex;
-    justify-content: space-between;
-    padding: 24px 0 24px 0;
-  }
+	&__container {
+		background: $color-bg-slider;
+		border-radius: 16px;
+		box-shadow: 0px 0px 8px 0px rgba(28, 28, 30, 0.15);
+		display: flex;
+		justify-content: space-between;
+		padding: 24px 0 24px 0;
+	}
 
-  &__information {
-    display: flex;
-  }
+	&__information {
+		display: flex;
+	}
 
-  &__about-currency-list {
-    display: flex;
-  }
+	&__about-currency-list {
+		display: flex;
+	}
 
+	&__about-currency-item {
+		display: flex;
+		margin-right: 60px;
 
-  &__about-currency-item {
-    display: flex;
-    margin-right: 60px;
-    
-    &:first-child {
-      margin-left: 24px;
-    }
+		&:first-child {
+			margin-left: 24px;
+		}
 
-    &:last-child {
-      margin-right: 0;
-    }
-  }
+		&:last-child {
+			margin-right: 0;
+		}
+	}
 
-  &__difference {
-    margin: auto 0 auto 0;
-  }
+	&__difference {
+		margin: auto 0 auto 0;
+	}
 
-  &__difference-image_up {
-    width: 24px;
-    height: 24px;
-    background-image: url('../../images/icons/green-up-icon.svg');
-  }
+	&__difference-image_up {
+		width: 24px;
+		height: 24px;
+		background-image: url('../../images/icons/green-up-icon.svg');
+	}
 
-  &__difference-image_down {
-    width: 24px;
-    height: 24px;
-    background-image: url('../../images/icons/red-down-icon.svg');
-  }
+	&__difference-image_down {
+		width: 24px;
+		height: 24px;
+		background-image: url('../../images/icons/red-down-icon.svg');
+	}
 
-  &__converter-link {
-    @include font($font-size-s, $font-weight-bold, 20px, normal, $color-slider-dots);
+	&__converter-link {
+		@include font($font-size-s, $font-weight-bold, 20px, normal, $color-slider-dots);
 
-    margin-right: 27px;
+		margin-right: 27px;
 
-    text-decoration: underline;
-    text-underline-offset: 3.6px;
-    transition: color 0.3s;
+		text-decoration: underline;
+		text-underline-offset: 3.6px;
+		transition: color 0.3s;
 
-    &:hover {
-      color: $color-slider-dots-active;
-    }
-  }
-
+		&:hover {
+			color: $color-slider-dots-active;
+		}
+	}
 }
