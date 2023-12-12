@@ -14,6 +14,7 @@ import Banks from './Banks/Banks';
 import Input from './UI/Input/Input';
 import Support from './Support/Support';
 import SupportCard from './SupportCard/SupportCard';
+import ExchangeRate from './ExchangeRate/ExchangeRate';
 
 export {
 	Footer,
@@ -32,4 +33,5 @@ export {
 	Input,
 	Support,
 	SupportCard,
+	ExchangeRate,
 };

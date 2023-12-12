@@ -3,7 +3,7 @@ import arrow from '../../images/icons/arrow-icon.svg';
 
 function ProductCards() {
 	return (
-		<div className="product-cards">
+		<section className="product-cards">
 			<h2 className="product-cards__title">наши продукты</h2>
 
 			<div className="product-cards__container">
@@ -37,7 +37,7 @@ function ProductCards() {
 					</p>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 }
 
