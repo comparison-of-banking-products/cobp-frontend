@@ -30,10 +30,8 @@
 	}
 
 	&__description {
-		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-slider-dots);
-
+		@include font($font-size-s, $font-weight-medium, 20px, -0.1px, $color-slider-dots);
 		margin: 12px 0 164px 0;
-		letter-spacing: -0.1px;
 	}
 
 	&__copyright {
@@ -68,12 +66,11 @@
 		width: 170px;
 		margin-bottom: 12px;
 		text-decoration: none;
+		transition: color 0.3s;
 
 		&:last-child {
 			margin-bottom: 0;
 		}
-
-		transition: color 0.3s;
 
 		&:hover {
 			color: $color-slider-dots-active;
@@ -87,11 +84,8 @@
 	}
 
 	&__for-user-link {
-		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-slider-dots);
-
+		@include font($font-size-xs, $font-weight-medium, 18px, -0.1px, $color-slider-dots);
 		text-decoration: none;
-		letter-spacing: -0.1px;
-
 		transition: color 0.3s;
 
 		&:hover {
@@ -100,9 +94,7 @@
 	}
 
 	&__for-user-number {
-		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-slider-dots);
-
-		letter-spacing: -0.1px;
+		@include font($font-size-s, $font-weight-medium, 20px, -0.1px, $color-slider-dots);
 	}
 
 	&__footnote {
@@ -110,8 +102,6 @@
 	}
 
 	&__footnote-text {
-		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-input);
-
-		letter-spacing: -0.1px;
+		@include font($font-size-xxs, $font-weight-medium, 16px, -0.1px, $color-text-input);
 	}
 }

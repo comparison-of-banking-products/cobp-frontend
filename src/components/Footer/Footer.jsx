@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
 	return (
-		<section className="footer">
+		<footer className="footer">
 			<div className="footer__container">
 				<div className="footer__specification">
 					<Link className="footer__logo" to="/" />
@@ -50,14 +50,14 @@ function Footer() {
 					</div>
 					<div className="footer__footnote">
 						<p className="footer__footnote-text">
-							«benchmark» не является кредитной организацией. предложения на сайте не являются
+							benchmark не является кредитной организацией. предложения на сайте не являются
 							публичной офертой. окончательные условия предоставления банковских продуктов
-							определяются выбранным банком кредитом
+							определяются договором с выбранным банком
 						</p>
 					</div>
 				</div>
 			</div>
-		</section>
+		</footer>
 	);
 }
 

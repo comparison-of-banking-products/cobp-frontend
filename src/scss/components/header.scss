@@ -49,6 +49,9 @@
 
 	&__search-btn {
 		background-image: url('../../images/icons/search-icon.svg');
+		t :hover {
+			opacity: 0.8;
+		}
 	}
 
 	&__profile {
