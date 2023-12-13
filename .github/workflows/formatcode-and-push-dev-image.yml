@@ -34,13 +34,20 @@ jobs:
       - name: Format code
         run: npm run format
 
-      - name: Commit and push changes
+      - name: Configure git
         run: |
           git config user.name "GitHub Actions"
           git config user.email "<>"
-          git add .
-          git commit --no-verify -m "Apply linting and formatting changes"
-          git push
+
+      - name: Check for changes
+        run: |
+          if [[ -n $(git status -s) ]]; then
+            git add .
+            git commit --no-verify -m "Apply linting and formatting changes"
+            git push
+          else
+            echo "No changes to commit."
+          fi
 
   build-and-publish:
     runs-on: ubuntu-latest
