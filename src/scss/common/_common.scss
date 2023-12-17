@@ -5,9 +5,9 @@
 // и т.д.
 
 :root {
-	background-color: $color-bg;
+	background-color: $color-bg-body-black;
 	font-family: 'Inter Display', 'Arial', sans-serif;
-	color: $color-white;
+	color: $color-text-white;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
@@ -17,5 +17,5 @@
 }
 
 .title {
-	@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-white);
+	@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-text-white);
 }

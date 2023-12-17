@@ -4,7 +4,7 @@ import 'swiper/scss';
 import 'swiper/scss/pagination';
 import '../../scss/components/slider.scss';
 import { Button } from '../index';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 function Slider() {
 	const handleClick = () => {
@@ -25,7 +25,7 @@ function Slider() {
 					clickable: true,
 				}}
 				navigation={true}
-				modules={[Autoplay, Pagination]}
+				modules={[Autoplay, Navigation, Pagination]}
 				className="slider__swiper"
 			>
 				<SwiperSlide className="slider__container slider__credits">
