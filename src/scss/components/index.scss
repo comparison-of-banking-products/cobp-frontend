@@ -1,9 +1,17 @@
-@import './app';
 @import './footer';
 @import './header';
-@import './main';
 @import './navigation';
+@import './burgerMenu';
+@import './main';
 @import './pageNotFound';
 @import './searchForm';
-
+@import './banks';
+@import './support';
+@import './exchangeRate';
+@import './UI/button';
+@import './UI/input';
+@import './productCards';
+@import './calculator';
+@import './UI/range';
+@import './UI/select';
 // В случае создании новых scss файлов в данную папку, не забудьте добавить сюда импорт.

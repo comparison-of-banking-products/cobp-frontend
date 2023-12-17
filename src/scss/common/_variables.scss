@@ -1,20 +1,61 @@
 // Colors
-$primary-bg-color: #131313;
-$second-bg-color: #f2f2f2;
-$body-bg-color: #ff0000;
-$primary-text-color: #0f0f0f;
-$second-text-color: #6a6a6a;
+$color-accent: #5e5ce6;
+$color-text-white: #fbfbfb;
+$color-text-light-gray: #8e8e93;
+$color-text-gray: #636366;
+$color-bg-body-black: #1c1c1e;
+$color-bg-black: #121212;
+$color-bg-dark-gray: #232325;
+$color-bg-gray: #343435;
+$color-bg-light-gray: #484849;
+
+$color-light-gray: #4f4e54;
+$color-gray: #353434;
+$color-dark-gray: #2a2a2b;
+$color-bg: #1b1b1d;
+$color-white: #f7f7f7;
+$color-bg-footer: #121212;
+$color-bg-footer-text: #96a8b8;
+$color-bg-slider: #232325;
+$color-bg-banks: #343435;
+$color-text-input: #636366;
+$color-slider-dots-active: #fbfbfb;
+$color-slider-dots-active2: #76767a;
+$color-bg-slider-dots: #27272a;
+$color-slider-dots: #8e8e93;
+$color-header-buttons: #414149;
 
 // Sizes
 $screen-size-sm: 576px;
 $screen-size-md: 768px;
 $screen-size-lg: 1040px;
 $screen-size-xl: 1280px;
-$screen-size-xxl: 1440px;
+
+// Raduis
+$primary-border-radius: 16px;
+$second-border-radius: 32px;
+
+//Fonts size
+$font-size-xxs: 12px;
+$font-size-xs: 14px;
+$font-size-s: 16px;
+$font-size-m: 18px;
+$font-size-ml: 20px;
+$font-size-l: 32px;
+$font-size-xl: 40px;
+$font-size-xxl: 48px;
+$font-size-xxxl: 64px;
+$font-size-other: 24px;
+
 $heading-size-h1: 56px;
 $heading-size-h2: 36px;
 $primary-size-text: 16px;
 $second-size-text: 14px;
+
+//Fonts weight
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
 
 // Break points
 // $mobile: 576px;

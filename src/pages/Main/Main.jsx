@@ -1,15 +1,16 @@
 import React from 'react';
-import { Slider } from '../../components';
-import ProductCards from '../../components/ProductCards/ProductCards'
+import { Slider, ProductCards, Calculator, Banks, Support, ExchangeRate } from '../../components';
 
 function Main() {
 	return (
 		<>
-			<h1>Пока какой-то текст</h1>
 			<Slider />
-            <ProductCards />
+			<ProductCards />
+			<Calculator />
+			<ExchangeRate />
+			<Banks />
+			<Support />
 		</>
 	);
 }
 export default Main;
-
