@@ -5,7 +5,6 @@ import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/css/navigation';
 import '../../scss/components/slider.scss';
-
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 function Slider() {
