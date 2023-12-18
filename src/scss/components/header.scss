@@ -1,9 +1,9 @@
 .header {
-	background: $color-bg-slider;
+	background: $color-bg-dark-gray;
 	border-radius: 8px;
 	margin: 8px 8px 0 8px;
 	box-shadow: 0px 0px 8px 0px rgba(28, 28, 30, 0.15);
-	// прикрипить хедер всегда сверху
+	// TODO: под вопросом прикрипить хедер всегда сверху
 	// position: sticky;
 	// top: 0;
 	z-index: 1000;

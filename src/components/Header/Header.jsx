@@ -12,6 +12,8 @@ function Header() {
 					<button type="button" className="header__search-btn" disabled />
 					<Link to="/profile" className="header__link header__profile" />
 				</div>
+
+				{/* TODO: */}
 				{/* <BurgerMenu /> */}
 			</div>
 		</header>

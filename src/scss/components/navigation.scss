@@ -5,18 +5,18 @@
 }
 
 .header__link {
-	@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-input);
+	@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-gray);
 	text-decoration: none;
 	transition: color 0.3s;
 	&_active {
-		color: $color-white;
+		color: $color-text-white;
 	}
 
-	// потом удалить когда появятся страницы и убрать этот класс из Navigation
+	// TODO: потом удалить когда появятся страницы и убрать этот класс из Navigation
 	&_not-active {
 		pointer-events: none;
 	}
 	&:hover {
-		color: $color-white;
+		color: $color-text-white;
 	}
 }
