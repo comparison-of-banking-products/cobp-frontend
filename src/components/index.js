@@ -7,6 +7,7 @@ import PageNotFound from './PageNotFound/PageNotFound';
 import Slider from './Slider/Slider';
 import Button from './UI/Button/Button';
 import ProductCards from './ProductCards/ProductCards';
+import ProdCard from './ProdCard/ProdCard';
 import Range from './UI/Range/Range';
 import Select from './UI/Select/Select';
 import Calculator from './Calculator/Calculator';
@@ -24,6 +25,7 @@ export {
 	SearcForm,
 	PageNotFound,
 	ProductCards,
+	ProdCard,
 	Slider,
 	Button,
 	Range,
