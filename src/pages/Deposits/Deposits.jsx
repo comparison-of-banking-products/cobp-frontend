@@ -1,7 +1,12 @@
 import React from 'react';
+import { PromoDeposits } from '../../components';
 
 function Deposits() {
-	return <div>Deposits</div>;
+	return (
+		<>
+			<PromoDeposits />
+		</>
+	);
 }
 
 export default Deposits;
