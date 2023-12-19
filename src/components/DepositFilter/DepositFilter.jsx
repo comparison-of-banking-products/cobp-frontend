@@ -8,7 +8,10 @@ function DepositFilter() {
         <section className='deposit-filter'>
             <form className='deposit-filter__form'>
                 <div className='deposit-filter__inputs'>
-
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
                 {/* <Button className='deposit-filter__submit'></Button> */}
                 
