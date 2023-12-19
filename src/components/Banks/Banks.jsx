@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input } from '../index';
-import bankLogo from '../../images/bank-logo.png';
+import BankCard from '../BankCard/BankCard';
 
 function Banks() {
 	const [searchValue, setSearchValue] = useState('');
@@ -22,16 +22,10 @@ function Banks() {
 			></Input>
 			<ul className="banks__lists">
 				<li>
-					<button className="banks__item">
-						<img className="banks__image" src={bankLogo} alt="-"></img>
-						<p className="banks__caption">райффайзен банк</p>
-					</button>
+					<BankCard name="bank"></BankCard>
 				</li>
 				<li>
-					<button className="banks__item">
-						<img className="banks__image" src={bankLogo} alt="-"></img>
-						<p className="banks__caption">райффайзен банк</p>
-					</button>
+					<BankCard name="bank"></BankCard>
 				</li>
 			</ul>
 		</section>

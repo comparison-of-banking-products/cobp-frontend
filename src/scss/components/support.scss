@@ -10,7 +10,7 @@
 		margin-bottom: 40px;
 	}
 	&__title {
-		color: $color-slider-dots-active;
+		color: $color-text-white;
 		font-size: $font-size-xl;
 		font-weight: 600;
 		line-height: 44px; /* 110% */
@@ -19,7 +19,7 @@
 
 	&__instruction {
 		width: 359px;
-		color: $color-text-input;
+		color: $color-text-gray;
 		font-size: $font-size-ml;
 		font-weight: $font-weight-medium;
 		line-height: 24px;
@@ -66,7 +66,7 @@
 	}
 
 	&__caption {
-		color: $color-slider-dots-active;
+		color: $color-text-white;
 		font-size: $font-size-s;
 		font-weight: $font-weight-medium;
 		line-height: 20px;
@@ -81,7 +81,7 @@
 	}
 
 	&__name {
-		color: $color-slider-dots-active;
+		color: $color-text-white;
 		font-size: $font-size-s;
 		font-weight: $font-weight-bold;
 		line-height: 20px; /* 125% */
@@ -91,7 +91,7 @@
 
 	&__position {
 		width: 344px;
-		color: $color-slider-dots-active2;
+		color: $color-text-light-gray;
 		font-size: $font-size-xs;
 		font-weight: $font-weight-medium;
 		line-height: 18px;
