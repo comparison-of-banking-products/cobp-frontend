@@ -11,7 +11,7 @@
 		flex-direction: column;
 		cursor: pointer;
 
-		background-color: #232325;
+		background-color: $color-bg-dark-gray;
 		background-image: url('../../images/credit-png.png');
 		background-size: 471px 187px;
 		background-position: right bottom;
@@ -19,7 +19,6 @@
 		transition: background-size 0.3s, background 0.3s;
 
 		&:last-of-type {
-			background-color: #232325;
 			background-image: url('../../images/deposit-png.png');
 			background-size: 450px 176px;
 			transition: background-size 0.3s, background 0.3s;
@@ -27,7 +26,8 @@
 
 		&:hover {
 			background-size: calc(471px * 1.2) calc(187px * 1.2);
-			background-color: #39393b;
+			//этого цвета нет в переменных
+			background-color: #303036;			
 		}
 
 		&:last-of-type:hover {
@@ -47,7 +47,7 @@
 		flex-direction: column;
 
 		//задают неактивность
-		background-color: rgba(35, 35, 37, 0.3);
+		background-color: rgba($color-bg-dark-gray, 0.3);
 		pointer-events: none;
 		opacity: 0.3;
 	}
@@ -62,17 +62,11 @@
 	&__title {
 		margin: auto 0 8px;
 		padding: 0;
-		font-size: 24px;
-		font-weight: 600;
-		line-height: 28px;
-		color: #fbfbfb;
+		@include font($font-size-other, $font-weight-bold, 28px, -0.24px, $color-text-white);
 	}
 
 	&__text {
 		max-width: 268px;
-		color: #8e8e93;
-		font-size: 16px;
-		line-height: 20px;
-		font-weight: 500;
+		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-light-gray);
 	}
 }

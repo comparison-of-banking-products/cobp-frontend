@@ -1,15 +1,12 @@
 import React from 'react';
-import bankLogo from '../../images/bank-logo.png';
 import supportFoto from '../../images/image109533.png';
 import { Button } from '../index';
+import BankCard from '../BankCard/BankCard';
 
 function SupportCard() {
 	return (
 		<li className="support__item">
-			<button className="support__banks">
-				<img className="support__image" src={bankLogo} alt="-"></img>
-				<caption className="support__caption">райффайзен банк</caption>
-			</button>
+			<BankCard name="support"></BankCard>
 			<img className="support__foto" src={supportFoto} alt="-"></img>
 			<h2 className="support__name">Анастасия Константиновна</h2>
 			<p className="support__position">начальник управления клиентского опыта и развития сети</p>

@@ -4,7 +4,7 @@ import ProdCard from '../ProdCard/ProdCard';
 function ProductCards() {
 	return (
 		<section className="product-cards">
-			<h2 className="product-cards__title">наши продукты</h2>
+			<h2 className="product-cards__title">Наши продукты</h2>
 			<div className="product-cards__container">
 				<ProdCard
 					className={'prod-card__wide'}
