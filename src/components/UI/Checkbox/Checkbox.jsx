@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Checkbox({ type, checkboxClass, name, onChange, required }) {
+function Checkbox({ type, checkboxClass, name, onChange, required, checked }) {
 	return (
 		<input
 			type={type}
@@ -8,6 +8,7 @@ function Checkbox({ type, checkboxClass, name, onChange, required }) {
 			name={name}
 			onChange={onChange}
 			required={required}
+			checked={checked}
 		/>
 	);
 }

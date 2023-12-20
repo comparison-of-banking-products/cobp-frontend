@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import arrowDown from '../../../vendor/images/icons/chevron-bottom.svg';
-// import { Checkbox } from '../../';
+import { Checkbox } from '../../';
 
 function Select({ placeHolder, options, name, getValue, defaultValue, max }) {
 	// Поле с выбором опций
@@ -91,7 +91,14 @@ function Select({ placeHolder, options, name, getValue, defaultValue, max }) {
 					{options.map((option, index) => (
 						<div key={index} className="select__option" onClick={handleSelect}>
 							<p>{option}</p>
-							{/* <Checkbox /> */}
+							{option === values.option && (
+								<Checkbox
+									checkboxClass="checkbox"
+									type="checkbox"
+									checked={true}
+									onChange={() => {}}
+								/>
+							)}
 						</div>
 					))}
 				</div>
