@@ -1,24 +1,57 @@
 .deposit-filter {
-    margin: 0 auto;
+    margin: -35px auto 0;
+    margin: 0 auto 0;
     padding: 24px 24px;
     max-width: 1200px;
+    min-height: 182px;
     border-radius: 40px;
     background-color: $color-bg-dark-gray;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    // box-sizing: border-box;
     // @include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-input);
 
     &__form {
-
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
     }
 
     &__inputs {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        justify-content: space-between;
+        max-width: 1152px;
 
     }
 
     &__submit {
+        margin: 0;
+        border: none;
+        padding: 0;
+        min-width: 174px;
+        min-height: 72px;
+        background-color: $color-accent;
+        border-radius: 16px;
+        @include font($font-size-s, $font-weight-bold, 20px, 0, $color-text-white);
 
+        
     }
 
     &__checkboxes {
+        display: flex;
+        gap: 8px;
+    }
 
+    &__checkbox {
+        margin: 0;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 16px;
+        background-color: $color-bg-gray;
+        @include font($font-size-xs, $font-weight-medium, 18px, 0, $color-text-white);
+        
     }
 }

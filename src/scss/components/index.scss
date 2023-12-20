@@ -5,14 +5,15 @@
 @import './main';
 @import './pageNotFound';
 @import './searchForm';
-@import './banks.scss';
-@import './support.scss';
-@import './exchangeRate.scss';
-@import './UI/button.scss';
-@import './UI/input.scss';
-@import './productCards.scss';
-@import './prodCard.scss';
+@import './banks';
+@import './support';
+@import './exchangeRate';
+@import './UI/button';
+@import './UI/input';
+@import './productCards';
+@import './prodCard';
 @import './calculator';
 @import './UI/range';
 @import './UI/select';
+@import './depositFilter'
 // В случае создании новых scss файлов в данную папку, не забудьте добавить сюда импорт.

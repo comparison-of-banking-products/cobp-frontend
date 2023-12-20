@@ -16,6 +16,7 @@ import Input from './UI/Input/Input';
 import Support from './Support/Support';
 import SupportCard from './SupportCard/SupportCard';
 import ExchangeRate from './ExchangeRate/ExchangeRate';
+import DepositFilter from './DepositFilter/DepositFilter';
 
 export {
 	Footer,
@@ -36,4 +37,5 @@ export {
 	Support,
 	SupportCard,
 	ExchangeRate,
+	DepositFilter,
 };

@@ -1,7 +1,12 @@
 import React from 'react';
+import { DepositFilter } from '../../components';
 
 function Deposits() {
-	return <div>Deposits</div>;
+	return (
+		<>
+			<DepositFilter />
+		</>
+	);
 }
 
 export default Deposits;
