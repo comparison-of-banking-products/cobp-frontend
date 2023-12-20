@@ -6,7 +6,7 @@
 	&__container {
 		display: flex;
 		justify-content: space-between;
-		width: 1280px;
+		width: 1264px;
 		margin: 0 auto;
 	}
 
@@ -30,26 +30,26 @@
 	}
 
 	&__description {
-		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-slider-dots);
+		@include font($font-size-s, $font-weight-medium, 20px, -0.1px, $color-text-light-gray);
 
 		margin: 12px 0 164px 0;
 		letter-spacing: -0.1px;
 	}
 
 	&__copyright {
-		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-text-input);
+		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-text-gray);
 	}
 
 	&__information {
 		display: flex;
 		flex-direction: column;
-		max-width: 716px;
+		max-width: 714px;
 		margin: 40px 32px 40px 0;
 	}
 
 	&__column {
 		display: flex;
-		margin: 0 0 56px 340px;
+		margin: 0 0 56px 338px;
 	}
 
 	&__navigation {
@@ -63,7 +63,7 @@
 	}
 
 	&__navigation-link {
-		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-slider-dots);
+		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-text-light-gray);
 
 		width: 170px;
 		margin-bottom: 12px;
@@ -76,33 +76,30 @@
 		transition: color 0.3s;
 
 		&:hover {
-			color: $color-slider-dots-active;
+			color: $color-text-white;
 		}
 	}
 
 	&__for-user {
 		display: flex;
-		justify-content: space-between;
-		margin-bottom: 33px;
+		margin: 0 0 33px 0;
 	}
 
 	&__for-user-link {
-		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-slider-dots);
-
+		@include font($font-size-s, $font-weight-medium, 20px, -0.1px, $color-text-light-gray);
 		text-decoration: none;
 		letter-spacing: -0.1px;
 
 		transition: color 0.3s;
+		margin-right: 40px;
 
 		&:hover {
-			color: $color-slider-dots-active;
+			color: $color-text-white;
 		}
 	}
 
 	&__for-user-number {
-		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-slider-dots);
-
-		letter-spacing: -0.1px;
+		@include font($font-size-s, $font-weight-medium, 20px, -0.1px, $color-text-light-gray);
 	}
 
 	&__footnote {
@@ -110,8 +107,6 @@
 	}
 
 	&__footnote-text {
-		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-input);
-
-		letter-spacing: -0.1px;
+		@include font($font-size-xxs, $font-weight-medium, 16px, -0.1px, $color-text-gray);
 	}
 }
