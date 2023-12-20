@@ -44,6 +44,7 @@ jobs:
           if [[ -n $(git status -s) ]]; then
             git add .
             git commit --no-verify -m "Apply linting and formatting changes"
+            git checkout ${{ github.head_ref }}
             git push
           else
             echo "No changes to commit."
