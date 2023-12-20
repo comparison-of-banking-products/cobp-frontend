@@ -13,9 +13,13 @@ import Select from './UI/Select/Select';
 import Calculator from './Calculator/Calculator';
 import Banks from './Banks/Banks';
 import Input from './UI/Input/Input';
+import Checkbox from './UI/Checkbox/Checkbox';
 import Support from './Support/Support';
 import SupportCard from './SupportCard/SupportCard';
 import ExchangeRate from './ExchangeRate/ExchangeRate';
+import PromoDeposits from './PromoDeposits/PromoDeposits';
+import SupportChat from './SupportChat/SupportChat';
+import SupportChatForm from './SupportChatForm/SupportChatForm';
 
 export {
 	Footer,
@@ -36,4 +40,8 @@ export {
 	Support,
 	SupportCard,
 	ExchangeRate,
+	PromoDeposits,
+	SupportChat,
+	SupportChatForm,
+	Checkbox,
 };

@@ -1,24 +1,19 @@
 .deposit-filter {
-    margin: 0 auto;
-    padding: 24px 24px;
-    max-width: 1200px;
-    border-radius: 40px;
-    background-color: $color-bg-dark-gray;
-    // @include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-input);
+	margin: 0 auto;
+	padding: 24px 24px;
+	max-width: 1200px;
+	border-radius: 40px;
+	background-color: #232325;
 
-    &__form {
+	&__form {
+	}
 
-    }
+	&__inputs {
+	}
 
-    &__inputs {
+	&__submit {
+	}
 
-    }
-
-    &__submit {
-
-    }
-
-    &__checkboxes {
-
-    }
+	&__checkboxes {
+	}
 }
