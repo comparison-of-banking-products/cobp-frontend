@@ -1,10 +1,11 @@
 import React from 'react';
-import { PromoDeposits } from '../../components';
+import { PromoDeposits, DepositsCardList } from '../../components';
 
 function Deposits() {
 	return (
 		<>
 			<PromoDeposits />
+			<DepositsCardList />
 		</>
 	);
 }
