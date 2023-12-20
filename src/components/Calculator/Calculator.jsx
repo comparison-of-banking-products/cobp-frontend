@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Select, Button, Range } from '../';
+import { Select, Button, Range, CalculatorResult } from '../';
 
 function Calculator() {
 	const [isCredit, setIsCredit] = useState(false);
@@ -50,7 +50,7 @@ function Calculator() {
 				<form>
 					<div className="calculator__calculation">
 						<div className="calculator__items">
-							{!isCredit ? (
+							{!isCredit && (
 								<>
 									<Select
 										name="currency"
@@ -68,7 +68,8 @@ function Calculator() {
 										startValue={12}
 									/>
 								</>
-							) : (
+							)}
+							{isCredit && (
 								<>
 									<Select
 										name="summ"
@@ -86,25 +87,18 @@ function Calculator() {
 							<div className="calculator__results-display">
 								{!isCredit ? (
 									<>
-										<div className="calculator__result">
-											<span className="calculator__result-name">Ставка:</span>
-											<span className="calculator__result-value">до 15,03 %</span>
-										</div>
-										<div className="calculator__result">
-											<span className="calculator__result-name">Доход за период:</span>
-											<span className="calculator__result-value">до 50 690 {currency}</span>
-										</div>
-										<div className="calculator__result">
-											<span className="calculator__result-name">Доход за год:</span>
-											<span className="calculator__result-value">до 50 690 {currency}</span>
-										</div>
+										<CalculatorResult name="Ставка" value="до 15,03 %" />
+										<CalculatorResult
+											name="Доход за период"
+											value={`до 50 690`}
+											currency={currency}
+										/>
+										<CalculatorResult name="Доход за год" value={`до 50 690`} currency={currency} />
 									</>
 								) : (
 									<>
-										<div className="calculator__result">
-											<span className="calculator__result-name">Платеж от:</span>
-											<span className="calculator__result-value">от 50 690 {currency}</span>
-										</div>
+										<CalculatorResult name="Ставка" value="до 15,03 %" />
+										<CalculatorResult name="Платеж от" value={`от 50 690`} currency={currency} />
 									</>
 								)}
 							</div>
