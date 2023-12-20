@@ -26,9 +26,9 @@
 		padding: 18px;
 		z-index: 2;
 		cursor: pointer;
-			&_active {
-				color: $color-text-white;
-			}
+		&_active {
+			color: $color-text-white;
+		}
 	}
 	&__slider {
 		border: 2px solid $color-bg-gray;
