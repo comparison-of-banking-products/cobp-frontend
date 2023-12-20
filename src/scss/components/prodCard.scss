@@ -1,5 +1,5 @@
 .prod-card {
-    &__wide {
+	&__wide {
 		margin: 0;
 		padding: 24px;
 		position: relative;
@@ -27,7 +27,7 @@
 		&:hover {
 			background-size: calc(471px * 1.2) calc(187px * 1.2);
 			//этого цвета нет в переменных
-			background-color: #303036;			
+			background-color: #303036;
 		}
 
 		&:last-of-type:hover {
