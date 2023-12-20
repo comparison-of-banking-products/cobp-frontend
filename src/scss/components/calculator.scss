@@ -2,7 +2,7 @@
 	&__container {
 		max-width: 1200px;
 		margin: 0 auto;
-		background-color: $color-dark-gray;
+		background-color: $color-bg-dark-gray;
 		border-radius: 32px;
 		padding: 16px;
 		min-height: 364px;
@@ -13,25 +13,28 @@
 		margin: 0 auto 40px;
 	}
 	&__products {
-		background-color: $color-gray;
+		background-color: $color-bg-gray;
 		border-radius: 18px;
 		display: flex;
 		justify-content: center;
 		position: relative;
 	}
 	&__product {
-		@include font($font-size-other, $font-weight-bold, 36px, 0, $color-white);
+		@include font($font-size-other, $font-weight-bold, 36px, 0, $color-text-light-gray);
 		width: 100%;
 		text-align: center;
 		padding: 18px;
 		z-index: 2;
 		cursor: pointer;
+			&_active {
+				color: $color-text-white;
+			}
 	}
 	&__slider {
-		border: 2px solid $color-gray;
+		border: 2px solid $color-bg-gray;
 		box-sizing: border-box;
 		position: absolute;
-		background-color: $color-light-gray;
+		background-color: $color-bg-light-gray;
 		height: 100%;
 		width: 50%;
 		top: 0;
@@ -42,7 +45,6 @@
 		&_position {
 			&_right {
 				left: 50%;
-				margin-left: 16px;
 			}
 		}
 	}
@@ -65,7 +67,7 @@
 		width: 100%;
 		max-width: 568px;
 		padding: 24px;
-		background-color: $color-gray;
+		background-color: $color-bg-gray;
 		border-radius: 16px;
 		display: flex;
 		flex-direction: column;
@@ -80,16 +82,16 @@
 		gap: 36px;
 	}
 	&__result {
-		max-width: 111px;
+		width: 111px;
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
 		text-wrap: nowrap;
 	}
 	&__result-name {
-		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-light-gray);
+		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-light-gray);
 	}
 	&__result-value {
-		@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-white);
+		@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-text-white);
 	}
 }
