@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { linkNavForFooterData } from '../../utils/constansForFooter';
 
 function Footer() {
 	return (
@@ -14,37 +15,28 @@ function Footer() {
 				<div className="footer__information">
 					<div className="footer__column">
 						<nav className="footer__navigation">
-							<Link className="footer__navigation-link" to="/deposits">
-								вклады
-							</Link>
-							<Link className="footer__navigation-link" to="/credits">
-								кредиты
-							</Link>
-							<Link className="footer__navigation-link" to="/debitcard">
-								дебетовые карты
-							</Link>
-							<Link className="footer__navigation-link" to="/creditcard">
-								кредитные карты
-							</Link>
+							{linkNavForFooterData
+								.slice(linkNavForFooterData[0].id, linkNavForFooterData[4].id)
+								.map((link) => (
+									<Link className="footer__navigation-link" to="/deposits">
+										{link.title}
+									</Link>
+								))}
 						</nav>
 						<nav className="footer__navigation">
-							<Link className="footer__navigation-link" to="/">
-								о компании
-							</Link>
-							<Link className="footer__navigation-link" to="/">
-								новости
-							</Link>
-							<Link className="footer__navigation-link" to="/">
-								контакты
-							</Link>
+							{linkNavForFooterData.slice(linkNavForFooterData[4].id).map((link) => (
+								<Link className="footer__navigation-link" to="/deposits">
+									{link.title}
+								</Link>
+							))}
 						</nav>
 					</div>
 					<div className="footer__for-user">
 						<Link className="footer__for-user-link" to="/">
-							пользователькое соглашение
+							Пользователькое соглашение
 						</Link>
 						<Link className="footer__for-user-link" to="/">
-							политика конфиденциальности
+							Политика конфиденциальности
 						</Link>
 						<p className="footer__for-user-number">+7 (495) 920-70-29</p>
 					</div>
