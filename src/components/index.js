@@ -20,6 +20,7 @@ import ExchangeRate from './ExchangeRate/ExchangeRate';
 import PromoDeposits from './PromoDeposits/PromoDeposits';
 import SupportChat from './SupportChat/SupportChat';
 import SupportChatForm from './SupportChatForm/SupportChatForm';
+import DepositsCardList from './DepositsCardList/DepositsCardList';
 
 export {
 	Footer,
@@ -44,4 +45,5 @@ export {
 	SupportChat,
 	SupportChatForm,
 	Checkbox,
+	DepositsCardList,
 };
