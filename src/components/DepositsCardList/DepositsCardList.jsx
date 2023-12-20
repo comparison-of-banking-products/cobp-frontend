@@ -1,5 +1,4 @@
 import { Button } from '../index';
-import depositsImg from '../../images/icons/diposit__arrow.svg';
 
 function DepositsCardList() {
 	return (
