@@ -1,34 +1,25 @@
-.support-chat {
+.support-chat__btn {
 	position: fixed;
 	bottom: 34px;
 	right: 16px;
-	display: flex;
-	flex-direction: column-reverse;
-	align-items: flex-end;
-	gap: 16px;
-	z-index: 3;
-	width: 372px;
+	width: 80px;
+	height: 80px;
+	background: $color-accent;
+	background-image: url('../../images//icons/support-chat-btn-icon.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 40px 40px;
+	border-radius: $primary-border-radius;
+	border: none;
+	outline: none;
+	z-index: 2;
+	cursor: pointer;
+	transition: opacity 0.3s;
+	&:hover {
+		opacity: 0.8;
+	}
 
-	&__btn {
-		width: 80px;
-		height: 80px;
-		background: $color-accent;
-		background-image: url('../../images//icons/support-chat-btn-icon.svg');
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: 40px 40px;
-		border-radius: $primary-border-radius;
-		border: none;
-		outline: none;
-		z-index: 2;
-		cursor: pointer;
-		transition: opacity 0.3s;
-		&:hover {
-			opacity: 0.8;
-		}
-
-		&_open {
-			display: none;
-		}
+	&_open {
+		display: none;
 	}
 }
