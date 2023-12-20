@@ -1,0 +1,51 @@
+name: Lint and Format
+
+on:
+  pull_request:
+    branches:
+      - dev
+  workflow_dispatch:
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.10.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Husky
+        run: npm run prepare
+
+      - name: Run linting
+        run: npm run lint
+
+      - name: Auto-fix linting issues
+        run: npm run lint:fix
+
+      - name: Format code
+        run: npm run format
+
+      - name: Configure git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "<>"
+
+      - name: Check for changes
+        run: |
+          if [[ -n $(git status -s) ]]; then
+            git add .
+            git commit --no-verify -m "Apply linting and formatting changes"
+            git pull origin ${{ github.head_ref }} --rebase
+            git push origin ${{ github.head_ref }}
+          else
+            echo "No changes to commit."
+          fi

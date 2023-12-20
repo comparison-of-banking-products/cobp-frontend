@@ -1,11 +1,12 @@
 import React from 'react';
-import DepositsCardList from '../../components/DepositsCardList/DepositsCardList';
+import { PromoDeposits, DepositsCardList } from '../../components';
 
 function Deposits() {
 	return (
-		<div>
-			<DepositsCardList></DepositsCardList>
-		</div>
+		<>
+			<PromoDeposits />
+			<DepositsCardList />
+		</>
 	);
 }
 

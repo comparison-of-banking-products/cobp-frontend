@@ -5,12 +5,7 @@ function DepositFilter() {
 	return (
 		<section className="deposit-filter">
 			<form className="deposit-filter__form">
-				<div className="deposit-filter__inputs">
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
+				<div className="deposit-filter__inputs"></div>
 				{/* <Button className='deposit-filter__submit'></Button> */}
 			</form>
 			<div className="deposit-filter__checkboxes">
