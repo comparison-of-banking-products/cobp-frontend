@@ -17,6 +17,7 @@ import Support from './Support/Support';
 import SupportCard from './SupportCard/SupportCard';
 import ExchangeRate from './ExchangeRate/ExchangeRate';
 import DepositFilter from './DepositFilter/DepositFilter';
+import SelectMultiple from './UI/SelectMultiple/SelectMultiple';
 
 export {
 	Footer,
@@ -38,4 +39,5 @@ export {
 	SupportCard,
 	ExchangeRate,
 	DepositFilter,
+	SelectMultiple,
 };

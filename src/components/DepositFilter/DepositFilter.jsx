@@ -1,15 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
-import { Range, Button, Select } from '../';
+import { Range, Button, Select, SelectMultiple } from '../';
 
 function DepositFilter() {
+    const bankList = ['Все банки', 'Альфа-Банк', 'Райффайзен Банк', 'ВТБ'];
 
     const [currency, setCurrency] = useState(false);
-    const [selectedBanks, setSelectedBanks] = useState(false);
-    const [dataReceived, setDataRecieved] = useState(false)
+    const [selectedBanks, setSelectedBanks] = useState([bankList[0]]);
 
-    const bankList = ['Все банки', 'Альфа-Банк', 'Райффайзен Банк', 'ВТБ'];
-    
+    const [dataReceived, setDataRecieved] = useState(false);
+    const [capitalisation, setCapitalisation] = useState(false);
+    const [partilaWithdraw, setPartilaWithdraw] = useState(false);
+    const [replenishment, setReplenishment] = useState(false);
+
     const getCurrencyValue = (value) => {
 		setCurrency(value);
 	};
@@ -20,6 +23,11 @@ function DepositFilter() {
 
     const handleSubmit = () => {
         console.log('постучались в API')
+
+        // const requestData = {
+        //     currency,
+        //     selectedBanks,
+        // };
     };
 
     const handleClick = () => {
@@ -53,11 +61,13 @@ function DepositFilter() {
 						max={12}
 						startValue={5}
 					/>
-                    <Select
+                    <SelectMultiple
 						getValue={getSelectedBanksValue}
 						name="banks"
 						placeHolder="Банки"
 						options={bankList}
+                        selectedBanks={selectedBanks}
+                        setSelectedBanks={setSelectedBanks}
 					/>
                 </div>
                 <Button 
