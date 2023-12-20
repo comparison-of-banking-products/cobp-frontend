@@ -1,0 +1,9 @@
+@import './fonts';
+@import './reset';
+@import './variables';
+@import './mixins';
+@import './animations';
+@import './media-queries';
+@import './common';
+
+// В случае создании новых scss файлов в данную папку, не забудьте добавить сюда импорт.

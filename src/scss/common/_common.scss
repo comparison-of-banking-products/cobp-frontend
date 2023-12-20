@@ -1,0 +1,21 @@
+// Здесь описываем стандартные стили для всех элементов:
+// container, row , flex
+// Можно описать body/root
+// font-family для всей страницы
+// и т.д.
+
+:root {
+	background-color: $color-bg-body-black;
+	font-family: 'Inter Display', 'Arial', sans-serif;
+	color: $color-text-white;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+}
+
+.title {
+	@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-text-white);
+}

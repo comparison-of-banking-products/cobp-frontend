@@ -1,0 +1,24 @@
+.button__primary {
+	width: fit-content;
+	background: $color-accent;
+	padding: 14px 24px;
+	border: none;
+	outline: none;
+	border-radius: $primary-border-radius;
+	text-decoration: none;
+	@include font($font-size-s, $font-weight-bold, 20px, 0px, $color-text-white);
+	cursor: pointer;
+	transition: background 0.3s;
+	&:hover {
+		background: lighten($color-accent, 2%);
+	}
+	&:disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	// TODO: удалить класс inactive когда будут все страницы
+	&_inactive {
+		pointer-events: none;
+	}
+}

@@ -1,0 +1,22 @@
+.header__links {
+	display: flex;
+	align-items: center;
+	gap: 36px;
+}
+
+.header__link {
+	@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-gray);
+	text-decoration: none;
+	transition: color 0.3s;
+	&_active {
+		color: $color-text-white;
+	}
+
+	// TODO: потом удалить когда появятся страницы и убрать этот класс из Navigation
+	&_not-active {
+		pointer-events: none;
+	}
+	&:hover {
+		color: $color-text-white;
+	}
+}

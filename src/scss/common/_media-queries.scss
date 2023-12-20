@@ -1,0 +1,18 @@
+// Подключаем медиазапросы
+
+// ПРИМЕР:
+
+// @mixin mobile {
+//     @media (max-width: $mobile) {
+//       @content;
+//     }
+// }
+
+// ИСПОЛЬЗУЕМ:
+
+// @include mobile {
+//     .card {
+//        width: ;
+//        height: ;
+//     }
+// }

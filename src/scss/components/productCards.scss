@@ -1,0 +1,20 @@
+.product-cards {
+	margin: 0 auto;
+	padding: 130px 0 130px;
+	display: flex;
+	flex-direction: column;
+	max-width: 1200px;
+
+	&__title {
+		@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-text-white);
+		margin: 0 0 44px;
+		text-align: left;
+	}
+
+	&__container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 36px;
+		justify-content: space-between;
+	}
+}
