@@ -3,7 +3,7 @@ import { linkNavForFooterData } from '../../utils/constansForFooter';
 
 function Footer() {
 	return (
-		<section className="footer">
+		<footer className="footer">
 			<div className="footer__container">
 				<div className="footer__specification">
 					<Link className="footer__logo" to="/" />
@@ -49,7 +49,7 @@ function Footer() {
 					</div>
 				</div>
 			</div>
-		</section>
+		</footer>
 	);
 }
 

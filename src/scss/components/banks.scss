@@ -5,7 +5,7 @@
 	opacity: 0.3;
 
 	&__title {
-		color: $color-slider-dots-active;
+		color: $color-text-white;
 		font-size: $font-size-xl;
 		font-weight: $font-weight-bold;
 		line-height: 44px; /* 110% */
@@ -40,7 +40,7 @@
 	}
 
 	&__caption {
-		color: $color-slider-dots-active;
+		color: $color-text-white;
 		font-size: $font-size-s;
 		font-weight: $font-weight-bold;
 		line-height: 20px;

@@ -1,0 +1,72 @@
+.prod-card {
+    &__wide {
+		margin: 0;
+		padding: 24px;
+		position: relative;
+		min-width: calc(67.2% - 18px);
+		max-width: 788px;
+		min-height: 253px;
+		border-radius: 16px;
+		display: flex;
+		flex-direction: column;
+		cursor: pointer;
+
+		background-color: $color-bg-dark-gray;
+		background-image: url('../../images/credit-png.png');
+		background-size: 471px 187px;
+		background-position: right bottom;
+		background-repeat: no-repeat;
+		transition: background-size 0.3s, background 0.3s;
+
+		&:last-of-type {
+			background-image: url('../../images/deposit-png.png');
+			background-size: 450px 176px;
+			transition: background-size 0.3s, background 0.3s;
+		}
+
+		&:hover {
+			background-size: calc(471px * 1.2) calc(187px * 1.2);
+			//этого цвета нет в переменных
+			background-color: #303036;			
+		}
+
+		&:last-of-type:hover {
+			background-size: calc(450px * 1.2) calc(176px * 1.2);
+		}
+	}
+
+	&__slim {
+		margin: 0;
+		padding: 24px;
+		position: relative;
+		min-width: calc(32.8% - 18px);
+		max-width: 376px;
+		min-height: 253px;
+		border-radius: 16px;
+		display: flex;
+		flex-direction: column;
+
+		//задают неактивность
+		background-color: rgba($color-bg-dark-gray, 0.3);
+		pointer-events: none;
+		opacity: 0.3;
+	}
+
+	&__icon {
+		position: absolute;
+		width: 36px;
+		top: 24px;
+		right: 24px;
+	}
+
+	&__title {
+		margin: auto 0 8px;
+		padding: 0;
+		@include font($font-size-other, $font-weight-bold, 28px, -0.24px, $color-text-white);
+	}
+
+	&__text {
+		max-width: 268px;
+		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-light-gray);
+	}
+}

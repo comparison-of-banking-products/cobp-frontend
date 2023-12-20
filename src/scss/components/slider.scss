@@ -9,7 +9,7 @@
 		width: 100%;
 		min-height: 500px;
 		border-radius: $primary-border-radius;
-		background: $color-bg-slider;
+		background: $color-bg-dark-gray;
 		margin-bottom: 58px;
 		background-repeat: no-repeat;
 		position: relative;
@@ -53,17 +53,53 @@
 	}
 
 	&__title {
-		@include font($font-size-xxxl, $font-weight-bold, 68px, -0.64px, $color-white);
+		@include font($font-size-xxxl, $font-weight-bold, 68px, -0.64px, $color-text-white);
 		text-align: center;
 		margin-bottom: 16px;
 	}
 
 	&__subtitle {
 		max-width: 491px;
-		@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-slider-dots);
+		@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-text-light-gray);
 		text-align: center;
 		margin-bottom: 40px;
 	}
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+	margin-top: -78px;
+	transition: background 0.3s;
+	height: 100px;
+	width: auto;
+	border-radius: $primary-border-radius;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+	width: 100px;
+	height: 100px;
+	background-image: url('../../images/icons/arrow-slider-icon.svg');
+	background-size: 80px 80px;
+	background-repeat: no-repeat;
+	background-position: center;
+	font-size: 0;
+	opacity: 0.3;
+	transition: opacity 0.3s;
+}
+
+.swiper-button-prev::after {
+	transform: rotate(180deg);
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+	background-color: rgba(255, 255, 255, 0.08);
+}
+
+.swiper-button-prev:hover::after,
+.swiper-button-next:hover::after {
+	opacity: 1;
 }
 
 .slider__swiper > .swiper-pagination-horizontal {
@@ -71,20 +107,21 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: $color-bg-slider-dots;
+	background: $color-bg-dark-gray;
 	padding: 8px 12px;
 	border-radius: 50px;
 	left: 50%;
 	transform: translateX(-50%);
 }
+
 .swiper-pagination-bullet {
 	width: 8px;
 	height: 8px;
-	background: $color-slider-dots;
+	background: $color-text-light-gray;
 	border-radius: 50px;
 	flex-shrink: 0;
 }
 
 .swiper-pagination-bullet-active {
-	background: $color-slider-dots-active;
+	background: $color-text-white;
 }
