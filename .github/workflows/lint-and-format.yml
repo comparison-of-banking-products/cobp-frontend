@@ -44,8 +44,8 @@ jobs:
           if [[ -n $(git status -s) ]]; then
             git add .
             git commit --no-verify -m "Apply linting and formatting changes"
-            git pull origin $GITHUB_REF --rebase
-            git push origin $GITHUB_REF
+            git pull origin $GITHUB_HEAD_REF --rebase
+            git push origin $GITHUB_HEAD_REF
           else
             echo "No changes to commit."
           fi
