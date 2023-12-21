@@ -65,7 +65,7 @@ function Calculator() {
 										placeHolder="Срок в месяцах"
 										min={1}
 										max={100}
-										startValue={12}
+										startValue={5}
 									/>
 								</>
 							)}
@@ -79,7 +79,7 @@ function Calculator() {
 										getValue={getCurrency}
 										max="10000000"
 									/>
-									<Range name="term" placeHolder="Срок в годах" min={1} max={30} startValue={10} />
+									<Range name="term" placeHolder="Срок в годах" min={1} max={100} startValue={6} />
 								</>
 							)}
 						</div>
