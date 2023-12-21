@@ -10,6 +10,7 @@ import ProductCards from './ProductCards/ProductCards';
 import ProdCard from './ProdCard/ProdCard';
 import Range from './UI/Range/Range';
 import Select from './UI/Select/Select';
+import Sort from './UI/Sort/Sort';
 import Calculator from './Calculator/Calculator';
 import CalculatorResult from './CalculatorResult/CalculatorResult';
 import Banks from './Banks/Banks';
@@ -48,4 +49,5 @@ export {
 	Checkbox,
 	DepositsCardList,
 	CalculatorResult,
+	Sort,
 };
