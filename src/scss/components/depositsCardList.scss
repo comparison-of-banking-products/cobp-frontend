@@ -1,14 +1,28 @@
 .deposits {
+	max-width: 1280px;
 	display: flex;
-	padding: 40px 40px 130px 40px;
+	margin: 0 auto;
+	padding: 40px 0 130px 0;
 	flex-direction: column;
 	align-items: center;
-	// height: 1500px;
 	&__filter {
 		display: flex;
 		margin-bottom: 40px;
 		align-items: center;
 		align-self: flex-start;
+	}
+
+	&__select {
+		background-color: $color-bg-body-black;
+		color: $color-text-light-gray;
+		border: none;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 600;
+		line-height: 20px;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
 	}
 
 	&__button {
