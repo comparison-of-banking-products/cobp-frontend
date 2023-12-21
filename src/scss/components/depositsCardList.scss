@@ -1,10 +1,12 @@
 .deposits {
-	max-width: 1280px;
 	display: flex;
 	margin: 0 auto;
-	padding: 40px 0 130px 0;
-	flex-direction: column;
+	padding-top: 40px;
+	padding-bottom: 130px;
 	align-items: center;
+	flex-direction: column;
+	max-width: 1280px;
+
 	&__filter {
 		display: flex;
 		margin-bottom: 40px;
@@ -34,6 +36,7 @@
 		background-image: url(../../images/icons/diposit__arrow.svg);
 	}
 	&__button-more {
+		margin-top: 32px;
 		width: fit-content;
 		background: #2d2d31;
 		padding: 14px 24px;
