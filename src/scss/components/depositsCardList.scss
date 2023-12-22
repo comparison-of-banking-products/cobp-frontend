@@ -1,14 +1,30 @@
 .deposits {
 	display: flex;
-	padding: 40px 40px 130px 40px;
-	flex-direction: column;
+	margin: 0 auto;
+	padding-top: 40px;
+	padding-bottom: 130px;
 	align-items: center;
-	// height: 1500px;
+	flex-direction: column;
+	max-width: 1280px;
+
 	&__filter {
 		display: flex;
 		margin-bottom: 40px;
 		align-items: center;
 		align-self: flex-start;
+	}
+
+	&__select {
+		background-color: $color-bg-body-black;
+		color: $color-text-light-gray;
+		border: none;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 600;
+		line-height: 20px;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
 	}
 
 	&__button {
@@ -20,6 +36,7 @@
 		background-image: url(../../images/icons/diposit__arrow.svg);
 	}
 	&__button-more {
+		margin-top: 32px;
 		width: fit-content;
 		background: #2d2d31;
 		padding: 14px 24px;

@@ -29,4 +29,8 @@
 	&:checked::before {
 		opacity: 1;
 	}
+
+	&__agree {
+		margin-right: 8px;
+	}
 }

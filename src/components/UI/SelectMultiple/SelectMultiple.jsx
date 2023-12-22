@@ -14,6 +14,10 @@ function SelectMultiple({placeHolder, getValue, multiOptions, name, selectedBank
 	    getValue(selectedBanks);
     }, [selectedBanks, getValue]);
 
+    useEffect(() => {
+        setAllBanksSelected(selectedBanks.length === multiOptions.length);
+    }, [selectedBanks, multiOptions]);
+
     const toggleOptions = () => {
         if (optionsRef.current) {
             optionsRef.current.classList.toggle('select-multiple__options_active');

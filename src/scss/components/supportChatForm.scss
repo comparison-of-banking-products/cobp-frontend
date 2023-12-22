@@ -1,5 +1,8 @@
 .support-chat-form {
-	position: relative;
+	position: fixed;
+	bottom: 34px;
+	right: 16px;
+	width: 372px;
 	padding: 24px;
 	background-color: $color-bg-black;
 	border-radius: $primary-border-radius;
@@ -7,15 +10,15 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 20px;
-	width: 100%;
 	opacity: 0;
 	transform: translateY(100%);
 	transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-	z-index: 1;
+	z-index: -1;
 
 	&_open {
 		opacity: 1;
 		transform: translateY(0);
+		z-index: 1;
 	}
 
 	&__close-btn {
@@ -51,10 +54,11 @@
 	&__input,
 	&__textarea {
 		padding: 14px;
+		margin-bottom: 16px;
 		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-white);
 		border: none;
 		outline: 1px solid transparent;
-		border-radius: $primary-border-radius;
+		border-radius: 12px;
 		background: $color-bg-gray;
 		transition: outline 0.3s;
 		&::placeholder {
@@ -65,27 +69,31 @@
 		}
 	}
 
-	&__input {
-		margin-bottom: 16px;
-	}
-
 	&__textarea {
 		height: 131px;
 		resize: none;
-		margin-bottom: 12px;
 	}
 
 	&__label {
-		@include font($font-size-xxs, $font-weight-medium, 16px, normal, $color-text-white);
+		@include font($font-size-xxs, $font-weight-medium, 14px, normal, $color-text-light-gray);
 		display: flex;
 		align-items: center;
-		gap: 8px;
+		// gap: 8px;
 		cursor: pointer;
 		transition: opacity 0.3s;
 		&:hover {
 			.checkbox:not(:checked)::before {
 				opacity: 0.3;
 			}
+		}
+	}
+
+	&__link-agree {
+		@include font($font-size-xxs, $font-weight-medium, 14px, normal, $color-text-light-gray);
+		text-decoration: underline;
+		transition: color 0.3s;
+		&:hover {
+			color: $color-text-white;
 		}
 	}
 
