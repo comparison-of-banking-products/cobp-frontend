@@ -6,13 +6,13 @@
 		align-items: center;
 		gap: 4px;
 		cursor: pointer;
-		transition: opacity .3s linear;
+		transition: opacity 0.3s linear;
 		&:hover {
-			opacity: .7;
+			opacity: 0.7;
 		}
 	}
-	&__text{
-		@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-text-light-gray)
+	&__text {
+		@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-text-light-gray);
 	}
 	&__img {
 		background-image: url(../../../images/icons/sort.svg);
