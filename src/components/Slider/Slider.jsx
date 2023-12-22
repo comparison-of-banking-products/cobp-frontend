@@ -55,7 +55,7 @@ function Slider() {
 				<SwiperSlide className="slider__container slider__debit-card">
 					<SliderContent
 						sliderTitle="Дебетовые карты"
-						sliderSubtitle="лучший способ оплачивать покупки и&nbsp;получать кэшбэк"
+						sliderSubtitle="Лучший способ оплачивать покупки и&nbsp;получать кэшбэк"
 						linkPage="/debitcard"
 						textLink="Подобрать карту"
 						// TODO: удалить inactive когда будет данная страница

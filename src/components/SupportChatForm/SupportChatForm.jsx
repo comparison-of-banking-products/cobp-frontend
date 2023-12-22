@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Checkbox } from '../index';
 
 const SupportChatForm = ({ onClose, showModal }) => {
@@ -51,12 +52,16 @@ const SupportChatForm = ({ onClose, showModal }) => {
 				<label className="support-chat-form__label">
 					<Checkbox
 						type="checkbox"
-						checkboxClass="checkbox"
+						checkboxClass="checkbox checkbox__agree"
 						name="checkbox"
 						onChange={handleCheckboxChange}
 						required
 					/>
-					я даю согласие на обработку персональных данных
+					Даю&nbsp;
+					<Link to="#" className="support-chat-form__link-agree">
+						согласие
+					</Link>
+					&nbsp;на обработку персональных данных
 				</label>
 				<Button
 					type="submit"
