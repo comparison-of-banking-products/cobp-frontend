@@ -54,10 +54,11 @@
 	&__input,
 	&__textarea {
 		padding: 14px;
+		margin-bottom: 16px;
 		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-white);
 		border: none;
 		outline: 1px solid transparent;
-		border-radius: $primary-border-radius;
+		border-radius: 12px;
 		background: $color-bg-gray;
 		transition: outline 0.3s;
 		&::placeholder {
@@ -68,27 +69,31 @@
 		}
 	}
 
-	&__input {
-		margin-bottom: 16px;
-	}
-
 	&__textarea {
 		height: 131px;
 		resize: none;
-		margin-bottom: 12px;
 	}
 
 	&__label {
-		@include font($font-size-xxs, $font-weight-medium, 16px, normal, $color-text-white);
+		@include font($font-size-xxs, $font-weight-medium, 14px, normal, $color-text-light-gray);
 		display: flex;
 		align-items: center;
-		gap: 8px;
+		// gap: 8px;
 		cursor: pointer;
 		transition: opacity 0.3s;
 		&:hover {
 			.checkbox:not(:checked)::before {
 				opacity: 0.3;
 			}
+		}
+	}
+
+	&__link-agree {
+		@include font($font-size-xxs, $font-weight-medium, 14px, normal, $color-text-light-gray);
+		text-decoration: underline;
+		transition: color 0.3s;
+		&:hover {
+			color: $color-text-white;
 		}
 	}
 
