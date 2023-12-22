@@ -25,7 +25,15 @@
 		flex-direction: column;
 		gap: 6px;
 	}
+
+	&__input-container {
+		display: flex;
+		align-items: center;
+		position: relative;
+	}
+
 	&__input {
+		padding: 0;
 		background-color: $color-gray;
 		outline: none;
 		border: 0;
@@ -36,6 +44,25 @@
 			-webkit-appearance: none;
 		}
 	}
+
+	&__icon-count {
+		margin-right: 6px;
+		border-radius: 50%;
+		background-color: #FBFBFB;
+		color: #1C1C1E;
+		font-size: 16px;
+		line-height: 20px;
+		width: 24px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		// position: absolute;
+		// top: 50%;
+		// left: 5px;
+		// transform: translateY(-50%);
+	}
+
 	&__options {
 		background-color: $color-bg-black;
 		position: absolute;

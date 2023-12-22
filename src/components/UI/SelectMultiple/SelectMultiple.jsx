@@ -45,17 +45,38 @@ function SelectMultiple({placeHolder, getValue, multiOptions, name, selectedBank
         handleCheckboxClick(optionValue);
     };
 
+    const getSelectedBanksDisplay = () => {
+        if (allBanksSelected) {
+            return 'Все банки';
+        } else if (selectedBanks.length === 0) {
+            return 'Нет выбранных банков';
+        } else if (selectedBanks.length === 1) {
+            return selectedBanks[0];
+        } else if (selectedBanks.length > 1) {
+            return `${selectedBanks.join(', ')}`;
+        } else {
+            return '';
+        }
+    };
+
     return (
         <div className='select-multiple'>
             <div className='select-multiple__text'>
                 <span className='select-multiple__placeholder'>{placeHolder}</span>
-                <input 
-                    className='select-multiple__input' 
-                    value={selectedBanks.join(', ')}
-                    name={name}
-                    readOnly
-                    onClick={toggleOptions}
-                />
+                <div className="select-multiple__input-container">
+                    {selectedBanks.length < multiOptions.length && (
+                        <span className="select-multiple__icon-count" style={{ backgroundColor: '#FBFBFB' }}>
+                                {selectedBanks.length}
+                        </span>
+                    )}
+                    <input
+                        className='select-multiple__input'
+                        value={getSelectedBanksDisplay() || ''}
+                        name={name}
+                        readOnly
+                        onClick={toggleOptions}
+                    />
+                </div>
                 <div className='select-multiple__options' ref={optionsRef}>
                     <div className="select-multiple__option" onClick={handleOptionClick}>
                         <p>Все банки</p>
