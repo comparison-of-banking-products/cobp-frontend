@@ -48,8 +48,8 @@
 	&__icon-count {
 		margin-right: 6px;
 		border-radius: 50%;
-		background-color: #FBFBFB;
-		color: #1C1C1E;
+		background-color: #fbfbfb;
+		color: #1c1c1e;
 		font-size: 16px;
 		line-height: 20px;
 		width: 24px;
@@ -83,7 +83,7 @@
 			display: flex;
 		}
 	}
-	
+
 	&__option {
 		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-white);
 		transition: opacity 0.3s linear;
@@ -102,5 +102,4 @@
 	&__checkbox {
 		margin-left: 6px;
 	}
-
 }
