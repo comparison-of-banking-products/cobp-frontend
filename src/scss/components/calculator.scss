@@ -26,7 +26,7 @@
 		padding: 18px;
 		z-index: 2;
 		cursor: pointer;
-		transition: color .3s linear;
+		transition: color 0.3s linear;
 		&_active {
 			color: $color-text-white;
 		}
