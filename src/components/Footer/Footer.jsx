@@ -18,14 +18,14 @@ function Footer() {
 							{linkNavForFooterData
 								.slice(linkNavForFooterData[0].id, linkNavForFooterData[4].id)
 								.map((link) => (
-									<Link className="footer__navigation-link" to="/deposits">
+									<Link className="footer__navigation-link" to={link.page} key={link.id}>
 										{link.title}
 									</Link>
 								))}
 						</nav>
 						<nav className="footer__navigation">
 							{linkNavForFooterData.slice(linkNavForFooterData[4].id).map((link) => (
-								<Link className="footer__navigation-link" to="/deposits">
+								<Link className="footer__navigation-link" to={link.page} key={link.id}>
 									{link.title}
 								</Link>
 							))}
