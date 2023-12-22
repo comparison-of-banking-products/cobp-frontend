@@ -23,6 +23,8 @@ import PromoDeposits from './PromoDeposits/PromoDeposits';
 import SupportChat from './SupportChat/SupportChat';
 import SupportChatForm from './SupportChatForm/SupportChatForm';
 import DepositsCardList from './DepositsCardList/DepositsCardList';
+import DepositFilter from './DepositFilter/DepositFilter'; 
+import SelectMultiple from './UI/SelectMultiple/SelectMultiple';
 
 export {
 	Footer,
@@ -49,5 +51,7 @@ export {
 	Checkbox,
 	DepositsCardList,
 	CalculatorResult,
+	DepositFilter,
+	SelectMultiple,
 	Sort,
 };
