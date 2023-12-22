@@ -1,0 +1,96 @@
+.support-chat-form {
+	position: relative;
+	padding: 24px;
+	background-color: $color-bg-black;
+	border-radius: $primary-border-radius;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	width: 100%;
+	opacity: 0;
+	transform: translateY(100%);
+	transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+	z-index: 1;
+
+	&_open {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	&__close-btn {
+		position: absolute;
+		top: -76px;
+		right: 0;
+		width: 60px;
+		height: 60px;
+		background: $color-accent;
+		background-image: url('../../images//icons/close-btn-icon.svg');
+		background-size: 24px 24px;
+		background-position: center;
+		background-repeat: no-repeat;
+		border: none;
+		outline: none;
+		border-radius: $primary-border-radius;
+		cursor: pointer;
+		transition: opacity 0.3s;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	&__title {
+		@include font($font-size-mml, $font-weight-bold, 32px, -0.28px, $color-text-white);
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__input,
+	&__textarea {
+		padding: 14px;
+		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-white);
+		border: none;
+		outline: 1px solid transparent;
+		border-radius: $primary-border-radius;
+		background: $color-bg-gray;
+		transition: outline 0.3s;
+		&::placeholder {
+			@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-light-gray);
+		}
+		&:focus {
+			outline: 1px solid $color-text-light-gray;
+		}
+	}
+
+	&__input {
+		margin-bottom: 16px;
+	}
+
+	&__textarea {
+		height: 131px;
+		resize: none;
+		margin-bottom: 12px;
+	}
+
+	&__label {
+		@include font($font-size-xxs, $font-weight-medium, 16px, normal, $color-text-white);
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		cursor: pointer;
+		transition: opacity 0.3s;
+		&:hover {
+			.checkbox:not(:checked)::before {
+				opacity: 0.3;
+			}
+		}
+	}
+
+	&__submit-btn {
+		width: 100%;
+		margin-top: 24px;
+	}
+}

@@ -37,32 +37,43 @@
 		}
 	}
 	&__options {
-		background-color: $color-gray;
+		background-color: $color-bg-black;
 		position: absolute;
 		z-index: 999;
 		width: 100%;
 		left: 0;
-		top: 80%;
-		border-radius: 16px;
+		top: 100%;
+		border-radius: 24px;
 		display: flex;
 		flex-direction: column;
 		gap: 6px;
-		padding: 6px;
 		cursor: default;
-		padding: 14px;
-		border: 1px solid $color-light-gray;
+		padding: 8px;
+		border: 1px solid $color-bg-black;
 		display: none;
+
 		&_active {
 			display: flex;
 		}
 	}
+	
 	&__option {
-		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-white);
+		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-white);
 		transition: opacity 0.3s linear;
+		padding: 18px 20px 18px 12px;
+		border-radius: 16px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 		&:hover {
-			background-color: $color-accent;
+			background-color: $color-bg-gray;
 			cursor: pointer;
 			opacity: 0.7;
 		}
 	}
+
+	&__checkbox {
+		margin-left: 6px;
+	}
+
 }

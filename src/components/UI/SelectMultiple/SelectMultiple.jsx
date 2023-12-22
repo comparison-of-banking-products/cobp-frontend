@@ -1,31 +1,48 @@
 import { useEffect, useRef, useState } from 'react';
 import arrowDown from '../../../vendor/images/icons/chevron-bottom.svg';
+import { Checkbox } from '../../';
 
-function SelectMultiple({placeHolder, getValue, options, name, selectedBanks, setSelectedBanks}) {
-
+function SelectMultiple({placeHolder, getValue, multiOptions, name, selectedBanks, setSelectedBanks}) {
     const optionsRef = useRef();
+    const [allBanksSelected, setAllBanksSelected] = useState(true);
+
+    useEffect(() => {
+        console.log(selectedBanks);
+    }, [selectedBanks]);
 
 	useEffect(() => {
 	    getValue(selectedBanks);
     }, [selectedBanks, getValue]);
 
     const toggleOptions = () => {
-		if (optionsRef.current) {
+        if (optionsRef.current) {
             optionsRef.current.classList.toggle('select-multiple__options_active');
         }
 	};
 
-    const handleChange = (e) => {
-        const optionValue = e.target.textContent;
-        if (optionValue === 'Все банки') {
-            setSelectedBanks(options);
-        } else {
-            const updatedSelectedBanks = selectedBanks.includes(optionValue)
-            ? selectedBanks.filter((bank) => bank !== optionValue)
-            : [...selectedBanks, optionValue];
+    const handleCheckboxClick = (optionValue) => {
+        let updatedSelectedBanks;
 
-            setSelectedBanks(updatedSelectedBanks);
+        if (optionValue === 'Все банки') {
+            setAllBanksSelected(!allBanksSelected);
+            // updatedSelectedBanks = selectedBanks.includes('Все банки') ? [] : [optionValue];
+            // updatedSelectedBanks = selectedBanks.includes('Все банки') ? [] : multiOptions;
+            updatedSelectedBanks = allBanksSelected ? [] : multiOptions;
+        } else {
+            updatedSelectedBanks = selectedBanks.includes(optionValue)
+                ? selectedBanks.filter((bank) => bank !== optionValue)
+                : [...selectedBanks, optionValue];
+            
+            updatedSelectedBanks = updatedSelectedBanks.filter((bank) => bank !== 'Все банки');
+            // setAllBanksSelected(false);
         }
+
+        setSelectedBanks(updatedSelectedBanks);
+    }
+
+    const handleOptionClick = (e) => {
+        const optionValue = e.target.textContent;
+        handleCheckboxClick(optionValue);
     };
 
     return (
@@ -37,12 +54,28 @@ function SelectMultiple({placeHolder, getValue, options, name, selectedBanks, se
                     value={selectedBanks.join(', ')}
                     name={name}
                     readOnly
+                    onClick={toggleOptions}
                 />
                 <div className='select-multiple__options' ref={optionsRef}>
-                    {options.map((option, index) => (
-						<p key={index} className="select-multiple__option" onClick={handleChange}>
-							{option}
-						</p>
+                    <div className="select-multiple__option" onClick={handleOptionClick}>
+                        <p>Все банки</p>
+                        <Checkbox
+                            checkboxClass="checkbox"
+                            type="checkbox"
+                            checked={selectedBanks.length === multiOptions.length}
+                            onChange={() => handleCheckboxClick('Все банки')}
+                        />
+                    </div>
+                    {multiOptions.map((option, index) => (
+						<div key={index} className="select-multiple__option" onClick={handleOptionClick}>
+                            <p>{option}</p>
+                            <Checkbox
+                                checkboxClass="checkbox"
+                                type="checkbox"
+                                checked={selectedBanks.includes(option)}
+                                onChange={() => handleCheckboxClick(option)}
+                            />
+                        </div>
 					))}
                 </div>
             </div>

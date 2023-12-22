@@ -1,10 +1,12 @@
 import React from 'react';
-import { DepositFilter } from '../../components';
+import { PromoDeposits, DepositsCardList, DepositFilter } from '../../components';
 
 function Deposits() {
 	return (
 		<>
+			<PromoDeposits />
 			<DepositFilter />
+			<DepositsCardList />
 		</>
 	);
 }

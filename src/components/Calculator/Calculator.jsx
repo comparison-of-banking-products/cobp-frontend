@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { Select, Button, Range } from '../';
+import { Select, Button, Range, CalculatorResult } from '../';
 
 function Calculator() {
 	const [isCredit, setIsCredit] = useState(false);
-	const [currency, setCurrency] = useState(false);
+	const [currency, setCurrency] = useState();
 	const sliderRef = useRef();
 
 	useEffect(() => {
@@ -22,61 +22,64 @@ function Calculator() {
 		setIsCredit(false);
 	};
 
-	const getCurrencyValue = (value) => {
-		setCurrency(value);
+	const getCurrency = (values) => {
+		setCurrency(values.option);
 	};
 
 	return (
 		<section className="calculator">
-			<h2 className="calculator__title title">калькулятор</h2>
+			<h2 className="calculator__title title">Калькулятор</h2>
 			<div className="calculator__container">
 				<div className="calculator__products">
-					<span className="calculator__product" onClick={chooseDeposit} role="presentation">
-						вклады
+					<span
+						className={`calculator__product ${!isCredit && 'calculator__product_active'}`}
+						onClick={chooseDeposit}
+						role="presentation"
+					>
+						Вклады
 					</span>
-					<span className="calculator__product" onClick={chooseCredit} role="presentation">
-						кредиты
+					<span
+						className={`calculator__product ${isCredit && 'calculator__product_active'}`}
+						onClick={chooseCredit}
+						role="presentation"
+					>
+						Кредиты
 					</span>
 					<div className="calculator__slider" ref={sliderRef} />
 				</div>
 				<form>
 					<div className="calculator__calculation">
 						<div className="calculator__items">
-							{!isCredit ? (
+							{!isCredit && (
 								<>
-									<Range
-										name="summ"
-										placeHolder="cумма вклада"
-										symbol={currency}
-										min={10000}
-										max={1000000}
-										startValue={240000}
-									/>
 									<Select
-										getValue={getCurrencyValue}
 										name="currency"
-										placeHolder="валюта"
-										options={['₽', '$']}
+										placeHolder="Сумма вклада"
+										options={['₽', '$', '€', '¥']}
+										defaultValue="240000"
+										getValue={getCurrency}
+										max="10000000"
 									/>
 									<Range
 										name="term"
-										placeHolder="срок в месяцах"
+										placeHolder="Срок в месяцах"
 										min={1}
-										max={360}
-										startValue={60}
+										max={100}
+										startValue={12}
 									/>
 								</>
-							) : (
+							)}
+							{isCredit && (
 								<>
-									<Range
+									<Select
 										name="summ"
-										placeHolder="сумма кредита"
-										symbol={currency}
-										min={10000}
-										max={1000000}
-										startValue={240000}
+										placeHolder="Сумма кредита"
+										options={['₽', '$', '€', '¥']}
+										defaultValue="240000"
+										getValue={getCurrency}
+										max="10000000"
 									/>
-									<Range name="term" placeHolder="срок в годах" min={1} max={30} startValue={10} />
+									<Range name="term" placeHolder="Срок в годах" min={1} max={30} startValue={10} />
 								</>
 							)}
 						</div>
@@ -84,25 +87,18 @@ function Calculator() {
 							<div className="calculator__results-display">
 								{!isCredit ? (
 									<>
-										<div className="calculator__result">
-											<span className="calculator__result-name">ставка:</span>
-											<span className="calculator__result-value">до 15,03 %</span>
-										</div>
-										<div className="calculator__result">
-											<span className="calculator__result-name">доход за период:</span>
-											<span className="calculator__result-value">до 50 690 {currency}</span>
-										</div>
-										<div className="calculator__result">
-											<span className="calculator__result-name">доход за год:</span>
-											<span className="calculator__result-value">до 50 690 {currency}</span>
-										</div>
+										<CalculatorResult name="Ставка" value="до 15,03 %" />
+										<CalculatorResult
+											name="Доход за период"
+											value={`до 50 690`}
+											currency={currency}
+										/>
+										<CalculatorResult name="Доход за год" value={`до 50 690`} currency={currency} />
 									</>
 								) : (
 									<>
-										<div className="calculator__result">
-											<span className="calculator__result-name">платеж от:</span>
-											<span className="calculator__result-value">от 50 690 {currency}</span>
-										</div>
+										<CalculatorResult name="Ставка" value="до 15,03 %" />
+										<CalculatorResult name="Платеж от" value={`от 50 690`} currency={currency} />
 									</>
 								)}
 							</div>

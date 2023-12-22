@@ -14,17 +14,23 @@
 
     &__form {
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         gap: 8px;
     }
 
     &__inputs {
+        width: 100%;
         display: flex;
         flex-direction: row;
         gap: 8px;
-        justify-content: space-between;
+        // justify-content: space-between;
         max-width: 1152px;
 
+    }
+
+    &__inputs > * {
+        flex: 1;
+        max-width: 318px;
     }
 
     &__submit {
@@ -51,7 +57,11 @@
         padding: 12px 24px;
         border-radius: 16px;
         background-color: $color-bg-gray;
-        @include font($font-size-xs, $font-weight-medium, 18px, 0, $color-text-white);
+        @include font($font-size-xs, $font-weight-medium, 18px, 0, $color-text-light-gray);
+        cursor: pointer;
         
+        &_active { 
+            @include font($font-size-xs, $font-weight-medium, 18px, 0, $color-text-white);  
+        }
     }
 }

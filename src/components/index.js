@@ -11,12 +11,18 @@ import ProdCard from './ProdCard/ProdCard';
 import Range from './UI/Range/Range';
 import Select from './UI/Select/Select';
 import Calculator from './Calculator/Calculator';
+import CalculatorResult from './CalculatorResult/CalculatorResult';
 import Banks from './Banks/Banks';
 import Input from './UI/Input/Input';
+import Checkbox from './UI/Checkbox/Checkbox';
 import Support from './Support/Support';
 import SupportCard from './SupportCard/SupportCard';
 import ExchangeRate from './ExchangeRate/ExchangeRate';
-import DepositFilter from './DepositFilter/DepositFilter';
+import PromoDeposits from './PromoDeposits/PromoDeposits';
+import SupportChat from './SupportChat/SupportChat';
+import SupportChatForm from './SupportChatForm/SupportChatForm';
+import DepositsCardList from './DepositsCardList/DepositsCardList';
+import DepositFilter from './DepositFilter/DepositFilter'; 
 import SelectMultiple from './UI/SelectMultiple/SelectMultiple';
 
 export {
@@ -38,6 +44,12 @@ export {
 	Support,
 	SupportCard,
 	ExchangeRate,
+	PromoDeposits,
+	SupportChat,
+	SupportChatForm,
+	Checkbox,
+	DepositsCardList,
+	CalculatorResult,
 	DepositFilter,
 	SelectMultiple,
 };

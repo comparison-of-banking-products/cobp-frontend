@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { PageNotFound, Header, Footer } from '../src/components';
+import { PageNotFound, Header, Footer, SupportChat } from '../src/components';
 import {
 	Main,
 	Deposits,
@@ -27,6 +27,7 @@ function App() {
 				<Route path="/Profile" element={<Profile />} />
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
+			<SupportChat />
 			<Footer />
 		</div>
 	);
