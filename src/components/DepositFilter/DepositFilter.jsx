@@ -60,6 +60,7 @@ function DepositFilter() {
 						name="currency"
 						placeHolder="Сумма"
 						options={['₽', '$', '€', '¥']}
+						currency={['₽', '$', '€', '¥']}
 						defaultValue="100000"
 						getValue={getCurrencyValue}
 						max="10000000"
