@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import arrowDown from '../../../vendor/images/icons/chevron-bottom.svg';
 import { Checkbox } from '../../';
 
-function Select({ placeHolder, options, name, getValue, defaultValue, max }) {
+function Select({ placeHolder, currency, name, getValue, defaultValue, max }) {
 	// Поле с выбором опций
 
 	// placeHolder: string - плейстхолдер поля инпут
@@ -14,10 +14,10 @@ function Select({ placeHolder, options, name, getValue, defaultValue, max }) {
 
 	const [isFocus, setIsFocus] = useState(false);
 	const [values, setValues] = useState({
-		value: Number(defaultValue),
-		option: options[0],
+		[name]: Number(defaultValue),
+		currency: currency[0],
 	});
-	const triadNumber = useMemo(() => Number(values.value).toLocaleString(), [values]);
+	const triadNumber = useMemo(() => Number(values[name]).toLocaleString(), [values]);
 	const optionsRef = useRef();
 	useEffect(() => {
 		!!getValue && getValue({ ...values, currency: values.currency });
@@ -28,8 +28,8 @@ function Select({ placeHolder, options, name, getValue, defaultValue, max }) {
 	};
 
 	const handleSelect = (e) => {
-		setValues({ ...values, option: e.target.textContent });
-		!!getValue && getValue({ ...values, option: e.target.textContent });
+		setValues({ ...values, currency: e.target.textContent });
+		!!getValue && getValue({ ...values, currency: e.target.textContent });
 		toggleOptions();
 	};
 
@@ -42,10 +42,9 @@ function Select({ placeHolder, options, name, getValue, defaultValue, max }) {
 			} else {
 				newValue = inputValue === '' ? '' : Number(inputValue);
 			}
-			setValues({ ...values, value: newValue });
-			!!getValue && getValue({ ...values, value: newValue });
+			setValues({ ...values, [name]: newValue });
+			!!getValue && getValue({ ...values, [name]: newValue });
 		} else {
-			setValues({ ...values, value: values.value });
 		}
 	};
 
@@ -65,7 +64,7 @@ function Select({ placeHolder, options, name, getValue, defaultValue, max }) {
 					{isFocus ? (
 						<input
 							className="select__input"
-							value={values.value}
+							value={values[name]}
 							name={name}
 							onChange={handleChange}
 							onBlur={handleBlur}
@@ -83,15 +82,15 @@ function Select({ placeHolder, options, name, getValue, defaultValue, max }) {
 				</div>
 				<input
 					className="select__input select__input_type_currency"
-					value={values.option}
+					value={values.currency}
 					name={name}
 					readOnly
 				/>
 				<div className="select__options" ref={optionsRef}>
-					{options.map((option, index) => (
+					{currency.map((currency, index) => (
 						<div key={index} className="select__option" onClick={handleSelect}>
-							<p>{option}</p>
-							{option === values.option && (
+							<p>{currency}</p>
+							{currency === values.currency && (
 								<Checkbox
 									checkboxClass="checkbox"
 									type="checkbox"

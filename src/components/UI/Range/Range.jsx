@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 function Range({ placeHolder, name, symbol, min, max, startValue, getValue, step }) {
 	// Поле с ползунком
@@ -11,27 +11,30 @@ function Range({ placeHolder, name, symbol, min, max, startValue, getValue, step
 	//startValue: number - начальное значение поля и ползурка при создании компонента
 	//getValue(value): () => void - функция, возвращает значение поля и ползунка
 
-	const [value, setValue] = useState(startValue);
+	const [value, setValue] = useState({
+		[name]: startValue,
+	});
 
 	const inputRef = useRef();
 
 	const handleBlur = (e) => {
 		if (e.target.value < min) {
-			setValue(min);
-			!!getValue && getValue(min);
-		} else if (e.target.value > max) {
-			setValue(max);
-			!!getValue && getValue(max);
+			setValue({ ...value, [name]: min });
+			!!getValue && getValue({ ...value, [name]: min });
 		}
 	};
 
 	const handleChange = (e) => {
 		const inputValue = e.target.value;
 		if (inputValue === '' || /^-?\d+(\.\d+)?$/.test(inputValue)) {
-			setValue(inputValue === '' ? '' : Number(inputValue));
-			!!getValue && getValue(e.target.value);
+			setValue(inputValue === '' ? '' : { ...value, [name]: Number(inputValue) });
+			!!getValue && getValue({ ...value, [name]: Number(inputValue) });
 		} else {
-			setValue(value);
+		}
+
+		if (e.target.value > max) {
+			setValue({ ...value, [name]: max });
+			!!getValue && getValue({ ...value, [name]: max });
 		}
 	};
 
@@ -41,7 +44,7 @@ function Range({ placeHolder, name, symbol, min, max, startValue, getValue, step
 				<span className="range__placeholder">{placeHolder}</span>
 				<input
 					className="range__input"
-					value={value}
+					value={value[name]}
 					name={name}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -53,7 +56,7 @@ function Range({ placeHolder, name, symbol, min, max, startValue, getValue, step
 					ref={inputRef}
 					min={min}
 					max={max}
-					value={value}
+					value={value[name]}
 					step={step}
 					onChange={handleChange}
 				/>
