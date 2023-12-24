@@ -1,16 +1,6 @@
 import { useRef, useState } from 'react';
 
 function Range({ placeHolder, name, symbol, min, max, startValue, getValue, step }) {
-	// Поле с ползунком
-
-	//placeHolder: string - плейстхолдер поля инпут
-	//name: string - имя поля инпут, будет использованна при событии submit формы
-	//symbol: string - символ - плейсхолдер, в рамках проекта - символ валюты
-	//max: number - максимальное значения поля и ползунка
-	//step: number - шаг ползунка
-	//startValue: number - начальное значение поля и ползурка при создании компонента
-	//getValue(value): () => void - функция, возвращает значение поля и ползунка
-
 	const [value, setValue] = useState({
 		[name]: startValue,
 	});
@@ -18,23 +8,26 @@ function Range({ placeHolder, name, symbol, min, max, startValue, getValue, step
 	const inputRef = useRef();
 
 	const handleBlur = (e) => {
-		if (e.target.value < min) {
-			setValue({ ...value, [name]: min });
-			!!getValue && getValue({ ...value, [name]: min });
+		if (e.target.value < Number(min)) {
+			setValue({ ...value, [name]: Number(min) });
+			!!getValue && getValue({ ...value, [name]: Number(min) }, { validate: true });
 		}
 	};
 
 	const handleChange = (e) => {
 		const inputValue = e.target.value;
 		if (inputValue === '' || /^-?\d+(\.\d+)?$/.test(inputValue)) {
-			setValue(inputValue === '' ? '' : { ...value, [name]: Number(inputValue) });
-			!!getValue && getValue({ ...value, [name]: Number(inputValue) });
+			if (inputValue < Number(min)) {
+				setValue(inputValue === '' ? '' : { ...value, [name]: Number(inputValue) });
+				!!getValue && getValue({ ...value, [name]: Number(min) }, { validate: false });
+			} else if (e.target.value > Number(max)) {
+				setValue({ ...value, [name]: Number(max) });
+				!!getValue && getValue({ ...value, [name]: Number(max) }, { validate: true });
+			} else {
+				setValue(inputValue === '' ? '' : { ...value, [name]: Number(inputValue) });
+				!!getValue && getValue({ ...value, [name]: Number(inputValue) }, { validate: true });
+			}
 		} else {
-		}
-
-		if (e.target.value > max) {
-			setValue({ ...value, [name]: max });
-			!!getValue && getValue({ ...value, [name]: max });
 		}
 	};
 
