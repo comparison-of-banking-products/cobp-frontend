@@ -21,6 +21,20 @@
 		z-index: 1;
 	}
 
+	&__success {
+		box-sizing: border-box;
+		min-height: 265px;
+		background-image: url('../../images/success.png');
+		background-repeat: no-repeat;
+		background-size: 146px 121px;
+		background-position: center top;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		gap: 12px;
+		text-align: center;
+	}
+
 	&__close-btn {
 		position: absolute;
 		top: -76px;
@@ -46,6 +60,14 @@
 		@include font($font-size-mml, $font-weight-bold, 32px, -0.28px, $color-text-white);
 	}
 
+	&__title-success {
+		@include font($font-size-l, $font-weight-bold, 36px, normal, $color-text-white);
+	}
+
+	&__subtitle-success {
+		@include font($font-size-s, $font-weight-medium, 20px, -0.17px, $color-text-light-gray);
+	}
+
 	&__form {
 		display: flex;
 		flex-direction: column;
@@ -54,7 +76,6 @@
 	&__input,
 	&__textarea {
 		padding: 14px;
-		// margin-bottom: 16px;
 		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-white);
 		border: none;
 		outline: 1px solid transparent;
