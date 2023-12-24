@@ -21,7 +21,8 @@ import SupportCard from './SupportCard/SupportCard';
 import ExchangeRate from './ExchangeRate/ExchangeRate';
 import PromoDeposits from './PromoDeposits/PromoDeposits';
 import SupportChat from './SupportChat/SupportChat';
-import SupportChatForm from './SupportChatForm/SupportChatForm';
+import SupportChatForm from './SupportChat/SupportChatForm/SupportChatForm';
+import SupportChatSucces from './SupportChat/SupportChatSucces/SupportChatSucces';
 import DepositsCardList from './DepositsCardList/DepositsCardList';
 import DepositFilter from './DepositFilter/DepositFilter';
 import SelectMultiple from './UI/SelectMultiple/SelectMultiple';
@@ -48,6 +49,7 @@ export {
 	PromoDeposits,
 	SupportChat,
 	SupportChatForm,
+	SupportChatSucces,
 	Checkbox,
 	DepositsCardList,
 	CalculatorResult,
