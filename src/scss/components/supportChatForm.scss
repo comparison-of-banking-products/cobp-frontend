@@ -54,7 +54,7 @@
 	&__input,
 	&__textarea {
 		padding: 14px;
-		margin-bottom: 16px;
+		// margin-bottom: 16px;
 		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-white);
 		border: none;
 		outline: 1px solid transparent;
@@ -67,6 +67,9 @@
 		&:focus {
 			outline: 1px solid $color-text-light-gray;
 		}
+		&_error {
+			outline-color: $color-error;
+		}
 	}
 
 	&__textarea {
@@ -74,11 +77,20 @@
 		resize: none;
 	}
 
+	&__error-message,
+	&__error-submit {
+		@include font($font-size-xxs, $font-weight-medium, 14px, normal, $color-error);
+		min-height: 16px;
+	}
+
+	&__error-submit {
+		margin-top: 4px;
+	}
+
 	&__label {
 		@include font($font-size-xxs, $font-weight-medium, 14px, normal, $color-text-light-gray);
 		display: flex;
 		align-items: center;
-		// gap: 8px;
 		cursor: pointer;
 		transition: opacity 0.3s;
 		&:hover {
@@ -99,6 +111,6 @@
 
 	&__submit-btn {
 		width: 100%;
-		margin-top: 24px;
+		// margin-top: 4px;
 	}
 }

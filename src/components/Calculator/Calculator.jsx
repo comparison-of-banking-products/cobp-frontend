@@ -1,29 +1,63 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Select, Button, Range, CalculatorResult } from '../';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadDeposits } from '../../store/deposits/depositsSlice';
+import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 
 function Calculator() {
-	const [isCredit, setIsCredit] = useState(false);
-	const [currency, setCurrency] = useState();
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const deposits = useSelector((state) => state.deposits);
+	const calculator = useSelector((state) => state.calculator);
 	const sliderRef = useRef();
+	const [validate, setValidate] = useState();
 
 	useEffect(() => {
-		if (isCredit) {
+		if (calculator.isCredit) {
 			sliderRef.current.classList.add('calculator__slider_position_right');
 		} else {
 			sliderRef.current.classList.remove('calculator__slider_position_right');
 		}
-	}, [isCredit]);
+	}, [calculator.isCredit, deposits]);
+
+	useEffect(() => {
+		dispatch(loadDeposits({ amount: calculator.depositAmount, term: calculator.depositTerm }));
+	}, [calculator]);
 
 	const chooseCredit = () => {
-		setIsCredit(true);
+		dispatch(editCalculatorValues({ isCredit: true }));
 	};
 
 	const chooseDeposit = () => {
-		setIsCredit(false);
+		dispatch(editCalculatorValues({ isCredit: false }));
 	};
 
-	const getCurrency = (values) => {
-		setCurrency(values.option);
+	const getValues = (values, valid) => {
+		setValidate(valid.validate);
+		valid.validate && dispatch(editCalculatorValues(values));
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		dispatch(loadDeposits({ amount: calculator.depositAmount, term: calculator.depositTerm }))
+			.then(() => {
+				if (!deposits.error && !deposits.isLoading) {
+					navigate('/deposits');
+				}
+			})
+			.catch(() => {
+				alert(deposits.message);
+			});
+	};
+
+	const roundNumber = (number) => {
+		return parseFloat(Math.round(number)).toLocaleString();
+	};
+
+	const replacePointNumber = (number) => {
+		return String(number).replace('.', ',');
 	};
 
 	return (
@@ -32,14 +66,16 @@ function Calculator() {
 			<div className="calculator__container">
 				<div className="calculator__products">
 					<span
-						className={`calculator__product ${!isCredit && 'calculator__product_active'}`}
+						className={`calculator__product ${
+							!calculator.isCredit && 'calculator__product_active'
+						}`}
 						onClick={chooseDeposit}
 						role="presentation"
 					>
 						Вклады
 					</span>
 					<span
-						className={`calculator__product ${isCredit && 'calculator__product_active'}`}
+						className={`calculator__product ${calculator.isCredit && 'calculator__product_active'}`}
 						onClick={chooseCredit}
 						role="presentation"
 					>
@@ -47,65 +83,91 @@ function Calculator() {
 					</span>
 					<div className="calculator__slider" ref={sliderRef} />
 				</div>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<div className="calculator__calculation">
 						<div className="calculator__items">
-							{!isCredit && (
+							{!calculator.isCredit && (
 								<>
 									<Select
-										name="currency"
+										name="depositAmount"
 										placeHolder="Сумма вклада"
-										options={['₽', '$', '€', '¥']}
-										defaultValue="240000"
-										getValue={getCurrency}
+										currency={['₽', '$', '€', '¥']}
+										defaultValue={calculator.depositAmount}
+										getValue={getValues}
 										max="10000000"
+										min="15000"
 									/>
 									<Range
-										name="term"
+										name="depositTerm"
 										placeHolder="Срок в месяцах"
-										min={1}
-										max={100}
-										startValue={5}
+										min="1"
+										max="36"
+										startValue={calculator.depositTerm}
+										getValue={getValues}
 									/>
 								</>
 							)}
-							{isCredit && (
+							{calculator.isCredit && (
 								<>
 									<Select
-										name="summ"
+										name="creditAmount"
 										placeHolder="Сумма кредита"
-										options={['₽', '$', '€', '¥']}
-										defaultValue="240000"
-										getValue={getCurrency}
+										currency={['₽', '$', '€', '¥']}
+										defaultValue={calculator.creditAmount}
+										getValue={getValues}
 										max="10000000"
+										min="15000"
+										disableOption={true}
 									/>
-									<Range name="term" placeHolder="Срок в годах" min={1} max={100} startValue={6} />
+									<Range
+										name="creditTerm"
+										placeHolder="Срок в годах"
+										min="1"
+										max="36"
+										startValue={calculator.creditTerm}
+										getValue={getValues}
+									/>
 								</>
 							)}
 						</div>
 						<div className="calculator__results">
 							<div className="calculator__results-display">
-								{!isCredit ? (
+								{!calculator.isCredit ? (
 									<>
-										<CalculatorResult name="Ставка" value="до 15,03 %" />
+										<CalculatorResult
+											name="Ставка"
+											value={`до ${
+												replacePointNumber(deposits?.deposits[0]?.deposit?.rate) || '0'
+											} %`}
+											isLoading={deposits}
+										/>
 										<CalculatorResult
 											name="Доход за период"
-											value={`до 50 690`}
-											currency={currency}
+											value={`до ${roundNumber(deposits?.deposits[0]?.maturityInterest) || '0'}`}
+											currency={calculator.currency}
 										/>
-										<CalculatorResult name="Доход за год" value={`до 50 690`} currency={currency} />
+										<CalculatorResult
+											name="Доход за год"
+											value={`до ${roundNumber(deposits?.deposits[0]?.annualInterest) || '0'}`}
+											currency={calculator.currency}
+										/>
 									</>
 								) : (
 									<>
 										<CalculatorResult name="Ставка" value="до 15,03 %" />
-										<CalculatorResult name="Платеж от" value={`от 50 690`} currency={currency} />
+										<CalculatorResult
+											name="Платеж от"
+											value={`от 50 690`}
+											currency={calculator.currency}
+										/>
 									</>
 								)}
 							</div>
 							<Button
-								textBtn={isCredit ? 'подобрать кредит' : 'подобрать вклад'}
+								textBtn={calculator.isCredit ? 'подобрать кредит' : 'подобрать вклад'}
 								btnClass="button__primary"
 								type="submit"
+								disabled={!validate && true}
 							/>
 						</div>
 					</div>

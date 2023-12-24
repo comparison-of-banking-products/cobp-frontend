@@ -94,5 +94,16 @@
 	}
 	&__result-value {
 		@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-text-white);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		&_isLoading {
+			color: transparent;
+			text-shadow: 0 0 10px $color-text-white;
+			-webkit-transition: text-shadow 2 ease-out;
+			-moz-transition: text-shadow 2 ease-out;
+			-ms-transition: text-shadow 2 ease-out;
+			-o-transition: text-shadow 2 ease-out;
+			transition: text-shadow 2 ease-out;
+		}
 	}
 }

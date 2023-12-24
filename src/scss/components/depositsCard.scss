@@ -1,0 +1,108 @@
+.deposits-card {
+	margin: 0 auto;
+
+	&__list {
+		background-color: $color-bg-dark-gray;
+		border-radius: 40px;
+		padding: 24px;
+		margin-bottom: 24px;
+
+		&:last-child {
+			margin-bottom: 32px;
+		}
+	}
+
+	&__tags {
+		display: flex;
+		margin-bottom: 16px;
+	}
+
+	&__tags-text {
+		@include font($font-size-s, $font-weight-regular, 24px, normal, $color-text-white);
+		display: flex;
+		margin-right: 8px;
+		padding: 5px 12px 6px 12px;
+		text-align: center;
+		background-color: $color-bg-gray;
+		border-radius: 16px;
+	}
+
+	&__tags-image {
+		display: flex;
+		width: 24px;
+		height: 24px;
+		background-image: url('../../images/icons/top-contribution-icon.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		margin-right: 3.5px;
+	}
+
+	&__about-contribution {
+		display: flex;
+		max-height: 64px;
+	}
+
+	&__about-bank {
+		display: flex;
+		margin-right: 174px;
+		min-width: 213px;
+	}
+
+	&__about-bank-image {
+		width: 64px;
+		height: 64px;
+		background-image: url('../../images/alpha-bank-logo.svg');
+	}
+
+	&__about-bank-text {
+		margin: 5.5px 0 5.5px 12px;
+	}
+
+	&__about-bank-name {
+		@include font($font-size-other, $font-weight-bold, 28px, -0.1px, $color-text-white);
+		margin-bottom: 5px;
+	}
+
+	&__about-bank-bid {
+		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-text-light-gray);
+	}
+
+	&__about-money {
+		display: flex;
+		width: 525px;
+		margin: 4px 176px 4px 0;
+	}
+
+	&__information {
+		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-text-light-gray);
+		margin-bottom: 8.63px;
+	}
+
+	&__term,
+	&__rate,
+	&__income,
+	&__sum {
+		@include font($font-size-other, $font-weight-bold, 28px, normal, $color-text-white);
+	}
+
+	&__term,
+	&__rate,
+	&__income {
+		margin-right: 56px;
+	}
+
+	&__link {
+		width: 64px;
+		height: 64px;
+		background-image: url('../../images/button-defosits.svg');
+		text-decoration: none;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		transition: opacity 0.5s;
+		&:hover {
+			opacity: 0.6;
+			transition: opacity 0.5s;
+		}
+	}
+}
