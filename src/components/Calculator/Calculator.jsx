@@ -52,6 +52,14 @@ function Calculator() {
 			});
 	};
 
+	const roundNumber = (number) => {
+		return parseFloat(Math.round(number)).toLocaleString();
+	};
+
+	const replacePointNumber = (number) => {
+		return String(number).replace('.', ',');
+	};
+
 	return (
 		<section className="calculator">
 			<h2 className="calculator__title title">Калькулятор</h2>
@@ -128,17 +136,19 @@ function Calculator() {
 									<>
 										<CalculatorResult
 											name="Ставка"
-											value={`до ${deposits?.deposits[0]?.deposit?.rate || '0'} %`}
+											value={`до ${
+												replacePointNumber(deposits?.deposits[0]?.deposit?.rate) || '0'
+											} %`}
 											isLoading={deposits}
 										/>
 										<CalculatorResult
 											name="Доход за период"
-											value={`до ${deposits?.deposits[0]?.maturityInterest || '0'}`}
+											value={`до ${roundNumber(deposits?.deposits[0]?.maturityInterest) || '0'}`}
 											currency={calculator.currency}
 										/>
 										<CalculatorResult
 											name="Доход за год"
-											value={`до ${deposits?.deposits[0]?.annualInterest || '0'}`}
+											value={`до ${roundNumber(deposits?.deposits[0]?.annualInterest) || '0'}`}
 											currency={calculator.currency}
 										/>
 									</>
