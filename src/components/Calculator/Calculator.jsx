@@ -11,6 +11,7 @@ function Calculator() {
 	const deposits = useSelector((state) => state.deposits);
 	const calculator = useSelector((state) => state.calculator);
 	const sliderRef = useRef();
+	const [validate, setValidate] = useState();
 
 	useEffect(() => {
 		if (calculator.isCredit) {
@@ -20,6 +21,10 @@ function Calculator() {
 		}
 	}, [calculator.isCredit, deposits]);
 
+	useEffect(() => {
+		dispatch(loadDeposits({ amount: calculator.depositAmount, term: calculator.depositTerm }));
+	}, [calculator]);
+
 	const chooseCredit = () => {
 		dispatch(editCalculatorValues({ isCredit: true }));
 	};
@@ -28,9 +33,9 @@ function Calculator() {
 		dispatch(editCalculatorValues({ isCredit: false }));
 	};
 
-	const getValues = (v) => {
-		// setValues({...values, ...v});
-		dispatch(editCalculatorValues(v));
+	const getValues = (values, valid) => {
+		setValidate(valid.validate);
+		valid.validate && dispatch(editCalculatorValues(values));
 	};
 
 	const handleSubmit = (e) => {
@@ -45,6 +50,14 @@ function Calculator() {
 			.catch(() => {
 				alert(deposits.message);
 			});
+	};
+
+	const roundNumber = (number) => {
+		return parseFloat(Math.round(number)).toLocaleString();
+	};
+
+	const replacePointNumber = (number) => {
+		return String(number).replace('.', ',');
 	};
 
 	return (
@@ -82,12 +95,13 @@ function Calculator() {
 										defaultValue={calculator.depositAmount}
 										getValue={getValues}
 										max="10000000"
+										min="15000"
 									/>
 									<Range
 										name="depositTerm"
 										placeHolder="Срок в месяцах"
-										min={1}
-										max={100}
+										min="1"
+										max="36"
 										startValue={calculator.depositTerm}
 										getValue={getValues}
 									/>
@@ -102,12 +116,14 @@ function Calculator() {
 										defaultValue={calculator.creditAmount}
 										getValue={getValues}
 										max="10000000"
+										min="15000"
+										disableOption={true}
 									/>
 									<Range
 										name="creditTerm"
 										placeHolder="Срок в годах"
-										min={1}
-										max={100}
+										min="1"
+										max="36"
 										startValue={calculator.creditTerm}
 										getValue={getValues}
 									/>
@@ -118,15 +134,21 @@ function Calculator() {
 							<div className="calculator__results-display">
 								{!calculator.isCredit ? (
 									<>
-										<CalculatorResult name="Ставка" value="до 15,03 %" />
+										<CalculatorResult
+											name="Ставка"
+											value={`до ${
+												replacePointNumber(deposits?.deposits[0]?.deposit?.rate) || '0'
+											} %`}
+											isLoading={deposits}
+										/>
 										<CalculatorResult
 											name="Доход за период"
-											value={`до 50 690`}
+											value={`до ${roundNumber(deposits?.deposits[0]?.maturityInterest) || '0'}`}
 											currency={calculator.currency}
 										/>
 										<CalculatorResult
 											name="Доход за год"
-											value={`до 50 690`}
+											value={`до ${roundNumber(deposits?.deposits[0]?.annualInterest) || '0'}`}
 											currency={calculator.currency}
 										/>
 									</>
@@ -145,6 +167,7 @@ function Calculator() {
 								textBtn={calculator.isCredit ? 'подобрать кредит' : 'подобрать вклад'}
 								btnClass="button__primary"
 								type="submit"
+								disabled={!validate && true}
 							/>
 						</div>
 					</div>

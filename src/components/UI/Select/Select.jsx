@@ -2,16 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import arrowDown from '../../../vendor/images/icons/chevron-bottom.svg';
 import { Checkbox } from '../../';
 
-function Select({ placeHolder, currency, name, getValue, defaultValue, max }) {
-	// Поле с выбором опций
-
-	// placeHolder: string - плейстхолдер поля инпут
-	// name: string - имя поля инпут, будет использованна при событии submit формы
-	// option: string[] - набор опций для поля
-	// getValue(value): () => void - функция, возвращает значение инпута и опции
-	// defaultValue: string - значение инпута по дефолту, стартовое
-	// max: string - максимальное значение инпута
-
+function Select({ placeHolder, currency, name, getValue, defaultValue, max, min, disableOption }) {
 	const [isFocus, setIsFocus] = useState(false);
 	const [values, setValues] = useState({
 		[name]: Number(defaultValue),
@@ -20,8 +11,14 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max }) {
 	const triadNumber = useMemo(() => Number(values[name]).toLocaleString(), [values]);
 	const optionsRef = useRef();
 	useEffect(() => {
-		!!getValue && getValue({ ...values, currency: values.currency });
+		if (values < Number(min)) {
+			!!getValue && getValue({ ...values, currency: values.currency }, { validate: false });
+		} else {
+			!!getValue && getValue({ ...values, currency: values.currency }, { validate: true });
+		}
 	}, []);
+
+	useEffect(() => {}, [values]);
 
 	const toggleOptions = () => {
 		optionsRef.current.classList.toggle('select__options_active');
@@ -29,7 +26,7 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max }) {
 
 	const handleSelect = (e) => {
 		setValues({ ...values, currency: e.target.textContent });
-		!!getValue && getValue({ ...values, currency: e.target.textContent });
+		!!getValue && getValue({ ...values, currency: e.target.textContent }, { validate: true });
 		toggleOptions();
 	};
 
@@ -37,19 +34,30 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max }) {
 		const inputValue = e.target.value;
 		if (inputValue === '' || /^-?\d+(\.\d+)?$/.test(inputValue)) {
 			let newValue;
+			let validate;
 			if (inputValue > Number(max)) {
 				newValue = Number(max);
+				validate = true;
+			} else if (inputValue < Number(min)) {
+				validate = false;
+				newValue = inputValue === '' ? '' : Number(inputValue);
 			} else {
 				newValue = inputValue === '' ? '' : Number(inputValue);
+				validate = true;
 			}
 			setValues({ ...values, [name]: newValue });
-			!!getValue && getValue({ ...values, [name]: newValue });
+			!!getValue && getValue({ ...values, [name]: newValue }, { validate: validate });
 		} else {
 		}
 	};
 
 	const handleBlur = (e) => {
 		setIsFocus(false);
+		const inputValue = e.target.value;
+		if (inputValue < Number(min)) {
+			setValues({ ...values, [name]: Number(min) });
+			!!getValue && getValue({ ...values, [name]: Number(min) }, { validate: true });
+		}
 	};
 
 	const hanleFocus = () => {
@@ -102,13 +110,23 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max }) {
 					))}
 				</div>
 			</div>
-			<div className="select__arrow">
-				<div
-					className="select__icon"
-					style={{ backgroundImage: `url(${arrowDown})` }}
-					onClick={toggleOptions}
-				/>
-			</div>
+			{!disableOption && (
+				<div className="select__arrow">
+					<div
+						className="select__icon"
+						style={{ backgroundImage: `url(${arrowDown})` }}
+						onClick={toggleOptions}
+					/>
+				</div>
+			)}
+			{disableOption && (
+				<style>
+					{`	.select::after {
+									display: none
+								}
+							`}
+				</style>
+			)}
 		</div>
 	);
 }
