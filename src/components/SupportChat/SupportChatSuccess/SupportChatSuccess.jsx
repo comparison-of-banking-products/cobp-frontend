@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SupportChatSucces() {
+function SupportChatSuccess() {
 	return (
 		<div className="support-chat-form__success">
 			<h2 className="support-chat-form__title-success">Вопрос успешно отправлен</h2>
@@ -11,4 +11,4 @@ function SupportChatSucces() {
 	);
 }
 
-export default SupportChatSucces;
+export default SupportChatSuccess;
