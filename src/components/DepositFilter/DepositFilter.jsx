@@ -1,23 +1,33 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Range, Button, Select, SelectMultiple } from '../';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadDeposits } from '../../store/deposits/depositsSlice';
+import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 
 function DepositFilter() {
-	// const bankList = ['Все банки', 'Альфа-Банк', 'Райффайзен Банк', 'ВТБ', 'Сбербанк', 'Тинькофф Банк'];
+    const dispatch = useDispatch();
+    const calculator = useSelector((state) => state.calculator);
+
 	const bankList = ['Альфа-Банк', 'Райффайзен Банк', 'ВТБ', 'Сбербанк', 'Тинькофф Банк'];
 
-	const [currency, setCurrency] = useState(false);
-	// const [selectedBanks, setSelectedBanks] = useState(bankList);
 	const [selectedBanks, setSelectedBanks] = useState(bankList);
-	const [dataReceived, setDataRecieved] = useState(false);
+	// const [dataReceived, setDataRecieved] = useState(false);
 
 	const [isAllDepo, setIsAllDepo] = useState(true);
 	const [isCapitalisation, setIsCapitalisation] = useState(false);
 	const [isWithdraw, setIsWithdraw] = useState(false);
 	const [isReplenishment, setIsReplenishment] = useState(false);
 
-	const getCurrencyValue = (value) => {
-		setCurrency(value);
+    const [validate, setValidate] = useState();
+
+    useEffect(() => {
+		dispatch(loadDeposits({ amount: calculator.depositAmount, term: calculator.depositTerm }));
+	}, [calculator]);
+
+	const getCurrencyValue = (values, valid) => {
+        setValidate(valid.validate);
+		valid.validate && dispatch(editCalculatorValues(values));
 	};
 
 	const getSelectedBanksValue = (value) => {
@@ -57,15 +67,21 @@ function DepositFilter() {
 			<form className="deposit-filter__form">
 				<div className="deposit-filter__inputs">
 					<Select
-						name="currency"
+						name="depositAmount"
 						placeHolder="Сумма"
-						options={['₽', '$', '€', '¥']}
 						currency={['₽', '$', '€', '¥']}
-						defaultValue="100000"
+						defaultValue={calculator.depositAmount}
 						getValue={getCurrencyValue}
 						max="10000000"
 					/>
-					<Range name="term" placeHolder="Срок" min={1} max={12} startValue={5} />
+					<Range 
+                        name="depositTerm"
+                        placeHolder="Срок" 
+                        min={1}
+                        max={12}
+                        startValue={calculator.depositTerm}
+						getValue={getCurrencyValue}
+                    />
 					<SelectMultiple
 						getValue={getSelectedBanksValue}
 						name="banks"
@@ -80,7 +96,6 @@ function DepositFilter() {
 					btnClass={'deposit-filter__submit'}
 					type={'submit'}
 					onClick={handleSubmit}
-					disabled={'false'}
 				/>
 			</form>
 			<div className="deposit-filter__checkboxes">

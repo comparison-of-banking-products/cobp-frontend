@@ -91,6 +91,7 @@
 	}
 	&__result-name {
 		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-light-gray);
+		text-wrap: nowrap;
 	}
 	&__result-value {
 		@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-text-white);

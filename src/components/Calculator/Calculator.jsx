@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Select, Button, Range, CalculatorResult } from '../';
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,7 +35,9 @@ function Calculator() {
 
 	const getValues = (values, valid) => {
 		setValidate(valid.validate);
-		valid.validate && dispatch(editCalculatorValues(values));
+		valid.validate
+			? dispatch(editCalculatorValues(values))
+			: dispatch(loadDeposits({ amount: 0, term: 0 }));
 	};
 
 	const handleSubmit = (e) => {
@@ -53,11 +55,11 @@ function Calculator() {
 	};
 
 	const roundNumber = (number) => {
-		return parseFloat(Math.round(number)).toLocaleString();
+		if (typeof number === 'number') return parseFloat(Math.round(number)).toLocaleString();
 	};
 
 	const replacePointNumber = (number) => {
-		return String(number).replace('.', ',');
+		if (typeof number === 'number') return String(number).replace('.', ',');
 	};
 
 	return (
