@@ -32,6 +32,7 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max, min,
 
 	const handleChange = (e) => {
 		const inputValue = e.target.value;
+		console.log('Input Value:', inputValue);
 		if (inputValue === '' || /^-?\d+(\.\d+)?$/.test(inputValue)) {
 			let newValue;
 			let validate;
