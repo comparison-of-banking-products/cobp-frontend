@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
-import { Button, Checkbox, SupportChatSucces } from '../../index';
+import { Button, Checkbox, SupportChatSuccess } from '../../index';
 import { BASE_URL_SUPPORT_CHAT } from '../../../utils/constants';
 
 const SupportChatForm = ({ onClose, showModal }) => {
@@ -163,7 +163,7 @@ const SupportChatForm = ({ onClose, showModal }) => {
 					</form>
 				</>
 			) : (
-				<SupportChatSucces />
+				<SupportChatSuccess />
 			)}
 		</div>
 	);
