@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, Checkbox, SupportChatSuccess } from '../../index';
+import { formValidationRules } from '../../../utils/formValidationRules';
 import { BASE_URL_SUPPORT_CHAT } from '../../../utils/constants';
 
 const SupportChatForm = ({ onClose, showModal }) => {
@@ -73,21 +74,7 @@ const SupportChatForm = ({ onClose, showModal }) => {
 								errors?.name ? 'support-chat-form__input_error' : ''
 							}`}
 							placeholder="Имя"
-							{...register('name', {
-								required: 'Поле обязательно для заполнения',
-								minLength: {
-									value: 2,
-									message: 'Введите не менее 2 символов',
-								},
-								maxLength: {
-									value: 30,
-									message: 'Введите не более 30 символов',
-								},
-								pattern: {
-									value: /^[a-zA-Z-\u0430-\u044f\u0410-\u042fёЁ\s]*$/,
-									message: 'Разрешены только буквы, пробелы и дефисы.',
-								},
-							})}
+							{...register('name', formValidationRules.name)}
 						/>
 						<span className="support-chat-form__error-message">{errors?.name?.message}</span>
 						<input
@@ -96,21 +83,7 @@ const SupportChatForm = ({ onClose, showModal }) => {
 								errors?.email ? 'support-chat-form__input_error' : ''
 							}`}
 							placeholder="Email"
-							{...register('email', {
-								required: 'Поле обязательно для заполнения',
-								pattern: {
-									value: /^[a-zA-Z0-9.-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$/i,
-									message: 'Введите корректный email: example@example.ru',
-								},
-								minLength: {
-									value: 2,
-									message: 'Введите не менее 2 символов',
-								},
-								maxLength: {
-									value: 100,
-									message: 'Введите не более 100 символов',
-								},
-							})}
+							{...register('email', formValidationRules.email)}
 						/>
 						<span className="support-chat-form__error-message">{errors?.email?.message}</span>
 						<textarea
@@ -118,13 +91,7 @@ const SupportChatForm = ({ onClose, showModal }) => {
 							className={`support-chat-form__textarea ${
 								errors?.question ? 'support-chat-form__input_error' : ''
 							}`}
-							{...register('question', {
-								required: 'Поле обязательно для заполнения',
-								maxLength: {
-									value: 1000,
-									message: 'Введите не более 1000 символов',
-								},
-							})}
+							{...register('question', formValidationRules.question)}
 						/>
 						<span className="support-chat-form__error-message">{errors?.question?.message}</span>
 						<label className="support-chat-form__label">
@@ -132,7 +99,7 @@ const SupportChatForm = ({ onClose, showModal }) => {
 								name="agree"
 								control={control}
 								defaultValue={false}
-								rules={{ required: 'Подтвердите согласие' }}
+								rules={formValidationRules.agree}
 								render={({ field }) => (
 									<Checkbox
 										type="checkbox"
