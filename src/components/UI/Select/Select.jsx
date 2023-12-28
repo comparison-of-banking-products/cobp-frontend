@@ -1,52 +1,125 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import arrowDown from '../../../vendor/images/icons/chevron-bottom.svg';
+import { Checkbox } from '../../';
 
-function Select({ placeHolder, options, name, getValue }) {
-	// Поле с выбором опций
+function Select({ placeHolder, currency, name, getValue, defaultValue, max, min, disableOption }) {
+	const [values, setValues] = useState({
+		[name]: Number(defaultValue),
+		currency: currency[0],
+	});
+	// const triadNumber = useMemo(() => Number(values[name]).toLocaleString(), [values]);
 
-	// placeHolder (type: string) - плейстхолдер поля инпут
-	// name (type: string) - имя поля инпут, будет использованна при событии submit формы
-	// option (type: object, instanceof Array) - набор опций для поля
-	// getValue(value) (type: function) - функция, возвращает значение поля и ползунка
+	const triadNumber = (number) => {
+		return number.toLocaleString();
+	};
 
-	const [value, setValue] = useState(options[0]);
-
-	useEffect(() => {
-		!!getValue && getValue(value);
-	}, []);
+	const renderNumber = (number) => {
+		return Number(number.replace(/\s/g, ''));
+	};
 
 	const optionsRef = useRef();
+	useEffect(() => {
+		if (values < Number(min)) {
+			!!getValue && getValue({ ...values, currency: values.currency }, { validate: false });
+		} else {
+			!!getValue && getValue({ ...values, currency: values.currency }, { validate: true });
+		}
+	}, []);
+
+	useEffect(() => {}, [values]);
 
 	const toggleOptions = () => {
 		optionsRef.current.classList.toggle('select__options_active');
 	};
 
-	const handleChange = (e) => {
-		setValue(e.target.textContent);
-		!!getValue && getValue(e.target.textContent);
+	const handleSelect = (e) => {
+		setValues({ ...values, currency: e.target.textContent });
+		!!getValue && getValue({ ...values, currency: e.target.textContent }, { validate: true });
 		toggleOptions();
+	};
+
+	const handleChange = (e) => {
+		const inputValue = renderNumber(e.target.value);
+		if (inputValue === '' || /^-?\d+(\.\d+)?$/.test(inputValue)) {
+			let newValue;
+			let validate;
+			if (inputValue > Number(max)) {
+				newValue = Number(max);
+				validate = true;
+			} else if (inputValue < Number(min)) {
+				validate = false;
+				newValue = inputValue === '' ? '' : Number(inputValue);
+			} else {
+				newValue = inputValue === '' ? '' : Number(inputValue);
+				validate = true;
+			}
+			setValues({ ...values, [name]: newValue });
+			!!getValue && getValue({ ...values, [name]: newValue }, { validate: validate });
+		} else {
+		}
+	};
+
+	const handleBlur = (e) => {
+		const inputValue = renderNumber(e.target.value);
+		if (inputValue < Number(min)) {
+			setValues({ ...values, [name]: Number(min) });
+			!!getValue && getValue({ ...values, [name]: Number(min) }, { validate: true });
+		}
 	};
 
 	return (
 		<div className="select">
 			<div className="select__text">
-				<span className="select__placeholder">{placeHolder}</span>
-				<input className="select__input" value={value} name={name} readOnly />
+				<div className="select__total">
+					<span className="select__placeholder">{placeHolder}</span>
+					<input
+						className="select__input"
+						value={triadNumber(values[name])}
+						name={name}
+						onChange={handleChange}
+						onBlur={handleBlur}
+						maxLength={10}
+					/>
+				</div>
+				<input
+					className="select__input select__input_type_currency"
+					value={values.currency}
+					name={name}
+					readOnly
+				/>
 				<div className="select__options" ref={optionsRef}>
-					{options.map((option, index) => (
-						<p key={index} className="select__option" onClick={handleChange}>
-							{option}
-						</p>
+					{currency.map((currency, index) => (
+						<div key={index} className="select__option" onClick={handleSelect}>
+							<p>{currency}</p>
+							{currency === values.currency && (
+								<Checkbox
+									checkboxClass="checkbox"
+									type="checkbox"
+									checked={true}
+									onChange={() => {}}
+								/>
+							)}
+						</div>
 					))}
 				</div>
 			</div>
-			<div className="select__arrow">
-				<div
-					className="select__icon"
-					style={{ backgroundImage: `url(${arrowDown})` }}
-					onClick={toggleOptions}
-				/>
-			</div>
+			{!disableOption && (
+				<div className="select__arrow">
+					<div
+						className="select__icon"
+						style={{ backgroundImage: `url(${arrowDown})` }}
+						onClick={toggleOptions}
+					/>
+				</div>
+			)}
+			{disableOption && (
+				<style>
+					{`	.select::after {
+									display: none
+								}
+							`}
+				</style>
+			)}
 		</div>
 	);
 }

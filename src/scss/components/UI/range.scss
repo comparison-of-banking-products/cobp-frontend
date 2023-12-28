@@ -1,22 +1,22 @@
 .range {
-	background-color: $color-gray;
+	background-color: $color-bg-gray;
 	border-radius: 16px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 	gap: 6px;
-	padding: 13px;
+	padding: 14px;
 	position: relative;
 	&__placeholder {
-		@include font($font-size-xs, $font-weight-medium, 18px, 0, $color-light-gray);
+		@include font($font-size-xs, $font-weight-medium, 18px, 0, $color-text-light-gray);
 	}
 	&__symbol {
 		width: 24px;
 		height: 24px;
 		cursor: pointer;
 		margin-right: 14px;
-		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, #636366);
+		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-light-gray);
 		text-align: center;
 	}
 	&__text {
@@ -26,10 +26,11 @@
 		gap: 6px;
 	}
 	&__input {
-		background-color: $color-gray;
+		background-color: $color-bg-gray;
 		outline: none;
 		border: 0;
-		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-white);
+		padding: 0;
+		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-white);
 		&::-webkit-outer-spin-button,
 		&::-webkit-inner-spin-button {
 			-webkit-appearance: none;
@@ -52,7 +53,7 @@
 		--clip-edges: 0;
 		--border-radius: 3px;
 		color: $color-accent;
-		background: #fff0;
+		background: transparent;
 		overflow: hidden;
 		&:active {
 			cursor: grabbing;
@@ -124,7 +125,7 @@
 		&::-moz-range-track,
 		&::-moz-range-thumb,
 		&::-moz-range-progress {
-			background: #fff0;
+			background: transparent;
 		}
 		&::-moz-range-thumb {
 			background: currentColor;

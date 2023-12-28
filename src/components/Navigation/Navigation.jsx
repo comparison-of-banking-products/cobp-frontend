@@ -9,16 +9,16 @@ function Navigation() {
 		<>
 			<nav className="header__links">
 				<NavLink to="/deposits" className={getNavLinkClass}>
-					вклады
+					Вклады
 				</NavLink>
 				<NavLink to="/credits" className={getNavLinkClass}>
-					кредиты
+					Кредиты
 				</NavLink>
 				<NavLink to="/debitcard" className="header__link header__link_not-active">
-					дебетовые карты
+					Дебетовые карты
 				</NavLink>
 				<NavLink to="/creditcard" className="header__link header__link_not-active">
-					кредитные карты
+					Кредитные карты
 				</NavLink>
 			</nav>
 		</>
