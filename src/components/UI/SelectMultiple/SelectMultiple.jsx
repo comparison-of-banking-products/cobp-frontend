@@ -14,10 +14,6 @@ function SelectMultiple({
 	const [allBanksSelected, setAllBanksSelected] = useState(true);
 
 	useEffect(() => {
-		console.log(selectedBanks);
-	}, [selectedBanks]);
-
-	useEffect(() => {
 		getValue(selectedBanks);
 	}, [selectedBanks, getValue]);
 
@@ -36,8 +32,6 @@ function SelectMultiple({
 
 		if (optionValue === 'Все банки') {
 			setAllBanksSelected(!allBanksSelected);
-			// updatedSelectedBanks = selectedBanks.includes('Все банки') ? [] : [optionValue];
-			// updatedSelectedBanks = selectedBanks.includes('Все банки') ? [] : multiOptions;
 			updatedSelectedBanks = allBanksSelected ? [] : multiOptions;
 		} else {
 			updatedSelectedBanks = selectedBanks.includes(optionValue)
@@ -45,7 +39,6 @@ function SelectMultiple({
 				: [...selectedBanks, optionValue];
 
 			updatedSelectedBanks = updatedSelectedBanks.filter((bank) => bank !== 'Все банки');
-			// setAllBanksSelected(false);
 		}
 
 		setSelectedBanks(updatedSelectedBanks);

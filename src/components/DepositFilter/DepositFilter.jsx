@@ -4,14 +4,17 @@ import { Range, Button, Select, SelectMultiple } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
+import { loadBanksList } from '../../store/banksList/banksListSlice';
 
 function DepositFilter() {
     const dispatch = useDispatch();
     const calculator = useSelector((state) => state.calculator);
+    const banksList = useSelector((state) => state.banksList);
+    // console.log(banksList)
 
-	const bankList = ['Альфа-Банк', 'Райффайзен Банк', 'ВТБ', 'Сбербанк', 'Тинькофф Банк'];
+	const bankListPlaceholder = ['Альфа-Банк', 'Райффайзен Банк', 'ВТБ', 'Сбербанк', 'Тинькофф Банк'];
 
-	const [selectedBanks, setSelectedBanks] = useState(bankList);
+	const [selectedBanks, setSelectedBanks] = useState(bankListPlaceholder);
 	// const [dataReceived, setDataRecieved] = useState(false);
 
 	const [isAllDepo, setIsAllDepo] = useState(true);
@@ -22,8 +25,22 @@ function DepositFilter() {
     const [validate, setValidate] = useState();
 
     useEffect(() => {
-		dispatch(loadDeposits({ amount: calculator.depositAmount, term: calculator.depositTerm }));
+		dispatch(
+            loadDeposits({ 
+                amount: calculator.depositAmount,
+                term: calculator.depositTerm,
+                capitalization: isCapitalisation,
+                replenishment: isReplenishment,
+                partialWithdrawal: isWithdraw,
+            })
+        );
 	}, [calculator]);
+
+    useEffect(() => {
+		dispatch(
+            loadBanksList({})
+        );
+	}, []);
 
 	const getCurrencyValue = (values, valid) => {
         setValidate(valid.validate);
@@ -49,17 +66,24 @@ function DepositFilter() {
 			setIsCapitalisation(false);
 			setIsWithdraw(false);
 			setIsReplenishment(false);
+
+            console.log('changed to IsAllDepo')
 		} else if (buttonType === 'capitalisation') {
 			setIsAllDepo(false);
 			setIsCapitalisation(!isCapitalisation);
+
+            console.log('changed to isCapitalisation')
 		} else if (buttonType === 'withdraw') {
 			setIsAllDepo(false);
 			setIsWithdraw(!isWithdraw);
+
+            console.log('changed to IsWithdraw')
 		} else if (buttonType === 'replenishment') {
 			setIsAllDepo(false);
 			setIsReplenishment(!isReplenishment);
+
+            console.log('changed to IsReplenishment')
 		}
-		console.log('отфильтровали результаты');
 	};
 
 	return (
@@ -72,13 +96,13 @@ function DepositFilter() {
 						currency={['₽', '$', '€', '¥']}
 						defaultValue={calculator.depositAmount}
 						getValue={getCurrencyValue}
-						max="10000000"
+						max="1000000000"
 					/>
 					<Range 
                         name="depositTerm"
                         placeHolder="Срок" 
-                        min={1}
-                        max={12}
+                        min={3}
+                        max={120}
                         startValue={calculator.depositTerm}
 						getValue={getCurrencyValue}
                     />
@@ -86,7 +110,7 @@ function DepositFilter() {
 						getValue={getSelectedBanksValue}
 						name="banks"
 						placeHolder="Банки"
-						multiOptions={bankList}
+						multiOptions={bankListPlaceholder}
 						selectedBanks={selectedBanks}
 						setSelectedBanks={setSelectedBanks}
 					/>
@@ -106,7 +130,6 @@ function DepositFilter() {
 					}`}
 					type={'button'}
 					onClick={() => handleButtonClick('allDepo')}
-					// disabled={'false'}
 				/>
 				<Button
 					textBtn={'С капитализацией'}
@@ -115,7 +138,6 @@ function DepositFilter() {
 					}`}
 					type={'button'}
 					onClick={() => handleButtonClick('capitalisation')}
-					// disabled={'true'}
 				/>
 				<Button
 					textBtn={'С частичным снятием'}
@@ -124,7 +146,6 @@ function DepositFilter() {
 					}`}
 					type={'button'}
 					onClick={() => handleButtonClick('withdraw')}
-					// disabled={'true'}
 				/>
 				<Button
 					textBtn={'С пополнением'}
@@ -133,7 +154,6 @@ function DepositFilter() {
 					}`}
 					type={'button'}
 					onClick={() => handleButtonClick('replenishment')}
-					// disabled={'true'}
 				/>
 			</div>
 		</section>
