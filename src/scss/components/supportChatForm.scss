@@ -21,13 +21,27 @@
 		z-index: 1;
 	}
 
+	&__success {
+		box-sizing: border-box;
+		min-height: 201px;
+		background-image: url('../../images/success.png');
+		background-repeat: no-repeat;
+		background-size: 124px 113px;
+		background-position: center top;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		gap: 12px;
+		text-align: center;
+	}
+
 	&__close-btn {
 		position: absolute;
-		top: -76px;
-		right: 0;
-		width: 60px;
-		height: 60px;
-		background: $color-accent;
+		top: 16px;
+		right: 16px;
+		width: 24px;
+		height: 24px;
+		background: none;
 		background-image: url('../../images//icons/close-btn-icon.svg');
 		background-size: 24px 24px;
 		background-position: center;
@@ -46,6 +60,14 @@
 		@include font($font-size-mml, $font-weight-bold, 32px, -0.28px, $color-text-white);
 	}
 
+	&__title-success {
+		@include font($font-size-l, $font-weight-bold, 36px, normal, $color-text-white);
+	}
+
+	&__subtitle-success {
+		@include font($font-size-s, $font-weight-medium, 20px, -0.288px, $color-text-light-gray);
+	}
+
 	&__form {
 		display: flex;
 		flex-direction: column;
@@ -54,15 +76,14 @@
 	&__input,
 	&__textarea {
 		padding: 14px;
-		// margin-bottom: 16px;
-		@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-white);
+		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-white);
 		border: none;
 		outline: 1px solid transparent;
 		border-radius: 12px;
 		background: $color-bg-gray;
 		transition: outline 0.3s;
 		&::placeholder {
-			@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-light-gray);
+			@include font($font-size-xs, $font-weight-medium, 20px, -0.16px, $color-text-light-gray);
 		}
 		&:focus {
 			outline: 1px solid $color-text-light-gray;
@@ -73,7 +94,7 @@
 	}
 
 	&__textarea {
-		height: 131px;
+		height: 148px;
 		resize: none;
 	}
 

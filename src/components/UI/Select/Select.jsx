@@ -3,12 +3,20 @@ import arrowDown from '../../../vendor/images/icons/chevron-bottom.svg';
 import { Checkbox } from '../../';
 
 function Select({ placeHolder, currency, name, getValue, defaultValue, max, min, disableOption }) {
-	const [isFocus, setIsFocus] = useState(false);
 	const [values, setValues] = useState({
 		[name]: Number(defaultValue),
 		currency: currency[0],
 	});
-	const triadNumber = useMemo(() => Number(values[name]).toLocaleString(), [values]);
+	// const triadNumber = useMemo(() => Number(values[name]).toLocaleString(), [values]);
+
+	const triadNumber = (number) => {
+		return number.toLocaleString();
+	};
+
+	const renderNumber = (number) => {
+		return Number(number.replace(/\s/g, ''));
+	};
+
 	const optionsRef = useRef();
 	useEffect(() => {
 		if (values < Number(min)) {
@@ -31,7 +39,7 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max, min,
 	};
 
 	const handleChange = (e) => {
-		const inputValue = e.target.value;
+		const inputValue = renderNumber(e.target.value);
 		if (inputValue === '' || /^-?\d+(\.\d+)?$/.test(inputValue)) {
 			let newValue;
 			let validate;
@@ -52,16 +60,11 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max, min,
 	};
 
 	const handleBlur = (e) => {
-		setIsFocus(false);
-		const inputValue = e.target.value;
+		const inputValue = renderNumber(e.target.value);
 		if (inputValue < Number(min)) {
 			setValues({ ...values, [name]: Number(min) });
 			!!getValue && getValue({ ...values, [name]: Number(min) }, { validate: true });
 		}
-	};
-
-	const hanleFocus = () => {
-		setIsFocus(true);
 	};
 
 	return (
@@ -69,24 +72,14 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max, min,
 			<div className="select__text">
 				<div className="select__total">
 					<span className="select__placeholder">{placeHolder}</span>
-					{isFocus ? (
-						<input
-							className="select__input"
-							value={values[name]}
-							name={name}
-							onChange={handleChange}
-							onBlur={handleBlur}
-							onFocus={hanleFocus}
-							maxLength={10}
-						/>
-					) : (
-						<input
-							className="select__input select__fake-input"
-							value={triadNumber}
-							onFocus={hanleFocus}
-							onChange={handleChange}
-						/>
-					)}
+					<input
+						className="select__input"
+						value={triadNumber(values[name])}
+						name={name}
+						onChange={handleChange}
+						onBlur={handleBlur}
+						maxLength={10}
+					/>
 				</div>
 				<input
 					className="select__input select__input_type_currency"

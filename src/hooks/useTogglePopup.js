@@ -1,29 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 function useTogglePopup() {
 	const [showModal, setShowModal] = useState(false);
 
-	function handleOpenModal() {
+	const handleOpenModal = useCallback(() => {
 		setShowModal(true);
-	}
+	}, []);
 
-	function handleCloseModal() {
+	const handleCloseModal = useCallback(() => {
 		setShowModal(false);
-	}
+	}, []);
 
-	useEffect(() => {
-		function handleEscClose(evt) {
+	const handleEscClose = useCallback(
+		(evt) => {
 			if (evt.key === 'Escape') {
 				handleCloseModal();
 			}
-		}
+		},
+		[handleCloseModal]
+	);
 
+	useEffect(() => {
 		document.addEventListener('keydown', handleEscClose);
 
 		return () => {
 			document.removeEventListener('keydown', handleEscClose);
 		};
-	}, []);
+	}, [handleEscClose]);
 
 	return { showModal, setShowModal, handleOpenModal, handleCloseModal };
 }
