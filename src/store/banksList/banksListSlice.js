@@ -1,7 +1,7 @@
 const { createSlice, createAsyncThunk } = require('@reduxjs/toolkit');
 
 const initialState = {
-	banks: [],
+	banksList: [],
 	error: false,
 	isLoading: false,
 	message: '',

@@ -36,6 +36,7 @@
 		min-height: 72px;
 		background-color: $color-accent;
 		border-radius: 16px;
+		cursor: pointer;
 		@include font($font-size-s, $font-weight-bold, 20px, 0, $color-text-white);
 	}
 
