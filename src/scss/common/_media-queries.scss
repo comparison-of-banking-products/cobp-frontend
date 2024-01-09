@@ -16,3 +16,32 @@
 //        height: ;
 //     }
 // }
+
+$mobile-xs: 320px;
+$mobile: 576px;
+$tablet-xs: 768px;
+$tablet: 1040px;
+
+@mixin mobile-xs {
+    @media (max-width: $mobile-xs) {
+      @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+      @content;
+    }
+}
+
+@mixin tablet-xs {
+    @media (max-width: $tablet-xs) {
+      @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: $tablet) {
+      @content;
+    }
+}

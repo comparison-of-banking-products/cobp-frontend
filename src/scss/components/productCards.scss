@@ -18,3 +18,64 @@
 		justify-content: space-between;
 	}
 }
+
+@include tablet {
+	.product-cards {
+		max-width: 960px;
+		padding: 110px 0 110px;
+		
+		&__title {
+			margin: 0 0 40px;
+		}
+
+		&__container {
+		}
+
+	}
+}
+
+//768px
+@include tablet-xs {
+	.product-cards {
+		
+		&__title {
+		}
+
+		&__container {
+		}
+
+	}
+}
+
+@include mobile {
+	.product-cards {
+		padding: 90px 0 90px;
+
+		&__title {
+			@include font($font-size-other, $font-weight-bold, 28px, -0.28px, $color-text-white);
+			margin: 0 0 24px;	
+		}
+
+		&__container {
+			gap: 8px;
+		}
+
+	}
+}
+
+@include mobile-xs {
+	.product-cards {
+		max-width: 288px;
+		padding: 48px 0 48px;
+
+		&__title {
+			margin: 0 0 16px;	
+		}
+
+		&__container {
+		}
+
+	}
+}
+
+
