@@ -1,15 +1,15 @@
 .prod-card {
-    &__wide {
+	&__wide {
 		margin: 0;
 		padding: 24px;
 		position: relative;
 		min-width: calc(67.2% - 18px);
-		max-width: 788px;
 		min-height: 253px;
 		border-radius: 16px;
 		display: flex;
 		flex-direction: column;
 		cursor: pointer;
+		text-decoration: none;
 
 		background-color: $color-bg-dark-gray;
 		background-image: url('../../images/credit-png.png');
@@ -26,8 +26,7 @@
 
 		&:hover {
 			background-size: calc(471px * 1.2) calc(187px * 1.2);
-			//этого цвета нет в переменных
-			background-color: #303036;			
+			background-color: $color-bg-gray;
 		}
 
 		&:last-of-type:hover {
@@ -40,11 +39,11 @@
 		padding: 24px;
 		position: relative;
 		min-width: calc(32.8% - 18px);
-		max-width: 376px;
 		min-height: 253px;
 		border-radius: 16px;
 		display: flex;
 		flex-direction: column;
+		text-decoration: none;
 
 		//задают неактивность
 		background-color: rgba($color-bg-dark-gray, 0.3);
@@ -67,6 +66,159 @@
 
 	&__text {
 		max-width: 268px;
+		// margin: 0;
+		// padding: 0;
 		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-light-gray);
+	}
+}
+
+@include tablet {
+	.prod-card {
+		&__wide {
+			min-width: calc(59% - 18px);
+
+			background-image: url('../../images/credit-png-l.png');
+			background-size: 231px 187px;
+
+			&:last-of-type {
+				background-image: url('../../images/deposit-png-l.png');
+				background-size: 210px 176px;
+			}
+
+			&:hover {
+				background-size: calc(231px * 1.2) calc(187px * 1.2);
+			}
+	
+			&:last-of-type:hover {
+				background-size: calc(210px * 1.2) calc(176px * 1.2);
+			}
+		}
+
+		&__slim {
+			min-width: calc(41% - 18px);
+		}
+	}
+}
+
+@include tablet-xs {
+	.prod-card {
+		&__wide {
+			min-width: calc(50% - 18px);
+			background-image: url('../../images/credit-png-m.png');
+			background-size: 174px 133px;
+			background-position: right top;
+
+			&:last-of-type {
+				background-image: url('../../images/deposit-png-m.png');
+				background-size: 174px 133px;
+			}
+
+			&:hover {
+				background-size: calc(174px * 1.2) calc(133px * 1.2);
+			}
+	
+			&:last-of-type:hover {
+				background-size: calc(174px * 1.2) calc(133px * 1.2);
+			}
+		}
+		
+		&__slim {
+			min-width: calc(50% - 18px);
+		}
+
+		&__icon {
+			display: none;
+		}
+
+		&__title {	
+		}
+
+		&__text {
+			max-width: 246px;
+		}
+	}
+}
+
+@include mobile {
+	.prod-card {
+		&__wide {
+			padding: 16px;
+			min-width: calc(50% - 4px);
+			min-height: 183px;
+
+			background-image: url('../../images/credit-png-s.png');
+			background-size: 125px 127px;
+			// order: 1;
+
+			&:last-of-type {
+				background-image: url('../../images/deposit-png-s.png');
+				background-size: 125px 122px;
+				// order: 2;
+			}
+
+			&:hover {
+				background-size: calc(125px * 1.2) calc(127px * 1.2);
+			}
+	
+			&:last-of-type:hover {
+				background-size: calc(125px * 1.2) calc(122px * 1.2);
+			}
+		}
+		
+		&__slim {
+			padding: 16px;
+			min-width: calc(50% - 4px);
+			min-height: 183px;
+			order: 2;
+			
+			&:last-of-type {
+				order: 1;
+			}
+		}
+
+		&__icon {
+			
+		}
+
+		&__title {
+			margin: auto 0 0;
+			@include font($font-size-m, $font-weight-bold, 22px, -0.18px, $color-text-white);
+		}
+
+		&__text {
+			display: none;
+		}
+	}
+}
+
+@include mobile-xs {
+	.prod-card {
+		&__wide {
+			min-height: 161px;
+			background-image: url('../../images/credit-png-xs.png');
+			background-size: 64px 84px;
+
+			&:last-of-type {
+				background-image: url('../../images/deposit-png-xs.png');
+				background-size: 64px 84px;
+			}
+
+			&:hover {
+				background-size: calc(64px * 1.2) calc(84px * 1.2);
+			}
+
+			&:last-of-type:hover {
+				background-size: calc(64px * 1.2) calc(84px * 1.2);
+			}
+		}
+		
+		&__slim {
+			min-height: 161px;
+		}
+
+		&__title {
+			max-width: 91px;
+			@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-text-white);
+		}
 	}
 }

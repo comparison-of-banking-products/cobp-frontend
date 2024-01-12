@@ -1,0 +1,58 @@
+.sort {
+	position: relative;
+	&__container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 4px;
+		cursor: pointer;
+		transition: opacity 0.3s linear;
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+	&__text {
+		@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-text-light-gray);
+	}
+	&__img {
+		background-image: url(../../../images/icons/sort.svg);
+		background-position: center center;
+		background-repeat: no-repeat;
+		width: 24px;
+		height: 24px;
+	}
+	&__options {
+		background-color: $color-bg-black;
+		position: absolute;
+		z-index: 999;
+		width: 318px;
+		left: 0;
+		top: 100%;
+		border-radius: 24px;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		cursor: default;
+		padding: 8px;
+		border: 1px solid $color-bg-black;
+		display: none;
+		margin-top: 5px;
+		&_active {
+			display: flex;
+		}
+	}
+	&__option {
+		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-white);
+		transition: opacity 0.3s linear;
+		padding: 18px 20px 18px 12px;
+		border-radius: 16px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		&:hover {
+			background-color: $color-bg-gray;
+			cursor: pointer;
+			opacity: 0.7;
+		}
+	}
+}

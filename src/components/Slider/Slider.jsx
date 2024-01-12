@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SliderContent from './SliderContent/SliderContent';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
-import 'swiper/css/navigation';
+import 'swiper/scss/navigation';
 import '../../scss/components/slider.scss';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
@@ -55,7 +55,7 @@ function Slider() {
 				<SwiperSlide className="slider__container slider__debit-card">
 					<SliderContent
 						sliderTitle="Дебетовые карты"
-						sliderSubtitle="лучший способ оплачивать покупки и&nbsp;получать кэшбэк"
+						sliderSubtitle="Лучший способ оплачивать покупки и&nbsp;получать кэшбэк"
 						linkPage="/debitcard"
 						textLink="Подобрать карту"
 						// TODO: удалить inactive когда будет данная страница

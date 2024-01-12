@@ -9,6 +9,8 @@ $color-bg-dark-gray: #232325;
 $color-bg-gray: #343435;
 $color-bg-light-gray: #484849;
 $color-header-buttons: #414149;
+$color-error: #ff453a;
+$color-success: #30d158;
 
 // TODO: удалить переменные для цвета когда будет изменена вся страница
 $color-light-gray: #4f4e54;
@@ -41,6 +43,7 @@ $font-size-xs: 14px;
 $font-size-s: 16px;
 $font-size-m: 18px;
 $font-size-ml: 20px;
+$font-size-mml: 28px;
 $font-size-l: 32px;
 $font-size-xl: 40px;
 $font-size-xxl: 48px;
@@ -58,6 +61,11 @@ $font-weight-medium: 500;
 $font-weight-bold: 600;
 
 // Break points
+// $mobile-xs: 320px;
+$mobile-xs: 448px;
 // $mobile: 576px;
-// $tablet: 768px;
-// $desktop: 990px;
+$mobile: 704px;
+// $tablet-xs: 768px;
+$tablet-xs: 950px;
+// $tablet: 1040px;
+$tablet: 1160px;

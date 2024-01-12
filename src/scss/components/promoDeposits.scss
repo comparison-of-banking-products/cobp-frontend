@@ -1,0 +1,23 @@
+.promo-deposits {
+	max-width: 1280px;
+	min-height: 375px;
+	margin: 0 auto;
+	margin-top: 40px;
+	padding: 0 40px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	background: url('../../images/promo-deposits.png') no-repeat right/contain;
+	&__container {
+		max-width: 381px;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+	&__title {
+		@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-text-white);
+	}
+	&__subtitle {
+		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-white);
+	}
+}

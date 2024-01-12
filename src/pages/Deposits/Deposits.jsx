@@ -1,7 +1,14 @@
 import React from 'react';
+import { PromoDeposits, DepositsCardList, DepositFilter } from '../../components';
 
 function Deposits() {
-	return <div>Deposits</div>;
+	return (
+		<>
+			<PromoDeposits />
+			<DepositFilter />
+			<DepositsCardList />
+		</>
+	);
 }
 
 export default Deposits;
