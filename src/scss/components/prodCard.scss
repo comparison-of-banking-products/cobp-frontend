@@ -4,7 +4,6 @@
 		padding: 24px;
 		position: relative;
 		min-width: calc(67.2% - 18px);
-		max-width: 788px;
 		min-height: 253px;
 		border-radius: 16px;
 		display: flex;
@@ -40,7 +39,6 @@
 		padding: 24px;
 		position: relative;
 		min-width: calc(32.8% - 18px);
-		max-width: 376px;
 		min-height: 253px;
 		border-radius: 16px;
 		display: flex;
@@ -68,6 +66,8 @@
 
 	&__text {
 		max-width: 268px;
+		// margin: 0;
+		// padding: 0;
 		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-light-gray);
 	}
 }
@@ -75,9 +75,7 @@
 @include tablet {
 	.prod-card {
 		&__wide {
-			max-width: 548px;
 			min-width: calc(59% - 18px);
-			min-height: 253px;
 
 			background-image: url('../../images/credit-png-l.png');
 			background-size: 231px 187px;
@@ -98,7 +96,6 @@
 
 		&__slim {
 			min-width: calc(41% - 18px);
-			min-height: 253px;
 		}
 	}
 }
@@ -106,19 +103,38 @@
 @include tablet-xs {
 	.prod-card {
 		&__wide {
+			min-width: calc(50% - 18px);
+			background-image: url('../../images/credit-png-m.png');
+			background-size: 174px 133px;
+			background-position: right top;
+
+			&:last-of-type {
+				background-image: url('../../images/deposit-png-m.png');
+				background-size: 174px 133px;
+			}
+
+			&:hover {
+				background-size: calc(174px * 1.2) calc(133px * 1.2);
+			}
+	
+			&:last-of-type:hover {
+				background-size: calc(174px * 1.2) calc(133px * 1.2);
+			}
 		}
 		
 		&__slim {
+			min-width: calc(50% - 18px);
 		}
 
 		&__icon {
-
+			display: none;
 		}
 
 		&__title {	
 		}
 
 		&__text {
+			max-width: 246px;
 		}
 	}
 }
@@ -127,20 +143,17 @@
 	.prod-card {
 		&__wide {
 			padding: 16px;
-			max-width: 260px;
 			min-width: calc(50% - 4px);
 			min-height: 183px;
 
 			background-image: url('../../images/credit-png-s.png');
 			background-size: 125px 127px;
-			background-position: right top;
-			order: 1;
+			// order: 1;
 
 			&:last-of-type {
 				background-image: url('../../images/deposit-png-s.png');
 				background-size: 125px 122px;
-				// transition: background-size 0.3s, background 0.3s;
-				order: 2;
+				// order: 2;
 			}
 
 			&:hover {
@@ -154,18 +167,17 @@
 		
 		&__slim {
 			padding: 16px;
-			max-width: 260px;
 			min-width: calc(50% - 4px);
 			min-height: 183px;
-			order: 4;
+			order: 2;
 			
 			&:last-of-type {
-				order: 3;
+				order: 1;
 			}
 		}
 
 		&__icon {
-			display: none;
+			
 		}
 
 		&__title {
@@ -182,16 +194,13 @@
 @include mobile-xs {
 	.prod-card {
 		&__wide {
-			max-width: 140px;
 			min-height: 161px;
 			background-image: url('../../images/credit-png-xs.png');
 			background-size: 64px 84px;
-			background-position: right top;
 
 			&:last-of-type {
 				background-image: url('../../images/deposit-png-xs.png');
 				background-size: 64px 84px;
-				background-position: right top;
 			}
 
 			&:hover {
@@ -204,11 +213,11 @@
 		}
 		
 		&__slim {
-			max-width: 140px;
 			min-height: 161px;
 		}
 
 		&__title {
+			max-width: 91px;
 			@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-text-white);
 		}
 	}

@@ -10,7 +10,8 @@ function DepositFilter() {
     const dispatch = useDispatch();
     const calculator = useSelector((state) => state.calculator);
     const banksList = useSelector((state) => state.banksList.banksList);
-    // const bankNames = banksList.map(bank => bank.name);
+	// const depositList = useSelector((state) => state.deposits.deposits);
+	// console.log('depositList2:', depositList);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 	// const [dataReceived, setDataRecieved] = useState(false);
@@ -59,6 +60,7 @@ function DepositFilter() {
 
 	const handleSubmit = () => {
 		console.log('постучались в API');
+		// e.preventDefault();
 
 		// const requestData = {
 		//     currency,

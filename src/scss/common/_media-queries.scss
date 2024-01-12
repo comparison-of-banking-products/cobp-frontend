@@ -17,15 +17,6 @@
 //     }
 // }
 
-// // $mobile-xs: 320px;
-// $mobile-xs: 448px;
-// // $mobile: 576px;
-// $mobile: 672px;
-// // $tablet-xs: 768px;
-// $tablet-xs: 904px;
-// // $tablet: 1040px;
-// $tablet: 1160px;
-
 @mixin mobile-xs {
     @media (max-width: $mobile-xs) {
       @content;
