@@ -13,7 +13,7 @@
 		color: $color-text-white;
 		font-size: $font-size-xl;
 		font-weight: 600;
-		line-height: 44px; /* 110% */
+		line-height: 44px;
 		letter-spacing: -0.4px;
 	}
 
@@ -85,7 +85,7 @@
 		color: $color-text-white;
 		font-size: $font-size-s;
 		font-weight: $font-weight-bold;
-		line-height: 20px; /* 125% */
+		line-height: 20px;
 		letter-spacing: -0.16px;
 		margin-bottom: 8px;
 	}
@@ -98,5 +98,62 @@
 		line-height: 18px;
 		margin-bottom: 24px;
 		align-self: stretch;
+	}
+}
+
+@media screen and (max-width: 1040px) {
+	.support {
+		&__item {
+			width: 296px;
+			height: 384px;
+		}
+
+		&__position {
+			width: 264px;
+			margin: 0 auto;
+			margin-bottom: 24px;
+		}
+	}
+}
+
+@media screen and (max-width: 870px) {
+	.support {
+		&__item {
+			width: 326px;
+			height: 384px;
+		}
+
+		&__instruction {
+			display: none;
+		}
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.support {
+		&__banner {
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		&__lists {
+			justify-content: center;
+		}
+
+		&__item {
+			width: 264px;
+		}
+
+		&__instruction {
+			display: block;
+			width: 216px;
+			font-size: $font-size-xxs;
+			line-height: 16px;
+		}
+
+		&__title {
+			font-size: 24px;
+			line-height: 28px;
+		}
 	}
 }

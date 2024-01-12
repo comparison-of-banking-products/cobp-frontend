@@ -11,13 +11,13 @@ function Banks() {
 
 	return (
 		<section className="banks">
-			<h2 className="banks__title">банки вашего города</h2>
+			<h2 className="banks__title">Банки вашего города</h2>
 			<Input
 				type="text"
 				inputClass={'input__primary'}
 				value={searchValue}
 				onChange={handleSearchInputChange}
-				placeholder={'поиск по названию банка'}
+				placeholder={'Поиск по названию банка'}
 				disabled={true}
 			></Input>
 			<ul className="banks__lists">
