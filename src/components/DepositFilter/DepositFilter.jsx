@@ -9,18 +9,17 @@ import { loadBanksList } from '../../store/banksList/banksListSlice';
 function DepositFilter() {
     const dispatch = useDispatch();
     const calculator = useSelector((state) => state.calculator);
-    const banksList = useSelector((state) => state.banksList);
-    // console.log(banksList)
+    const banksList = useSelector((state) => state.banksList.banksList);
+	// const depositList = useSelector((state) => state.deposits.deposits);
+	// console.log('depositList2:', depositList);
 
-	const bankListPlaceholder = ['Альфа-Банк', 'Райффайзен Банк', 'ВТБ', 'Сбербанк', 'Тинькофф Банк'];
-
-	const [selectedBanks, setSelectedBanks] = useState(bankListPlaceholder);
+	const [selectedBanks, setSelectedBanks] = useState([]);
 	// const [dataReceived, setDataRecieved] = useState(false);
 
-	const [isAllDepo, setIsAllDepo] = useState(true);
-	const [isCapitalisation, setIsCapitalisation] = useState(false);
-	const [isWithdraw, setIsWithdraw] = useState(false);
-	const [isReplenishment, setIsReplenishment] = useState(false);
+	const [isAllDepo, setIsAllDepo] = useState(localStorage.getItem('isAllDepo') === 'true' || true);
+    const [isCapitalisation, setIsCapitalisation] = useState(localStorage.getItem('isCapitalisation') === 'true' || false);
+    const [isWithdraw, setIsWithdraw] = useState(localStorage.getItem('isWithdraw') === 'true' || false);
+    const [isReplenishment, setIsReplenishment] = useState(localStorage.getItem('isReplenishment') === 'true' || false);
 
     const [validate, setValidate] = useState();
 
@@ -34,13 +33,21 @@ function DepositFilter() {
                 partialWithdrawal: isWithdraw,
             })
         );
-	}, [calculator]);
+	}, [calculator, isCapitalisation, isReplenishment, isWithdraw]);
 
     useEffect(() => {
 		dispatch(
             loadBanksList({})
         );
 	}, []);
+
+    useEffect(() => {
+		if (banksList.length > 0) {
+			const bankNames = banksList.map(bank => bank.name);
+			setSelectedBanks(bankNames);
+			setIsAllDepo(true);
+		}
+	}, [banksList]);
 
 	const getCurrencyValue = (values, valid) => {
         setValidate(valid.validate);
@@ -53,6 +60,7 @@ function DepositFilter() {
 
 	const handleSubmit = () => {
 		console.log('постучались в API');
+		// e.preventDefault();
 
 		// const requestData = {
 		//     currency,
@@ -66,23 +74,20 @@ function DepositFilter() {
 			setIsCapitalisation(false);
 			setIsWithdraw(false);
 			setIsReplenishment(false);
+            localStorage.setItem('isAllDepo', true);
 
-            console.log('changed to IsAllDepo')
 		} else if (buttonType === 'capitalisation') {
 			setIsAllDepo(false);
 			setIsCapitalisation(!isCapitalisation);
-
-            console.log('changed to isCapitalisation')
+            localStorage.setItem('isCapitalisation', !isCapitalisation);
 		} else if (buttonType === 'withdraw') {
 			setIsAllDepo(false);
 			setIsWithdraw(!isWithdraw);
-
-            console.log('changed to IsWithdraw')
+            localStorage.setItem('isWithdraw', !isWithdraw);
 		} else if (buttonType === 'replenishment') {
 			setIsAllDepo(false);
 			setIsReplenishment(!isReplenishment);
-
-            console.log('changed to IsReplenishment')
+            localStorage.setItem('isReplenishment', !isReplenishment);
 		}
 	};
 
@@ -110,7 +115,7 @@ function DepositFilter() {
 						getValue={getSelectedBanksValue}
 						name="banks"
 						placeHolder="Банки"
-						multiOptions={bankListPlaceholder}
+						multiOptions={selectedBanks}
 						selectedBanks={selectedBanks}
 						setSelectedBanks={setSelectedBanks}
 					/>
