@@ -7,9 +7,9 @@ import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { loadBanksList } from '../../store/banksList/banksListSlice';
 
 function DepositFilter() {
-    const dispatch = useDispatch();
-    const calculator = useSelector((state) => state.calculator);
-    const banksList = useSelector((state) => state.banksList.banksList);
+	const dispatch = useDispatch();
+	const calculator = useSelector((state) => state.calculator);
+	const banksList = useSelector((state) => state.banksList.banksList);
 	// const depositList = useSelector((state) => state.deposits.deposits);
 	// console.log('depositList2:', depositList);
 
@@ -17,40 +17,44 @@ function DepositFilter() {
 	// const [dataReceived, setDataRecieved] = useState(false);
 
 	const [isAllDepo, setIsAllDepo] = useState(localStorage.getItem('isAllDepo') === 'true' || true);
-    const [isCapitalisation, setIsCapitalisation] = useState(localStorage.getItem('isCapitalisation') === 'true' || false);
-    const [isWithdraw, setIsWithdraw] = useState(localStorage.getItem('isWithdraw') === 'true' || false);
-    const [isReplenishment, setIsReplenishment] = useState(localStorage.getItem('isReplenishment') === 'true' || false);
+	const [isCapitalisation, setIsCapitalisation] = useState(
+		localStorage.getItem('isCapitalisation') === 'true' || false
+	);
+	const [isWithdraw, setIsWithdraw] = useState(
+		localStorage.getItem('isWithdraw') === 'true' || false
+	);
+	const [isReplenishment, setIsReplenishment] = useState(
+		localStorage.getItem('isReplenishment') === 'true' || false
+	);
 
-    const [validate, setValidate] = useState();
+	const [validate, setValidate] = useState();
 
-    useEffect(() => {
+	useEffect(() => {
 		dispatch(
-            loadDeposits({ 
-                amount: calculator.depositAmount,
-                term: calculator.depositTerm,
-                capitalization: isCapitalisation,
-                replenishment: isReplenishment,
-                partialWithdrawal: isWithdraw,
-            })
-        );
+			loadDeposits({
+				amount: calculator.depositAmount,
+				term: calculator.depositTerm,
+				capitalization: isCapitalisation,
+				replenishment: isReplenishment,
+				partialWithdrawal: isWithdraw,
+			})
+		);
 	}, [calculator, isCapitalisation, isReplenishment, isWithdraw]);
 
-    useEffect(() => {
-		dispatch(
-            loadBanksList({})
-        );
+	useEffect(() => {
+		dispatch(loadBanksList({}));
 	}, []);
 
-    useEffect(() => {
+	useEffect(() => {
 		if (banksList.length > 0) {
-			const bankNames = banksList.map(bank => bank.name);
+			const bankNames = banksList.map((bank) => bank.name);
 			setSelectedBanks(bankNames);
 			setIsAllDepo(true);
 		}
 	}, [banksList]);
 
 	const getCurrencyValue = (values, valid) => {
-        setValidate(valid.validate);
+		setValidate(valid.validate);
 		valid.validate && dispatch(editCalculatorValues(values));
 	};
 
@@ -74,20 +78,19 @@ function DepositFilter() {
 			setIsCapitalisation(false);
 			setIsWithdraw(false);
 			setIsReplenishment(false);
-            localStorage.setItem('isAllDepo', true);
-
+			localStorage.setItem('isAllDepo', true);
 		} else if (buttonType === 'capitalisation') {
 			setIsAllDepo(false);
 			setIsCapitalisation(!isCapitalisation);
-            localStorage.setItem('isCapitalisation', !isCapitalisation);
+			localStorage.setItem('isCapitalisation', !isCapitalisation);
 		} else if (buttonType === 'withdraw') {
 			setIsAllDepo(false);
 			setIsWithdraw(!isWithdraw);
-            localStorage.setItem('isWithdraw', !isWithdraw);
+			localStorage.setItem('isWithdraw', !isWithdraw);
 		} else if (buttonType === 'replenishment') {
 			setIsAllDepo(false);
 			setIsReplenishment(!isReplenishment);
-            localStorage.setItem('isReplenishment', !isReplenishment);
+			localStorage.setItem('isReplenishment', !isReplenishment);
 		}
 	};
 
@@ -103,14 +106,14 @@ function DepositFilter() {
 						getValue={getCurrencyValue}
 						max="1000000000"
 					/>
-					<Range 
-                        name="depositTerm"
-                        placeHolder="Срок" 
-                        min={3}
-                        max={120}
-                        startValue={calculator.depositTerm}
+					<Range
+						name="depositTerm"
+						placeHolder="Срок"
+						min={3}
+						max={120}
+						startValue={calculator.depositTerm}
 						getValue={getCurrencyValue}
-                    />
+					/>
 					<SelectMultiple
 						getValue={getSelectedBanksValue}
 						name="banks"

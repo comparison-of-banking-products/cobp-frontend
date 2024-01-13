@@ -1,4 +1,7 @@
 .calculator {
+	padding: 0 40px 0;
+	margin: 0 auto;
+
 	&__container {
 		max-width: 1200px;
 		margin: 0 auto;
@@ -54,8 +57,9 @@
 		flex-direction: row;
 		justify-content: center;
 		gap: 16px;
-		padding-top: 18px;
-		height: 264px;
+		padding-top: 16px;
+		// height: 264px;
+		height: 256px;
 	}
 	&__items {
 		display: flex;
@@ -105,6 +109,151 @@
 			-ms-transition: text-shadow 2 ease-out;
 			-o-transition: text-shadow 2 ease-out;
 			transition: text-shadow 2 ease-out;
+		}
+	}
+}
+
+@include tablet {
+	.calculator {
+		padding: 0 40px 0;
+		margin: 0 auto;
+
+		&__container {
+			// min-height: 556px;
+		}
+
+		&__calculation {
+			// flex-direction: column;
+
+			// min-height: 432px;
+			// gap: 36px;
+		}
+
+		&__results {
+			max-width: calc(50% - 16px);
+			//ошибка в макете для display
+			text-align: center;
+		}
+
+		&__results-display {
+			//ошибка в макете для display, компенсирую уменьшая gap
+			gap: 15px;
+		}
+	}
+}
+
+@include tablet-xs {
+	.calculator {
+		&__container {
+			height: 556px;
+		}
+
+		&__calculation {
+			flex-direction: column;
+			height: 448px;
+			gap: 36px;
+		}
+
+		&__results {
+			max-width: 100%;
+			//ошибка в макете для display
+			text-align: left;
+			// height: 240px;
+		}
+
+		&__results-display {
+			//ошибка в макете для display, компенсирую уменьшая gap
+			gap: 36px;
+		}
+	}
+}
+
+@include mobile {
+	.calculator {
+		padding: 0 24px 0;
+		margin: 0 auto;
+
+		&__container {
+			height: 536px;
+		}
+
+		&__title {
+			margin: 0 auto 24px;
+			@include font($font-size-other, $font-weight-bold, 28px, -0.28px, $color-text-white);
+		}
+
+		&__calculation {
+			height: 428px;
+			// padding-top: 0;
+			gap: 16px;
+		}
+
+		&__products {
+			height: 76px;
+			align-items: center;
+		}
+
+		&__product {
+			@include font($font-size-m, $font-weight-bold, 22px, -0, 18px, $color-text-light-gray);
+			&_active {
+				color: $color-text-white;
+			}
+		}
+
+		&__results-display {
+			//ошибка в макете для display, компенсирую уменьшая gap
+			gap: 16px;
+		}
+
+		&__result-name {
+			@include font($font-size-xxs, $font-weight-medium, 16px, normal, $color-text-light-gray);
+		}
+
+		&__result-value {
+			@include font($font-size-xs, $font-weight-bold, 18px, -0.14px, $color-text-white);
+		}
+	}
+}
+
+@include mobile-xs {
+	.calculator {
+		padding: 0 16px 0;
+		margin: 0 auto;
+
+		&__container {
+			height: 624px;
+		}
+
+		&__products {
+			height: 44px;
+		}
+
+		&__product {
+		}
+
+		&__calculation {
+			height: 548px;
+			// margin-top: 66px;
+		}
+
+		&__results {
+			height: 360px;
+			// gap: 66px;
+			// align-items: flex-start;
+		}
+
+		&__results-display {
+			margin-top: 0;
+			gap: 36px;
+			flex-direction: column;
+			align-self: flex-start;
+			// justify-content: start;
+		}
+
+		&__result-name {
+		}
+
+		&__result-value {
 		}
 	}
 }

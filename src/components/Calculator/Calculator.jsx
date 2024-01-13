@@ -166,7 +166,7 @@ function Calculator() {
 								)}
 							</div>
 							<Button
-								textBtn={calculator.isCredit ? 'подобрать кредит' : 'подобрать вклад'}
+								textBtn={calculator.isCredit ? 'Подобрать кредит' : 'Подобрать вклад'}
 								btnClass="button__primary"
 								type="submit"
 								disabled={!validate && true}
