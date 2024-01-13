@@ -13,6 +13,7 @@ function DepositFilter() {
 	// const depositList = useSelector((state) => state.deposits.deposits);
 	// console.log('depositList2:', depositList);
 
+	//поднять на уровень Deposits
 	const [selectedBanks, setSelectedBanks] = useState([]);
 	// const [dataReceived, setDataRecieved] = useState(false);
 
