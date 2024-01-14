@@ -131,13 +131,16 @@
 
 		&__results {
 			max-width: calc(50% - 16px);
-			//ошибка в макете для display
-			text-align: center;
 		}
 
 		&__results-display {
 			//ошибка в макете для display, компенсирую уменьшая gap
-			gap: 15px;
+			gap: 16px;
+		}
+
+		&__result {
+			//оставляем width: 111px и центриуем текст, чтобы не ломать верстку ниже 1040
+			text-align: center;
 		}
 	}
 }
@@ -156,14 +159,14 @@
 
 		&__results {
 			max-width: 100%;
-			//ошибка в макете для display
-			text-align: left;
 			// height: 240px;
 		}
 
 		&__results-display {
-			//ошибка в макете для display, компенсирую уменьшая gap
-			gap: 36px;
+			gap: 28px;
+		}
+
+		&__result {
 		}
 	}
 }
@@ -202,7 +205,7 @@
 
 		&__results-display {
 			//ошибка в макете для display, компенсирую уменьшая gap
-			gap: 16px;
+			gap: 36px;
 		}
 
 		&__result-name {
@@ -238,6 +241,7 @@
 
 		&__results {
 			height: 360px;
+
 			// gap: 66px;
 			// align-items: flex-start;
 		}
@@ -250,7 +254,8 @@
 			// justify-content: start;
 		}
 
-		&__result-name {
+		&__result {
+			text-align: left;
 		}
 
 		&__result-value {

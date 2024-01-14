@@ -21,3 +21,9 @@
 		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-white);
 	}
 }
+
+@include tablet {
+	.promo-deposits {
+		background: url('../../images/promo-deposits-l.png') no-repeat right/contain;
+	}
+}

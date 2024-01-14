@@ -83,6 +83,13 @@ function SelectMultiple({ placeHolder, name, selectedBanks, setSelectedBanks }) 
 						readOnly
 						onClick={toggleOptions}
 					/>
+					{/* <div className="select-multiple__icon-container">
+						{selectedBanks.length < banksList.length && (
+							<span className="select-multiple__icon-count" style={{ backgroundColor: '#FBFBFB' }}>
+								{selectedBanks.length}
+							</span>
+						)}
+					</div> */}
 				</div>
 				<div className="select-multiple__options" ref={optionsRef}>
 					<div className="select-multiple__option" onClick={handleOptionClick}>
