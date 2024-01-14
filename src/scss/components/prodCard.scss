@@ -88,7 +88,7 @@
 			&:hover {
 				background-size: calc(231px * 1.2) calc(187px * 1.2);
 			}
-	
+
 			&:last-of-type:hover {
 				background-size: calc(210px * 1.2) calc(176px * 1.2);
 			}
@@ -116,12 +116,12 @@
 			&:hover {
 				background-size: calc(174px * 1.2) calc(133px * 1.2);
 			}
-	
+
 			&:last-of-type:hover {
 				background-size: calc(174px * 1.2) calc(133px * 1.2);
 			}
 		}
-		
+
 		&__slim {
 			min-width: calc(50% - 18px);
 		}
@@ -130,7 +130,7 @@
 			display: none;
 		}
 
-		&__title {	
+		&__title {
 		}
 
 		&__text {
@@ -159,25 +159,24 @@
 			&:hover {
 				background-size: calc(125px * 1.2) calc(127px * 1.2);
 			}
-	
+
 			&:last-of-type:hover {
 				background-size: calc(125px * 1.2) calc(122px * 1.2);
 			}
 		}
-		
+
 		&__slim {
 			padding: 16px;
 			min-width: calc(50% - 4px);
 			min-height: 183px;
 			order: 2;
-			
+
 			&:last-of-type {
 				order: 1;
 			}
 		}
 
 		&__icon {
-			
 		}
 
 		&__title {
@@ -211,7 +210,7 @@
 				background-size: calc(64px * 1.2) calc(84px * 1.2);
 			}
 		}
-		
+
 		&__slim {
 			min-height: 161px;
 		}
