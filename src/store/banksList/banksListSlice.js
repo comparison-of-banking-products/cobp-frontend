@@ -11,12 +11,12 @@ export const loadBanksList = createAsyncThunk(
 	'@@banksList/load-banks-list',
 	async (_, { extra: { client, api } }) => {
 		return client.get(api.getBanksList({}));
-	} 
+	}
 );
 
 const banksListSlice = createSlice({
-    name: '@@banksList',
-    initialState,
+	name: '@@banksList',
+	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
