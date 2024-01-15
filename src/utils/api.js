@@ -11,8 +11,11 @@ export const getDeposits = ({
 	const capitalizationParam = capitalization ? '&capitalization=true' : '';
 	const replenishmentParam = replenishment ? '&replenishment=true' : '';
 	const partialWithdrawalParam = partialWithdrawal ? '&partialWithdrawal=true' : '';
-	const banksParam =
-		banks.length > 0 ? `&banks=${banks.map((bank) => bank.bic).join(',')}` : `&banks=000000000`;
+	// const banksParam =
+	// 	banks.length > 0 ? `&bics=${banks.map((bank) => bank.bic).join(',')}` : `&bics=000000000`;
+	// console.log('banksParam', banksParam);
+
+	const banksParam = banks.length > 0 ? `&bics=${banks.map((bank) => bank.bic)}` : `&bics=${[0]}`;
 	console.log('banksParam', banksParam);
 
 	return (

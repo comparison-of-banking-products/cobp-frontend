@@ -1,7 +1,5 @@
 .deposit-filter {
-	// margin: -33px auto 0;
 	margin: -35px auto 0;
-
 	max-width: 1200px;
 	width: calc(100% - 80px);
 	max-height: 182px;
@@ -67,6 +65,7 @@
 
 @include tablet {
 	.deposit-filter {
+		margin: -21px auto 0;
 		&__submit {
 			min-width: 108px;
 		}
@@ -75,6 +74,7 @@
 
 @include tablet-xs {
 	.deposit-filter {
+		margin: -4px auto 0;
 		max-height: 430px;
 		border-radius: 32px;
 		//
@@ -105,8 +105,6 @@
 		&__checkboxes {
 			max-width: calc(100% - 24px);
 
-			// max-width: 100%;
-
 			flex-wrap: nowrap;
 			white-space: nowrap;
 			overflow-x: auto;
@@ -128,10 +126,8 @@
 
 @include mobile {
 	.deposit-filter {
+		margin: -8px auto 0;
 		max-height: 414px;
-		// width: 100%;
-		// border-bottom-left-radius: 0;
-		// border-bottom-right-radius: 0;
 
 		&__container {
 			padding: 16px 0 16px 16px;
@@ -141,17 +137,14 @@
 			padding-right: 16px;
 		}
 
-		// &__inputs {
-		// 	flex-direction: column;
-		// 	gap: 12px;
-		// }
-
-		// &__inputs > * {
-		// 	max-width: 100%;
-		// }
-
 		&__checkboxes {
 			max-width: 100%;
 		}
+	}
+}
+
+@include mobile {
+	.deposit-filter {
+		margin: -10px auto 0;
 	}
 }
