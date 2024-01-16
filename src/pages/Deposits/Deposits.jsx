@@ -12,8 +12,8 @@ function Deposits() {
 				subtitle="Сервис сравнения банковских депозитов позволяет мгновенно найти лучшие предложения
 					по&nbsp;вкладам с&nbsp;выгодными условиями и&nbsp;высокой процентной ставкой"
 			/>
-			{/* <DepositFilter isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} /> */}
-			{/* <DepositsCardList isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} /> */}
+			<DepositFilter isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />
+			<DepositsCardList isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />
 		</>
 	);
 }
