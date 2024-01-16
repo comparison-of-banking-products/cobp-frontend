@@ -83,7 +83,7 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max, min,
 				</div>
 				<input
 					className="select__input select__input_type_currency"
-					value={values.currency}
+					value={values.currency.split(' ')[1]}
 					name={name}
 					readOnly
 				/>

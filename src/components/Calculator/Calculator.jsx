@@ -93,7 +93,7 @@ function Calculator() {
 									<Select
 										name="depositAmount"
 										placeHolder="Сумма вклада"
-										currency={['₽', '$', '€', '¥']}
+										currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
 										defaultValue={calculator.depositAmount}
 										getValue={getValues}
 										max="100000000"
@@ -115,7 +115,7 @@ function Calculator() {
 									<Select
 										name="creditAmount"
 										placeHolder="Сумма кредита"
-										currency={['₽', '$', '€', '¥']}
+										currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
 										defaultValue={calculator.creditAmount}
 										getValue={getValues}
 										max="100000000"
@@ -148,12 +148,12 @@ function Calculator() {
 										<CalculatorResult
 											name="Доход за период"
 											value={`до ${roundNumber(deposits?.deposits[0]?.maturityInterest) || '0'}`}
-											currency={calculator.currency}
+											currency={calculator.currency.split(' ')[1]}
 										/>
 										<CalculatorResult
 											name="Доход за год"
 											value={`до ${roundNumber(deposits?.deposits[0]?.annualInterest) || '0'}`}
-											currency={calculator.currency}
+											currency={calculator.currency.split(' ')[1]}
 										/>
 									</>
 								) : (
@@ -162,7 +162,7 @@ function Calculator() {
 										<CalculatorResult
 											name="Платеж от"
 											value={`от 50 690`}
-											currency={calculator.currency}
+											currency={calculator.currency.split(' ')[1]}
 										/>
 									</>
 								)}

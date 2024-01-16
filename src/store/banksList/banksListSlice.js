@@ -10,7 +10,7 @@ const initialState = {
 export const loadBanksList = createAsyncThunk(
 	'@@banksList/load-banks-list',
 	async (_, { extra: { client, api } }) => {
-		return client.get(api.getBanksList({}));
+		return client.get(api.getBanksList());
 	}
 );
 
