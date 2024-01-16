@@ -81,7 +81,7 @@ function DepositFilter({ isSubmitted, setIsSubmitted }) {
 					<Select
 						name="depositAmount"
 						placeHolder="Сумма"
-						currency={['₽', '$', '€', '¥']}
+						currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
 						defaultValue={calculator.depositAmount}
 						getValue={getCurrencyValue}
 						max="1000000000"
