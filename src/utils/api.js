@@ -21,6 +21,6 @@ export const getDeposits = ({
 	);
 };
 
-export const getBanksList = ({}) => {
+export const getBanksList = () => {
 	return BASE_URL + `v1/banks`;
 };
