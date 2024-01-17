@@ -92,6 +92,7 @@ function DepositFilter({ isSubmitted, setIsSubmitted }) {
 							placeHolder="Срок"
 							min={3}
 							max={120}
+							step={3}
 							startValue={calculator.depositTerm}
 							getValue={getCurrencyValue}
 						/>
