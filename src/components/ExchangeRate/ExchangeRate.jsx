@@ -1,26 +1,24 @@
-function ExchangeRate(valute) {
-	console.log(valute);
+function ExchangeRate({ valute }) {
+	let imageRates = 'exchange-rate__difference-image_no-changes';
+
+	if (valute.diff > 0) {
+		imageRates = 'exchange-rate__difference-image_up';
+	} else if (valute.diff < 0) {
+		imageRates = 'exchange-rate__difference-image_down';
+	}
+
 	return (
 		<>
-			<li className="exchange-rate__about-currency-item">
-				<p className="exchange-rate__difference"></p>
-				<p className="exchange-rate__difference-image exchange-rate__difference-image_up" />
+			<li className="exchange-rate__currency-item">
+				<p className="exchange-rate__difference">
+					{`${valute.base}
+            ${valute.rate.toFixed(2).replace('.', ',')}
+            ${valute.diff.toFixed(2).replace('.', ',')}`}
+				</p>
+				<p className={`exchange-rate__difference-image ${imageRates}`} />
 			</li>
 		</>
-		// <li className="exchange-rate__about-currency-item">
-		//   {props.id === 1 &&
-		//   <p className="exchange-rate__difference">{props.rate.rate}</p>}
-		//   <p className="exchange-rate__difference-image exchange-rate__difference-image_up" />
-		// </li>
 	);
 }
 
 export default ExchangeRate;
-
-// {(props.id === 2 || props.id === 4 || props.id === 5) &&
-//   <li className="exchange-rate__about-currency-item">
-//     <p className="exchange-rate__difference">{props.rate.base} {props.rate.rate}</p>
-//     {props.rate.diff > '0' ? <p className="exchange-rate__difference-image exchange-rate__difference-image_up" />
-//     : props.rate.diff < '0' ? <p className="exchange-rate__difference-image exchange-rate__difference-image_down" /> : []}
-//     {/* <p className="exchange-rate__difference-image exchange-rate__difference-image_up" /> */}
-//   </li>
