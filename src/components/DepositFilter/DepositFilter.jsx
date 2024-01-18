@@ -7,10 +7,10 @@ import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { loadBanksList } from '../../store/banksList/banksListSlice';
 
 function DepositFilter() {
-    const dispatch = useDispatch();
-    const calculator = useSelector((state) => state.calculator);
-    const banksList = useSelector((state) => state.banksList);
-    // console.log(banksList)
+	const dispatch = useDispatch();
+	const calculator = useSelector((state) => state.calculator);
+	const banksList = useSelector((state) => state.banksList);
+	// console.log(banksList)
 
 	const bankListPlaceholder = ['Альфа-Банк', 'Райффайзен Банк', 'ВТБ', 'Сбербанк', 'Тинькофф Банк'];
 
@@ -22,28 +22,26 @@ function DepositFilter() {
 	const [isWithdraw, setIsWithdraw] = useState(false);
 	const [isReplenishment, setIsReplenishment] = useState(false);
 
-    const [validate, setValidate] = useState();
+	const [validate, setValidate] = useState();
 
-    useEffect(() => {
+	useEffect(() => {
 		dispatch(
-            loadDeposits({ 
-                amount: calculator.depositAmount,
-                term: calculator.depositTerm,
-                capitalization: isCapitalisation,
-                replenishment: isReplenishment,
-                partialWithdrawal: isWithdraw,
-            })
-        );
+			loadDeposits({
+				amount: calculator.depositAmount,
+				term: calculator.depositTerm,
+				capitalization: isCapitalisation,
+				replenishment: isReplenishment,
+				partialWithdrawal: isWithdraw,
+			})
+		);
 	}, [calculator]);
 
-    useEffect(() => {
-		dispatch(
-            loadBanksList({})
-        );
+	useEffect(() => {
+		dispatch(loadBanksList({}));
 	}, []);
 
 	const getCurrencyValue = (values, valid) => {
-        setValidate(valid.validate);
+		setValidate(valid.validate);
 		valid.validate && dispatch(editCalculatorValues(values));
 	};
 
@@ -67,22 +65,22 @@ function DepositFilter() {
 			setIsWithdraw(false);
 			setIsReplenishment(false);
 
-            console.log('changed to IsAllDepo')
+			console.log('changed to IsAllDepo');
 		} else if (buttonType === 'capitalisation') {
 			setIsAllDepo(false);
 			setIsCapitalisation(!isCapitalisation);
 
-            console.log('changed to isCapitalisation')
+			console.log('changed to isCapitalisation');
 		} else if (buttonType === 'withdraw') {
 			setIsAllDepo(false);
 			setIsWithdraw(!isWithdraw);
 
-            console.log('changed to IsWithdraw')
+			console.log('changed to IsWithdraw');
 		} else if (buttonType === 'replenishment') {
 			setIsAllDepo(false);
 			setIsReplenishment(!isReplenishment);
 
-            console.log('changed to IsReplenishment')
+			console.log('changed to IsReplenishment');
 		}
 	};
 
@@ -98,14 +96,14 @@ function DepositFilter() {
 						getValue={getCurrencyValue}
 						max="1000000000"
 					/>
-					<Range 
-                        name="depositTerm"
-                        placeHolder="Срок" 
-                        min={3}
-                        max={120}
-                        startValue={calculator.depositTerm}
+					<Range
+						name="depositTerm"
+						placeHolder="Срок"
+						min={3}
+						max={120}
+						startValue={calculator.depositTerm}
 						getValue={getCurrencyValue}
-                    />
+					/>
 					<SelectMultiple
 						getValue={getSelectedBanksValue}
 						name="banks"
