@@ -15,6 +15,7 @@ function Calculator() {
 	const calculator = useSelector((state) => state.calculator);
 	const credits = useSelector((state) => state.credits);
 	console.log('credits', credits);
+	//console.log('rate', credits?.credits?.calculatedCredits?.[0]?.monthlyPayment);
 	const sliderRef = useRef();
 	const [validate, setValidate] = useState();
 
@@ -34,7 +35,12 @@ function Calculator() {
 			})
 		);
 
-		// dispatch(loadCredits({ amount: calculator.creditAmount, term: calculator.creditTerm }));
+		dispatch(
+			loadCredits({
+				amount: calculator.creditAmount,
+				term: calculator.creditTerm,
+			})
+		);
 	}, [calculator]);
 
 	const chooseCredit = () => {
@@ -47,60 +53,38 @@ function Calculator() {
 
 	const getValues = (values, valid) => {
 		setValidate(valid.validate);
-		valid.validate
-			? dispatch(editCalculatorValues(values))
-			: dispatch(
-					loadDeposits({
-						amount: 0,
-						term: 0,
-					})
-			  );
-		// if (valid.validate) {
-		// 	dispatch(editCalculatorValues(values));
-		// } else {
-		// 	dispatch(loadDeposits({ amount: 0, term: 0 }));
-		// 	dispatch(loadCredits({ amount: 0, term: 0 }));
-		// }
+		if (valid.validate) {
+			dispatch(editCalculatorValues(values));
+		} else {
+			dispatch(loadDeposits({ amount: 0, term: 0 }));
+			dispatch(loadCredits({ amount: 0, term: 0 }));
+		}
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(
-			loadDeposits({
-				amount: calculator.depositAmount,
-				term: calculator.depositTerm,
-			})
-		)
-			.then(() => {
-				if (!deposits.error && !deposits.isLoading) {
-					navigate('/deposits');
-				}
-			})
-			.catch(() => {
-				alert(deposits.message);
-			});
 
-		// if (!calculator.isCredit) {
-		// dispatch(loadDeposits({ amount: calculator.depositAmount, term: calculator.depositTerm }))
-		// 	.then(() => {
-		// 		if (!deposits.error && !deposits.isLoading) {
-		// 			navigate('/deposits');
-		// 		}
-		// 	})
-		// 	.catch(() => {
-		// 		alert(deposits.message);
-		// 	});
-		// } else {
-		// 	dispatch(loadCredits({ amount: calculator.creditsAmount, term: calculator.creditTerm }))
-		// 		.then(() => {
-		// 			if (!credits.error && !credits.isLoading) {
-		// 				navigate('/credits');
-		// 			}
-		// 		})
-		// 		.catch(() => {
-		// 			alert(credits.message);
-		// 		});
-		// }
+		if (!calculator.isCredit) {
+			dispatch(loadDeposits({ amount: calculator.depositAmount, term: calculator.depositTerm }))
+				.then(() => {
+					if (!deposits.error && !deposits.isLoading) {
+						navigate('/deposits');
+					}
+				})
+				.catch(() => {
+					alert(deposits.message);
+				});
+		} else {
+			dispatch(loadCredits({ amount: calculator.creditAmount, term: calculator.creditTerm }))
+				.then(() => {
+					if (!credits.error && !credits.isLoading) {
+						navigate('/credits');
+					}
+				})
+				.catch(() => {
+					alert(credits.message);
+				});
+		}
 	};
 
 	const roundNumber = (number) => {
@@ -216,17 +200,18 @@ function Calculator() {
 									<>
 										<CalculatorResult
 											name="Ставка"
-											value="до 15,03 %"
-											// value={`до ${
-											// 	replacePointNumber(
-											// 		deposits?.deposits?.calculatedDeposits?.[0]?.deposit?.rate
-											// 	) || '0'
-											// } %`}
-											isLoading={deposits}
+											value={`до ${
+												replacePointNumber(
+													credits?.credits?.calculatedCredits?.[0]?.credit?.rate
+												) || '0'
+											} %`}
+											isLoading={credits}
 										/>
 										<CalculatorResult
 											name="Платеж от"
-											value={`от 50 690`}
+											value={`до ${
+												roundNumber(credits?.credits?.calculatedCredits?.[0]?.monthlyPayment) || '0'
+											}`}
 											currency={calculator.currency}
 										/>
 									</>

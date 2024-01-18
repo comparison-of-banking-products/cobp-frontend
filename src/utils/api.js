@@ -22,18 +22,21 @@ export const getDeposits = ({
 export const getCredits = ({
 	amount,
 	term,
-	// capitalization,
-	// replenishment,
-	// partialWithdrawal,
+	creditOnline = false,
+	onlineApprove = false,
+	collateral = false,
 	banks = null,
 }) => {
-	// const capitalizationParam = capitalization ? '&=true' : '';
-	// const replenishmentParam = replenishment ? '&=true' : '';
-	// const partialWithdrawalParam = partialWithdrawal ? '&=true' : '';
+	const creditOnlineParam = creditOnline ? '&creditOnline=true' : '';
+	const onlineApproveParam = onlineApprove ? '&onlineApprove=true' : '';
+	const collateralParam = collateral ? '&collateral=true' : '';
 
 	const banksParam = banks === null ? [] : banks.length > 0 ? banks.map((bank) => bank.bic) : [0];
 
-	return BASE_URL + `v1/calculators/credits?amount=${amount}&term=${term}&bics=${banksParam}`;
+	return (
+		BASE_URL +
+		`v1/calculators/credits?amount=${amount}&term=${term}${creditOnlineParam}${onlineApproveParam}${collateralParam}&bics=${banksParam}`
+	);
 };
 
 export const getBanksList = () => {
