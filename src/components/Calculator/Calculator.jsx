@@ -126,17 +126,18 @@ function Calculator() {
 									<Select
 										name="depositAmount"
 										placeHolder="Сумма вклада"
-										currency={['₽', '$', '€', '¥']}
+										currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
 										defaultValue={calculator.depositAmount}
 										getValue={getValues}
-										max="10000000"
-										min="15000"
+										max="100000000"
+										min="10000"
 									/>
 									<Range
 										name="depositTerm"
 										placeHolder="Срок в месяцах"
-										min="1"
-										max="36"
+										min="3"
+										max="120"
+										step="3"
 										startValue={calculator.depositTerm}
 										getValue={getValues}
 									/>
@@ -147,18 +148,19 @@ function Calculator() {
 									<Select
 										name="creditAmount"
 										placeHolder="Сумма кредита"
-										currency={['₽', '$', '€', '¥']}
+										currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
 										defaultValue={calculator.creditAmount}
 										getValue={getValues}
-										max="10000000"
-										min="15000"
+										max="100000000"
+										min="10000"
 										disableOption={true}
 									/>
 									<Range
 										name="creditTerm"
 										placeHolder="Срок в годах"
-										min="1"
-										max="36"
+										min="3"
+										max="120"
+										step="3"
 										startValue={calculator.creditTerm}
 										getValue={getValues}
 									/>

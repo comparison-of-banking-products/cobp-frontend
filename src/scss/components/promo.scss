@@ -1,4 +1,4 @@
-.promo-deposits {
+.promo {
 	max-width: 1280px;
 	min-height: 375px;
 	margin: 0 auto;
@@ -7,7 +7,15 @@
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	background: url('../../images/promo-deposits.png') no-repeat right/contain;
+
+	&_deposits {
+		background: url('../../images/promo-deposits.png') no-repeat right/contain;
+	}
+
+	&_credits {
+		background: url('../../images/promo-credits.png') no-repeat right/contain;
+	}
+
 	&__container {
 		max-width: 381px;
 		display: flex;
@@ -23,9 +31,17 @@
 }
 
 @include tablet {
-	.promo-deposits {
+	.promo {
 		min-height: 317px;
-		background: url('../../images/promo-deposits-l.png') no-repeat right/contain;
+
+		&_deposits {
+			background: url('../../images/promo-deposits-l.png') no-repeat right/contain;
+		}
+
+		&_credits {
+			background: url('../../images/promo-credits-l.png') no-repeat right/contain;
+		}
+
 		&__subtitle {
 			max-width: 356px;
 		}
@@ -33,12 +49,19 @@
 }
 
 @include tablet-xs {
-	.promo-deposits {
+	.promo {
 		min-height: 224px;
-		background: url('../../images/promo-deposits-m.png') no-repeat right/contain;
 		max-width: calc(100% - 80px);
 		padding: 0;
 		margin-top: 52px;
+
+		&_deposits {
+			background: url('../../images/promo-deposits-m.png') no-repeat right/contain;
+		}
+
+		&_credits {
+			background: url('../../images/promo-credits-m.png') no-repeat right/contain;
+		}
 
 		&__container {
 			min-height: 224px;
@@ -51,11 +74,18 @@
 }
 
 @include mobile {
-	.promo-deposits {
+	.promo {
 		min-height: 178px;
-		background: url('../../images/promo-deposits-s.png') no-repeat right/contain;
 		max-width: calc(100% - 48px);
 		margin-top: 48px;
+
+		&_deposits {
+			background: url('../../images/promo-deposits-s.png') no-repeat right/contain;
+		}
+
+		&_credits {
+			background: url('../../images/promo-credits-s.png') no-repeat right/contain;
+		}
 
 		&__container {
 			min-height: 178px;
@@ -73,15 +103,22 @@
 }
 
 @include mobile-xs {
-	.promo-deposits {
+	.promo {
 		min-height: 344px;
-		background: url('../../images/promo-deposits-xs.png');
 		background-size: 288px 178px;
 		background-position: center bottom;
 		background-repeat: no-repeat;
 
 		max-width: calc(100% - 32px);
 		margin-top: 24px;
+
+		&_deposits {
+			background: url('../../images/promo-deposits-xs.png') contain;
+		}
+
+		&_credits {
+			background: url('../../images/promo-credits-xs.png') contain;
+		}
 
 		&__container {
 			min-height: 344px;
