@@ -1,16 +1,23 @@
 .deposits-card {
-	margin: 0 auto;
-
-	&__list {
-		background-color: $color-bg-dark-gray;
-		border-radius: 40px;
-		padding: 24px;
-		margin-bottom: 24px;
-
-		&:last-child {
-			margin-bottom: 32px;
-		}
+	margin: 0 auto 24px auto;
+	background-color: $color-bg-dark-gray;
+	border-radius: 40px;
+	padding: 24px;
+	&:last-child {
+		margin-bottom: 32px;
 	}
+	min-width: 1200px;
+
+	// &__list {
+	// 	background-color: $color-bg-dark-gray;
+	// 	border-radius: 40px;
+	// 	padding: 24px;
+	// 	margin-bottom: 24px;
+
+	// 	&:last-child {
+	// 		margin-bottom: 32px;
+	// 	}
+	// }
 
 	&__tags {
 		display: flex;
@@ -27,7 +34,8 @@
 		border-radius: 16px;
 	}
 
-	&__tags-image {
+	&__tags-image::before {
+		content: '';
 		display: flex;
 		width: 24px;
 		height: 24px;
@@ -40,18 +48,20 @@
 	&__about-contribution {
 		display: flex;
 		max-height: 64px;
+		
+	justify-content: space-between;
 	}
 
 	&__about-bank {
 		display: flex;
-		margin-right: 174px;
+		margin-right: max(150px);
 		min-width: 213px;
 	}
 
 	&__about-bank-image {
 		width: 64px;
 		height: 64px;
-		background-image: url('../../images/alpha-bank-logo.svg');
+		border-radius: 16px;
 	}
 
 	&__about-bank-text {

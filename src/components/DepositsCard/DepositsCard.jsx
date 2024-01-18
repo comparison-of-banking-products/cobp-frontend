@@ -1,199 +1,95 @@
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLogoName } from '../../utils/api';
 
-function DepositsCard() {
+function DepositsCard(props) {
+	const calculator = useSelector((state) => state.calculator);
+
+	const roundNumber = (number) => {
+		if (typeof number === 'number') return parseFloat(Math.round(number)).toLocaleString();
+	};
+
+	const replacePointNumber = (number) => {
+		if (typeof number === 'number') return String(number).replace('.', ',');
+	};
+
 	return (
-		<div className="deposits-card">
-			<ul className="deposits-card__item">
-				<li className="deposits-card__list">
-					<div className="deposits-card__tags">
-						<p className="deposits-card__tags-text">
-							<p className="deposits-card__tags-image" />
-							Самый выгодный
+		// <li className="deposits-card__list">
+		<li className="deposits-card">
+			<div className="deposits-card__tags">
+				{props.id === 0 ? (
+					<p className="deposits-card__tags-text deposits-card__tags-image">Самый выгодный</p>
+				) : (
+					[]
+				)}
+				{props.deposits.deposit.capitalization ? (
+					<p className="deposits-card__tags-text">С капитализацией</p>
+				) : (
+					[]
+				)}
+				{props.deposits.deposit.replenishment ? (
+					<p className="deposits-card__tags-text">С пополнением</p>
+				) : (
+					[]
+				)}
+				{props.deposits.deposit.partialWithdrawal ? (
+					<p className="deposits-card__tags-text">С частичным снятием</p>
+				) : (
+					[]
+				)}
+			</div>
+			<div className="deposits-card__about-contribution">
+				<div className="deposits-card__about-bank">
+					{/* <p className="deposits-card__about-bank-image" /> */}
+					<img
+						className="deposits-card__about-bank-image"
+						src={getLogoName(props.deposits.deposit.bank.logo)}
+						alt={props.deposits.deposit.bank.name}
+					/>
+					<div className="deposits-card__about-bank-text">
+						<p className="deposits-card__about-bank-name">{props.deposits.deposit.bank.name}</p>
+						<p className="deposits-card__about-bank-bid">Максимальный</p>
+					</div>
+				</div>
+				<ul className="deposits-card__about-money">
+					<li className="deposits-card__about-money-list">
+						<p className="deposits-card__information">Срок</p>
+						<p className="deposits-card__term">{props.deposits.deposit.term} мес</p>
+					</li>
+					<li className="deposits-card__about-money-list">
+						<p className="deposits-card__information">Ставка</p>
+						<p className="deposits-card__rate">{replacePointNumber(props.deposits.deposit.rate)}</p>
+					</li>
+					<li className="deposits-card__about-money-list">
+						<p className="deposits-card__information">Доход</p>
+						<p className="deposits-card__income">
+							{roundNumber(props.deposits.annualInterest)} &#8381;
 						</p>
-						<p className="deposits-card__tags-text">С пополнением</p>
-						<p className="deposits-card__tags-text">С капитализацией</p>
-					</div>
-					<div className="deposits-card__about-contribution">
-						<div className="deposits-card__about-bank">
-							<p className="deposits-card__about-bank-image" />
-							<div className="deposits-card__about-bank-text">
-								<p className="deposits-card__about-bank-name">Альфа-банк</p>
-								<p className="deposits-card__about-bank-bid">Максимальный</p>
-							</div>
-						</div>
-						<div className="deposits-card__about-money">
-							<p className="deposits-card__term">
-								<p className="deposits-card__information">Срок</p>5 мес
+					</li>
+					<li className="deposits-card__about-money-list">
+						<p className="deposits-card__information">Сумма</p>
+						<p className="deposits-card__income">{calculator.depositAmount} &#8381;</p>
+					</li>
+					{/* <p className="deposits-card__term">
+								<p className="deposits-card__information">Срок</p>{props.deposits.deposit.term} мес
 							</p>
 							<p className="deposits-card__rate">
-								<p className="deposits-card__information">Ставка</p>23,5%
+								<p className="deposits-card__information">Ставка</p>{replacePointNumber(props.deposits.deposit.rate)}
 							</p>
 							<p className="deposits-card__income">
-								<p className="deposits-card__information">Доход</p>50000 &#8381;
+								<p className="deposits-card__information">Доход</p>{roundNumber(props.deposits.annualInterest)} &#8381;
 							</p>
 							<p className="deposits-card__sum">
-								<p className="deposits-card__information">Сумма</p>150000 &#8381;
-							</p>
-						</div>
-						<Link className="deposits-card__link" href="/" />
-					</div>
-				</li>
-				<li className="deposits-card__list">
-					<div className="deposits-card__tags">
-						<p className="deposits-card__tags-text">С пополнением</p>
-						<p className="deposits-card__tags-text">С капитализацией</p>
-						<p className="deposits-card__tags-text">С частичным снятием</p>
-					</div>
-					<div className="deposits-card__about-contribution">
-						<div className="deposits-card__about-bank">
-							<p className="deposits-card__about-bank-image" />
-							<div className="deposits-card__about-bank-text">
-								<p className="deposits-card__about-bank-name">Альфа-банк</p>
-								<p className="deposits-card__about-bank-bid">Максимальный</p>
-							</div>
-						</div>
-						<div className="deposits-card__about-money">
-							<p className="deposits-card__term">
-								<p className="deposits-card__information">Срок</p>5 мес
-							</p>
-							<p className="deposits-card__rate">
-								<p className="deposits-card__information">Ставка</p>23,5%
-							</p>
-							<p className="deposits-card__income">
-								<p className="deposits-card__information">Доход</p>50000 &#8381;
-							</p>
-							<p className="deposits-card__sum">
-								<p className="deposits-card__information">Сумма</p>150000 &#8381;
-							</p>
-						</div>
-						<Link className="deposits-card__link" href="/" />
-					</div>
-				</li>
-				<li className="deposits-card__list">
-					<div className="deposits-card__tags">
-						<p className="deposits-card__tags-text">
-							<p className="deposits-card__tags-image" />
-							Самый выгодный
-						</p>
-						<p className="deposits-card__tags-text">С пополнением</p>
-						<p className="deposits-card__tags-text">С капитализацией</p>
-						<p className="deposits-card__tags-text">С частичным снятием</p>
-					</div>
-					<div className="deposits-card__about-contribution">
-						<div className="deposits-card__about-bank">
-							<p className="deposits-card__about-bank-image" />
-							<div className="deposits-card__about-bank-text">
-								<p className="deposits-card__about-bank-name">Альфа-банк</p>
-								<p className="deposits-card__about-bank-bid">Максимальный</p>
-							</div>
-						</div>
-						<div className="deposits-card__about-money">
-							<p className="deposits-card__term">
-								<p className="deposits-card__information">Срок</p>5 мес
-							</p>
-							<p className="deposits-card__rate">
-								<p className="deposits-card__information">Ставка</p>23,5%
-							</p>
-							<p className="deposits-card__income">
-								<p className="deposits-card__information">Доход</p>50000 &#8381;
-							</p>
-							<p className="deposits-card__sum">
-								<p className="deposits-card__information">Сумма</p>150000 &#8381;
-							</p>
-						</div>
-						<Link className="deposits-card__link" href="/" />
-					</div>
-				</li>
-				<li className="deposits-card__list">
-					<div className="deposits-card__tags">
-						<p className="deposits-card__tags-text">С пополнением</p>
-					</div>
-					<div className="deposits-card__about-contribution">
-						<div className="deposits-card__about-bank">
-							<p className="deposits-card__about-bank-image" />
-							<div className="deposits-card__about-bank-text">
-								<p className="deposits-card__about-bank-name">Альфа-банк</p>
-								<p className="deposits-card__about-bank-bid">Максимальный</p>
-							</div>
-						</div>
-						<div className="deposits-card__about-money">
-							<p className="deposits-card__term">
-								<p className="deposits-card__information">Срок</p>5 мес
-							</p>
-							<p className="deposits-card__rate">
-								<p className="deposits-card__information">Ставка</p>23,5%
-							</p>
-							<p className="deposits-card__income">
-								<p className="deposits-card__information">Доход</p>50000 &#8381;
-							</p>
-							<p className="deposits-card__sum">
-								<p className="deposits-card__information">Сумма</p>150000 &#8381;
-							</p>
-						</div>
-						<Link className="deposits-card__link" href="/" />
-					</div>
-				</li>
-				<li className="deposits-card__list">
-					<div className="deposits-card__tags">
-						<p className="deposits-card__tags-text">С пополнением</p>
-					</div>
-					<div className="deposits-card__about-contribution">
-						<div className="deposits-card__about-bank">
-							<p className="deposits-card__about-bank-image" />
-							<div className="deposits-card__about-bank-text">
-								<p className="deposits-card__about-bank-name">Альфа-банк</p>
-								<p className="deposits-card__about-bank-bid">Максимальный</p>
-							</div>
-						</div>
-						<div className="deposits-card__about-money">
-							<p className="deposits-card__term">
-								<p className="deposits-card__information">Срок</p>5 мес
-							</p>
-							<p className="deposits-card__rate">
-								<p className="deposits-card__information">Ставка</p>23,5%
-							</p>
-							<p className="deposits-card__income">
-								<p className="deposits-card__information">Доход</p>50000 &#8381;
-							</p>
-							<p className="deposits-card__sum">
-								<p className="deposits-card__information">Сумма</p>150000 &#8381;
-							</p>
-						</div>
-						<Link className="deposits-card__link" href="/" />
-					</div>
-				</li>
-				<li className="deposits-card__list">
-					<div className="deposits-card__tags">
-						<p className="deposits-card__tags-text">С пополнением</p>
-					</div>
-					<div className="deposits-card__about-contribution">
-						<div className="deposits-card__about-bank">
-							<p className="deposits-card__about-bank-image" />
-							<div className="deposits-card__about-bank-text">
-								<p className="deposits-card__about-bank-name">Альфа-банк</p>
-								<p className="deposits-card__about-bank-bid">Максимальный</p>
-							</div>
-						</div>
-						<div className="deposits-card__about-money">
-							<p className="deposits-card__term">
-								<p className="deposits-card__information">Срок</p>5 мес
-							</p>
-							<p className="deposits-card__rate">
-								<p className="deposits-card__information">Ставка</p>23,5%
-							</p>
-							<p className="deposits-card__income">
-								<p className="deposits-card__information">Доход</p>50000 &#8381;
-							</p>
-							<p className="deposits-card__sum">
-								<p className="deposits-card__information">Сумма</p>150000 &#8381;
-							</p>
-						</div>
-						<Link className="deposits-card__link" href="/" />
-					</div>
-				</li>
-			</ul>
-		</div>
+								<p className="deposits-card__information">Сумма</p>{calculator.depositAmount} &#8381;
+							</p> */}
+				</ul>
+				<Link className="deposits-card__link" to={props.deposits.deposit.productUrl} />
+			</div>
+		</li>
 	);
 }
 
 export default DepositsCard;
+
+// @nordicesman, @monomono1234
+// У меня к вам есть парочка вопросов по поводу

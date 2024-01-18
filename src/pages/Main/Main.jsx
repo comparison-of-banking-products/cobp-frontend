@@ -1,5 +1,12 @@
 import React from 'react';
-import { Slider, ProductCards, Calculator, Banks, Support, ExchangeRate } from '../../components';
+import {
+	Slider,
+	ProductCards,
+	Calculator,
+	Banks,
+	Support,
+	ExchangeRateList,
+} from '../../components';
 
 function Main() {
 	return (
@@ -7,7 +14,7 @@ function Main() {
 			<Slider />
 			<ProductCards />
 			<Calculator />
-			<ExchangeRate />
+			<ExchangeRateList />
 			<Banks />
 			<Support />
 		</>
