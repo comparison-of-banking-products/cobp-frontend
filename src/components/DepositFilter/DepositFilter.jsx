@@ -4,12 +4,13 @@ import { Range, Button, Select, SelectMultiple } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
+import { loadBanksList } from '../../store/banksList/banksListSlice';
 
 function DepositFilter({ isSubmitted, setIsSubmitted }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
 	const depositList = useSelector((state) => state.deposits.deposits);
-	console.log('depositList:', depositList);
+	// console.log('depositList:', depositList);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 

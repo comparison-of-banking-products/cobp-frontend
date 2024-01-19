@@ -42,3 +42,11 @@ export const getCredits = ({
 export const getBanksList = () => {
 	return BASE_URL + `v1/banks`;
 };
+
+export const getLogoName = (logoName) => {
+	return BASE_URL + `v1/banks/logo/${logoName}`;
+};
+
+export const getExchangeRate = () => {
+	return BASE_URL + `v1/currencies/rates`;
+};
