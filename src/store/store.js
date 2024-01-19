@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import { depositsReducer } from './deposits/depositsSlice';
 import { calculatorReducer } from './calculator/calculatorSlice';
 import { banksListReducer } from './banksList/banksListSlice';
+import { creditsReducer } from './credits/creditsSlice';
 import axios from 'axios';
 
 const persistConfig = {
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
 	deposits: depositsReducer,
 	calculator: calculatorReducer,
 	banksList: banksListReducer,
+	credits: creditsReducer,
 });
 
 const persistReducer = persReducer(persistConfig, rootReducer);

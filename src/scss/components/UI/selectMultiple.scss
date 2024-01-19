@@ -6,7 +6,8 @@
 	justify-content: space-between;
 	align-items: center;
 	gap: 6px;
-	padding: 13px;
+	// padding: 13px;
+	padding: 14px;
 	position: relative;
 	&__placeholder {
 		@include font($font-size-xs, $font-weight-medium, 18px, 0, $color-light-gray);
@@ -33,6 +34,7 @@
 	}
 
 	&__input {
+		width: 70%;
 		padding: 0;
 		background-color: $color-gray;
 		outline: none;
@@ -45,8 +47,14 @@
 		}
 	}
 
+	// &__icon-container {
+	// 	width: 24px;
+	// 	height: 24px;
+	// 	margin-left: 6px;
+	// }
+
 	&__icon-count {
-		margin-top: -2px;
+		margin-top: -4px;
 		margin-right: 6px;
 		border-radius: 50%;
 		background-color: #fbfbfb;
@@ -59,6 +67,8 @@
 		align-items: center;
 		justify-content: center;
 		vertical-align: middle;
+
+		flex-shrink: 0;
 	}
 
 	&__options {

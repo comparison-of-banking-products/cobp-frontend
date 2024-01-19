@@ -6,9 +6,10 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max, min,
 	const [values, setValues] = useState({
 		[name]: Number(defaultValue),
 		currency: currency[0],
+		// currency: currency[0],
 	});
 	// const triadNumber = useMemo(() => Number(values[name]).toLocaleString(), [values]);
-
+	// console.log('currency', currency[0].split(' ')[1]);
 	const triadNumber = (number) => {
 		return number.toLocaleString();
 	};
@@ -36,6 +37,7 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max, min,
 		setValues({ ...values, currency: e.target.textContent });
 		!!getValue && getValue({ ...values, currency: e.target.textContent }, { validate: true });
 		toggleOptions();
+		console.log('e.t.t', e.target.textContent.split(' ')[1]);
 	};
 
 	const handleChange = (e) => {

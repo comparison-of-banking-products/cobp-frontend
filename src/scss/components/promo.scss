@@ -1,4 +1,4 @@
-.promo-deposits {
+.promo {
 	max-width: 1280px;
 	min-height: 375px;
 	margin: 0 auto;
@@ -7,7 +7,15 @@
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	background: url('../../images/promo-deposits.png') no-repeat right/contain;
+
+	&_deposits {
+		background: url('../../images/promo-deposits.png') no-repeat right/contain;
+	}
+
+	&_credits {
+		background: url('../../images/promo-credits.png') no-repeat right/contain;
+	}
+
 	&__container {
 		max-width: 381px;
 		display: flex;
@@ -18,30 +26,109 @@
 		@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-text-white);
 	}
 	&__subtitle {
-		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-white);
+		@include font($font-size-s, $font-weight-medium, 20px, -0.288px, $color-text-white);
 	}
 }
 
-.promo-credits {
-	max-width: 1280px;
-	min-height: 375px;
-	margin: 0 auto;
-	margin-top: 40px;
-	padding: 0 40px;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	background: url('../../images/promo-credits.png') no-repeat right/contain;
-	&__container {
-		max-width: 381px;
-		display: flex;
-		flex-direction: column;
-		gap: 24px;
+@include tablet {
+	.promo {
+		min-height: 317px;
+
+		&_deposits {
+			background: url('../../images/promo-deposits-l.png') no-repeat right/contain;
+		}
+
+		&_credits {
+			background: url('../../images/promo-credits-l.png') no-repeat right/contain;
+		}
+
+		&__subtitle {
+			max-width: 356px;
+		}
 	}
-	&__title {
-		@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-text-white);
+}
+
+@include tablet-xs {
+	.promo {
+		min-height: 224px;
+		max-width: calc(100% - 80px);
+		padding: 0;
+		margin-top: 52px;
+
+		&_deposits {
+			background: url('../../images/promo-deposits-m.png') no-repeat right/contain;
+		}
+
+		&_credits {
+			background: url('../../images/promo-credits-m.png') no-repeat right/contain;
+		}
+
+		&__container {
+			min-height: 224px;
+		}
+
+		&__subtitle {
+			max-width: 310px;
+		}
 	}
-	&__subtitle {
-		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-white);
+}
+
+@include mobile {
+	.promo {
+		min-height: 178px;
+		max-width: calc(100% - 48px);
+		margin-top: 48px;
+
+		&_deposits {
+			background: url('../../images/promo-deposits-s.png') no-repeat right/contain;
+		}
+
+		&_credits {
+			background: url('../../images/promo-credits-s.png') no-repeat right/contain;
+		}
+
+		&__container {
+			min-height: 178px;
+		}
+
+		&__title {
+			@include font($font-size-mml, $font-weight-bold, 32px, -0.28px, $color-text-white);
+		}
+
+		&__subtitle {
+			max-width: 261px;
+			@include font($font-size-xs, $font-weight-medium, 18px, -0.14px, $color-text-white);
+		}
+	}
+}
+
+@include mobile-xs {
+	.promo {
+		min-height: 344px;
+		background-size: 288px 178px;
+		background-position: center bottom;
+		background-repeat: no-repeat;
+
+		max-width: calc(100% - 32px);
+		margin-top: 24px;
+
+		&_deposits {
+			background: url('../../images/promo-deposits-xs.png') contain;
+		}
+
+		&_credits {
+			background: url('../../images/promo-credits-xs.png') contain;
+		}
+
+		&__container {
+			min-height: 344px;
+		}
+
+		&__title {
+		}
+
+		&__subtitle {
+			max-width: 100%;
+		}
 	}
 }
