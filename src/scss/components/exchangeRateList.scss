@@ -49,9 +49,6 @@
 
 	&__converter-link {
 		@include font($font-size-s, $font-weight-bold, 20px, normal, $color-text-light-gray);
-
-		margin-right: 27px;
-
 		text-decoration: underline;
 		text-underline-offset: 3.6px;
 		transition: color 0.3s;

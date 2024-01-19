@@ -7,6 +7,8 @@ export const getDeposits = ({
 	replenishment = false,
 	partialWithdrawal = false,
 	banks = null,
+	page = 0,
+	size = 6,
 }) => {
 	const capitalizationParam = capitalization ? '&capitalization=true' : '';
 	const replenishmentParam = replenishment ? '&replenishment=true' : '';
@@ -15,7 +17,7 @@ export const getDeposits = ({
 	const banksParam = banks === null ? [] : banks.length > 0 ? banks.map((bank) => bank.bic) : [0];
 	return (
 		BASE_URL +
-		`v1/calculators/deposits?amount=${amount}&term=${term}${capitalizationParam}${replenishmentParam}${partialWithdrawalParam}&bics=${banksParam}`
+		`v1/calculators/deposits?amount=${amount}&term=${term}${capitalizationParam}${replenishmentParam}${partialWithdrawalParam}&bics=${banksParam}&page=${page}&size=${size}`
 	);
 };
 

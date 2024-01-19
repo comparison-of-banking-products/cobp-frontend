@@ -10,7 +10,7 @@ function DepositsCard(props) {
 	};
 
 	const replacePointNumber = (number) => {
-		if (typeof number === 'number') return String(number).replace('.', ',');
+		if (typeof number === 'number') return String(number.toFixed(2)).replace('.', ',');
 	};
 
 	return (
@@ -58,7 +58,9 @@ function DepositsCard(props) {
 					</li>
 					<li className="deposits-card__about-money-list">
 						<p className="deposits-card__information">Ставка</p>
-						<p className="deposits-card__rate">{replacePointNumber(props.deposits.deposit.rate)}</p>
+						<p className="deposits-card__rate">
+							{replacePointNumber(props.deposits.deposit.rate)} %
+						</p>
 					</li>
 					<li className="deposits-card__about-money-list">
 						<p className="deposits-card__information">Доход</p>
