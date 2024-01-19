@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Promo, DepositsCardList, DepositFilter } from '../../components';
 import { useLocation } from 'react-router-dom';
 
@@ -6,6 +6,9 @@ function Deposits() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const location = useLocation();
 	const isDeposits = location.pathname === '/deposits';
+
+	const fromCalculatorButton = location.state && location.state.fromCalculatorButton;
+	//console.log('fromCalculator', fromCalculatorButton);
 
 	return (
 		<>
@@ -24,7 +27,7 @@ function Deposits() {
 				// по&nbsp;вкладам с&nbsp;выгодными условиями и&nbsp;высокой процентной ставкой"
 			/>
 			<DepositFilter isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />
-			<DepositsCardList isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />
+			<DepositsCardList isSubmitted={fromCalculatorButton ? true : isSubmitted} />
 		</>
 	);
 }
