@@ -18,7 +18,7 @@ import Input from './UI/Input/Input';
 import Checkbox from './UI/Checkbox/Checkbox';
 import Support from './Support/Support';
 import SupportCard from './SupportCard/SupportCard';
-import ExchangeRate from './ExchangeRate/ExchangeRate';
+import ExchangeRateList from './ExchangeRateList/ExchangeRateList';
 import Promo from './Promo/Promo';
 import SupportChat from './SupportChat/SupportChat';
 import SupportChatForm from './SupportChat/SupportChatForm/SupportChatForm';
@@ -45,7 +45,7 @@ export {
 	Input,
 	Support,
 	SupportCard,
-	ExchangeRate,
+	ExchangeRateList,
 	Promo,
 	SupportChat,
 	SupportChatForm,
