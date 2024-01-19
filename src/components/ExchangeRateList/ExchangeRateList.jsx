@@ -7,7 +7,7 @@ import ExchangeRate from '../ExchangeRate/ExchangeRate';
 function ExchangeRateList() {
 	const dispatch = useDispatch();
 	const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
-	const selectedCurrencies = ['USD', 'EUR', 'CNY'];
+	const selectedCurrencies = ['USD', 'EUR', 'JPY'];
 
 	useEffect(() => {
 		dispatch(loadExchangeRate({}));
