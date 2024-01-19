@@ -14,8 +14,8 @@ function Calculator() {
 
 	const calculator = useSelector((state) => state.calculator);
 	const credits = useSelector((state) => state.credits);
-	console.log('credits', credits);
-	console.log(deposits);
+	// console.log('credits', credits);
+	// console.log(deposits);
 	//console.log('rate', credits?.credits?.calculatedCredits?.[0]?.monthlyPayment);
 	const sliderRef = useRef();
 	const [validate, setValidate] = useState();
