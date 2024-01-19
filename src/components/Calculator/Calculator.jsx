@@ -176,19 +176,23 @@ function Calculator() {
 											name="Ставка"
 											value={
 												depositResults
-													? `${replacePointNumber(depositResults.deposit.rate)} %`
+													? `до ${replacePointNumber(depositResults.deposit.rate)} %`
 													: '-'
 											}
 											isLoading={deposits}
 										/>
 										<CalculatorResult
 											name="Доход за период"
-											value={depositResults ? roundNumber(depositResults.maturityInterest) : '-'}
+											value={
+												depositResults ? `до ${roundNumber(depositResults.maturityInterest)}` : '-'
+											}
 											currency={depositResults ? calculator.currency.split(' ')[1] : ''}
 										/>
 										<CalculatorResult
 											name="Доход за год"
-											value={depositResults ? roundNumber(depositResults.annualInterest) : '-'}
+											value={
+												depositResults ? `до ${roundNumber(depositResults.annualInterest)}` : '-'
+											}
 											currency={depositResults ? calculator.currency.split(' ')[1] : ''}
 										/>
 									</>
@@ -197,13 +201,17 @@ function Calculator() {
 										<CalculatorResult
 											name="Ставка"
 											value={
-												creditResults ? `${replacePointNumber(creditResults.credit.rate)} %` : '-'
+												creditResults
+													? `до ${replacePointNumber(creditResults.credit.rate)} %`
+													: '-'
 											}
 											isLoading={credits}
 										/>
 										<CalculatorResult
 											name="Платеж от"
-											value={creditResults ? roundNumber(creditResults.monthlyPayment) : '-'}
+											value={
+												creditResults ? `до ${roundNumber(creditResults.monthlyPayment)}` : '-'
+											}
 											currency={creditResults ? calculator.currency.split(' ')[1] : ''}
 										/>
 									</>
