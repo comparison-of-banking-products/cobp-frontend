@@ -6,11 +6,9 @@ import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { loadBanksList } from '../../store/banksList/banksListSlice';
 
-function DepositFilter({ isSubmitted, setIsSubmitted }) {
+function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
-	const depositList = useSelector((state) => state.deposits.deposits);
-	// console.log('depositList:', depositList);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 
@@ -48,7 +46,8 @@ function DepositFilter({ isSubmitted, setIsSubmitted }) {
 		valid.validate && dispatch(editCalculatorValues(values));
 	};
 
-	const handleSubmit = () => {
+	const handleSubmit = (e) => {
+		e.preventDefault();
 		setIsSubmitted(true);
 		console.log('можно рендерить карточки:', isSubmitted);
 	};
@@ -83,7 +82,8 @@ function DepositFilter({ isSubmitted, setIsSubmitted }) {
 						<Select
 							name="depositAmount"
 							placeHolder="Сумма"
-							currency={['₽', '$', '€', '¥']}
+							// currency={['₽', '$', '€', '¥']}
+							currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
 							defaultValue={calculator.depositAmount}
 							getValue={getCurrencyValue}
 							max="1000000000"

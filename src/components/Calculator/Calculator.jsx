@@ -10,13 +10,9 @@ function Calculator() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const deposits = useSelector((state) => state.deposits);
-	// console.log('rate', deposits.deposits.calculatedDeposits[0].deposit.rate);
 
 	const calculator = useSelector((state) => state.calculator);
 	const credits = useSelector((state) => state.credits);
-	// console.log('credits', credits);
-	// console.log(deposits);
-	//console.log('rate', credits?.credits?.calculatedCredits?.[0]?.monthlyPayment);
 	const sliderRef = useRef();
 	const [validate, setValidate] = useState();
 
@@ -69,7 +65,7 @@ function Calculator() {
 			dispatch(loadDeposits({ amount: calculator.depositAmount, term: calculator.depositTerm }))
 				.then(() => {
 					if (!deposits.error && !deposits.isLoading) {
-						navigate('/deposits');
+						navigate('/deposits', { state: { fromCalculatorButton: true } });
 					}
 				})
 				.catch(() => {
