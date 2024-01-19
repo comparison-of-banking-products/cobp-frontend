@@ -18,8 +18,8 @@ import Input from './UI/Input/Input';
 import Checkbox from './UI/Checkbox/Checkbox';
 import Support from './Support/Support';
 import SupportCard from './SupportCard/SupportCard';
-import ExchangeRateList from './ExchangeRateList/ExchangeRateList';
-import PromoDeposits from './PromoDeposits/PromoDeposits';
+import ExchangeRate from './ExchangeRate/ExchangeRate';
+import Promo from './Promo/Promo';
 import SupportChat from './SupportChat/SupportChat';
 import SupportChatForm from './SupportChat/SupportChatForm/SupportChatForm';
 import SupportChatSuccess from './SupportChat/SupportChatSuccess/SupportChatSuccess';
@@ -45,8 +45,8 @@ export {
 	Input,
 	Support,
 	SupportCard,
-	ExchangeRateList,
-	PromoDeposits,
+	ExchangeRate,
+	Promo,
 	SupportChat,
 	SupportChatForm,
 	SupportChatSuccess,

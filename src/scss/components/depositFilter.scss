@@ -1,14 +1,17 @@
 .deposit-filter {
 	margin: -35px auto 0;
-	margin: 0 auto 0;
-	padding: 24px 24px;
 	max-width: 1200px;
-	min-height: 182px;
+	width: calc(100% - 80px);
+	max-height: 182px;
 	border-radius: 40px;
 	background-color: $color-bg-dark-gray;
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
+
+	&__container {
+		padding: 24px 24px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
 
 	&__form {
 		display: flex;
@@ -36,6 +39,7 @@
 		min-height: 72px;
 		background-color: $color-accent;
 		border-radius: 16px;
+		cursor: pointer;
 		@include font($font-size-s, $font-weight-bold, 20px, 0, $color-text-white);
 	}
 
@@ -56,5 +60,92 @@
 		&_active {
 			@include font($font-size-xs, $font-weight-medium, 18px, 0, $color-text-white);
 		}
+	}
+}
+
+@include tablet {
+	.deposit-filter {
+		margin: -21px auto 0;
+		&__submit {
+			min-width: 108px;
+		}
+	}
+}
+
+@include tablet-xs {
+	.deposit-filter {
+		margin: -4px auto 0;
+		max-height: 430px;
+		border-radius: 32px;
+		//
+		width: 100%;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+
+		&__container {
+			gap: 16px;
+			padding: 24px 0 24px 24px;
+		}
+
+		&__form {
+			flex-direction: column;
+			gap: 12px;
+			padding-right: 24px;
+		}
+
+		&__inputs {
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		&__inputs > * {
+			max-width: 100%;
+		}
+
+		&__checkboxes {
+			max-width: calc(100% - 24px);
+
+			flex-wrap: nowrap;
+			white-space: nowrap;
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+			-ms-overflow-style: none;
+			overflow: -moz-scrollbars-none;
+			scrollbar-width: none;
+		}
+
+		&__checkboxes::-webkit-scrollbar {
+			width: 0;
+			display: none;
+		}
+
+		&__checkbox {
+			flex: 1;
+		}
+	}
+}
+
+@include mobile {
+	.deposit-filter {
+		margin: -8px auto 0;
+		max-height: 414px;
+
+		&__container {
+			padding: 16px 0 16px 16px;
+		}
+
+		&__form {
+			padding-right: 16px;
+		}
+
+		&__checkboxes {
+			max-width: 100%;
+		}
+	}
+}
+
+@include mobile {
+	.deposit-filter {
+		margin: -10px auto 0;
 	}
 }

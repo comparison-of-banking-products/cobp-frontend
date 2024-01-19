@@ -6,6 +6,7 @@ import { depositsReducer } from './deposits/depositsSlice';
 import { calculatorReducer } from './calculator/calculatorSlice';
 import { banksListReducer } from './banksList/banksListSlice';
 import { exchangeRateReducer } from './exchangeRate/exchangeRateSlice';
+import { creditsReducer } from './credits/creditsSlice';
 import axios from 'axios';
 
 const persistConfig = {
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
 	calculator: calculatorReducer,
 	banksList: banksListReducer,
 	exchangeRate: exchangeRateReducer,
+	credits: creditsReducer,
 });
 
 const persistReducer = persReducer(persistConfig, rootReducer);

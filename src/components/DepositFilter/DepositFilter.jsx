@@ -6,16 +6,18 @@ import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { loadBanksList } from '../../store/banksList/banksListSlice';
 
-function DepositFilter() {
+function DepositFilter({ isSubmitted, setIsSubmitted }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
-	const banksList = useSelector((state) => state.banksList);
-	// console.log(banksList)
+	const depositList = useSelector((state) => state.deposits.deposits);
+	console.log('depositList:', depositList);
 
-	const bankListPlaceholder = ['Альфа-Банк', 'Райффайзен Банк', 'ВТБ', 'Сбербанк', 'Тинькофф Банк'];
+	const [selectedBanks, setSelectedBanks] = useState([]);
 
-	const [selectedBanks, setSelectedBanks] = useState(bankListPlaceholder);
-	// const [dataReceived, setDataRecieved] = useState(false);
+	// const [isAllDepo, setIsAllDepo] = useState(localStorage.getItem('isAllDepo') === 'true' || true);
+	// const [isCapitalisation, setIsCapitalisation] = useState(localStorage.getItem('isCapitalisation') === 'true' || false);
+	// const [isWithdraw, setIsWithdraw] = useState(localStorage.getItem('isWithdraw') === 'true' || false);
+	// const [isReplenishment, setIsReplenishment] = useState(localStorage.getItem('isReplenishment') === 'true' || false);
 
 	const [isAllDepo, setIsAllDepo] = useState(true);
 	const [isCapitalisation, setIsCapitalisation] = useState(false);
@@ -32,12 +34,13 @@ function DepositFilter() {
 				capitalization: isCapitalisation,
 				replenishment: isReplenishment,
 				partialWithdrawal: isWithdraw,
+				banks: selectedBanks,
 			})
 		);
-	}, [calculator]);
+	}, [calculator, isCapitalisation, isReplenishment, isWithdraw, selectedBanks]);
 
 	useEffect(() => {
-		dispatch(loadBanksList({}));
+		setIsAllDepo(true);
 	}, []);
 
 	const getCurrencyValue = (values, valid) => {
@@ -45,17 +48,9 @@ function DepositFilter() {
 		valid.validate && dispatch(editCalculatorValues(values));
 	};
 
-	const getSelectedBanksValue = (value) => {
-		setSelectedBanks(value);
-	};
-
 	const handleSubmit = () => {
-		console.log('постучались в API');
-
-		// const requestData = {
-		//     currency,
-		//     selectedBanks,
-		// };
+		setIsSubmitted(true);
+		console.log('можно рендерить карточки:', isSubmitted);
 	};
 
 	const handleButtonClick = (buttonType) => {
@@ -64,95 +59,87 @@ function DepositFilter() {
 			setIsCapitalisation(false);
 			setIsWithdraw(false);
 			setIsReplenishment(false);
-
-			console.log('changed to IsAllDepo');
+			localStorage.setItem('isAllDepo', true);
 		} else if (buttonType === 'capitalisation') {
 			setIsAllDepo(false);
 			setIsCapitalisation(!isCapitalisation);
-
-			console.log('changed to isCapitalisation');
+			localStorage.setItem('isCapitalisation', !isCapitalisation);
 		} else if (buttonType === 'withdraw') {
 			setIsAllDepo(false);
 			setIsWithdraw(!isWithdraw);
-
-			console.log('changed to IsWithdraw');
+			localStorage.setItem('isWithdraw', !isWithdraw);
 		} else if (buttonType === 'replenishment') {
 			setIsAllDepo(false);
 			setIsReplenishment(!isReplenishment);
-
-			console.log('changed to IsReplenishment');
+			localStorage.setItem('isReplenishment', !isReplenishment);
 		}
 	};
 
 	return (
 		<section className="deposit-filter">
-			<form className="deposit-filter__form">
-				<div className="deposit-filter__inputs">
-					<Select
-						name="depositAmount"
-						placeHolder="Сумма"
-						currency={['₽', '$', '€', '¥']}
-						defaultValue={calculator.depositAmount}
-						getValue={getCurrencyValue}
-						max="1000000000"
+			<div className="deposit-filter__container">
+				<form className="deposit-filter__form" onSubmit={handleSubmit}>
+					<div className="deposit-filter__inputs">
+						<Select
+							name="depositAmount"
+							placeHolder="Сумма"
+							currency={['₽', '$', '€', '¥']}
+							defaultValue={calculator.depositAmount}
+							getValue={getCurrencyValue}
+							max="1000000000"
+						/>
+						<Range
+							name="depositTerm"
+							placeHolder="Срок"
+							min={3}
+							max={120}
+							step={3}
+							startValue={calculator.depositTerm}
+							getValue={getCurrencyValue}
+						/>
+						<SelectMultiple
+							name="banks"
+							placeHolder="Банки"
+							selectedBanks={selectedBanks}
+							setSelectedBanks={setSelectedBanks}
+						/>
+					</div>
+					<Button textBtn={'Показать'} btnClass={'deposit-filter__submit'} type={'submit'} />
+				</form>
+				<div className="deposit-filter__checkboxes">
+					<Button
+						textBtn={'Все вклады'}
+						btnClass={`deposit-filter__checkbox deposit-filter__checkbox${
+							isAllDepo ? '_active' : ''
+						}`}
+						type={'button'}
+						onClick={() => handleButtonClick('allDepo')}
 					/>
-					<Range
-						name="depositTerm"
-						placeHolder="Срок"
-						min={3}
-						max={120}
-						startValue={calculator.depositTerm}
-						getValue={getCurrencyValue}
+					<Button
+						textBtn={'С капитализацией'}
+						btnClass={`deposit-filter__checkbox deposit-filter__checkbox${
+							isCapitalisation ? '_active' : ''
+						}`}
+						type={'button'}
+						onClick={() => handleButtonClick('capitalisation')}
 					/>
-					<SelectMultiple
-						getValue={getSelectedBanksValue}
-						name="banks"
-						placeHolder="Банки"
-						multiOptions={bankListPlaceholder}
-						selectedBanks={selectedBanks}
-						setSelectedBanks={setSelectedBanks}
+					<Button
+						textBtn={'С частичным снятием'}
+						btnClass={`deposit-filter__checkbox deposit-filter__checkbox${
+							isWithdraw ? '_active' : ''
+						}`}
+						type={'button'}
+						onClick={() => handleButtonClick('withdraw')}
+					/>
+					<Button
+						textBtn={'С пополнением'}
+						btnClass={`deposit-filter__checkbox deposit-filter__checkbox${
+							isReplenishment ? '_active' : ''
+						}`}
+						type={'button'}
+						onClick={() => handleButtonClick('replenishment')}
 					/>
 				</div>
-				<Button
-					textBtn={'Показать'}
-					btnClass={'deposit-filter__submit'}
-					type={'submit'}
-					onClick={handleSubmit}
-				/>
-			</form>
-			<div className="deposit-filter__checkboxes">
-				<Button
-					textBtn={'Все вклады'}
-					btnClass={`deposit-filter__checkbox deposit-filter__checkbox${
-						isAllDepo ? '_active' : ''
-					}`}
-					type={'button'}
-					onClick={() => handleButtonClick('allDepo')}
-				/>
-				<Button
-					textBtn={'С капитализацией'}
-					btnClass={`deposit-filter__checkbox deposit-filter__checkbox${
-						isCapitalisation ? '_active' : ''
-					}`}
-					type={'button'}
-					onClick={() => handleButtonClick('capitalisation')}
-				/>
-				<Button
-					textBtn={'С частичным снятием'}
-					btnClass={`deposit-filter__checkbox deposit-filter__checkbox${
-						isWithdraw ? '_active' : ''
-					}`}
-					type={'button'}
-					onClick={() => handleButtonClick('withdraw')}
-				/>
-				<Button
-					textBtn={'С пополнением'}
-					btnClass={`deposit-filter__checkbox deposit-filter__checkbox${
-						isReplenishment ? '_active' : ''
-					}`}
-					type={'button'}
-					onClick={() => handleButtonClick('replenishment')}
-				/>
 			</div>
 		</section>
 	);
