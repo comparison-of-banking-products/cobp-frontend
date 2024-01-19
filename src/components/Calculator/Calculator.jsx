@@ -214,7 +214,7 @@ function Calculator() {
 											value={`до ${
 												roundNumber(credits?.credits?.calculatedCredits?.[0]?.monthlyPayment) || '0'
 											}`}
-											currency={calculator.currency}
+											currency={calculator.currency.split(' ')[1]}
 										/>
 									</>
 								)}

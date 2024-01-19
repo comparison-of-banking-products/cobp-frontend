@@ -5,11 +5,11 @@ import { Checkbox } from '../../';
 function Select({ placeHolder, currency, name, getValue, defaultValue, max, min, disableOption }) {
 	const [values, setValues] = useState({
 		[name]: Number(defaultValue),
-		currency: currency[0].split(' ')[1],
+		currency: currency[0],
 		// currency: currency[0],
 	});
 	// const triadNumber = useMemo(() => Number(values[name]).toLocaleString(), [values]);
-	console.log('currency', currency[0].split(' ')[1]);
+	// console.log('currency', currency[0].split(' ')[1]);
 	const triadNumber = (number) => {
 		return number.toLocaleString();
 	};
