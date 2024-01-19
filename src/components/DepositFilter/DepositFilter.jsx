@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { loadBanksList } from '../../store/banksList/banksListSlice';
+import { debounce } from 'lodash';
 
 function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
@@ -41,10 +42,10 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 		setIsAllDepo(true);
 	}, []);
 
-	const getCurrencyValue = (values, valid) => {
+	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
 		valid.validate && dispatch(editCalculatorValues(values));
-	};
+	}, 500);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -82,7 +83,6 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 						<Select
 							name="depositAmount"
 							placeHolder="Сумма"
-							// currency={['₽', '$', '€', '¥']}
 							currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
 							defaultValue={calculator.depositAmount}
 							getValue={getCurrencyValue}

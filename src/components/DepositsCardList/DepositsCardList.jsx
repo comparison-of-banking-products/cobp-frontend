@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 function DepositsCardList({ isSubmitted }) {
-	const deposits = useSelector((state) => state.deposits.deposits.calculatedDeposits);
-	console.log('deposits', deposits);
-	console.log('isSubmitted', isSubmitted);
+	const deposits = useSelector((state) => state.deposits.deposits);
+
+	// console.log('deposits', deposits.totalElements);
+	// console.log('isSubmitted', isSubmitted);
 
 	return (
 		<section aria-label="Вклады" className="deposits">
@@ -15,8 +16,8 @@ function DepositsCardList({ isSubmitted }) {
 			</div>
 			<ul className="deposits__card-container">
 				{isSubmitted
-					? deposits && deposits.length > 0
-						? deposits.map((deposit, index) => (
+					? deposits && deposits.calculatedDeposits?.length > 0
+						? deposits.calculatedDeposits.map((deposit, index) => (
 								<DepositsCard key={index} id={index} deposits={deposit} />
 						  ))
 						: 'У нас нет депозитов с такими параметрами'
