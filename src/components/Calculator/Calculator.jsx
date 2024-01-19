@@ -187,7 +187,7 @@ function Calculator() {
 													deposits?.deposits?.calculatedDeposits?.[0]?.maturityInterest
 												) || '0'
 											}`}
-											currency={calculator.currency}
+											currency={calculator.currency.split(' ')[1]}
 										/>
 										<CalculatorResult
 											name="Доход за год"
@@ -195,7 +195,7 @@ function Calculator() {
 												roundNumber(deposits?.deposits?.calculatedDeposits?.[0]?.annualInterest) ||
 												'0'
 											}`}
-											currency={calculator.currency}
+											currency={calculator.currency.split(' ')[1]}
 										/>
 									</>
 								) : (
