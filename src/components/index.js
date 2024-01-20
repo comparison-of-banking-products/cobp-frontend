@@ -25,6 +25,7 @@ import SupportChatForm from './SupportChat/SupportChatForm/SupportChatForm';
 import SupportChatSuccess from './SupportChat/SupportChatSuccess/SupportChatSuccess';
 import DepositsCardList from './DepositsCardList/DepositsCardList';
 import DepositFilter from './DepositFilter/DepositFilter';
+import CreditFilter from './CreditFilter/CreditFilter';
 import SelectMultiple from './UI/SelectMultiple/SelectMultiple';
 
 export {
@@ -55,5 +56,6 @@ export {
 	CalculatorResult,
 	DepositFilter,
 	SelectMultiple,
+	CreditFilter,
 	Sort,
 };

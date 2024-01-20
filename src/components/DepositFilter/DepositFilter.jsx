@@ -4,7 +4,6 @@ import { Range, Button, Select, SelectMultiple } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
-import { loadBanksList } from '../../store/banksList/banksListSlice';
 
 function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
@@ -49,7 +48,6 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsSubmitted(true);
-		console.log('можно рендерить карточки:', isSubmitted);
 	};
 
 	const handleButtonClick = (buttonType) => {
@@ -58,19 +56,15 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 			setIsCapitalisation(false);
 			setIsWithdraw(false);
 			setIsReplenishment(false);
-			localStorage.setItem('isAllDepo', true);
 		} else if (buttonType === 'capitalisation') {
 			setIsAllDepo(false);
 			setIsCapitalisation(!isCapitalisation);
-			localStorage.setItem('isCapitalisation', !isCapitalisation);
 		} else if (buttonType === 'withdraw') {
 			setIsAllDepo(false);
 			setIsWithdraw(!isWithdraw);
-			localStorage.setItem('isWithdraw', !isWithdraw);
 		} else if (buttonType === 'replenishment') {
 			setIsAllDepo(false);
 			setIsReplenishment(!isReplenishment);
-			localStorage.setItem('isReplenishment', !isReplenishment);
 		}
 	};
 
@@ -82,7 +76,6 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 						<Select
 							name="depositAmount"
 							placeHolder="Сумма"
-							// currency={['₽', '$', '€', '¥']}
 							currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
 							defaultValue={calculator.depositAmount}
 							getValue={getCurrencyValue}

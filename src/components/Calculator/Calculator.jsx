@@ -12,6 +12,7 @@ function Calculator() {
 	const deposits = useSelector((state) => state.deposits);
 
 	const calculator = useSelector((state) => state.calculator);
+	console.log('calculator', calculator);
 	const credits = useSelector((state) => state.credits);
 	const sliderRef = useRef();
 	const [validate, setValidate] = useState();
@@ -31,14 +32,16 @@ function Calculator() {
 				term: calculator.depositTerm,
 			})
 		);
+	}, [calculator.depositAmount, calculator.depositTerm]);
 
+	useEffect(() => {
 		dispatch(
 			loadCredits({
 				amount: calculator.creditAmount,
 				term: calculator.creditTerm,
 			})
 		);
-	}, [calculator]);
+	}, [calculator.creditAmount, calculator.creditTerm]);
 
 	const chooseCredit = () => {
 		dispatch(editCalculatorValues({ isCredit: true }));
