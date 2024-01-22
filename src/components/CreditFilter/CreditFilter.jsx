@@ -10,8 +10,6 @@ import { currencyList } from '../../utils/constants';
 function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
-	//const creditsList = useSelector((state) => state.credits);
-	//console.log('creditsList', creditsList);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 
@@ -33,11 +31,18 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 				banks: selectedBanks,
 			})
 		);
-	}, [calculator, isCreditOnline, isOnlineApprove, isCollateral, selectedBanks]);
+	}, [
+		calculator.creditAmount,
+		calculator.creditTerm,
+		isCreditOnline,
+		isOnlineApprove,
+		isCollateral,
+		selectedBanks,
+	]);
 
-	useEffect(() => {
-		setIsAllCredits(true);
-	}, []);
+	// useEffect(() => {
+	// 	setIsAllCredits(true);
+	// }, []);
 
 	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
@@ -47,7 +52,6 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsSubmitted(true);
-		console.log('можно рендерить кредиты:', isSubmitted);
 	};
 
 	const handleButtonClick = (buttonType) => {

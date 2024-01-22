@@ -10,7 +10,7 @@ function BankCard({ name }) {
 	return (
 		<Link className={className} to="#">
 			<img className={imageClassName} src={bankLogo} alt="-" />
-			<p className={captionClassName}>райффайзен банк</p>
+			<p className={captionClassName}>Райффайзен Банк</p>
 		</Link>
 	);
 }

@@ -11,7 +11,7 @@ function Banks() {
 
 	return (
 		<section className="banks">
-			<h2 className="banks__title">банки вашего города</h2>
+			<h2 className="banks__title">Банки вашего города</h2>
 			<Input
 				type="text"
 				inputClass={'input__primary'}

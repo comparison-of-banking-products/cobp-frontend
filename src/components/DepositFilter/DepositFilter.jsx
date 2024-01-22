@@ -31,11 +31,14 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 				banks: selectedBanks,
 			})
 		);
-	}, [calculator, isCapitalisation, isReplenishment, isWithdraw, selectedBanks]);
-
-	useEffect(() => {
-		setIsAllDepo(true);
-	}, []);
+	}, [
+		calculator.depositAmount,
+		calculator.depositTerm,
+		isCapitalisation,
+		isReplenishment,
+		isWithdraw,
+		selectedBanks,
+	]);
 
 	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
