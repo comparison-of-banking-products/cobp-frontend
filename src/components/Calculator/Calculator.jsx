@@ -6,6 +6,7 @@ import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { loadCredits } from '../../store/credits/creditsSlice';
 import { debounce } from 'lodash';
+import { currencyList } from '../../utils/constants';
 
 function Calculator() {
 	const navigate = useNavigate();
@@ -13,6 +14,7 @@ function Calculator() {
 	const deposits = useSelector((state) => state.deposits);
 
 	const calculator = useSelector((state) => state.calculator);
+	console.log('calculator', calculator);
 	const credits = useSelector((state) => state.credits);
 	const sliderRef = useRef();
 	const [validate, setValidate] = useState();
@@ -35,14 +37,16 @@ function Calculator() {
 				term: calculator.depositTerm,
 			})
 		);
+	}, [calculator.depositAmount, calculator.depositTerm]);
 
+	useEffect(() => {
 		dispatch(
 			loadCredits({
 				amount: calculator.creditAmount,
 				term: calculator.creditTerm,
 			})
 		);
-	}, [calculator]);
+	}, [calculator.creditAmount, calculator.creditTerm]);
 
 	const chooseCredit = () => {
 		dispatch(editCalculatorValues({ isCredit: true }));
@@ -127,7 +131,7 @@ function Calculator() {
 									<Select
 										name="depositAmount"
 										placeHolder="Сумма вклада"
-										currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
+										currency={currencyList}
 										defaultValue={calculator.depositAmount}
 										getValue={getValues}
 										max="100000000"
@@ -149,7 +153,7 @@ function Calculator() {
 									<Select
 										name="creditAmount"
 										placeHolder="Сумма кредита"
-										currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
+										currency={currencyList}
 										defaultValue={calculator.creditAmount}
 										getValue={getValues}
 										max="100000000"
