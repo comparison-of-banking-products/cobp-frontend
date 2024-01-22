@@ -2,9 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Range, Button, Select, SelectMultiple } from '../';
 import { useDispatch, useSelector } from 'react-redux';
-// import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { loadCredits } from '../../store/credits/creditsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
+import { debounce } from 'lodash';
+import { currencyList } from '../../utils/constants';
 
 function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
@@ -38,10 +39,10 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 		setIsAllCredits(true);
 	}, []);
 
-	const getCurrencyValue = (values, valid) => {
+	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
 		valid.validate && dispatch(editCalculatorValues(values));
-	};
+	}, 500);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -75,7 +76,7 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 						<Select
 							name="creditAmount"
 							placeHolder="Сумма"
-							currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
+							currency={currencyList}
 							defaultValue={calculator.creditAmount}
 							getValue={getCurrencyValue}
 							max="1000000000"

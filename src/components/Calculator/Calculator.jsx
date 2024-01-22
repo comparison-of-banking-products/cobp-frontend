@@ -6,6 +6,7 @@ import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { loadCredits } from '../../store/credits/creditsSlice';
 import { debounce } from 'lodash';
+import { currencyList } from '../../utils/constants';
 
 function Calculator() {
 	const navigate = useNavigate();
@@ -130,7 +131,7 @@ function Calculator() {
 									<Select
 										name="depositAmount"
 										placeHolder="Сумма вклада"
-										currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
+										currency={currencyList}
 										defaultValue={calculator.depositAmount}
 										getValue={getValues}
 										max="100000000"
@@ -152,7 +153,7 @@ function Calculator() {
 									<Select
 										name="creditAmount"
 										placeHolder="Сумма кредита"
-										currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
+										currency={currencyList}
 										defaultValue={calculator.creditAmount}
 										getValue={getValues}
 										max="100000000"

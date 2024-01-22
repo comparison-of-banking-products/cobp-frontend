@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { debounce } from 'lodash';
+import { currencyList } from '../../utils/constants';
 
 function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
@@ -72,8 +73,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 						<Select
 							name="depositAmount"
 							placeHolder="Сумма"
-							// currency={['₽', '$', '€', '¥']}
-							currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
+							currency={currencyList}
 							defaultValue={calculator.depositAmount}
 							getValue={getCurrencyValue}
 							max="1000000000"
