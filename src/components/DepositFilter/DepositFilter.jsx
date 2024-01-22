@@ -4,17 +4,13 @@ import { Range, Button, Select, SelectMultiple } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
+import { debounce } from 'lodash';
 
 function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
-
-	// const [isAllDepo, setIsAllDepo] = useState(localStorage.getItem('isAllDepo') === 'true' || true);
-	// const [isCapitalisation, setIsCapitalisation] = useState(localStorage.getItem('isCapitalisation') === 'true' || false);
-	// const [isWithdraw, setIsWithdraw] = useState(localStorage.getItem('isWithdraw') === 'true' || false);
-	// const [isReplenishment, setIsReplenishment] = useState(localStorage.getItem('isReplenishment') === 'true' || false);
 
 	const [isAllDepo, setIsAllDepo] = useState(true);
 	const [isCapitalisation, setIsCapitalisation] = useState(false);
@@ -40,10 +36,10 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 		setIsAllDepo(true);
 	}, []);
 
-	const getCurrencyValue = (values, valid) => {
+	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
 		valid.validate && dispatch(editCalculatorValues(values));
-	};
+	}, 500);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -76,6 +72,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 						<Select
 							name="depositAmount"
 							placeHolder="Сумма"
+							// currency={['₽', '$', '€', '¥']}
 							currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
 							defaultValue={calculator.depositAmount}
 							getValue={getCurrencyValue}

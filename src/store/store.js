@@ -12,7 +12,7 @@ import axios from 'axios';
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['calculator', 'exchangeRate'],
+	whitelist: ['calculator', 'exchangeRate', 'deposits'],
 	// blacklist: ['deposits']
 };
 
