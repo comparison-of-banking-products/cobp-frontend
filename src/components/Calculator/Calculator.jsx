@@ -14,21 +14,12 @@ function Calculator() {
 	const deposits = useSelector((state) => state.deposits);
 
 	const calculator = useSelector((state) => state.calculator);
-	console.log('calculator', calculator);
 	const credits = useSelector((state) => state.credits);
 	const sliderRef = useRef();
 	const [validate, setValidate] = useState();
 
 	const depositResults = deposits?.deposits?.calculatedDeposits?.[0];
 	const creditResults = credits?.credits?.calculatedCredits?.[0];
-
-	useEffect(() => {
-		if (calculator.isCredit) {
-			sliderRef.current.classList.add('calculator__slider_position_right');
-		} else {
-			sliderRef.current.classList.remove('calculator__slider_position_right');
-		}
-	}, [calculator.isCredit, deposits]);
 
 	useEffect(() => {
 		dispatch(
@@ -47,6 +38,14 @@ function Calculator() {
 			})
 		);
 	}, [calculator.creditAmount, calculator.creditTerm]);
+
+	useEffect(() => {
+		if (calculator.isCredit) {
+			sliderRef.current.classList.add('calculator__slider_position_right');
+		} else {
+			sliderRef.current.classList.remove('calculator__slider_position_right');
+		}
+	}, [calculator.isCredit, deposits]);
 
 	const chooseCredit = () => {
 		dispatch(editCalculatorValues({ isCredit: true }));
@@ -83,7 +82,7 @@ function Calculator() {
 			dispatch(loadCredits({ amount: calculator.creditAmount, term: calculator.creditTerm }))
 				.then(() => {
 					if (!credits.error && !credits.isLoading) {
-						navigate('/credits');
+						navigate('/credits', { state: { fromCalculatorButton: true } });
 					}
 				})
 				.catch(() => {

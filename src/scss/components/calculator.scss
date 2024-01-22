@@ -58,7 +58,6 @@
 		justify-content: center;
 		gap: 16px;
 		padding-top: 16px;
-		// height: 264px;
 		height: 256px;
 	}
 	&__items {
@@ -118,17 +117,6 @@
 		padding: 0 40px 0;
 		margin: 0 auto;
 
-		&__container {
-			// min-height: 556px;
-		}
-
-		&__calculation {
-			// flex-direction: column;
-
-			// min-height: 432px;
-			// gap: 36px;
-		}
-
 		&__results {
 			max-width: calc(50% - 16px);
 		}
@@ -159,7 +147,6 @@
 
 		&__results {
 			max-width: 100%;
-			// height: 240px;
 		}
 
 		&__results-display {
@@ -187,7 +174,6 @@
 
 		&__calculation {
 			height: 428px;
-			// padding-top: 0;
 			gap: 16px;
 		}
 
@@ -236,14 +222,10 @@
 
 		&__calculation {
 			height: 548px;
-			// margin-top: 66px;
 		}
 
 		&__results {
 			height: 360px;
-
-			// gap: 66px;
-			// align-items: flex-start;
 		}
 
 		&__results-display {
@@ -251,7 +233,6 @@
 			gap: 36px;
 			flex-direction: column;
 			align-self: flex-start;
-			// justify-content: start;
 		}
 
 		&__result {

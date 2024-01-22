@@ -6,10 +6,10 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max, min,
 	const [values, setValues] = useState({
 		[name]: Number(defaultValue),
 		currency: currency[0],
-		// currency: currency[0],
 	});
-	// const triadNumber = useMemo(() => Number(values[name]).toLocaleString(), [values]);
-	// console.log('currency', currency[0].split(' ')[1]);
+
+	const currencyValue = values.currency.split(' ')[1];
+
 	const triadNumber = (number) => {
 		return number.toLocaleString();
 	};
@@ -85,13 +85,17 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max, min,
 				</div>
 				<input
 					className="select__input select__input_type_currency"
-					value={values.currency.split(' ')[1]}
+					value={currencyValue}
 					name={name}
 					readOnly
 				/>
 				<div className="select__options" ref={optionsRef}>
 					{currency.map((currency, index) => (
-						<div key={index} className="select__option" onClick={handleSelect}>
+						<div
+							key={index}
+							className={`select__option ${index > 0 ? 'select__option_disabled' : ''}`}
+							onClick={handleSelect}
+						>
 							<p>{currency}</p>
 							{currency === values.currency && (
 								<Checkbox

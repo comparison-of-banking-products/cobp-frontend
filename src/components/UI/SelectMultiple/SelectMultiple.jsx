@@ -10,9 +10,6 @@ function SelectMultiple({ placeHolder, name, selectedBanks, setSelectedBanks }) 
 	const [allBanksSelected, setAllBanksSelected] = useState(true);
 	const banksList = useSelector((state) => state.banksList.banksList);
 	const bankNames = banksList.map((bank) => bank.name);
-	// console.log('selectedBanks', selectedBanks);
-	// console.log('banksList:', banksList);
-	// console.log('bankNames:', bankNames);
 
 	useEffect(() => {
 		if (banksList.length > 0) {
@@ -83,13 +80,6 @@ function SelectMultiple({ placeHolder, name, selectedBanks, setSelectedBanks }) 
 						readOnly
 						onClick={toggleOptions}
 					/>
-					{/* <div className="select-multiple__icon-container">
-						{selectedBanks.length < banksList.length && (
-							<span className="select-multiple__icon-count" style={{ backgroundColor: '#FBFBFB' }}>
-								{selectedBanks.length}
-							</span>
-						)}
-					</div> */}
 				</div>
 				<div className="select-multiple__options" ref={optionsRef}>
 					<div className="select-multiple__option" onClick={handleOptionClick}>
