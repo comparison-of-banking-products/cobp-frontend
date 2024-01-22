@@ -4,20 +4,14 @@ import { Range, Button, Select, SelectMultiple } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
-import { loadBanksList } from '../../store/banksList/banksListSlice';
+import { debounce } from 'lodash';
+import { currencyList } from '../../utils/constants';
 
-function DepositFilter({ isSubmitted, setIsSubmitted }) {
+function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
-	const depositList = useSelector((state) => state.deposits.deposits);
-	// console.log('depositList:', depositList);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
-
-	// const [isAllDepo, setIsAllDepo] = useState(localStorage.getItem('isAllDepo') === 'true' || true);
-	// const [isCapitalisation, setIsCapitalisation] = useState(localStorage.getItem('isCapitalisation') === 'true' || false);
-	// const [isWithdraw, setIsWithdraw] = useState(localStorage.getItem('isWithdraw') === 'true' || false);
-	// const [isReplenishment, setIsReplenishment] = useState(localStorage.getItem('isReplenishment') === 'true' || false);
 
 	const [isAllDepo, setIsAllDepo] = useState(true);
 	const [isCapitalisation, setIsCapitalisation] = useState(false);
@@ -43,14 +37,14 @@ function DepositFilter({ isSubmitted, setIsSubmitted }) {
 		setIsAllDepo(true);
 	}, []);
 
-	const getCurrencyValue = (values, valid) => {
+	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
 		valid.validate && dispatch(editCalculatorValues(values));
-	};
+	}, 500);
 
-	const handleSubmit = () => {
+	const handleSubmit = (e) => {
+		e.preventDefault();
 		setIsSubmitted(true);
-		console.log('можно рендерить карточки:', isSubmitted);
 	};
 
 	const handleButtonClick = (buttonType) => {
@@ -59,19 +53,15 @@ function DepositFilter({ isSubmitted, setIsSubmitted }) {
 			setIsCapitalisation(false);
 			setIsWithdraw(false);
 			setIsReplenishment(false);
-			localStorage.setItem('isAllDepo', true);
 		} else if (buttonType === 'capitalisation') {
 			setIsAllDepo(false);
 			setIsCapitalisation(!isCapitalisation);
-			localStorage.setItem('isCapitalisation', !isCapitalisation);
 		} else if (buttonType === 'withdraw') {
 			setIsAllDepo(false);
 			setIsWithdraw(!isWithdraw);
-			localStorage.setItem('isWithdraw', !isWithdraw);
 		} else if (buttonType === 'replenishment') {
 			setIsAllDepo(false);
 			setIsReplenishment(!isReplenishment);
-			localStorage.setItem('isReplenishment', !isReplenishment);
 		}
 	};
 
@@ -83,7 +73,7 @@ function DepositFilter({ isSubmitted, setIsSubmitted }) {
 						<Select
 							name="depositAmount"
 							placeHolder="Сумма"
-							currency={['₽', '$', '€', '¥']}
+							currency={currencyList}
 							defaultValue={calculator.depositAmount}
 							getValue={getCurrencyValue}
 							max="1000000000"

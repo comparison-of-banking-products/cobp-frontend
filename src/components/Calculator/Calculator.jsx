@@ -5,20 +5,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { loadCredits } from '../../store/credits/creditsSlice';
+import { debounce } from 'lodash';
+import { currencyList } from '../../utils/constants';
 
 function Calculator() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const deposits = useSelector((state) => state.deposits);
-	// console.log('rate', deposits.deposits.calculatedDeposits[0].deposit.rate);
 
 	const calculator = useSelector((state) => state.calculator);
+	console.log('calculator', calculator);
 	const credits = useSelector((state) => state.credits);
-	// console.log('credits', credits);
-	// console.log(deposits);
-	//console.log('rate', credits?.credits?.calculatedCredits?.[0]?.monthlyPayment);
 	const sliderRef = useRef();
 	const [validate, setValidate] = useState();
+
+	const depositResults = deposits?.deposits?.calculatedDeposits?.[0];
+	const creditResults = credits?.credits?.calculatedCredits?.[0];
 
 	useEffect(() => {
 		if (calculator.isCredit) {
@@ -35,14 +37,16 @@ function Calculator() {
 				term: calculator.depositTerm,
 			})
 		);
+	}, [calculator.depositAmount, calculator.depositTerm]);
 
+	useEffect(() => {
 		dispatch(
 			loadCredits({
 				amount: calculator.creditAmount,
 				term: calculator.creditTerm,
 			})
 		);
-	}, [calculator]);
+	}, [calculator.creditAmount, calculator.creditTerm]);
 
 	const chooseCredit = () => {
 		dispatch(editCalculatorValues({ isCredit: true }));
@@ -52,7 +56,7 @@ function Calculator() {
 		dispatch(editCalculatorValues({ isCredit: false }));
 	};
 
-	const getValues = (values, valid) => {
+	const getValues = debounce((values, valid) => {
 		setValidate(valid.validate);
 		if (valid.validate) {
 			dispatch(editCalculatorValues(values));
@@ -60,7 +64,7 @@ function Calculator() {
 			dispatch(loadDeposits({ amount: 0, term: 0 }));
 			dispatch(loadCredits({ amount: 0, term: 0 }));
 		}
-	};
+	}, 500);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -69,7 +73,7 @@ function Calculator() {
 			dispatch(loadDeposits({ amount: calculator.depositAmount, term: calculator.depositTerm }))
 				.then(() => {
 					if (!deposits.error && !deposits.isLoading) {
-						navigate('/deposits');
+						navigate('/deposits', { state: { fromCalculatorButton: true } });
 					}
 				})
 				.catch(() => {
@@ -93,7 +97,7 @@ function Calculator() {
 	};
 
 	const replacePointNumber = (number) => {
-		if (typeof number === 'number') return String(number).replace('.', ',');
+		if (typeof number === 'number') return String(number.toFixed(2)).replace('.', ',');
 	};
 
 	return (
@@ -127,7 +131,7 @@ function Calculator() {
 									<Select
 										name="depositAmount"
 										placeHolder="Сумма вклада"
-										currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
+										currency={currencyList}
 										defaultValue={calculator.depositAmount}
 										getValue={getValues}
 										max="100000000"
@@ -149,7 +153,7 @@ function Calculator() {
 									<Select
 										name="creditAmount"
 										placeHolder="Сумма кредита"
-										currency={['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥']}
+										currency={currencyList}
 										defaultValue={calculator.creditAmount}
 										getValue={getValues}
 										max="100000000"
@@ -174,48 +178,45 @@ function Calculator() {
 									<>
 										<CalculatorResult
 											name="Ставка"
-											value={`до ${
-												replacePointNumber(
-													deposits?.deposits?.calculatedDeposits?.[0]?.deposit?.rate
-												) || '0'
-											} %`}
+											value={
+												depositResults
+													? `до ${replacePointNumber(depositResults.deposit.rate)} %`
+													: '-'
+											}
 											isLoading={deposits}
 										/>
 										<CalculatorResult
 											name="Доход за период"
-											value={`до ${
-												roundNumber(
-													deposits?.deposits?.calculatedDeposits?.[0]?.maturityInterest
-												) || '0'
-											}`}
-											currency={calculator.currency.split(' ')[1]}
+											value={
+												depositResults ? `до ${roundNumber(depositResults.maturityInterest)}` : '-'
+											}
+											currency={depositResults ? calculator.currency.split(' ')[1] : ''}
 										/>
 										<CalculatorResult
 											name="Доход за год"
-											value={`до ${
-												roundNumber(deposits?.deposits?.calculatedDeposits?.[0]?.annualInterest) ||
-												'0'
-											}`}
-											currency={calculator.currency.split(' ')[1]}
+											value={
+												depositResults ? `до ${roundNumber(depositResults.annualInterest)}` : '-'
+											}
+											currency={depositResults ? calculator.currency.split(' ')[1] : ''}
 										/>
 									</>
 								) : (
 									<>
 										<CalculatorResult
 											name="Ставка"
-											value={`до ${
-												replacePointNumber(
-													credits?.credits?.calculatedCredits?.[0]?.credit?.rate
-												) || '0'
-											} %`}
+											value={
+												creditResults
+													? `до ${replacePointNumber(creditResults.credit.rate)} %`
+													: '-'
+											}
 											isLoading={credits}
 										/>
 										<CalculatorResult
 											name="Платеж от"
-											value={`до ${
-												roundNumber(credits?.credits?.calculatedCredits?.[0]?.monthlyPayment) || '0'
-											}`}
-											currency={calculator.currency.split(' ')[1]}
+											value={
+												creditResults ? `до ${roundNumber(creditResults.monthlyPayment)}` : '-'
+											}
+											currency={creditResults ? calculator.currency.split(' ')[1] : ''}
 										/>
 									</>
 								)}
