@@ -46,7 +46,7 @@
 		text-decoration: none;
 
 		//задают неактивность
-		background-color: rgba($color-bg-dark-gray, 0.3);
+		background-color: $color-bg-dark-gray;
 		pointer-events: none;
 		opacity: 0.3;
 	}

@@ -24,7 +24,7 @@ function App() {
 				<Route path="/creditcard" element={<CreditCard />} />
 				<Route path="/calculator" element={<Calculator />} />
 				<Route path="/exchanges" element={<Exchanges />} />
-				<Route path="/Profile" element={<Profile />} />
+				<Route path="/profile" element={<Profile />} />
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
 			<SupportChat />
