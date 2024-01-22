@@ -20,22 +20,22 @@ function DepositsCard(props) {
 				{props.id === 0 ? (
 					<p className="deposits-card__tags-text deposits-card__tags-image">Самый выгодный</p>
 				) : (
-					[]
+					''
 				)}
 				{props.deposits.deposit.capitalization ? (
 					<p className="deposits-card__tags-text">С капитализацией</p>
 				) : (
-					[]
+					''
 				)}
 				{props.deposits.deposit.replenishment ? (
 					<p className="deposits-card__tags-text">С пополнением</p>
 				) : (
-					[]
+					''
 				)}
 				{props.deposits.deposit.partialWithdrawal ? (
 					<p className="deposits-card__tags-text">С частичным снятием</p>
 				) : (
-					[]
+					''
 				)}
 			</div>
 			<div className="deposits-card__about-contribution">
