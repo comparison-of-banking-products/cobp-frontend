@@ -3,7 +3,7 @@
 	max-width: 1200px;
 	padding-top: 130px;
 	margin: 0 auto;
-	// opacity: 0.3;
+	opacity: 0.3;
 
 	&__title {
 		@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-text-white);
