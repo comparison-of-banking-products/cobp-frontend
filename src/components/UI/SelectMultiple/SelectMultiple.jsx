@@ -4,7 +4,7 @@ import arrowDown from '../../../vendor/images/icons/chevron-bottom.svg';
 import { Checkbox } from '../../';
 import { loadBanksList } from '../../../store/banksList/banksListSlice';
 
-function SelectMultiple({ placeHolder, name, selectedBanks, setSelectedBanks }) {
+function SelectMultiple({ placeHolder, name, selectedBanks, setSelectedBanks, isDeposist }) {
 	const optionsRef = useRef();
 	const dispatch = useDispatch();
 	const [allBanksSelected, setAllBanksSelected] = useState(true);
@@ -18,7 +18,11 @@ function SelectMultiple({ placeHolder, name, selectedBanks, setSelectedBanks }) 
 	}, [banksList]);
 
 	useEffect(() => {
-		dispatch(loadBanksList({}));
+		dispatch(
+			loadBanksList({
+				sort: isDeposist ? 'DEPOSITS' : 'CREDITS',
+			})
+		);
 	}, []);
 
 	const toggleOptions = () => {

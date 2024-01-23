@@ -138,7 +138,7 @@ function Calculator() {
 									/>
 									<Range
 										name="depositTerm"
-										placeHolder="Срок в месяцах"
+										placeHolder="Срок"
 										min="3"
 										max="120"
 										step="3"
@@ -161,7 +161,7 @@ function Calculator() {
 									/>
 									<Range
 										name="creditTerm"
-										placeHolder="Срок в годах"
+										placeHolder="Срок"
 										min="3"
 										max="120"
 										step="3"

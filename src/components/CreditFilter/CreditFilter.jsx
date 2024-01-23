@@ -10,6 +10,8 @@ import { currencyList } from '../../utils/constants';
 function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
+	const credits = useSelector((state) => state.credits);
+	console.log('credits', credits);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 
@@ -99,6 +101,7 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 							placeHolder="Банки"
 							selectedBanks={selectedBanks}
 							setSelectedBanks={setSelectedBanks}
+							isDeposist={false}
 						/>
 					</div>
 					<Button textBtn={'Показать'} btnClass={'credit-filter__submit'} type={'submit'} />

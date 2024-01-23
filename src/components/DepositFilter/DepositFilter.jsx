@@ -10,6 +10,8 @@ import { currencyList } from '../../utils/constants';
 function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
+	// const deposits = useSelector((state) => state.deposits);
+	// console.log('deposits', deposits);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 
@@ -95,6 +97,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 							placeHolder="Банки"
 							selectedBanks={selectedBanks}
 							setSelectedBanks={setSelectedBanks}
+							isDeposist={true}
 						/>
 					</div>
 					<Button textBtn={'Показать'} btnClass={'deposit-filter__submit'} type={'submit'} />

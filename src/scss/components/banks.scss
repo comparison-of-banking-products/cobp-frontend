@@ -58,6 +58,12 @@
 	}
 }
 
+@include tablet {
+	.banks {
+		padding-top: 110px;
+	}
+}
+
 @include tablet-xs {
 	.banks {
 		padding-top: 80px;
@@ -88,7 +94,7 @@
 @include mobile-xs {
 	.banks {
 		width: calc(100% - 32px);
-		padding-top: 50px;
+		padding-top: 48px;
 
 		&__title {
 			margin-bottom: 16px;
