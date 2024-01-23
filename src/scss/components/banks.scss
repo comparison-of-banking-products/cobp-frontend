@@ -1,15 +1,12 @@
 .banks {
+	width: calc(100% - 80px);
 	max-width: 1200px;
 	padding-top: 130px;
 	margin: 0 auto;
 	opacity: 0.3;
 
 	&__title {
-		color: $color-text-white;
-		font-size: $font-size-xl;
-		font-weight: $font-weight-bold;
-		line-height: 44px; /* 110% */
-		letter-spacing: -0.4px;
+		@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-text-white);
 		margin-bottom: 40px;
 	}
 
@@ -17,9 +14,25 @@
 		margin-top: 16px;
 		display: flex;
 		padding-left: 0;
+
+		//делаем скролл
+		flex-wrap: nowrap;
+		white-space: nowrap;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: none;
+		overflow: -moz-scrollbars-none;
+		scrollbar-width: none;
+	}
+
+	&__lists::-webkit-scrollbar {
+		width: 0;
+		display: none;
 	}
 
 	&__item {
+		flex: 1;
+		//
 		display: flex;
 		padding: 16px 24px;
 		justify-content: center;
@@ -41,9 +54,58 @@
 	}
 
 	&__caption {
-		color: $color-text-white;
-		font-size: $font-size-s;
-		font-weight: $font-weight-bold;
-		line-height: 20px;
+		@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-text-white);
+	}
+}
+
+@include tablet-xs {
+	.banks {
+		padding-top: 80px;
+
+		&__title {
+			margin-bottom: 32px;
+			@include font($heading-size-h2, $font-weight-bold, 40px, -0.36px, $color-text-white);
+		}
+	}
+}
+
+@include mobile {
+	.banks {
+		width: calc(100% - 48px);
+		padding-top: 90px;
+
+		&__title {
+			@include font($font-size-other, $font-weight-bold, 28px, -0.24px, $color-text-white);
+			margin-bottom: 24px;
+		}
+
+		&__item {
+			padding: 16px;
+		}
+	}
+}
+
+@include mobile-xs {
+	.banks {
+		width: calc(100% - 32px);
+		padding-top: 50px;
+
+		&__title {
+			margin-bottom: 16px;
+		}
+
+		&__item {
+			padding: 8px;
+		}
+
+		&__image {
+			width: 24px;
+			height: 24px;
+			border-radius: 6px;
+		}
+
+		&__caption {
+			@include font($font-size-xs, $font-weight-medium, 18px, -0.14px, $color-text-white);
+		}
 	}
 }
