@@ -18,7 +18,7 @@ function DepositsCardList({ isSubmitted }) {
 				{isSubmitted
 					? deposits && deposits.calculatedDeposits?.length > 0
 						? deposits.calculatedDeposits.map((deposit, index) => (
-								<DepositsCard key={index} id={index} deposits={deposit} />
+								<DepositsCard key={index} id={index} deposit={deposit} />
 						  ))
 						: 'У нас нет депозитов с такими параметрами'
 					: 'Нажмите "Показать", чтобы тут что-то появилось'}
