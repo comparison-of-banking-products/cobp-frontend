@@ -43,6 +43,12 @@
 		@include font($font-size-s, $font-weight-bold, 20px, 0, $color-text-white);
 	}
 
+	&__submit:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+		background: $color-text-light-gray;
+	}
+
 	&__checkboxes {
 		display: flex;
 		gap: 8px;

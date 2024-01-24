@@ -23,16 +23,17 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const [validate, setValidate] = useState();
 
 	useEffect(() => {
-		dispatch(
-			loadDeposits({
-				amount: calculator.depositAmount,
-				term: calculator.depositTerm,
-				capitalization: isCapitalisation,
-				replenishment: isReplenishment,
-				partialWithdrawal: isWithdraw,
-				banks: selectedBanks,
-			})
-		);
+		isSubmitted &&
+			dispatch(
+				loadDeposits({
+					amount: calculator.depositAmount,
+					term: calculator.depositTerm,
+					capitalization: isCapitalisation,
+					replenishment: isReplenishment,
+					partialWithdrawal: isWithdraw,
+					banks: selectedBanks,
+				})
+			);
 	}, [
 		calculator.depositAmount,
 		calculator.depositTerm,
@@ -100,7 +101,12 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 							isDeposist={true}
 						/>
 					</div>
-					<Button textBtn={'Показать'} btnClass={'deposit-filter__submit'} type={'submit'} />
+					<Button
+						textBtn={'Показать'}
+						btnClass={'deposit-filter__submit'}
+						type={'submit'}
+						disabled={!isSubmitted && selectedBanks.length === 0}
+					/>
 				</form>
 				<div className="deposit-filter__checkboxes">
 					<Button

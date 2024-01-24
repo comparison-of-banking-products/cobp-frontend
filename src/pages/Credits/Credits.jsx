@@ -12,7 +12,10 @@ function Credits() {
 	return (
 		<>
 			<Promo deposits={false} />
-			<CreditFilter isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />
+			<CreditFilter
+				isSubmitted={fromCalculatorButton ? true : isSubmitted}
+				setIsSubmitted={setIsSubmitted}
+			/>
 			{/* <CreditCardList isSubmitted={fromCalculatorButton ? true : isSubmitted} /> */}
 		</>
 	);
