@@ -1,9 +1,110 @@
-.header__burger-btn {
-	display: none;
+.burger-menu {
+	&__overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 999;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0.3s, opacity 0.2s;
+		&_active {
+			visibility: visible;
+			opacity: 1;
+			& .burger-menu__container {
+				visibility: visible;
+				transform: translateX(0);
+			}
+		}
+	}
+
+	&__container {
+		position: relative;
+		background: $color-bg-black;
+		width: 100%;
+		height: 100%;
+		padding: 24px 40px 42px 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+		transform: translateX(100%);
+		transition: transform 0.3s ease-in-out;
+	}
+
+	&__head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__close-btn {
+		border: none;
+		outline: none;
+		padding: 0;
+		width: 40px;
+		height: 40px;
+		background: transparent url('../../images/icons/close-btn-icon.svg') no-repeat center center;
+		background-size: 24px 24px;
+		z-index: 1;
+		cursor: pointer;
+	}
+
+	&__content {
+		max-width: 264px;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 24px;
+		margin-left: auto;
+	}
+
+	&__links {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	&__link {
+		@include font($font-size-ml, $font-weight-medium, 24px, normal, $color-text-light-gray);
+		text-decoration: none;
+		transition: color 0.2s;
+		&:hover {
+			color: $color-text-white;
+		}
+
+		&_active {
+			color: $color-text-white;
+		}
+	}
 }
 
-@media screen and (max-width: 768px) {
-	.header__burger-btn {
-		display: flex;
+@media screen and (max-width: 576px) {
+	.burger-menu {
+		&__container {
+			padding: calc((100vw - 320px) / (576 - 320) * (24 - 16) + 16px);
+		}
+
+		&__content {
+			max-width: calc((100vw - 320px) / (576 - 320) * (264 - 182) + 182px);
+		}
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.burger-menu {
+		&__container {
+			padding: 16px;
+		}
+
+		&__content {
+			max-width: 182px;
+		}
 	}
 }

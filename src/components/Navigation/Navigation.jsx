@@ -14,10 +14,10 @@ function Navigation() {
 				<NavLink to="/credits" className={getNavLinkClass}>
 					Кредиты
 				</NavLink>
-				<NavLink to="/debitcard" className="header__link header__link_not-active">
+				<NavLink to="/debitcard" className="header__link header__link_disabled">
 					Дебетовые карты
 				</NavLink>
-				<NavLink to="/creditcard" className="header__link header__link_not-active">
+				<NavLink to="/creditcard" className="header__link header__link_disabled">
 					Кредитные карты
 				</NavLink>
 			</nav>

@@ -1,4 +1,4 @@
-const linkNavForFooterData = [
+const linksData = [
 	{
 		title: 'Вклады',
 		id: 0,
@@ -26,20 +26,20 @@ const linkNavForFooterData = [
 	{
 		title: 'О компании',
 		id: 4,
-		page: '/',
+		page: '/about',
 	},
 
 	{
 		title: 'Новости',
 		id: 5,
-		page: '/',
+		page: '/news',
 	},
 
 	{
 		title: 'Контакты',
 		id: 6,
-		page: '/',
+		page: '/contacts',
 	},
 ];
 
-export { linkNavForFooterData };
+export { linksData };
