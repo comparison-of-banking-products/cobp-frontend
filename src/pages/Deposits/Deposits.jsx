@@ -12,7 +12,10 @@ function Deposits() {
 	return (
 		<>
 			<Promo deposits={isDeposits} />
-			<DepositFilter isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />
+			<DepositFilter
+				isSubmitted={fromCalculatorButton ? true : isSubmitted}
+				setIsSubmitted={setIsSubmitted}
+			/>
 			<DepositsCardList isSubmitted={fromCalculatorButton ? true : isSubmitted} />
 		</>
 	);

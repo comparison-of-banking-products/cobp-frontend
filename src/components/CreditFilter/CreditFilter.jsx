@@ -10,6 +10,8 @@ import { currencyList } from '../../utils/constants';
 function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
+	const credits = useSelector((state) => state.credits);
+	console.log('credits', credits);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 
@@ -21,16 +23,17 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	const [validate, setValidate] = useState();
 
 	useEffect(() => {
-		dispatch(
-			loadCredits({
-				amount: calculator.creditAmount,
-				term: calculator.creditTerm,
-				creditOnline: isCreditOnline,
-				onlineApprove: isOnlineApprove,
-				collateral: isCollateral,
-				banks: selectedBanks,
-			})
-		);
+		isSubmitted &&
+			dispatch(
+				loadCredits({
+					amount: calculator.creditAmount,
+					term: calculator.creditTerm,
+					creditOnline: isCreditOnline,
+					onlineApprove: isOnlineApprove,
+					collateral: isCollateral,
+					banks: selectedBanks,
+				})
+			);
 	}, [
 		calculator.creditAmount,
 		calculator.creditTerm,
@@ -39,10 +42,6 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 		isCollateral,
 		selectedBanks,
 	]);
-
-	// useEffect(() => {
-	// 	setIsAllCredits(true);
-	// }, []);
 
 	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
@@ -99,9 +98,15 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 							placeHolder="Банки"
 							selectedBanks={selectedBanks}
 							setSelectedBanks={setSelectedBanks}
+							isDeposist={false}
 						/>
 					</div>
-					<Button textBtn={'Показать'} btnClass={'credit-filter__submit'} type={'submit'} />
+					<Button
+						textBtn={'Показать'}
+						btnClass={'credit-filter__submit'}
+						type={'submit'}
+						disabled={!isSubmitted && selectedBanks.length === 0}
+					/>
 				</form>
 				<div className="credit-filter__checkboxes">
 					<Button

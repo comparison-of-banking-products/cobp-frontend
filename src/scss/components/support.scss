@@ -1,4 +1,5 @@
 .support {
+	width: calc(100% - 80px);
 	max-width: 1200px;
 	padding-top: 130px;
 	padding-bottom: 130px;
@@ -10,29 +11,36 @@
 		margin-bottom: 40px;
 	}
 	&__title {
-		color: $color-text-white;
-		font-size: $font-size-xl;
-		font-weight: 600;
-		line-height: 44px; /* 110% */
-		letter-spacing: -0.4px;
+		@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-text-white);
 	}
 
 	&__instruction {
 		width: 359px;
-		color: $color-text-gray;
-		font-size: $font-size-ml;
-		font-weight: $font-weight-medium;
-		line-height: 24px;
+		@include font($font-size-ml, $font-weight-medium, 24px, -0.2px, $color-text-gray);
 	}
 
 	&__lists {
 		display: flex;
 		gap: 36px;
 		padding-left: 0;
+
+		//делаем скролл
+		flex-wrap: nowrap;
+		white-space: nowrap;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: none;
+		overflow: -moz-scrollbars-none;
+		scrollbar-width: none;
+	}
+
+	&__lists::-webkit-scrollbar {
+		width: 0;
+		display: none;
 	}
 
 	&__item {
-		width: 376px;
+		min-width: 376px;
 		height: 384px;
 		text-align: center;
 		list-style-type: none;
@@ -67,10 +75,7 @@
 	}
 
 	&__caption {
-		color: $color-text-white;
-		font-size: $font-size-s;
-		font-weight: $font-weight-medium;
-		line-height: 20px;
+		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-white);
 	}
 
 	&__foto {
@@ -82,21 +87,120 @@
 	}
 
 	&__name {
-		color: $color-text-white;
-		font-size: $font-size-s;
-		font-weight: $font-weight-bold;
-		line-height: 20px; /* 125% */
-		letter-spacing: -0.16px;
+		@include font($font-size-s, $font-weight-bold, 20px, -0.16px, $color-text-white);
 		margin-bottom: 8px;
 	}
 
 	&__position {
 		width: 344px;
-		color: $color-text-light-gray;
-		font-size: $font-size-xs;
-		font-weight: $font-weight-medium;
-		line-height: 18px;
-		margin-bottom: 24px;
-		align-self: stretch;
+		@include font($font-size-xs, $font-weight-medium, 18px, -0.14px, $color-text-light-gray);
+		margin: 0 auto 24px;
+		//окмпенсируем сайд-эффект от скролла
+		white-space: normal;
+	}
+}
+
+@include tablet {
+	.support {
+		padding-top: 110px;
+		padding-bottom: 110px;
+
+		&__item {
+			min-width: 296px;
+		}
+
+		&__text {
+			width: 264px;
+			margin: 0 auto;
+		}
+
+		&__position {
+			width: 264px;
+		}
+	}
+}
+
+@include tablet-xs {
+	.support {
+		padding-top: 80px;
+		padding-bottom: 80px;
+
+		&__banner {
+			margin-bottom: 32px;
+		}
+
+		&__title {
+			@include font($heading-size-h2, $font-weight-bold, 40px, -0.36px, $color-text-white);
+		}
+
+		&__instruction {
+			width: 273px;
+			@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-gray);
+		}
+
+		&__item {
+			min-width: 326px;
+		}
+	}
+}
+
+@include mobile {
+	.support {
+		width: calc(100% - 48px);
+		padding-top: 90px;
+		padding-bottom: 90px;
+
+		&__banner {
+			margin-bottom: 24px;
+		}
+
+		&__title {
+			@include font($font-size-other, $font-weight-bold, 28px, -0.24px, $color-text-white);
+		}
+
+		&__instruction {
+			width: 216px;
+			@include font($font-size-xxs, $font-weight-medium, 16px, -0.12px, $color-text-gray);
+		}
+
+		&__lists {
+			gap: 8px;
+		}
+
+		&__item {
+			min-width: 263px;
+			height: 378px;
+		}
+
+		&__name {
+			@include font($font-size-xs, $font-weight-bold, 18px, -0.14px, $color-text-white);
+		}
+
+		&__position {
+			width: 224px;
+			@include font($font-size-xxs, $font-weight-bold, 16px, -0.12px, $color-text-white);
+		}
+	}
+}
+
+@include mobile-xs {
+	.support {
+		width: calc(100% - 32px);
+		padding-top: 48px;
+		padding-bottom: 48px;
+
+		&__banner {
+			margin-bottom: 24px;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		&__item {
+			min-width: 288px;
+		}
+
+		&__caption {
+			@include font($font-size-xs, $font-weight-medium, 18px, -0.14px, $color-text-white);
+		}
 	}
 }
