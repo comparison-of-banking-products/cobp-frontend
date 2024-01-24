@@ -10,8 +10,6 @@ import { currencyList } from '../../utils/constants';
 function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
-	// const deposits = useSelector((state) => state.deposits);
-	// console.log('deposits', deposits);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 

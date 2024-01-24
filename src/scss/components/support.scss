@@ -24,23 +24,23 @@
 		gap: 36px;
 		padding-left: 0;
 
-		// делаем скролл
-		// flex-wrap: nowrap;
-		// white-space: nowrap;
-		// overflow-x: auto;
-		// -webkit-overflow-scrolling: touch;
-		// -ms-overflow-style: none;
-		// overflow: -moz-scrollbars-none;
-		// scrollbar-width: none;
+		//делаем скролл
+		flex-wrap: nowrap;
+		white-space: nowrap;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: none;
+		overflow: -moz-scrollbars-none;
+		scrollbar-width: none;
 	}
 
-	// &__lists::-webkit-scrollbar {
-	// 	width: 0;
-	// 	display: none;
-	// }
+	&__lists::-webkit-scrollbar {
+		width: 0;
+		display: none;
+	}
 
 	&__item {
-		width: 376px;
+		min-width: 376px;
 		height: 384px;
 		text-align: center;
 		list-style-type: none;
@@ -94,8 +94,9 @@
 	&__position {
 		width: 344px;
 		@include font($font-size-xs, $font-weight-medium, 18px, -0.14px, $color-text-light-gray);
-		margin-bottom: 24px;
-		align-self: stretch;
+		margin: 0 auto 24px;
+		//окмпенсируем сайд-эффект от скролла
+		white-space: normal;
 	}
 }
 
@@ -105,7 +106,12 @@
 		padding-bottom: 110px;
 
 		&__item {
-			width: 296px;
+			min-width: 296px;
+		}
+
+		&__text {
+			width: 264px;
+			margin: 0 auto;
 		}
 
 		&__position {
@@ -133,8 +139,7 @@
 		}
 
 		&__item {
-			width: 326px;
-			// height: 384px;
+			min-width: 326px;
 		}
 	}
 }
@@ -158,8 +163,12 @@
 			@include font($font-size-xxs, $font-weight-medium, 16px, -0.12px, $color-text-gray);
 		}
 
+		&__lists {
+			gap: 8px;
+		}
+
 		&__item {
-			width: 263px;
+			min-width: 263px;
 			height: 378px;
 		}
 
@@ -186,15 +195,8 @@
 			gap: 16px;
 		}
 
-		&__title {
-		}
-
-		&__lists {
-			gap: 8px;
-		}
-
 		&__item {
-			width: 288px;
+			min-width: 288px;
 		}
 
 		&__caption {

@@ -15,6 +15,8 @@ function Support() {
 				<SupportCard />
 				<SupportCard />
 				<SupportCard />
+				<SupportCard />
+				<SupportCard />
 			</ul>
 		</section>
 	);

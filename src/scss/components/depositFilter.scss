@@ -110,6 +110,7 @@
 		&__checkboxes {
 			max-width: calc(100% - 24px);
 
+			//делаем скролл
 			flex-wrap: nowrap;
 			white-space: nowrap;
 			overflow-x: auto;
