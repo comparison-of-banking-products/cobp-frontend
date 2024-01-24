@@ -46,7 +46,7 @@
 		list-style-type: none;
 		justify-content: center;
 		border-radius: $second-border-radius;
-		background: $color-bg-slider;
+		background: $color-bg-dark-gray;
 	}
 
 	&__banks {
@@ -55,7 +55,7 @@
 		margin: 0 auto;
 		margin-top: 28px;
 		align-items: center;
-		background-color: $color-bg-banks;
+		background-color: $color-bg-gray;
 		height: 28px;
 		width: 177px;
 		align-self: center;

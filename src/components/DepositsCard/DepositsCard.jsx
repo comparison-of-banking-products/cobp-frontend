@@ -22,17 +22,17 @@ function DepositsCard(props) {
 				) : (
 					[]
 				)}
-				{props.deposits.deposit.capitalization ? (
+				{props.deposit.deposit.capitalization ? (
 					<p className="deposits-card__tags-text">С капитализацией</p>
 				) : (
 					[]
 				)}
-				{props.deposits.deposit.replenishment ? (
+				{props.deposit.deposit.replenishment ? (
 					<p className="deposits-card__tags-text">С пополнением</p>
 				) : (
 					[]
 				)}
-				{props.deposits.deposit.partialWithdrawal ? (
+				{props.deposit.deposit.partialWithdrawal ? (
 					<p className="deposits-card__tags-text">С частичным снятием</p>
 				) : (
 					[]
@@ -43,29 +43,29 @@ function DepositsCard(props) {
 					{/* <p className="deposits-card__about-bank-image" /> */}
 					<img
 						className="deposits-card__about-bank-image"
-						src={getLogoName(props.deposits.deposit.bank.logo)}
-						alt={props.deposits.deposit.bank.name}
+						src={getLogoName(props.deposit.deposit.bank.logo)}
+						alt={props.deposit.deposit.bank.name}
 					/>
 					<div className="deposits-card__about-bank-text">
-						<p className="deposits-card__about-bank-name">{props.deposits.deposit.bank.name}</p>
+						<p className="deposits-card__about-bank-name">{props.deposit.deposit.bank.name}</p>
 						<p className="deposits-card__about-bank-bid">Максимальный</p>
 					</div>
 				</div>
 				<ul className="deposits-card__about-money">
 					<li className="deposits-card__about-money-list">
 						<p className="deposits-card__information">Срок</p>
-						<p className="deposits-card__term">{props.deposits.deposit.term} мес</p>
+						<p className="deposits-card__term">{props.deposit.deposit.term} мес</p>
 					</li>
 					<li className="deposits-card__about-money-list">
 						<p className="deposits-card__information">Ставка</p>
 						<p className="deposits-card__rate">
-							{replacePointNumber(props.deposits.deposit.rate)} %
+							{replacePointNumber(props.deposit.deposit.rate)} %
 						</p>
 					</li>
 					<li className="deposits-card__about-money-list">
 						<p className="deposits-card__information">Доход</p>
 						<p className="deposits-card__income">
-							{roundNumber(props.deposits.annualInterest)} &#8381;
+							{roundNumber(props.deposit.annualInterest)} &#8381;
 						</p>
 					</li>
 					<li className="deposits-card__about-money-list">
@@ -85,7 +85,7 @@ function DepositsCard(props) {
 								<p className="deposits-card__information">Сумма</p>{calculator.depositAmount} &#8381;
 							</p> */}
 				</ul>
-				<Link className="deposits-card__link" to={props.deposits.deposit.productUrl} />
+				<Link className="deposits-card__link" to={props.deposit.deposit.productUrl} />
 			</div>
 		</li>
 	);
