@@ -66,8 +66,6 @@
 
 	&__text {
 		max-width: 268px;
-		// margin: 0;
-		// padding: 0;
 		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-light-gray);
 	}
 }
@@ -148,12 +146,10 @@
 
 			background-image: url('../../images/credit-png-s.png');
 			background-size: 125px 127px;
-			// order: 1;
 
 			&:last-of-type {
 				background-image: url('../../images/deposit-png-s.png');
 				background-size: 125px 122px;
-				// order: 2;
 			}
 
 			&:hover {
