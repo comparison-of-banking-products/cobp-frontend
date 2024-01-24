@@ -41,8 +41,8 @@ export const getCredits = ({
 	);
 };
 
-export const getBanksList = () => {
-	return BASE_URL + `v1/banks`;
+export const getBanksList = ({ sort }) => {
+	return BASE_URL + `v1/banks?sort=${sort}`;
 };
 
 export const getLogoName = (logoName) => {
