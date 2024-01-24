@@ -12,11 +12,11 @@ function Main() {
 	return (
 		<>
 			<Slider />
-			<ProductCards />
-			<Calculator />
-			<ExchangeRateList />
-			<Banks />
-			<Support />
+			{/* <ProductCards /> */}
+			{/* <Calculator /> */}
+			{/* <ExchangeRateList /> */}
+			{/* <Banks /> */}
+			{/* <Support /> */}
 		</>
 	);
 }
