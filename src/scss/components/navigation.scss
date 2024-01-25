@@ -1,22 +1,41 @@
-.header__links {
-	display: flex;
-	align-items: center;
-	gap: 36px;
+.header {
+	&__links {
+		display: flex;
+		align-items: center;
+		gap: 36px;
+	}
+
+	&__link {
+		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-gray);
+		text-decoration: none;
+		transition: color 0.3s;
+		&_active {
+			color: $color-text-white;
+		}
+
+		// TODO: потом удалить когда появятся страницы и убрать этот класс из Navigation
+		&_disabled {
+			pointer-events: none;
+		}
+		&:hover {
+			color: $color-text-white;
+		}
+	}
 }
 
-.header__link {
-	@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-gray);
-	text-decoration: none;
-	transition: color 0.3s;
-	&_active {
-		color: $color-text-white;
+@include tablet-xs {
+	.header {
+		&__links {
+			gap: calc((100vw - 769px) / (950 - 769) * (36 - 15) + 15px);
+		}
 	}
+}
 
-	// TODO: потом удалить когда появятся страницы и убрать этот класс из Navigation
-	&_not-active {
-		pointer-events: none;
-	}
-	&:hover {
-		color: $color-text-white;
+@media screen and (max-width: 768px) {
+	.header {
+		&__links {
+			display: none;
+			gap: 15px;
+		}
 	}
 }

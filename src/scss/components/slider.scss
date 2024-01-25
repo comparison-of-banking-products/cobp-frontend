@@ -33,8 +33,9 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-image: url('../../images/bg-slider-deposits.png');
+			background-image: url('../../images/bg-slider-deposits-xl.png');
 			background-size: cover;
+			background-position: center;
 			mix-blend-mode: luminosity;
 		}
 	}
@@ -131,6 +132,11 @@
 		&__credits {
 			background-image: url('../../images/bg-slider-credits-lg.png');
 		}
+		&__deposits {
+			&::before {
+				background-image: url('../../images/bg-slider-deposits-lg.png');
+			}
+		}
 	}
 }
 
@@ -138,6 +144,12 @@
 	.slider {
 		&__credits {
 			background-image: url('../../images/bg-slider-credits-md.png');
+		}
+
+		&__deposits {
+			&::before {
+				background-image: url('../../images/bg-slider-deposits-md.png');
+			}
 		}
 
 		&__content {
@@ -163,6 +175,12 @@
 
 		&__credits {
 			background-image: url('../../images/bg-slider-credits-sm.png');
+		}
+
+		&__deposits {
+			&::before {
+				background-image: url('../../images/bg-slider-deposits-sm.png');
+			}
 		}
 
 		&__content {
@@ -195,6 +213,12 @@
 
 		&__credits {
 			background-image: url('../../images/bg-slider-credits-xs.png');
+		}
+
+		&__deposits {
+			&::before {
+				background-image: url('../../images/bg-slider-deposits-xs.png');
+			}
 		}
 
 		&__title {
