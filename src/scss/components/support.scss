@@ -178,7 +178,7 @@
 
 		&__position {
 			width: 224px;
-			@include font($font-size-xxs, $font-weight-bold, 16px, -0.12px, $color-text-white);
+			@include font($font-size-xxs, $font-weight-bold, 16px, -0.12px, $color-text-light-gray);
 		}
 	}
 }

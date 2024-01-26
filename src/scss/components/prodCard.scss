@@ -76,19 +76,21 @@
 			min-width: calc(59% - 18px);
 
 			background-image: url('../../images/credit-png-l.png');
-			background-size: 231px 187px;
+			//background-size: 231px 187px;
+			background-size: 231px 153px;
 
 			&:last-of-type {
 				background-image: url('../../images/deposit-png-l.png');
-				background-size: 210px 176px;
+				//background-size: 210px 176px;
+				background-size: 233px 153px;
 			}
 
 			&:hover {
-				background-size: calc(231px * 1.2) calc(187px * 1.2);
+				background-size: calc(231px * 1.2) calc(153px * 1.2);
 			}
 
 			&:last-of-type:hover {
-				background-size: calc(210px * 1.2) calc(176px * 1.2);
+				background-size: calc(233px * 1.2) calc(153px * 1.2);
 			}
 		}
 

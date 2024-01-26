@@ -85,6 +85,23 @@
 		flex-direction: row;
 		gap: 36px;
 	}
+
+	&__results-notification {
+		display: flex;
+		gap: 8px;
+		max-width: 405px;
+	}
+
+	&__results-icon {
+		width: 20px;
+		height: 20px;
+	}
+
+	&__results-text {
+		// max-width: 346px;
+		@include font(11px, $font-weight-medium, 14px, -0.12px, $color-text-white);
+	}
+
 	&__result {
 		width: 111px;
 		display: flex;
@@ -193,6 +210,9 @@
 			//ошибка в макете для display, компенсирую уменьшая gap
 			gap: 36px;
 		}
+		&__results-notification {
+			@include font($font-size-xxs, $font-weight-bold, 16px, -0.12px, $color-text-light-gray);
+		}
 
 		&__result-name {
 			@include font($font-size-xxs, $font-weight-medium, 16px, normal, $color-text-light-gray);
@@ -213,19 +233,28 @@
 			height: 624px;
 		}
 
-		&__products {
-			height: 44px;
+		&__container_extended {
+			height: 727px;
 		}
 
-		&__product {
+		&__products {
+			height: 44px;
 		}
 
 		&__calculation {
 			height: 548px;
 		}
 
+		&__calculation_extended {
+			height: 651px;
+		}
+
 		&__results {
 			height: 360px;
+		}
+
+		&__results_extended {
+			height: 463px;
 		}
 
 		&__results-display {
@@ -235,11 +264,12 @@
 			align-self: flex-start;
 		}
 
-		&__result {
-			text-align: left;
+		&__results-notification {
+			padding: 36px 0 42px;
 		}
 
-		&__result-value {
+		&__result {
+			text-align: left;
 		}
 	}
 }
