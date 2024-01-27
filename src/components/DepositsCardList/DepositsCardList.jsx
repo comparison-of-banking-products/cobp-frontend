@@ -11,10 +11,10 @@ function DepositsCardList({ isSubmitted }) {
 
 	return (
 		<section aria-label="Вклады" className="deposits">
-			<div className="deposits__filter">
+			{/* <div className="deposits__filter">
 				<Sort options={['По ставке', 'По сроку', 'По доходу', 'По сумме']} />
-			</div>
-			<ul className="deposits__card-container">
+			</div> */}
+			<ul className="deposits-card-list__card-container">
 				{isSubmitted
 					? deposits && deposits.calculatedDeposits?.length > 0
 						? deposits.calculatedDeposits.map((deposit, index) => (

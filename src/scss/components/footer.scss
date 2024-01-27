@@ -6,7 +6,7 @@
 	&__container {
 		display: flex;
 		justify-content: space-between;
-		width: 1264px;
+		max-width: 1264px;
 		margin: 0 auto;
 	}
 
@@ -47,7 +47,7 @@
 
 	&__column {
 		display: flex;
-		margin: 0 0 56px 338px;
+		margin: 0 0 56px auto;
 	}
 
 	&__navigation {
@@ -78,6 +78,7 @@
 	}
 
 	&__for-user {
+
 		display: flex;
 		margin: 0 0 33px 0;
 	}
@@ -86,7 +87,7 @@
 		@include font($font-size-s, $font-weight-medium, 20px, -0.1px, $color-text-light-gray);
 		text-decoration: none;
 		transition: color 0.3s;
-		margin-right: 40px;
+		margin-right: auto;
 
 		&:hover {
 			color: $color-text-white;
@@ -95,13 +96,25 @@
 
 	&__for-user-number {
 		@include font($font-size-s, $font-weight-medium, 20px, -0.1px, $color-text-light-gray);
+		margin-right: 40px;
 	}
 
 	&__footnote {
+		max-width: 713px;
 		max-height: 36px;
 	}
 
 	&__footnote-text {
 		@include font($font-size-xxs, $font-weight-medium, 16px, -0.1px, $color-text-gray);
+	}
+}
+
+@include screen-size-lg {
+	.footer {
+
+
+		&__container {
+
+		}
 	}
 }

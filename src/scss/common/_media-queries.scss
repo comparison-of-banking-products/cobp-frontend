@@ -40,3 +40,9 @@
 		@content;
 	}
 }
+
+@mixin screen-size-lg {
+	@media (max-width: $screen-size-lg) {
+		@content;
+	}
+}
