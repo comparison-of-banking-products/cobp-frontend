@@ -1,4 +1,4 @@
-.deposit-filter {
+.credit-filter {
 	margin: -35px auto 0;
 	max-width: 1200px;
 	width: calc(100% - 80px);
@@ -64,7 +64,7 @@
 }
 
 @include tablet {
-	.deposit-filter {
+	.credit-filter {
 		margin: -21px auto 0;
 		&__submit {
 			min-width: 108px;
@@ -73,7 +73,7 @@
 }
 
 @include tablet-xs {
-	.deposit-filter {
+	.credit-filter {
 		margin: -4px auto 0;
 		max-height: 430px;
 		border-radius: 32px;
@@ -126,7 +126,7 @@
 }
 
 @include mobile {
-	.deposit-filter {
+	.credit-filter {
 		margin: -8px auto 0;
 		max-height: 414px;
 
@@ -144,8 +144,8 @@
 	}
 }
 
-@include mobile-xs {
-	.deposit-filter {
+@include mobile {
+	.credit-filter {
 		margin: -10px auto 0;
 	}
 }

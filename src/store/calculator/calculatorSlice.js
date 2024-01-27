@@ -1,10 +1,10 @@
 const { createSlice } = require('@reduxjs/toolkit');
 
 const initialState = {
-	depositAmount: 240000,
-	depositTerm: 5,
-	creditAmount: 240000,
-	creditTerm: 6,
+	depositAmount: 100000,
+	depositTerm: 3,
+	creditAmount: 100000,
+	creditTerm: 3,
 	currency: '₽',
 	isCredit: false,
 };

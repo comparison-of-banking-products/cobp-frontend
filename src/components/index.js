@@ -18,13 +18,14 @@ import Input from './UI/Input/Input';
 import Checkbox from './UI/Checkbox/Checkbox';
 import Support from './Support/Support';
 import SupportCard from './SupportCard/SupportCard';
-import ExchangeRate from './ExchangeRate/ExchangeRate';
-import PromoDeposits from './PromoDeposits/PromoDeposits';
+import ExchangeRateList from './ExchangeRateList/ExchangeRateList';
+import Promo from './Promo/Promo';
 import SupportChat from './SupportChat/SupportChat';
 import SupportChatForm from './SupportChat/SupportChatForm/SupportChatForm';
 import SupportChatSuccess from './SupportChat/SupportChatSuccess/SupportChatSuccess';
 import DepositsCardList from './DepositsCardList/DepositsCardList';
 import DepositFilter from './DepositFilter/DepositFilter';
+import CreditFilter from './CreditFilter/CreditFilter';
 import SelectMultiple from './UI/SelectMultiple/SelectMultiple';
 
 export {
@@ -45,8 +46,8 @@ export {
 	Input,
 	Support,
 	SupportCard,
-	ExchangeRate,
-	PromoDeposits,
+	ExchangeRateList,
+	Promo,
 	SupportChat,
 	SupportChatForm,
 	SupportChatSuccess,
@@ -55,5 +56,6 @@ export {
 	CalculatorResult,
 	DepositFilter,
 	SelectMultiple,
+	CreditFilter,
 	Sort,
 };

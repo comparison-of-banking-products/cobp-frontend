@@ -1,42 +1,42 @@
 const { createSlice, createAsyncThunk } = require('@reduxjs/toolkit');
 
 const initialState = {
-	banksList: [],
+	credits: [],
 	error: false,
 	isLoading: false,
 	message: '',
 };
 
-export const loadBanksList = createAsyncThunk(
-	'@@banksList/load-banks-list',
-	async (_, { extra: { client, api } }) => {
-		return client.get(api.getBanksList());
+export const loadCredits = createAsyncThunk(
+	'@@credits/load-credits',
+	async (data, { extra: { client, api } }) => {
+		return client.get(api.getCredits(data));
 	}
 );
 
-const banksListSlice = createSlice({
-	name: '@@banksList',
+const creditsSlice = createSlice({
+	name: '@@credits',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
-			.addCase(loadBanksList.pending, (state) => {
+			.addCase(loadCredits.pending, (state) => {
 				state.message = null;
 				state.error = false;
 				state.isLoading = true;
 			})
-			.addCase(loadBanksList.rejected, (state, action) => {
+			.addCase(loadCredits.rejected, (state, action) => {
 				state.error = true;
 				state.message = action.error.message;
 				state.isLoading = false;
 			})
-			.addCase(loadBanksList.fulfilled, (state, action) => {
+			.addCase(loadCredits.fulfilled, (state, action) => {
 				state.error = false;
 				state.isLoading = false;
-				state.banksList = action.payload.data;
+				state.credits = action.payload.data;
 				state.message = null;
 			});
 	},
 });
 
-export const banksListReducer = banksListSlice.reducer;
+export const creditsReducer = creditsSlice.reducer;

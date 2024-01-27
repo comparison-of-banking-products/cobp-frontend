@@ -5,12 +5,14 @@ import storage from 'redux-persist/lib/storage';
 import { depositsReducer } from './deposits/depositsSlice';
 import { calculatorReducer } from './calculator/calculatorSlice';
 import { banksListReducer } from './banksList/banksListSlice';
+import { exchangeRateReducer } from './exchangeRate/exchangeRateSlice';
+import { creditsReducer } from './credits/creditsSlice';
 import axios from 'axios';
 
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['calculator'],
+	whitelist: ['calculator', 'exchangeRate', 'deposits'],
 	// blacklist: ['deposits']
 };
 
@@ -18,6 +20,8 @@ const rootReducer = combineReducers({
 	deposits: depositsReducer,
 	calculator: calculatorReducer,
 	banksList: banksListReducer,
+	exchangeRate: exchangeRateReducer,
+	credits: creditsReducer,
 });
 
 const persistReducer = persReducer(persistConfig, rootReducer);
