@@ -37,7 +37,7 @@ function Range({ placeHolder, name, symbol, min, max, startValue, getValue, step
 				<span className="range__placeholder">{placeHolder}</span>
 				<input
 					className="range__input"
-					value={value[name]}
+					value={`${value[name]} мес.`}
 					name={name}
 					onChange={handleChange}
 					onBlur={handleBlur}

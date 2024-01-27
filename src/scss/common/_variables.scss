@@ -12,21 +12,6 @@ $color-header-buttons: #414149;
 $color-error: #ff453a;
 $color-success: #30d158;
 
-// TODO: удалить переменные для цвета когда будет изменена вся страница
-$color-light-gray: #4f4e54;
-$color-gray: #353434;
-$color-dark-gray: #2a2a2b;
-$color-white: #f7f7f7;
-$color-bg-footer: #121212;
-$color-bg-footer-text: #96a8b8;
-$color-bg-slider: #232325;
-$color-bg-banks: #343435;
-$color-text-input: #636366;
-$color-slider-dots-active: #fbfbfb;
-$color-slider-dots-active2: #76767a;
-$color-bg-slider-dots: #27272a;
-$color-slider-dots: #8e8e93;
-
 // Sizes
 $screen-size-sm: 576px;
 $screen-size-md: 768px;
@@ -61,11 +46,7 @@ $font-weight-medium: 500;
 $font-weight-bold: 600;
 
 // Break points
-// $mobile-xs: 320px;
 $mobile-xs: 520px;
-// $mobile: 576px;
 $mobile: 704px;
-// $tablet-xs: 768px;
 $tablet-xs: 950px;
-// $tablet: 1040px;
 $tablet: 1160px;

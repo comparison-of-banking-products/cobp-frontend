@@ -21,21 +21,25 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const [validate, setValidate] = useState();
 
 	useEffect(() => {
-		dispatch(
-			loadDeposits({
-				amount: calculator.depositAmount,
-				term: calculator.depositTerm,
-				capitalization: isCapitalisation,
-				replenishment: isReplenishment,
-				partialWithdrawal: isWithdraw,
-				banks: selectedBanks,
-			})
-		);
-	}, [calculator, isCapitalisation, isReplenishment, isWithdraw, selectedBanks]);
-
-	useEffect(() => {
-		setIsAllDepo(true);
-	}, []);
+		isSubmitted &&
+			dispatch(
+				loadDeposits({
+					amount: calculator.depositAmount,
+					term: calculator.depositTerm,
+					capitalization: isCapitalisation,
+					replenishment: isReplenishment,
+					partialWithdrawal: isWithdraw,
+					banks: selectedBanks,
+				})
+			);
+	}, [
+		calculator.depositAmount,
+		calculator.depositTerm,
+		isCapitalisation,
+		isReplenishment,
+		isWithdraw,
+		selectedBanks,
+	]);
 
 	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
@@ -92,9 +96,15 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 							placeHolder="Банки"
 							selectedBanks={selectedBanks}
 							setSelectedBanks={setSelectedBanks}
+							isDeposist={true}
 						/>
 					</div>
-					<Button textBtn={'Показать'} btnClass={'deposit-filter__submit'} type={'submit'} />
+					<Button
+						textBtn={'Показать'}
+						btnClass={'deposit-filter__submit'}
+						type={'submit'}
+						disabled={!isSubmitted && selectedBanks.length === 0}
+					/>
 				</form>
 				<div className="deposit-filter__checkboxes">
 					<Button

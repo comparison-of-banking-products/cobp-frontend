@@ -10,8 +10,8 @@ import { currencyList } from '../../utils/constants';
 function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
-	//const creditsList = useSelector((state) => state.credits);
-	//console.log('creditsList', creditsList);
+	const credits = useSelector((state) => state.credits);
+	console.log('credits', credits.credits.calculatedCredits);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 
@@ -23,21 +23,25 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	const [validate, setValidate] = useState();
 
 	useEffect(() => {
-		dispatch(
-			loadCredits({
-				amount: calculator.creditAmount,
-				term: calculator.creditTerm,
-				creditOnline: isCreditOnline,
-				onlineApprove: isOnlineApprove,
-				collateral: isCollateral,
-				banks: selectedBanks,
-			})
-		);
-	}, [calculator, isCreditOnline, isOnlineApprove, isCollateral, selectedBanks]);
-
-	useEffect(() => {
-		setIsAllCredits(true);
-	}, []);
+		isSubmitted &&
+			dispatch(
+				loadCredits({
+					amount: calculator.creditAmount,
+					term: calculator.creditTerm,
+					creditOnline: isCreditOnline,
+					onlineApprove: isOnlineApprove,
+					collateral: isCollateral,
+					banks: selectedBanks,
+				})
+			);
+	}, [
+		calculator.creditAmount,
+		calculator.creditTerm,
+		isCreditOnline,
+		isOnlineApprove,
+		isCollateral,
+		selectedBanks,
+	]);
 
 	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
@@ -47,7 +51,6 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsSubmitted(true);
-		console.log('можно рендерить кредиты:', isSubmitted);
 	};
 
 	const handleButtonClick = (buttonType) => {
@@ -95,9 +98,15 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 							placeHolder="Банки"
 							selectedBanks={selectedBanks}
 							setSelectedBanks={setSelectedBanks}
+							isDeposist={false}
 						/>
 					</div>
-					<Button textBtn={'Показать'} btnClass={'credit-filter__submit'} type={'submit'} />
+					<Button
+						textBtn={'Показать'}
+						btnClass={'credit-filter__submit'}
+						type={'submit'}
+						disabled={!isSubmitted && selectedBanks.length === 0}
+					/>
 				</form>
 				<div className="credit-filter__checkboxes">
 					<Button

@@ -15,40 +15,6 @@ function DepositsCard(props) {
 	};
 
 	return (
-		// <li className="deposits-card">
-		// 	<img
-		// 		className="deposits-card__bank-image"
-		// 		src={getLogoName(props.deposits.deposit.bank.logo)}
-		// 		alt={props.deposits.deposit.bank.name}
-		// 	/>
-		// 	<div className="deposits-card__tags">
-		// 		{props.id === 0 ? (
-		// 			<p className="deposits-card__tags-text deposits-card__tags-image">Самый выгодный</p>
-		// 		) : (
-		// 			''
-		// 		)}
-		// 		{props.deposits.deposit.capitalization ? (
-		// 			<p className="deposits-card__tags-text">С капитализацией</p>
-		// 		) : (
-		// 			''
-		// 		)}
-		// 		{props.deposits.deposit.replenishment ? (
-		// 			<p className="deposits-card__tags-text">С пополнением</p>
-		// 		) : (
-		// 			''
-		// 		)}
-		// 		{props.deposits.deposit.partialWithdrawal ? (
-		// 			<p className="deposits-card__tags-text">С частичным снятием</p>
-		// 		) : (
-		// 			''
-		// 		)}
-		// 	</div>
-		// 	<div className="deposits-card__about-bank-text">
-		// 		<p className="deposits-card__about-bank-name">Россельхозбанк</p>
-		// 		<p className="deposits-card__about-bank-bid">Максимальный</p>
-		// 	</div>
-		// </li>
-
 		// <li className="deposits-card__list">
 		<li className="deposits-card">
 			<img
@@ -103,7 +69,7 @@ function DepositsCard(props) {
 					)}
 				</div>
 				<div className="deposits-card__about-bank">
-					{/* <p className="deposits-card__about-bank-image" /> */}
+					<p className="deposits-card__about-bank-image" />
 					<div className="deposits-card__about-bank-text">
 						<p className="deposits-card__about-bank-name">Россельхозбанк</p>
 						<p className="deposits-card__about-bank-bid">Максимальный</p>

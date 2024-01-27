@@ -20,9 +20,9 @@
 		overflow: hidden;
 	}
 	&__credits {
-		background-image: url('../../images/bg-slider-credits.png');
+		background-image: url('../../images/bg-slider-credits-xl.png');
 		background-size: cover;
-		background-position: bottom right;
+		background-position: center;
 	}
 
 	&__deposits {
@@ -33,8 +33,9 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-image: url('../../images/bg-slider-deposits.png');
+			background-image: url('../../images/bg-slider-deposits-xl.png');
 			background-size: cover;
+			background-position: center;
 			mix-blend-mode: luminosity;
 		}
 	}
@@ -124,4 +125,109 @@
 
 .swiper-pagination-bullet-active {
 	background: $color-text-white;
+}
+
+@include tablet {
+	.slider {
+		&__credits {
+			background-image: url('../../images/bg-slider-credits-lg.png');
+		}
+		&__deposits {
+			&::before {
+				background-image: url('../../images/bg-slider-deposits-lg.png');
+			}
+		}
+	}
+}
+
+@include tablet-xs {
+	.slider {
+		&__credits {
+			background-image: url('../../images/bg-slider-credits-md.png');
+		}
+
+		&__deposits {
+			&::before {
+				background-image: url('../../images/bg-slider-deposits-md.png');
+			}
+		}
+
+		&__content {
+			max-width: 419px;
+		}
+
+		&__title {
+			@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-text-white);
+		}
+
+		&__subtitle {
+			max-width: 388px;
+		}
+	}
+}
+
+@include mobile {
+	.slider {
+		padding: 24px 24px 0;
+		&__container {
+			min-height: 430px;
+		}
+
+		&__credits {
+			background-image: url('../../images/bg-slider-credits-sm.png');
+		}
+
+		&__deposits {
+			&::before {
+				background-image: url('../../images/bg-slider-deposits-sm.png');
+			}
+		}
+
+		&__content {
+			max-width: 267px;
+		}
+
+		&__title {
+			@include font($font-size-mml, $font-weight-bold, 32px, -0.28px, $color-text-white);
+		}
+
+		&__subtitle {
+			max-width: 231px;
+			@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-light-gray);
+			margin-bottom: 24px;
+		}
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		display: none;
+	}
+}
+
+@include mobile-xs {
+	.slider {
+		padding: 16px 16px 0;
+		&__container {
+			min-height: 498px;
+		}
+
+		&__credits {
+			background-image: url('../../images/bg-slider-credits-xs.png');
+		}
+
+		&__deposits {
+			&::before {
+				background-image: url('../../images/bg-slider-deposits-xs.png');
+			}
+		}
+
+		&__title {
+			@include font($font-size-mml, $font-weight-bold, 32px, -0.28px, $color-text-white);
+		}
+
+		&__subtitle {
+			max-width: 193px;
+			@include font($font-size-xxs, $font-weight-medium, 14px, normal, $color-text-light-gray);
+		}
+	}
 }

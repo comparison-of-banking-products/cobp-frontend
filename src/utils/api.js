@@ -1,4 +1,4 @@
-const BASE_URL = 'http://80.87.107.99:8080/';
+const BASE_URL = 'https://benchmark.acceleratorpracticum.ru/api/';
 
 export const getDeposits = ({
 	amount,
@@ -41,8 +41,8 @@ export const getCredits = ({
 	);
 };
 
-export const getBanksList = () => {
-	return BASE_URL + `v1/banks`;
+export const getBanksList = ({ sort }) => {
+	return BASE_URL + `v1/banks?sort=${sort}`;
 };
 
 export const getLogoName = (logoName) => {

@@ -1,10 +1,12 @@
 {
-	"short_name": "React App",
-	"name": "Create React App Sample",
+	"short_name": "Benchmark",
+	"name": "Benchmark",
+	"description": "Benchmark compare of banking products",
+	"scope": "/",
 	"icons": [
 		{
 			"src": "favicon.ico",
-			"sizes": "64x64 32x32 24x24 16x16",
+			"sizes": "64x64",
 			"type": "image/x-icon"
 		},
 		{
@@ -18,8 +20,22 @@
 			"sizes": "512x512"
 		}
 	],
-	"start_url": ".",
+	"screenshots": [
+		{
+			"src": "logo512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"form_factor": "wide"
+		},
+		{
+			"src": "logo512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"form_factor": "narrow"
+		}
+	],
+	"start_url": "/",
 	"display": "standalone",
-	"theme_color": "#000000",
-	"background_color": "#ffffff"
+	"theme_color": "#1c1c1e",
+	"background_color": "#1c1c1e"
 }

@@ -1,16 +1,15 @@
 .select-multiple {
-	background-color: $color-gray;
+	background-color: $color-bg-gray;
 	border-radius: 16px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 	gap: 6px;
-	// padding: 13px;
 	padding: 14px;
 	position: relative;
 	&__placeholder {
-		@include font($font-size-xs, $font-weight-medium, 18px, 0, $color-light-gray);
+		@include font($font-size-xs, $font-weight-medium, 18px, 0, $color-text-light-gray);
 	}
 	&__icon {
 		width: 24px;
@@ -36,22 +35,16 @@
 	&__input {
 		width: 70%;
 		padding: 0;
-		background-color: $color-gray;
+		background-color: $color-bg-gray;
 		outline: none;
 		border: 0;
-		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-white);
+		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-white);
 		-moz-appearance: textfield;
 		&::-webkit-outer-spin-button,
 		&::-webkit-inner-spin-button {
 			-webkit-appearance: none;
 		}
 	}
-
-	// &__icon-container {
-	// 	width: 24px;
-	// 	height: 24px;
-	// 	margin-left: 6px;
-	// }
 
 	&__icon-count {
 		margin-top: -4px;

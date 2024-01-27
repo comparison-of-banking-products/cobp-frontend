@@ -69,8 +69,11 @@
 		background-color: $color-bg-black;
 		position: absolute;
 		z-index: 999;
+		// width: 100%;
+		max-width: 318px;
 		width: 100%;
-		left: 0;
+		// left: 0;
+		right: 0;
 		top: 100%;
 		border-radius: 24px;
 		display: flex;
@@ -96,6 +99,28 @@
 			background-color: $color-bg-gray;
 			cursor: pointer;
 			opacity: 0.7;
+		}
+
+		&_disabled {
+			cursor: none;
+			pointer-events: none;
+			opacity: 0.5;
+		}
+	}
+}
+
+@include tablet {
+	.select {
+		&__options {
+			max-width: 316px;
+		}
+	}
+}
+
+@include tablet-xs {
+	.select {
+		&__options {
+			max-width: 100%;
 		}
 	}
 }
