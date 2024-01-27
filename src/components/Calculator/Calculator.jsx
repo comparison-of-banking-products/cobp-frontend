@@ -7,6 +7,7 @@ import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { loadCredits } from '../../store/credits/creditsSlice';
 import { debounce } from 'lodash';
 import { currencyList } from '../../utils/constants';
+import info from '../../images/icons/info.svg';
 
 function Calculator() {
 	const navigate = useNavigate();
@@ -102,7 +103,13 @@ function Calculator() {
 	return (
 		<section className="calculator">
 			<h2 className="calculator__title title">Калькулятор</h2>
-			<div className="calculator__container">
+			<div
+				className={`calculator__container ${
+					(!calculator.isCredit && !depositResults) || (calculator.isCredit && !creditResults)
+						? 'calculator__container_extended'
+						: ''
+				}`}
+			>
 				<div className="calculator__products">
 					<span
 						className={`calculator__product ${
@@ -123,7 +130,13 @@ function Calculator() {
 					<div className="calculator__slider" ref={sliderRef} />
 				</div>
 				<form onSubmit={handleSubmit}>
-					<div className="calculator__calculation">
+					<div
+						className={`calculator__calculation ${
+							(!calculator.isCredit && !depositResults) || (calculator.isCredit && !creditResults)
+								? 'calculator__calculation_extended'
+								: ''
+						}`}
+					>
 						<div className="calculator__items">
 							{!calculator.isCredit && (
 								<>
@@ -171,7 +184,13 @@ function Calculator() {
 								</>
 							)}
 						</div>
-						<div className="calculator__results">
+						<div
+							className={`calculator__results ${
+								(!calculator.isCredit && !depositResults) || (calculator.isCredit && !creditResults)
+									? 'calculator__results_extended'
+									: ''
+							}`}
+						>
 							<div className="calculator__results-display">
 								{!calculator.isCredit && deposits?.deposits ? (
 									<>
@@ -220,6 +239,16 @@ function Calculator() {
 									</>
 								)}
 							</div>
+							{((!calculator.isCredit && !depositResults) ||
+								(calculator.isCredit && !creditResults)) && (
+								<div className="calculator__results-notification">
+									<img src={info} className="calculator__results-icon" alt="иконка информации" />
+									<p className="calculator__results-text">
+										К сожалению, мы не нашли подходящих предложений по заданным параметрам,
+										пожалуйста измените их и попробуйте снова
+									</p>
+								</div>
+							)}
 							<Button
 								textBtn={calculator.isCredit ? 'Подобрать кредит' : 'Подобрать вклад'}
 								btnClass="button__primary"

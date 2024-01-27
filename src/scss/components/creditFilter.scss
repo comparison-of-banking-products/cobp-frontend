@@ -84,9 +84,9 @@
 		max-height: 430px;
 		border-radius: 32px;
 		//
-		width: 100%;
-		border-bottom-left-radius: 0;
-		border-bottom-right-radius: 0;
+		// width: 100%;
+		// border-bottom-left-radius: 0;
+		// border-bottom-right-radius: 0;
 
 		&__container {
 			gap: 16px;
@@ -135,6 +135,10 @@
 	.credit-filter {
 		margin: -8px auto 0;
 		max-height: 414px;
+		//
+		width: 100%;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
 
 		&__container {
 			padding: 16px 0 16px 16px;
