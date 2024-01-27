@@ -1,44 +1,46 @@
 .page-not-found {
-	max-width: 1280px;
+	max-width: 582px;
 	margin: 0 auto;
+	padding: 92px 0;
 	box-sizing: border-box;
-	height: 100%;
+	min-height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 
+	&__img {
+		width: 408px;
+		height: 296px;
+		padding: 58px;
+		background: $color-bg-dark-gray;
+		border-radius: $primary-border-radius;
+		margin-bottom: 36px;
+	}
+
 	&__title {
-		margin: 50px 0 0;
-		padding: 0;
-		color: #fff;
-		font-size: 140px;
-		font-weight: 400;
-		line-height: normal;
+		@include font($font-size-xl, $font-weight-bold, 44px, -0.4px, $color-text-white);
+		margin-bottom: 20px;
+		text-align: center;
 	}
 
 	&__subtitle {
-		margin: 5px 0 0;
-		padding: 0;
-		color: #fff;
-		font-size: 16px;
-		font-weight: 400;
-		line-height: normal;
+		max-width: 582px;
+		@include font($font-size-s, $font-weight-bold, 24px, -0.16px, $color-text-light-gray);
+		text-align: center;
+		margin-bottom: 44px;
 	}
 
 	&__btn {
-		margin-top: 50px;
-		margin-bottom: 50px;
-		color: #4285f4;
-		font-size: 14px;
-		font-weight: 400;
-		line-height: normal;
+		padding: 14px 24px;
+		background: $color-bg-dark-gray;
+		border-radius: $primary-border-radius;
+		@include font($font-size-s, $font-weight-bold, 20px, normal, $color-text-white);
 		text-decoration: none;
-		transition: opacity 0.2s;
-		background: transparent;
 		border: none;
 		outline: none;
 		cursor: pointer;
+		transition: opacity 0.3s;
 
 		&:hover {
 			opacity: 0.7;
@@ -47,17 +49,23 @@
 }
 
 @media screen and (max-width: 768px) {
-	.page-not-found__title {
-		font-size: calc((100vw - 320px) / (768 - 320) * (140 - 80) + 80px);
+	.page-not-found {
+		max-width: 480px;
 	}
+}
 
-	.page-not-found__subtitle {
-		font-size: calc((100vw - 320px) / (768 - 320) * (16 - 12) + 12px);
-		margin-top: calc((100vw - 320px) / (768 - 320) * (5 - 10) + 10px);
-	}
+@media screen and (max-width: 576px) {
+	.page-not-found {
+		max-width: 288px;
 
-	.page-not-found__btn {
-		font-size: calc((100vw - 320px) / (768 - 320) * (14 - 12) + 12px);
-		margin-bottom: calc((100vw - 320px) / (768 - 320) * (60 - 30) + 30px);
+		&__img {
+			width: 288px;
+			height: 180px;
+			padding: 24px;
+		}
+
+		&__subtitle {
+			@include font($font-size-xs, $font-weight-medium, 18px, normal, $color-text-light-gray);
+		}
 	}
 }
