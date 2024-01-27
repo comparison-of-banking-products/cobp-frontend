@@ -28,17 +28,17 @@ function DepositsCard(props) {
 				) : (
 					''
 				)}
-				{props.deposits.deposit.capitalization ? (
+				{props.deposit.deposit.capitalization ? (
 					<p className="deposits-card__tags-text">С капитализацией</p>
 				) : (
 					''
 				)}
-				{props.deposits.deposit.replenishment ? (
+				{props.deposit.deposit.replenishment ? (
 					<p className="deposits-card__tags-text">С пополнением</p>
 				) : (
 					''
 				)}
-				{props.deposits.deposit.partialWithdrawal ? (
+				{props.deposit.deposit.partialWithdrawal ? (
 					<p className="deposits-card__tags-text">С частичным снятием</p>
 				) : (
 					''
