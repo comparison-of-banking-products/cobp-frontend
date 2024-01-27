@@ -78,7 +78,6 @@
 	}
 
 	&__for-user {
-
 		display: flex;
 		margin: 0 0 33px 0;
 	}
@@ -111,10 +110,7 @@
 
 @include screen-size-lg {
 	.footer {
-
-
 		&__container {
-
 		}
 	}
 }

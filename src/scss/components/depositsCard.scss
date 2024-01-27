@@ -12,7 +12,7 @@
 	}
 
 	&__about-bank-text {
-    display: flex;
+		display: flex;
 		flex-direction: column;
 	}
 
@@ -30,7 +30,7 @@
 		border-radius: 16px;
 		background-color: $color-bg-gray;
 		border-radius: 16px;
-    height: 15px;
+		height: 15px;
 		margin-right: 8px;
 	}
 
@@ -142,8 +142,7 @@
 }
 
 @include tablet {
-  .deposits-card {
-
+	.deposits-card {
 		&__about-contribution {
 			height: 104px;
 		}
@@ -174,8 +173,6 @@
 			@include font($font-size-m, $font-weight-bold, 22px, normal, $color-text-white);
 		}
 	}
-
-
 }
 
 @include tablet-xs {
@@ -187,13 +184,12 @@
 		}
 
 		&__about-bank-text {
-      margin-top: 11px;
+			margin-top: 11px;
 			min-width: 200px;
 		}
 
 		&__about-money {
-			margin: 16px 0 0 -92px ;
-			
+			margin: 16px 0 0 -92px;
 		}
 
 		&__about-contribution {
@@ -202,7 +198,6 @@
 
 		&__about-bank-name {
 			@include font($font-size-other, $font-weight-bold, 28px, -0.1px, $color-text-white);
-      
 		}
 
 		&__link {
@@ -213,7 +208,6 @@
 
 @include mobile {
 	.deposits-card {
-
 		&__about-money-list {
 			margin-right: 16px;
 		}
@@ -221,11 +215,10 @@
 		&__link {
 			visibility: hidden;
 		}
-}
+	}
 }
 @include mobile-xs {
 	.deposits-card {
-
 		&__about-money-list {
 			// display:block;
 			// width:49%;

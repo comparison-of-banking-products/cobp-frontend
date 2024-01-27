@@ -15,7 +15,7 @@ import {
 function App() {
 	return (
 		<div className="page">
-			{/* <Header /> */}
+			<Header />
 			<Routes>
 				<Route path="/" element={<Main />} />
 				<Route path="/deposits" element={<Deposits />} />
@@ -28,7 +28,7 @@ function App() {
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
 			<SupportChat />
-			{/* <Footer /> */}
+			<Footer />
 		</div>
 	);
 }
