@@ -12,6 +12,10 @@ function Deposits() {
 
 	const [visibleCards, setVisibleCards] = useState(initialVisibleCount);
 
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
 		<>
 			<Promo deposits={isDeposits} />
