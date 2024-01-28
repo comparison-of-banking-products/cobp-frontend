@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Range, Button, Select, SelectMultiple } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadDeposits } from '../../store/deposits/depositsSlice';
@@ -19,7 +19,15 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const [isWithdraw, setIsWithdraw] = useState(false);
 	const [isReplenishment, setIsReplenishment] = useState(false);
 
+	const depositFilterRef = useRef(null);
+
 	const [validate, setValidate] = useState();
+
+	useEffect(() => {
+		if (isSubmitted) {
+			depositFilterRef.current.scrollIntoView({ behavior: 'smooth' });
+		}
+	}, [isSubmitted]);
 
 	useEffect(() => {
 		isSubmitted &&
@@ -73,7 +81,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	};
 
 	return (
-		<section className="deposit-filter">
+		<section className="deposit-filter" ref={depositFilterRef}>
 			<div className="deposit-filter__container">
 				<form className="deposit-filter__form" onSubmit={handleSubmit}>
 					<div className="deposit-filter__inputs">

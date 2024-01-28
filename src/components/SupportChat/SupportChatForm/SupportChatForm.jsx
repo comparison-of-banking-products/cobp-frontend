@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
@@ -20,6 +20,41 @@ const SupportChatForm = ({ onClose, showModal }) => {
 
 	const [isSubmitError, setIsSubmitError] = useState('');
 	const [isSuccessSubmit, setIsSuccessSubmit] = useState(false);
+
+	const formRef = useRef(null);
+	const [touchStartY, setTouchStartY] = useState(null);
+
+	useEffect(() => {
+		const handleTouchStart = (e) => {
+			setTouchStartY(e.touches[0].clientY);
+		};
+
+		const handleTouchMove = (e) => {
+			const touchEndY = e.touches[0].clientY;
+			if (touchStartY && touchEndY - touchStartY > 50) {
+				handleClose();
+			}
+		};
+
+		const handleTouchEnd = () => {
+			setTouchStartY(null);
+		};
+
+		const formElement = formRef.current;
+		if (formElement) {
+			formElement.addEventListener('touchstart', handleTouchStart);
+			formElement.addEventListener('touchmove', handleTouchMove);
+			formElement.addEventListener('touchend', handleTouchEnd);
+		}
+
+		return () => {
+			if (formElement) {
+				formElement.removeEventListener('touchstart', handleTouchStart);
+				formElement.removeEventListener('touchmove', handleTouchMove);
+				formElement.removeEventListener('touchend', handleTouchEnd);
+			}
+		};
+	}, [touchStartY]);
 
 	const handleClose = () => {
 		clearErrors(['name', 'email', 'question', 'agree']);
@@ -58,7 +93,14 @@ const SupportChatForm = ({ onClose, showModal }) => {
 	};
 
 	return (
-		<div className={`support-chat-form ${showModal ? 'support-chat-form_open' : ''}`}>
+		<div
+			className={`support-chat-form ${showModal ? 'support-chat-form_open' : ''} ${
+				isSuccessSubmit ? 'support-chat-form__success_active' : ''
+			}`}
+			ref={formRef}
+			onClick={(e) => e.stopPropagation()}
+		>
+			<div className="support-chat-form__line"></div>
 			<Button type="button" btnClass="support-chat-form__close-btn" onClick={handleClose} />
 			{!isSuccessSubmit ? (
 				<>

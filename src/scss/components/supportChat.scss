@@ -23,3 +23,10 @@
 		display: none;
 	}
 }
+
+@media screen and (max-width: 576px) {
+	.support-chat__btn {
+		width: 62px;
+		height: 62px;
+	}
+}

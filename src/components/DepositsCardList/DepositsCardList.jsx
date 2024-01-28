@@ -2,10 +2,16 @@ import { Button, Sort } from '../index';
 import DepositsCard from '../DepositsCard/DepositsCard';
 import { useSelector } from 'react-redux';
 import { initialVisibleCount } from '../../utils/constants';
+import Preloader from '../Preloader/Preloader';
 
 function DepositsCardList({ isSubmitted, visibleCards, setVisibleCards }) {
 	const deposits = useSelector((state) => state.deposits.deposits);
 	const totalElements = useSelector((state) => state.deposits.totalElements);
+	const isLoading = useSelector((state) => state.deposits.isLoading);
+
+	if (isLoading) {
+		return <Preloader />;
+	}
 
 	// console.log('deposits', deposits.totalElements);
 	// console.log('isSubmitted', isSubmitted);
@@ -29,7 +35,7 @@ function DepositsCardList({ isSubmitted, visibleCards, setVisibleCards }) {
 					: 'Нажмите "Показать", чтобы тут что-то появилось'}
 			</ul>
 
-			{visibleCards < totalElements && (
+			{isSubmitted && visibleCards < totalElements && (
 				<Button
 					type="button"
 					btnClass="deposits-card-list__button-more"
