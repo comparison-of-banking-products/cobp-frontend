@@ -8,7 +8,7 @@ export const getDeposits = ({
 	partialWithdrawal = false,
 	banks = null,
 	page = 0,
-	size = 6,
+	size = 100,
 }) => {
 	const capitalizationParam = capitalization ? '&capitalization=true' : '';
 	const replenishmentParam = replenishment ? '&replenishment=true' : '';

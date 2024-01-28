@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLogoName } from '../../utils/api';
 
 function DepositsCard(props) {
-	console.log(props);
+	// console.log(props);
 	// const calculator = useSelector((state) => state.calculator);
 
 	const roundNumber = (number) => {
@@ -19,8 +19,8 @@ function DepositsCard(props) {
 		<li className="deposits-card">
 			<img
 				className="deposits-card__bank-image"
-				src={getLogoName(props.deposits.deposit.bank.logo)}
-				alt={props.deposits.deposit.bank.name}
+				src={getLogoName(props.deposit.deposit.bank.logo)}
+				alt={props.deposit.deposit.bank.name}
 			/>
 			{/* <div className="deposits-card__tags">
 				{props.id === 0 ? (
@@ -52,17 +52,17 @@ function DepositsCard(props) {
 					) : (
 						''
 					)}
-					{props.deposits.deposit.capitalization ? (
+					{props.deposit.deposit.capitalization ? (
 						<p className="deposits-card__tags-text">С капитализацией</p>
 					) : (
 						''
 					)}
-					{props.deposits.deposit.replenishment ? (
+					{props.deposit.deposit.replenishment ? (
 						<p className="deposits-card__tags-text">С пополнением</p>
 					) : (
 						''
 					)}
-					{props.deposits.deposit.partialWithdrawal ? (
+					{props.deposit.deposit.partialWithdrawal ? (
 						<p className="deposits-card__tags-text">С частичным снятием</p>
 					) : (
 						''
@@ -77,12 +77,12 @@ function DepositsCard(props) {
 					<ul className="deposits-card__about-money">
 						<li className="deposits-card__about-money-list">
 							<p className="deposits-card__information">Срок</p>
-							<p className="deposits-card__term">{props.deposits.deposit.term} мес</p>
+							<p className="deposits-card__term">{props.deposit.deposit.term} мес</p>
 						</li>
 						<li className="deposits-card__about-money-list">
 							<p className="deposits-card__information">Ставка</p>
 							<p className="deposits-card__rate">
-								{replacePointNumber(props.deposits.deposit.rate)} %
+								{replacePointNumber(props.deposit.deposit.rate)} %
 							</p>
 							{/* <p className="deposits-card__rate">
 								23.5 %
@@ -91,7 +91,7 @@ function DepositsCard(props) {
 						<li className="deposits-card__about-money-list">
 							<p className="deposits-card__information">Доход</p>
 							<p className="deposits-card__income">
-								{roundNumber(props.deposits.annualInterest)} &#8381;
+								{roundNumber(props.deposit.annualInterest)} &#8381;
 							</p>
 							{/* <p className="deposits-card__income">
 								150 000 &#8381;
@@ -100,7 +100,7 @@ function DepositsCard(props) {
 						<li className="deposits-card__about-money-list">
 							<p className="deposits-card__information">Сумма</p>
 							<p className="deposits-card__income">
-								{roundNumber(props.deposits.totalAmount)} &#8381;
+								{roundNumber(props.deposit.totalAmount)} &#8381;
 							</p>
 							{/* <p className="deposits-card__income">3000000 &#8381;</p> */}
 						</li>
@@ -117,7 +117,7 @@ function DepositsCard(props) {
 							<p className="deposits-card__information">Сумма</p>{calculator.depositAmount} &#8381;
 						</p> */}
 					</ul>
-					<Link className="deposits-card__link" to={props.deposits.deposit.productUrl} />
+					<Link className="deposits-card__link" to={props.deposit.deposit.productUrl} />
 				</div>
 			</div>
 		</li>

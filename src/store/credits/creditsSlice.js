@@ -5,6 +5,7 @@ const initialState = {
 	error: false,
 	isLoading: false,
 	message: '',
+	totalElements: 0,
 };
 
 export const loadCredits = createAsyncThunk(
@@ -33,7 +34,8 @@ const creditsSlice = createSlice({
 			.addCase(loadCredits.fulfilled, (state, action) => {
 				state.error = false;
 				state.isLoading = false;
-				state.credits = action.payload.data;
+				state.deposits = action.payload.data.calculatedCredits;
+				state.totalElements = action.payload.data.totalElements;
 				state.message = null;
 			});
 	},

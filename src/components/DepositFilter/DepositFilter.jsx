@@ -6,8 +6,9 @@ import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { debounce } from 'lodash';
 import { currencyList } from '../../utils/constants';
+import { initialVisibleCount } from '../../utils/constants';
 
-function DepositFilter({ setIsSubmitted, isSubmitted }) {
+function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
 
@@ -32,6 +33,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 					banks: selectedBanks,
 				})
 			);
+		setVisibleCards(initialVisibleCount);
 	}, [
 		calculator.depositAmount,
 		calculator.depositTerm,
@@ -39,6 +41,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 		isReplenishment,
 		isWithdraw,
 		selectedBanks,
+		setVisibleCards,
 	]);
 
 	const getCurrencyValue = debounce((values, valid) => {
