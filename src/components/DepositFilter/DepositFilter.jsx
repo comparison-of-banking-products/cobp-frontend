@@ -23,17 +23,17 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const [validate, setValidate] = useState();
 
 	useEffect(() => {
-		isSubmitted &&
-			dispatch(
-				loadDeposits({
-					amount: calculator.depositAmount,
-					term: calculator.depositTerm,
-					capitalization: isCapitalisation,
-					replenishment: isReplenishment,
-					partialWithdrawal: isWithdraw,
-					banks: selectedBanks,
-				})
-			);
+		isSubmitted && requestDepositsList();
+		// dispatch(
+		// 	loadDeposits({
+		// 		amount: calculator.depositAmount,
+		// 		term: calculator.depositTerm,
+		// 		capitalization: isCapitalisation,
+		// 		replenishment: isReplenishment,
+		// 		partialWithdrawal: isWithdraw,
+		// 		banks: selectedBanks,
+		// 	})
+		// );
 	}, [
 		calculator.depositAmount,
 		calculator.depositTerm,
@@ -43,6 +43,19 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 		selectedBanks,
 	]);
 
+	const requestDepositsList = () => {
+		dispatch(
+			loadDeposits({
+				amount: calculator.depositAmount,
+				term: calculator.depositTerm,
+				capitalization: isCapitalisation,
+				replenishment: isReplenishment,
+				partialWithdrawal: isWithdraw,
+				banks: selectedBanks,
+			})
+		);
+	};
+
 	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
 		valid.validate && dispatch(editCalculatorValues(values));
@@ -50,6 +63,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		requestDepositsList();
 		setIsSubmitted(true);
 	};
 
