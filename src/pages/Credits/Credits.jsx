@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Promo } from '../../components';
 import { CreditFilter } from '../../components';
 import { useLocation } from 'react-router-dom';
+//import { CreditsCardList } from '../../components';
 
 function Credits() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
@@ -16,7 +17,7 @@ function Credits() {
 				isSubmitted={fromCalculatorButton ? true : isSubmitted}
 				setIsSubmitted={setIsSubmitted}
 			/>
-			{/* <CreditCardList isSubmitted={fromCalculatorButton ? true : isSubmitted} /> */}
+			{/* <CreditsCardList isSubmitted={fromCalculatorButton ? true : isSubmitted} /> */}
 		</>
 	);
 }
