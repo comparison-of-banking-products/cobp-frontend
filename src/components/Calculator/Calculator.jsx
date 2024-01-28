@@ -19,8 +19,10 @@ function Calculator() {
 	const sliderRef = useRef();
 	const [validate, setValidate] = useState();
 
-	const depositResults = deposits?.deposits?.calculatedDeposits?.[0];
+	const depositResults = deposits?.deposits?.[0];
 	const creditResults = credits?.credits?.calculatedCredits?.[0];
+
+	console.log(deposits);
 
 	useEffect(() => {
 		dispatch(

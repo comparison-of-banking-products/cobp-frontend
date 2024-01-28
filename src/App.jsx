@@ -28,7 +28,7 @@ function App() {
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
 			<SupportChat />
-			{/* <Footer /> */}
+			<Footer />
 		</div>
 	);
 }
