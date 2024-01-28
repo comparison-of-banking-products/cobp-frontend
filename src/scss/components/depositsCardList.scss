@@ -1,4 +1,4 @@
-.deposits {
+.deposits-card-list {
 	display: flex;
 	margin: 0 auto;
 	padding-top: 40px;
@@ -13,6 +13,16 @@
 		align-items: center;
 		align-self: flex-start;
 	}
+
+	// &__card-container {
+	// 	margin: 32px auto 24px auto;
+	// 	max-width: 1200px;
+	// 	width: calc(100% - 80px);
+	// 	background-color: $color-bg-dark-gray;
+	// 	border-radius: 40px;
+	// 	padding: 25.5px 24px 25.5px 25px;
+	// 	display: flex;
+	// }
 
 	&__select {
 		background-color: $color-bg-body-black;
@@ -35,6 +45,7 @@
 		background: none;
 		background-image: url(../../images/icons/diposit__arrow.svg);
 	}
+
 	&__button-more {
 		margin-top: 32px;
 		width: fit-content;
@@ -47,6 +58,7 @@
 		@include font($font-size-s, $font-weight-bold, 20px, 0px, $color-text-white);
 		cursor: pointer;
 		transition: background 0.3s;
+
 		&:hover {
 			opacity: 0.8;
 		}

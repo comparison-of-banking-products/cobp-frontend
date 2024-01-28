@@ -1,13 +1,14 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Range, Button, Select, SelectMultiple } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { debounce } from 'lodash';
 import { currencyList } from '../../utils/constants';
+import { initialVisibleCount } from '../../utils/constants';
 
-function DepositFilter({ setIsSubmitted, isSubmitted }) {
+function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
 	const deposits = useSelector((state) => state.deposits);
@@ -20,20 +21,29 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const [isWithdraw, setIsWithdraw] = useState(false);
 	const [isReplenishment, setIsReplenishment] = useState(false);
 
+	const depositFilterRef = useRef(null);
+
 	const [validate, setValidate] = useState();
 
 	useEffect(() => {
-		isSubmitted && requestDepositsList();
-		// dispatch(
-		// 	loadDeposits({
-		// 		amount: calculator.depositAmount,
-		// 		term: calculator.depositTerm,
-		// 		capitalization: isCapitalisation,
-		// 		replenishment: isReplenishment,
-		// 		partialWithdrawal: isWithdraw,
-		// 		banks: selectedBanks,
-		// 	})
-		// );
+		if (isSubmitted) {
+			depositFilterRef.current.scrollIntoView({ behavior: 'smooth' });
+		}
+	}, [isSubmitted]);
+
+	useEffect(() => {
+		isSubmitted &&
+			dispatch(
+				loadDeposits({
+					amount: calculator.depositAmount,
+					term: calculator.depositTerm,
+					capitalization: isCapitalisation,
+					replenishment: isReplenishment,
+					partialWithdrawal: isWithdraw,
+					banks: selectedBanks,
+				})
+			);
+		setVisibleCards(initialVisibleCount);
 	}, [
 		calculator.depositAmount,
 		calculator.depositTerm,
@@ -41,6 +51,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 		isReplenishment,
 		isWithdraw,
 		selectedBanks,
+		setVisibleCards,
 	]);
 
 	const requestDepositsList = () => {
@@ -86,7 +97,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	};
 
 	return (
-		<section className="deposit-filter">
+		<section className="deposit-filter" ref={depositFilterRef}>
 			<div className="deposit-filter__container">
 				<form className="deposit-filter__form" onSubmit={handleSubmit}>
 					<div className="deposit-filter__inputs">
