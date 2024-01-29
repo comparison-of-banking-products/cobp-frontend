@@ -21,7 +21,7 @@ function DepositsCardList({ isSubmitted, visibleCards, setVisibleCards }) {
 	};
 
 	return (
-		<section aria-label="Вклады" className="deposits">
+		<section aria-label="Вклады" className="deposits-card-list">
 			{/* <div className="deposits__filter">
 				<Sort options={['По ставке', 'По сроку', 'По доходу', 'По сумме']} />
 			</div> */}
