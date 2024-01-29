@@ -155,15 +155,21 @@
 			flex-direction: column;
 		}
 
+		&__information {
+			margin-left: 32px;
+			margin-top: 30px;
+		}
+
+		&__column {
+			display: none;
+		}
+
 		&__specification {
-			max-width: none;
-			margin: 0 auto;
+			margin-bottom: 0;
 		}
 
 		&__description {
 			margin-bottom: 12px;
-			margin-left: 0;
-			margin-right: auto;
 		}
 	}
 }

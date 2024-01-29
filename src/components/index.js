@@ -24,6 +24,7 @@ import SupportChat from './SupportChat/SupportChat';
 import SupportChatForm from './SupportChat/SupportChatForm/SupportChatForm';
 import SupportChatSuccess from './SupportChat/SupportChatSuccess/SupportChatSuccess';
 import DepositsCardList from './DepositsCardList/DepositsCardList';
+import CreditsCardList from './CreditsCardList/CreditsCardList';
 import DepositFilter from './DepositFilter/DepositFilter';
 import CreditFilter from './CreditFilter/CreditFilter';
 import SelectMultiple from './UI/SelectMultiple/SelectMultiple';
@@ -53,6 +54,7 @@ export {
 	SupportChatSuccess,
 	Checkbox,
 	DepositsCardList,
+	CreditsCardList,
 	CalculatorResult,
 	DepositFilter,
 	SelectMultiple,

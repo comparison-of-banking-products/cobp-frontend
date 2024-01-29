@@ -10,24 +10,28 @@ function ProductCards() {
 					className={'prod-card__wide'}
 					title={'Кредиты'}
 					text={'Удобный расчет на калькуляторе и оформление онлайн'}
+					location={'/credits'}
 				/>
 
 				<ProdCard
 					className={'prod-card__slim'}
 					title={'Кредитные карты'}
 					text={'Подходит для повседневных трат и покупок в рассрочку'}
+					location={'#'}
 				/>
 
 				<ProdCard
 					className={'prod-card__slim'}
 					title={'Дебетовые карты'}
 					text={'Кэшбэк рублями до 30%, переводы без комиссии'}
+					location={'#'}
 				/>
 
 				<ProdCard
 					className={'prod-card__wide'}
 					title={'Вклады'}
 					text={'Откройте вклад с пополнением, каждый месяц получайте проценты на карту или вклад'}
+					location={'/deposits'}
 				/>
 			</div>
 		</section>

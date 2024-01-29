@@ -24,7 +24,10 @@
 @import './supportChatForm.scss';
 @import './depositFilter';
 @import './creditFilter';
+@import './creditCardList.scss';
+@import './creditCard.scss';
 @import './preloader.scss';
 @import './UI/selectMultiple';
 @import './UI/sort';
+@import './UI/errorCard';
 // В случае создании новых scss файлов в данную папку, не забудьте добавить сюда импорт.
