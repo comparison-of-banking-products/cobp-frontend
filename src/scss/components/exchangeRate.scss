@@ -1,0 +1,22 @@
+.exchange-rate {
+	display: flex;
+	align-items: center;
+
+	&__difference-image_no-changes {
+		width: 24px;
+		height: 24px;
+		background-image: url('../../images/icons/grey-noChanges-icon.svg');
+	}
+
+	&__difference-image_up {
+		width: 24px;
+		height: 24px;
+		background-image: url('../../images/icons/green-up-icon.svg');
+	}
+
+	&__difference-image_down {
+		width: 24px;
+		height: 24px;
+		background-image: url('../../images/icons/red-down-icon.svg');
+	}
+}
