@@ -33,17 +33,17 @@ function CreditsCard(props) {
 							''
 						)}
 						{props.credit.credit.creditOnline ? (
-							<p className="credits-card__tags-text">С капитализацией</p>
+							<p className="credits-card__tags-text">Кредит online</p>
 						) : (
 							''
 						)}
 						{props.credit.credit.onlineApprove ? (
-							<p className="credits-card__tags-text">С пополнением</p>
+							<p className="credits-card__tags-text">Рассмотрение online</p>
 						) : (
 							''
 						)}
 						{props.credit.credit.collateral ? (
-							<p className="credits-card__tags-text">С частичным снятием</p>
+							<p className="credits-card__tags-text">Наличие залога</p>
 						) : (
 							''
 						)}
