@@ -11,8 +11,7 @@ import { initialVisibleCount } from '../../utils/constants';
 function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
-	// const deposits = useSelector((state) => state.deposits);
-	// console.log('deposits', deposits.deposits.calculatedDeposits);
+	console.log(calculator);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 

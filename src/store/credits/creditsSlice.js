@@ -34,7 +34,7 @@ const creditsSlice = createSlice({
 			.addCase(loadCredits.fulfilled, (state, action) => {
 				state.error = false;
 				state.isLoading = false;
-				state.deposits = action.payload.data.calculatedCredits;
+				state.credits = action.payload.data.calculatedCredits;
 				state.totalElements = action.payload.data.totalElements;
 				state.message = null;
 			});

@@ -11,8 +11,8 @@ import { initialVisibleCount } from '../../utils/constants';
 function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
-	//const credits = useSelector((state) => state.credits);
-	//console.log('credits', credits.credits.calculatedCredits);
+	const credits = useSelector((state) => state.credits);
+	console.log(credits.credits);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 
@@ -22,6 +22,12 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const [isCollateral, setIsCollateral] = useState(false);
 
 	const creditFilterRef = useRef(null);
+
+	useEffect(() => {
+		if (isSubmitted) {
+			creditFilterRef.current.scrollIntoView({ behavior: 'smooth' });
+		}
+	}, [isSubmitted]);
 
 	const [validate, setValidate] = useState();
 
@@ -98,7 +104,7 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	};
 
 	return (
-		<section className="credit-filter">
+		<section className="credit-filter" ref={creditFilterRef}>
 			<div className="credit-filter__container">
 				<form className="credit-filter__form" onSubmit={handleSubmit}>
 					<div className="credit-filter__inputs">

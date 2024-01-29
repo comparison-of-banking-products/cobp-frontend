@@ -2,9 +2,7 @@ import { Link } from 'react-router-dom';
 import { getLogoName } from '../../utils/api';
 
 function DepositsCard(props) {
-  
 	console.log(props);
-
 
 	const roundNumber = (number) => {
 		if (typeof number === 'number') return parseFloat(Math.round(number)).toLocaleString();
@@ -54,7 +52,7 @@ function DepositsCard(props) {
 				<div className="deposits-card__about-bank">
 					<p className="deposits-card__about-bank-image" />
 					<div className="deposits-card__about-bank-text">
-						<p className="deposits-card__about-bank-name">Россельхозбанк</p>
+						<p className="deposits-card__about-bank-name">{props.deposit.deposit.bank.name}</p>
 						<p className="deposits-card__about-bank-bid">Максимальный</p>
 					</div>
 					<ul className="deposits-card__about-money">

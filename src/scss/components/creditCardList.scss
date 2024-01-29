@@ -1,4 +1,4 @@
-.deposits-card-list {
+.credits-card-list {
 	&__button-more {
 		display: block;
 		margin: 32px auto 127px auto;
@@ -16,38 +16,6 @@
 		&:hover {
 			opacity: 0.6;
 			transition: opacity 0.5s;
-		}
-	}
-}
-
-@include tablet {
-	.deposits-card-list {
-		&__button-more {
-			margin-bottom: 110px;
-		}
-	}
-}
-
-@include tablet-xs {
-	.deposits-card-list {
-		&__button-more {
-			margin-bottom: 80px;
-		}
-	}
-}
-
-@include mobile {
-	.deposits-card-list {
-		&__button-more {
-			margin-bottom: 48px;
-		}
-	}
-}
-
-@include mobile-xs {
-	.deposits-card-list {
-		&__button-more {
-			margin-bottom: 40px;
 		}
 	}
 }
