@@ -32,18 +32,24 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const [validate, setValidate] = useState();
 
 	useEffect(() => {
-		isSubmitted &&
-			dispatch(
-				loadCredits({
-					amount: calculator.creditAmount,
-					term: calculator.creditTerm,
-					creditOnline: isCreditOnline,
-					onlineApprove: isOnlineApprove,
-					collateral: isCollateral,
-					banks: selectedBanks,
-				})
-			);
-		setVisibleCards(initialVisibleCount);
+		if (isSubmitted) {
+			creditFilterRef.current.scrollIntoView({ behavior: 'smooth' });
+		}
+	}, [isSubmitted]);
+
+	useEffect(() => {
+		isSubmitted && requestCreditsList();
+		// dispatch(
+		// 	loadCredits({
+		// 		amount: calculator.creditAmount,
+		// 		term: calculator.creditTerm,
+		// 		creditOnline: isCreditOnline,
+		// 		onlineApprove: isOnlineApprove,
+		// 		collateral: isCollateral,
+		// 		banks: selectedBanks,
+		// 	})
+		// );
+		// setVisibleCards(initialVisibleCount);
 	}, [
 		calculator.creditAmount,
 		calculator.creditTerm,
@@ -54,6 +60,20 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 		setVisibleCards,
 	]);
 
+	const requestCreditsList = () => {
+		dispatch(
+			loadCredits({
+				amount: calculator.creditAmount,
+				term: calculator.creditTerm,
+				creditOnline: isCreditOnline,
+				onlineApprove: isOnlineApprove,
+				collateral: isCollateral,
+				banks: selectedBanks,
+			})
+		);
+		setVisibleCards(initialVisibleCount);
+	};
+
 	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
 		valid.validate && dispatch(editCalculatorValues(values));
@@ -61,6 +81,7 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		requestCreditsList();
 		setIsSubmitted(true);
 	};
 

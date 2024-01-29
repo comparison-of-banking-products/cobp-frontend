@@ -3,6 +3,9 @@ import DepositsCard from '../DepositsCard/DepositsCard';
 import { useSelector } from 'react-redux';
 import { initialVisibleCount } from '../../utils/constants';
 import Preloader from '../Preloader/Preloader';
+import ErrorCard from '../UI/ErrorCard/ErrorCard';
+import noProducts from '../../images/noproducts-png.png';
+import pushButton from '../../images/pushbutton-png.png';
 
 function DepositsCardList({ isSubmitted, visibleCards, setVisibleCards }) {
 	const deposits = useSelector((state) => state.deposits.deposits);
@@ -23,13 +26,25 @@ function DepositsCardList({ isSubmitted, visibleCards, setVisibleCards }) {
 	return (
 		<section aria-label="Вклады" className="deposits-card-list">
 			<ul className="deposits-card-list__card-container">
-				{isSubmitted
-					? deposits && deposits?.length > 0
-						? deposits
-								.slice(0, visibleCards)
-								.map((deposit, index) => <DepositsCard key={index} id={index} deposit={deposit} />)
-						: 'У нас нет депозитов с такими параметрами'
-					: 'Нажмите "Показать", чтобы тут что-то появилось'}
+				{isSubmitted ? (
+					deposits && deposits?.length > 0 ? (
+						deposits
+							.slice(0, visibleCards)
+							.map((deposit, index) => <DepositsCard key={index} id={index} deposit={deposit} />)
+					) : (
+						<ErrorCard
+							title={'Таких депозитов нет'}
+							text={'Попробуйте изменить срок или сумму'}
+							img={noProducts}
+						/>
+					)
+				) : (
+					<ErrorCard
+						title={'Нажмите кнопку «Показать»'}
+						text={'Чтобы подобрать вклады'}
+						img={pushButton}
+					/>
+				)}
 			</ul>
 
 			{isSubmitted && visibleCards < totalElements && (
