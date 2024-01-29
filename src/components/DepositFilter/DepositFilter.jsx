@@ -11,6 +11,8 @@ import { initialVisibleCount } from '../../utils/constants';
 function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
+	// const deposits = useSelector((state) => state.deposits);
+	// console.log('deposits', deposits.deposits.calculatedDeposits);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 
@@ -30,18 +32,18 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	}, [isSubmitted]);
 
 	useEffect(() => {
-		isSubmitted &&
-			dispatch(
-				loadDeposits({
-					amount: calculator.depositAmount,
-					term: calculator.depositTerm,
-					capitalization: isCapitalisation,
-					replenishment: isReplenishment,
-					partialWithdrawal: isWithdraw,
-					banks: selectedBanks,
-				})
-			);
-		setVisibleCards(initialVisibleCount);
+		isSubmitted && requestDepositsList();
+		// 	dispatch(
+		// 		loadDeposits({
+		// 			amount: calculator.depositAmount,
+		// 			term: calculator.depositTerm,
+		// 			capitalization: isCapitalisation,
+		// 			replenishment: isReplenishment,
+		// 			partialWithdrawal: isWithdraw,
+		// 			banks: selectedBanks,
+		// 		})
+		// 	);
+		// setVisibleCards(initialVisibleCount);
 	}, [
 		calculator.depositAmount,
 		calculator.depositTerm,
@@ -52,6 +54,20 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 		setVisibleCards,
 	]);
 
+	const requestDepositsList = () => {
+		dispatch(
+			loadDeposits({
+				amount: calculator.depositAmount,
+				term: calculator.depositTerm,
+				capitalization: isCapitalisation,
+				replenishment: isReplenishment,
+				partialWithdrawal: isWithdraw,
+				banks: selectedBanks,
+			})
+		);
+		setVisibleCards(initialVisibleCount);
+	};
+
 	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
 		valid.validate && dispatch(editCalculatorValues(values));
@@ -59,6 +75,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		requestDepositsList();
 		setIsSubmitted(true);
 	};
 
