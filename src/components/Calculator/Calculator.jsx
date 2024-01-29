@@ -20,9 +20,9 @@ function Calculator() {
 	const [validate, setValidate] = useState();
 
 	const depositResults = deposits?.deposits?.[0];
-	const creditResults = credits?.credits?.calculatedCredits?.[0];
+	const creditResults = credits?.credits?.[0];
 
-	console.log(deposits);
+	console.log(credits);
 
 	useEffect(() => {
 		dispatch(

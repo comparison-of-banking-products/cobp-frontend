@@ -1,4 +1,4 @@
-const BASE_URL = 'https://benchmark.acceleratorpracticum.ru/api/';
+const BASE_URL = 'http://80.87.107.99:8080/';
 
 export const getDeposits = ({
 	amount,
