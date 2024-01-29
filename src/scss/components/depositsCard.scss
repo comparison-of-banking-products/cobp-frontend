@@ -6,6 +6,13 @@
 	border-radius: 40px;
 	padding: 25.5px 24px 25.5px 25px;
 	display: flex;
+	transition: opacity 0.5s;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 0.6;
+		transition: opacity 0.5s;
+	}
 
 	&:last-child {
 		margin-bottom: 32px;
@@ -14,12 +21,13 @@
 	&__about-bank-text {
 		display: flex;
 		flex-direction: column;
+		max-width: 318px;
+		margin: 10px 0 0 12px;
 	}
 
 	&__tags {
 		display: flex;
-		height: 25px;
-		margin: 6px 8px 0 13px;
+		margin: 0 8px 0 13px;
 	}
 
 	&__tags-text {
@@ -27,10 +35,8 @@
 		display: flex;
 		align-items: center;
 		padding: 5px 8px;
-		border-radius: 16px;
 		background-color: $color-bg-gray;
 		border-radius: 16px;
-		height: 15px;
 		margin-right: 8px;
 	}
 
@@ -47,9 +53,7 @@
 
 	&__about-contribution {
 		width: 91.572%;
-		// display: flex;
 		min-height: 100px;
-		// justify-content: space-between;
 	}
 
 	&__about-bank {
@@ -61,11 +65,8 @@
 		width: 97px;
 		height: 97px;
 		border-radius: 24.25px;
-	}
-
-	&__about-bank-text {
-		max-width: 318px;
-		margin: 11px 0 0 12px;
+		object-fit: cover;
+    object-position: top;
 	}
 
 	&__about-bank-name {
@@ -80,23 +81,12 @@
 	&__about-money {
 		display: flex;
 		max-width: 68.311%;
-		// min-width: 584px;
-		// max-width: 720px;
-		// max-width: 100%;
-		// margin: 9px 0 4px 0;
-		margin: 4px 0 4px auto;
-		// margin-top: 9px;
-		// margin-right: 50px;
-		// margin-bottom: 4px;
-		// margin-left: min(80px, 1%);
-		max-height: 56px;
+		margin: 10px 0 auto auto;
 	}
 
 	&__about-money-list {
 		min-width: 140px;
-		// width: 19.444%;
-		max-height: 56px;
-		margin-right: 8px;
+		margin: auto 8px 0 auto;
 
 		&:last-child {
 			margin-right: 0;
@@ -115,12 +105,6 @@
 		@include font($font-size-other, $font-weight-bold, 28px, normal, $color-text-white);
 	}
 
-	// &__term,
-	// &__rate,
-	// &__income {
-	// 	margin-right: 56px;
-	// }
-
 	&__link {
 		display: flex;
 		width: 64px;
@@ -130,14 +114,8 @@
 		background-position: center;
 		background-size: cover;
 		background-repeat: no-repeat;
-		transition: opacity 0.5s;
-		margin: 3.5px 0 20px auto;
+		margin: 10px 0 20px auto;
 		padding: 0;
-
-		&:hover {
-			opacity: 0.6;
-			transition: opacity 0.5s;
-		}
 	}
 }
 
@@ -149,16 +127,12 @@
 
 		&__about-bank-text {
 			max-width: 148px;
-			margin-top: 19px;
+			margin-top: 10px;
 		}
 
 		&__about-bank-name {
 			@include font($font-size-ml, $font-weight-bold, 24px, -0.1px, $color-text-white);
 			margin-top: 0;
-		}
-
-		&__about-money {
-			margin-top: 10px;
 		}
 
 		&__about-money-list {
@@ -190,6 +164,7 @@
 
 		&__about-money {
 			margin: 16px 0 0 -92px;
+			max-width: 466px;
 		}
 
 		&__about-contribution {
@@ -217,12 +192,45 @@
 		}
 	}
 }
-@include mobile-xs {
+
+@include screen-size-sm {
 	.deposits-card {
+		max-width: 288px;
+
+		&__bank-image {
+			width: 64px;
+			height: 64px;
+			border-radius: 16px;
+			margin-top: 45px;
+		}
+
+		&__about-contribution {
+			height: 248px;
+		}
+
+		&__tags-none {
+			margin-bottom: 30px;
+		}
+
+		&__tags {
+			margin-left: -63px;
+		}
+
+		&__about-bank-text {
+			margin-top: 15px;
+			margin-left: 4px;
+		}
+
+		&__about-money {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			margin-left: -100px;
+			margin-top: 20px;
+			gap: 16px;
+		}
+
 		&__about-money-list {
-			// display:block;
-			// width:49%;
-			// float:left;
+			margin-right: 0;
 		}
 	}
 }

@@ -19,6 +19,8 @@ function Calculator() {
 	const sliderRef = useRef();
 	const [validate, setValidate] = useState();
 
+	console.log(deposits);
+
 	const depositResults = deposits?.deposits?.calculatedDeposits?.[0];
 	const creditResults = credits?.credits?.calculatedCredits?.[0];
 

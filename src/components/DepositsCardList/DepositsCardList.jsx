@@ -1,7 +1,6 @@
 import { Button, Sort } from '../index';
 import DepositsCard from '../DepositsCard/DepositsCard';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 function DepositsCardList({ isSubmitted }) {
 	const deposits = useSelector((state) => state.deposits.deposits);
@@ -10,7 +9,7 @@ function DepositsCardList({ isSubmitted }) {
 	// console.log('isSubmitted', isSubmitted);
 
 	return (
-		<section aria-label="Вклады" className="deposits">
+		<section aria-label="Вклады" className="deposits-card-list">
 			{/* <div className="deposits__filter">
 				<Sort options={['По ставке', 'По сроку', 'По доходу', 'По сумме']} />
 			</div> */}

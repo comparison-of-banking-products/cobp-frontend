@@ -16,7 +16,7 @@ function ExchangeRate({ valute }) {
 
 	return (
 		<>
-			<li className="exchange-rate__currency-item">
+			<li className="exchange-rate">
 				<p className="exchange-rate__difference">
 					{`${valute.base}
             ${valute.rate.toFixed(2).replace('.', ',')}`}

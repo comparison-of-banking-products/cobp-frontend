@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { getLogoName } from '../../utils/api';
 
 function DepositsCard(props) {
 	console.log(props);
-	// const calculator = useSelector((state) => state.calculator);
 
 	const roundNumber = (number) => {
 		if (typeof number === 'number') return parseFloat(Math.round(number)).toLocaleString();
@@ -15,59 +13,42 @@ function DepositsCard(props) {
 	};
 
 	return (
-		// <li className="deposits-card__list">
 		<li className="deposits-card">
 			<img
 				className="deposits-card__bank-image"
-				src={getLogoName(props.deposits.deposit.bank.logo)}
-				alt={props.deposits.deposit.bank.name}
+				src={getLogoName(props.deposit.deposit.bank.logo)}
+				alt={props.deposit.deposit.bank.name}
 			/>
-			{/* <div className="deposits-card__tags">
-				{props.id === 0 ? (
-					<p className="deposits-card__tags-text deposits-card__tags-image">Самый выгодный</p>
-				) : (
-					''
-				)}
-				{props.deposit.deposit.capitalization ? (
-					<p className="deposits-card__tags-text">С капитализацией</p>
-				) : (
-					''
-				)}
-				{props.deposit.deposit.replenishment ? (
-					<p className="deposits-card__tags-text">С пополнением</p>
-				) : (
-					''
-				)}
-				{props.deposit.deposit.partialWithdrawal ? (
-					<p className="deposits-card__tags-text">С частичным снятием</p>
-				) : (
-					''
-				)}
-			</div> */}
-
 			<div className="deposits-card__about-contribution">
-				<div className="deposits-card__tags">
-					{props.id === 0 ? (
-						<p className="deposits-card__tags-text deposits-card__tags-image">Самый выгодный</p>
-					) : (
-						''
-					)}
-					{props.deposits.deposit.capitalization ? (
-						<p className="deposits-card__tags-text">С капитализацией</p>
-					) : (
-						''
-					)}
-					{props.deposits.deposit.replenishment ? (
-						<p className="deposits-card__tags-text">С пополнением</p>
-					) : (
-						''
-					)}
-					{props.deposits.deposit.partialWithdrawal ? (
-						<p className="deposits-card__tags-text">С частичным снятием</p>
-					) : (
-						''
-					)}
-				</div>
+				{props.id > 0 &&
+				!props.deposit.deposit.capitalization &&
+				!props.deposit.deposit.replenishment &&
+				!props.deposit.deposit.partialWithdrawal ? (
+					<div className="deposits-card__tags-none"></div>
+				) : (
+					<div className="deposits-card__tags">
+						{props.id === 0 ? (
+							<p className="deposits-card__tags-text deposits-card__tags-image">Самый выгодный</p>
+						) : (
+							''
+						)}
+						{props.deposit.deposit.capitalization ? (
+							<p className="deposits-card__tags-text">С капитализацией</p>
+						) : (
+							''
+						)}
+						{props.deposit.deposit.replenishment ? (
+							<p className="deposits-card__tags-text">С пополнением</p>
+						) : (
+							''
+						)}
+						{props.deposit.deposit.partialWithdrawal ? (
+							<p className="deposits-card__tags-text">С частичным снятием</p>
+						) : (
+							''
+						)}
+					</div>
+				)}
 				<div className="deposits-card__about-bank">
 					<p className="deposits-card__about-bank-image" />
 					<div className="deposits-card__about-bank-text">
@@ -77,47 +58,28 @@ function DepositsCard(props) {
 					<ul className="deposits-card__about-money">
 						<li className="deposits-card__about-money-list">
 							<p className="deposits-card__information">Срок</p>
-							<p className="deposits-card__term">{props.deposits.deposit.term} мес</p>
+							<p className="deposits-card__term">{props.deposit.deposit.term} мес</p>
 						</li>
 						<li className="deposits-card__about-money-list">
 							<p className="deposits-card__information">Ставка</p>
 							<p className="deposits-card__rate">
-								{replacePointNumber(props.deposits.deposit.rate)} %
+								{replacePointNumber(props.deposit.deposit.rate)} %
 							</p>
-							{/* <p className="deposits-card__rate">
-								23.5 %
-							</p> */}
 						</li>
 						<li className="deposits-card__about-money-list">
 							<p className="deposits-card__information">Доход</p>
 							<p className="deposits-card__income">
-								{roundNumber(props.deposits.annualInterest)} &#8381;
+								{roundNumber(props.deposit.annualInterest)} &#8381;
 							</p>
-							{/* <p className="deposits-card__income">
-								150 000 &#8381;
-							</p> */}
 						</li>
 						<li className="deposits-card__about-money-list">
 							<p className="deposits-card__information">Сумма</p>
 							<p className="deposits-card__income">
-								{roundNumber(props.deposits.totalAmount)} &#8381;
+								{roundNumber(props.deposit.totalAmount)} &#8381;
 							</p>
-							{/* <p className="deposits-card__income">3000000 &#8381;</p> */}
 						</li>
-						{/* <p className="deposits-card__term">
-							<p className="deposits-card__information">Срок</p>{props.deposits.deposit.term} мес
-						</p>
-						<p className="deposits-card__rate">
-							<p className="deposits-card__information">Ставка</p>{replacePointNumber(props.deposits.deposit.rate)}
-						</p>
-						<p className="deposits-card__income">
-							<p className="deposits-card__information">Доход</p>{roundNumber(props.deposits.annualInterest)} &#8381;
-						</p>
-						<p className="deposits-card__sum">
-							<p className="deposits-card__information">Сумма</p>{calculator.depositAmount} &#8381;
-						</p> */}
 					</ul>
-					<Link className="deposits-card__link" to={props.deposits.deposit.productUrl} />
+					<Link className="deposits-card__link" to={props.deposit.deposit.productUrl} />
 				</div>
 			</div>
 		</li>
@@ -125,50 +87,3 @@ function DepositsCard(props) {
 }
 
 export default DepositsCard;
-
-// @nordicesman, @monomono1234
-// У меня к вам есть парочка вопросов по поводу
-
-{
-	/* <ul className="deposits-card__about-money">
-					<li className="deposits-card__about-money-list">
-						<p className="deposits-card__information">Срок</p>
-						<p className="deposits-card__term">{props.deposits.deposit.term} мес</p>
-					</li>
-					<li className="deposits-card__about-money-list">
-						<p className="deposits-card__information">Ставка</p>
-						<p className="deposits-card__rate">
-							{replacePointNumber(props.deposits.deposit.rate)} %
-						</p>
-						<p className="deposits-card__rate">
-							23.5 %
-						</p>
-					</li>
-					<li className="deposits-card__about-money-list">
-						<p className="deposits-card__information">Доход</p>
-						<p className="deposits-card__income">
-							{roundNumber(props.deposits.annualInterest)} &#8381;
-						</p>
-						<p className="deposits-card__income">
-							150 000 &#8381;
-						</p>
-					</li>
-					<li className="deposits-card__about-money-list">
-						<p className="deposits-card__information">Сумма</p>
-						<p className="deposits-card__income">{calculator.depositAmount} &#8381;</p>
-						<p className="deposits-card__income">3 000 000 &#8381;</p>
-					</li>
-					<p className="deposits-card__term">
-								<p className="deposits-card__information">Срок</p>{props.deposits.deposit.term} мес
-							</p>
-							<p className="deposits-card__rate">
-								<p className="deposits-card__information">Ставка</p>{replacePointNumber(props.deposits.deposit.rate)}
-							</p>
-							<p className="deposits-card__income">
-								<p className="deposits-card__information">Доход</p>{roundNumber(props.deposits.annualInterest)} &#8381;
-							</p>
-							<p className="deposits-card__sum">
-								<p className="deposits-card__information">Сумма</p>{calculator.depositAmount} &#8381;
-							</p>
-				</ul> */
-}
