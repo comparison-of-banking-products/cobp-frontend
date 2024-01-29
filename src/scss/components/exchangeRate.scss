@@ -1,8 +1,8 @@
 .exchange-rate {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 
-  &__difference-image_no-changes {
+	&__difference-image_no-changes {
 		width: 24px;
 		height: 24px;
 		background-image: url('../../images/icons/grey-noChanges-icon.svg');

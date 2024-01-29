@@ -111,11 +111,10 @@
 
 @include screen-size-lg {
 	.footer {
-
 		&__description {
 			margin-bottom: 248px;
 		}
-    
+
 		&__information {
 			max-width: 324px;
 		}
@@ -132,7 +131,6 @@
 
 @include mobile {
 	.footer {
-
 		&__description {
 			margin-bottom: 384px;
 		}
@@ -140,11 +138,10 @@
 		&__column {
 			flex-direction: column;
 			margin-left: 0;
-			margin-right: auto; 
+			margin-right: auto;
 		}
 
 		&__navigation-link {
-
 			&:last-child {
 				margin-bottom: 12px;
 			}
@@ -154,7 +151,6 @@
 
 @include screen-size-sm {
 	.footer {
-
 		&__container {
 			flex-direction: column;
 		}
@@ -169,6 +165,5 @@
 			margin-left: 0;
 			margin-right: auto;
 		}
-
 	}
 }
