@@ -1,13 +1,14 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Range, Button, Select, SelectMultiple } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCredits } from '../../store/credits/creditsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { debounce } from 'lodash';
 import { currencyList } from '../../utils/constants';
+import { initialVisibleCount } from '../../utils/constants';
 
-function CreditFilter({ setIsSubmitted, isSubmitted }) {
+function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
 	//const credits = useSelector((state) => state.credits);
@@ -20,7 +21,15 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	const [isOnlineApprove, setIsOnlineApprove] = useState(false);
 	const [isCollateral, setIsCollateral] = useState(false);
 
+	const creditFilterRef = useRef(null);
+
 	const [validate, setValidate] = useState();
+
+	useEffect(() => {
+		if (isSubmitted) {
+			creditFilterRef.current.scrollIntoView({ behavior: 'smooth' });
+		}
+	}, [isSubmitted]);
 
 	useEffect(() => {
 		isSubmitted && requestCreditsList();
@@ -34,6 +43,7 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 		// 		banks: selectedBanks,
 		// 	})
 		// );
+		// setVisibleCards(initialVisibleCount);
 	}, [
 		calculator.creditAmount,
 		calculator.creditTerm,
@@ -41,6 +51,7 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 		isOnlineApprove,
 		isCollateral,
 		selectedBanks,
+		setVisibleCards,
 	]);
 
 	const requestCreditsList = () => {
@@ -54,6 +65,7 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 				banks: selectedBanks,
 			})
 		);
+		setVisibleCards(initialVisibleCount);
 	};
 
 	const getCurrencyValue = debounce((values, valid) => {

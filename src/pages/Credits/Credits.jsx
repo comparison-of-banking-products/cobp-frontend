@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Promo } from '../../components';
 import { CreditFilter } from '../../components';
 import { useLocation } from 'react-router-dom';
-//import { CreditsCardList } from '../../components';
+// import { CreditsCardList } from '../../components';
+import { initialVisibleCount } from '../../utils/constants';
 
 function Credits() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
@@ -10,14 +11,25 @@ function Credits() {
 
 	const fromCalculatorButton = location.state && location.state.fromCalculatorButton;
 
+	const [visibleCards, setVisibleCards] = useState(initialVisibleCount);
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
 		<>
 			<Promo deposits={false} />
 			<CreditFilter
 				isSubmitted={fromCalculatorButton ? true : isSubmitted}
 				setIsSubmitted={setIsSubmitted}
+				setVisibleCards={setVisibleCards}
 			/>
-			{/* <CreditsCardList isSubmitted={fromCalculatorButton ? true : isSubmitted} /> */}
+			{/* <CreditsCardList
+				isSubmitted={fromCalculatorButton ? true : isSubmitted}
+				visibleCards={visibleCards}
+				setVisibleCards={setVisibleCards}
+			/> */}
 		</>
 	);
 }
