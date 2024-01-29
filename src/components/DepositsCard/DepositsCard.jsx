@@ -18,6 +18,8 @@ function DepositsCard(props) {
 				className="deposits-card__bank-image"
 				src={getLogoName(props.deposit.deposit.bank.logo)}
 				alt={props.deposit.deposit.bank.name}
+				src={getLogoName(props.deposit.deposit.bank.logo)}
+				alt={props.deposit.deposit.bank.name}
 			/>
 			<div className="deposits-card__about-contribution">
 				{props.id > 0 &&
