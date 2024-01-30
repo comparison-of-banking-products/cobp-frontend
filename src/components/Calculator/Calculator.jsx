@@ -226,7 +226,7 @@ function Calculator() {
 											name="Ставка"
 											value={
 												creditResults
-													? `до ${replacePointNumber(creditResults.credit.rate)} %`
+													? `от ${replacePointNumber(creditResults.credit.rate)} %`
 													: '-'
 											}
 											isLoading={credits}
@@ -234,7 +234,7 @@ function Calculator() {
 										<CalculatorResult
 											name="Платеж от"
 											value={
-												creditResults ? `до ${roundNumber(creditResults.monthlyPayment)}` : '-'
+												creditResults ? `от ${roundNumber(creditResults.monthlyPayment)}` : '-'
 											}
 											currency={creditResults ? calculator.currency.split(' ')[1] : ''}
 										/>
