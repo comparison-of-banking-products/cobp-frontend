@@ -82,8 +82,8 @@
 		@include font($font-size-s, $font-weight-medium, 20px, normal, $color-text-light-gray);
 		max-width: 170px;
 		white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	&__list-and-link {
@@ -133,7 +133,6 @@
 
 @include tablet {
 	.deposits-card {
-
 		&__list-and-link {
 			margin-left: 78px;
 		}
@@ -150,7 +149,6 @@
 
 		&__about-bank-bid {
 			max-width: 150px;
-
 		}
 
 		&__about-money {
@@ -231,7 +229,7 @@
 			margin-bottom: 10px;
 		}
 
-    &__tags-text {
+		&__tags-text {
 			margin-bottom: 4px;
 		}
 
