@@ -221,7 +221,9 @@
 
 @include screen-size-sm {
 	.deposits-card {
-		max-width: 320px;
+		width: 288px;
+    // margin-left: 16px;
+		// margin-right: 16px;
 
 		&__tags-none {
 			height: 10px;
