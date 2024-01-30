@@ -1,4 +1,4 @@
-const BASE_URL_SUPPORT_CHAT = 'http://92.51.36.69:8082';
+const BASE_URL_SUPPORT_CHAT = 'https://benchmark.acceleratorpracticum.ru/chat-api';
 const currencyList = ['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥'];
 const initialVisibleCount = 6;
 
