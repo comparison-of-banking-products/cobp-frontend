@@ -230,7 +230,7 @@
 
 @include screen-size-sm {
 	.credits-card {
-		max-width: 320px;
+		width: 288px;
 
 		&__tags-none {
 			height: 10px;
