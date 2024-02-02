@@ -8,7 +8,7 @@ import { initialVisibleCount } from '../../utils/constants';
 function Credits() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const location = useLocation();
-	const isCredits = location.pathname === '/credits';
+	//const isCredits = location.pathname === '/credits';
 
 	const fromCalculatorButton = location.state && location.state.fromCalculatorButton;
 
@@ -20,7 +20,7 @@ function Credits() {
 
 	return (
 		<>
-			<Promo deposits={isCredits} />
+			<Promo deposits={false} />
 			<CreditFilter
 				isSubmitted={fromCalculatorButton ? true : isSubmitted}
 				setIsSubmitted={setIsSubmitted}

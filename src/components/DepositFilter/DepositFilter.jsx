@@ -32,17 +32,6 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 
 	useEffect(() => {
 		isSubmitted && requestDepositsList();
-		// 	dispatch(
-		// 		loadDeposits({
-		// 			amount: calculator.depositAmount,
-		// 			term: calculator.depositTerm,
-		// 			capitalization: isCapitalisation,
-		// 			replenishment: isReplenishment,
-		// 			partialWithdrawal: isWithdraw,
-		// 			banks: selectedBanks,
-		// 		})
-		// 	);
-		// setVisibleCards(initialVisibleCount);
 	}, [
 		calculator.depositAmount,
 		calculator.depositTerm,
@@ -105,14 +94,14 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 							name="depositAmount"
 							placeHolder="Сумма"
 							currency={currencyList}
-							defaultValue={calculator.depositAmount}
+							defaultValue={calculator.depositAmount || 100000}
 							getValue={getCurrencyValue}
-							max="1000000000"
+							max="100000000"
 						/>
 						<Range
 							name="depositTerm"
 							placeHolder="Срок"
-							min={3}
+							min={1}
 							max={120}
 							step={3}
 							startValue={calculator.depositTerm}

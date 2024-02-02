@@ -80,7 +80,7 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max, min,
 						name={name}
 						onChange={handleChange}
 						onBlur={handleBlur}
-						maxLength={10}
+						maxLength={12}
 					/>
 				</div>
 				<input
@@ -93,18 +93,20 @@ function Select({ placeHolder, currency, name, getValue, defaultValue, max, min,
 					{currency.map((currency, index) => (
 						<div
 							key={index}
+							//дизейблим все опции кроме первой (рубли)
 							className={`select__option ${index > 0 ? 'select__option_disabled' : ''}`}
 							onClick={handleSelect}
 						>
 							<p>{currency}</p>
-							{currency === values.currency && (
+							{/* Вернуть блок чекбоксов, если станут другие валюты */}
+							{/* {currency === values.currency && (
 								<Checkbox
 									checkboxClass="checkbox"
 									type="checkbox"
 									checked={true}
 									onChange={() => {}}
 								/>
-							)}
+							)} */}
 						</div>
 					))}
 				</div>
