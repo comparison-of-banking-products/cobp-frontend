@@ -23,13 +23,15 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 
 	const creditFilterRef = useRef(null);
 
+	const [validate, setValidate] = useState();
+
+	const [isSubmitting, setIsSubmitting] = useState(false);
+
 	useEffect(() => {
 		if (isSubmitted) {
 			creditFilterRef.current.scrollIntoView({ behavior: 'smooth' });
 		}
 	}, [isSubmitted]);
-
-	const [validate, setValidate] = useState();
 
 	useEffect(() => {
 		if (isSubmitted) {
@@ -39,17 +41,6 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 
 	useEffect(() => {
 		isSubmitted && requestCreditsList();
-		// dispatch(
-		// 	loadCredits({
-		// 		amount: calculator.creditAmount,
-		// 		term: calculator.creditTerm,
-		// 		creditOnline: isCreditOnline,
-		// 		onlineApprove: isOnlineApprove,
-		// 		collateral: isCollateral,
-		// 		banks: selectedBanks,
-		// 	})
-		// );
-		// setVisibleCards(initialVisibleCount);
 	}, [
 		calculator.creditAmount,
 		calculator.creditTerm,
@@ -70,7 +61,9 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 				collateral: isCollateral,
 				banks: selectedBanks,
 			})
-		);
+		).then(() => {
+			setIsSubmitting(false);
+		});
 		setVisibleCards(initialVisibleCount);
 	};
 
@@ -80,6 +73,7 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	}, 500);
 
 	const handleSubmit = (e) => {
+		setIsSubmitting(true);
 		e.preventDefault();
 		requestCreditsList();
 		setIsSubmitted(true);
@@ -115,11 +109,12 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 							defaultValue={calculator.creditAmount}
 							getValue={getCurrencyValue}
 							max="1000000000"
+							min="10000"
 						/>
 						<Range
 							name="creditTerm"
 							placeHolder="Срок"
-							min={3}
+							min={1}
 							max={120}
 							step={3}
 							startValue={calculator.creditTerm}
@@ -135,7 +130,9 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 					</div>
 					<Button
 						textBtn={'Показать'}
-						btnClass={'credit-filter__submit'}
+						btnClass={`credit-filter__submit ${
+							isSubmitting ? 'credit-filter__submit_submitting' : ''
+						}`}
 						type={'submit'}
 						disabled={!isSubmitted && selectedBanks.length === 0}
 					/>
