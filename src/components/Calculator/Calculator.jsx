@@ -148,7 +148,7 @@ function Calculator() {
 										currency={currencyList}
 										defaultValue={calculator.depositAmount}
 										getValue={getValues}
-										max="100000000"
+										max="10000000"
 										min="10000"
 									/>
 									<Range
@@ -232,7 +232,7 @@ function Calculator() {
 											isLoading={credits}
 										/>
 										<CalculatorResult
-											name="Платеж от"
+											name="Платеж"
 											value={
 												creditResults ? `от ${roundNumber(creditResults.monthlyPayment)}` : '-'
 											}

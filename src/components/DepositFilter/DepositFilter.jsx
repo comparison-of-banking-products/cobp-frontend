@@ -23,6 +23,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const depositFilterRef = useRef(null);
 
 	const [validate, setValidate] = useState();
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	useEffect(() => {
 		if (isSubmitted) {
@@ -32,17 +33,6 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 
 	useEffect(() => {
 		isSubmitted && requestDepositsList();
-		// 	dispatch(
-		// 		loadDeposits({
-		// 			amount: calculator.depositAmount,
-		// 			term: calculator.depositTerm,
-		// 			capitalization: isCapitalisation,
-		// 			replenishment: isReplenishment,
-		// 			partialWithdrawal: isWithdraw,
-		// 			banks: selectedBanks,
-		// 		})
-		// 	);
-		// setVisibleCards(initialVisibleCount);
 	}, [
 		calculator.depositAmount,
 		calculator.depositTerm,
@@ -63,7 +53,9 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 				partialWithdrawal: isWithdraw,
 				banks: selectedBanks,
 			})
-		);
+		).then(() => {
+			setIsSubmitting(false);
+		});
 		setVisibleCards(initialVisibleCount);
 	};
 
@@ -73,6 +65,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	}, 500);
 
 	const handleSubmit = (e) => {
+		setIsSubmitting(true);
 		e.preventDefault();
 		requestDepositsList();
 		setIsSubmitted(true);
@@ -105,16 +98,17 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 							name="depositAmount"
 							placeHolder="Сумма"
 							currency={currencyList}
-							defaultValue={calculator.depositAmount}
+							defaultValue={calculator.depositAmount || 100000}
 							getValue={getCurrencyValue}
-							max="1000000000"
+							max="100000000"
+							min="10000"
 						/>
 						<Range
 							name="depositTerm"
 							placeHolder="Срок"
-							min={3}
+							min={1}
 							max={120}
-							step={3}
+							// step={3}
 							startValue={calculator.depositTerm}
 							getValue={getCurrencyValue}
 						/>
@@ -128,7 +122,9 @@ function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 					</div>
 					<Button
 						textBtn={'Показать'}
-						btnClass={'deposit-filter__submit'}
+						btnClass={`deposit-filter__submit ${
+							isSubmitting ? 'deposit-filter__submit_submitting' : ''
+						}`}
 						type={'submit'}
 						disabled={!isSubmitted && selectedBanks.length === 0}
 					/>

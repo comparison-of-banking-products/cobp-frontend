@@ -8,6 +8,7 @@ import { initialVisibleCount } from '../../utils/constants';
 function Credits() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const location = useLocation();
+	//const isCredits = location.pathname === '/credits';
 
 	const fromCalculatorButton = location.state && location.state.fromCalculatorButton;
 

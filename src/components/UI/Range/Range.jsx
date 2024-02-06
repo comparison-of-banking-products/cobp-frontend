@@ -17,7 +17,9 @@ function Range({ placeHolder, name, symbol, min, max, startValue, getValue, step
 	const handleChange = (e) => {
 		const inputValue = e.target.value;
 		if (inputValue === '' || /^-?\d+(\.\d+)?$/.test(inputValue)) {
-			if (inputValue < Number(min)) {
+			if (inputValue === '') {
+				setValue({ ...value, [name]: 0 });
+			} else if (inputValue < Number(min)) {
 				setValue(inputValue === '' ? '' : { ...value, [name]: Number(inputValue) });
 				!!getValue && getValue({ ...value, [name]: Number(min) }, { validate: false });
 			} else if (e.target.value > Number(max)) {
