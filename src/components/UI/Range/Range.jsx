@@ -15,19 +15,17 @@ function Range({ placeHolder, name, symbol, min, max, startValue, getValue, step
 	};
 
 	const handleChange = (e) => {
-		const inputValue = e.target.value;
-		if (inputValue === '' || /^-?\d+(\.\d+)?$/.test(inputValue)) {
-			if (inputValue === '') {
-				setValue({ ...value, [name]: 0 });
-			} else if (inputValue < Number(min)) {
-				setValue(inputValue === '' ? '' : { ...value, [name]: Number(inputValue) });
-				!!getValue && getValue({ ...value, [name]: Number(min) }, { validate: false });
-			} else if (e.target.value > Number(max)) {
-				setValue({ ...value, [name]: Number(max) });
-				!!getValue && getValue({ ...value, [name]: Number(max) }, { validate: true });
+		const inputValue = parseFloat(e.target.value);
+		if (!isNaN(inputValue)) {
+			if (inputValue < min) {
+				setValue({ ...value, [name]: min });
+				!!getValue && getValue({ ...value, [name]: min }, { validate: false });
+			} else if (inputValue > max) {
+				setValue({ ...value, [name]: max });
+				!!getValue && getValue({ ...value, [name]: max }, { validate: true });
 			} else {
-				setValue(inputValue === '' ? '' : { ...value, [name]: Number(inputValue) });
-				!!getValue && getValue({ ...value, [name]: Number(inputValue) }, { validate: true });
+				setValue({ ...value, [name]: inputValue });
+				!!getValue && getValue({ ...value, [name]: inputValue }, { validate: true });
 			}
 		} else {
 		}

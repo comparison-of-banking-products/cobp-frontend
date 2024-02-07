@@ -47,6 +47,10 @@
 		}
 	}
 
+	&__submit:hover {
+		background-color: $color-button-hover;
+	}
+
 	&__submit:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
