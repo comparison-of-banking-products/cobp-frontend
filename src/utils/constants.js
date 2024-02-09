@@ -1,4 +1,4 @@
-const BASE_URL_SUPPORT_CHAT = 'https://benchmark.acceleratorpracticum.ru/chat-api';
+const BASE_URL_SUPPORT_CHAT = 'https://chatapi.benchmark.com.ru';
 const currencyList = ['Рубли ₽', 'Доллары $', 'Евро €', 'Юани ¥'];
 const initialVisibleCount = 6;
 
