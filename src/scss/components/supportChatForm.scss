@@ -169,6 +169,7 @@
 
 	&__item-date {
 		@include font($font-size-xxs, $font-weight-medium, 14px, normal, $color-text-light-gray);
+		align-self: flex-end;
 	}
 
 	&__send-message {
