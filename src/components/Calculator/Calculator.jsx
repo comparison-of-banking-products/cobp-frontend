@@ -22,7 +22,7 @@ function Calculator() {
 	const depositResults = deposits?.deposits?.[0];
 	const creditResults = credits?.credits?.[0];
 
-	console.log(credits);
+	// console.log(credits);
 
 	useEffect(() => {
 		dispatch(

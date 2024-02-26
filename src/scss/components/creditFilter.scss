@@ -41,20 +41,21 @@
 		border-radius: 16px;
 		cursor: pointer;
 		@include font($font-size-s, $font-weight-bold, 20px, 0, $color-text-white);
+		transition: background-color 0.3s;
+
+		&:hover {
+			background-color: $color-button-hover;
+		}
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+			background: $color-text-light-gray;
+		}
 
 		&_submitting {
 			background-color: $color-button-blue;
 		}
-	}
-
-	&__submit:hover {
-		background-color: $color-button-hover;
-	}
-
-	&__submit:disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
-		background: $color-text-light-gray;
 	}
 
 	&__checkboxes {
