@@ -121,11 +121,24 @@
 		gap: 16px;
 		height: 316px;
 		overflow-y: auto;
-		scrollbar-width: none;
+		scrollbar-width: thin;
+		scrollbar-color: $color-text-gray $color-bg-black;
+		position: relative;
+		// padding-right: 12px;
 
 		&::-webkit-scrollbar {
-			width: 0;
+			width: 4px;
+			border-radius: 4px;
 		}
+
+		// &::-webkit-scrollbar-thumb {
+		// 	background-color: $color-text-gray;
+		// 	border-radius: 4px;
+		// }
+
+		// &::-webkit-scrollbar-track {
+		// 	background-color: #f0f0f0;
+		// }
 	}
 
 	&__item {
