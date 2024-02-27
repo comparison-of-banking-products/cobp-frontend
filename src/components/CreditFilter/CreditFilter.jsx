@@ -12,7 +12,7 @@ function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
 	const credits = useSelector((state) => state.credits);
-	console.log('credits.credits', credits.credits);
+	// console.log('credits.credits', credits.credits);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 

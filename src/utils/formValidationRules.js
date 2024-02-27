@@ -39,4 +39,15 @@ export const formValidationRules = {
 	agree: {
 		required: 'Подтвердите согласие',
 	},
+	message: {
+		required: 'Введите ваше сообщение',
+		minLength: {
+			value: 2,
+			message: 'Введите не менее 2 символов',
+		},
+		maxLength: {
+			value: 250,
+			message: 'Введите не более 250 символов',
+		},
+	},
 };
