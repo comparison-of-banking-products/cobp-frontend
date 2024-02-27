@@ -108,7 +108,7 @@ function SupportChatOnline({ onClose, showModal }) {
 
 			const agreementStatus = agree ? 'AGREEMENT_ACCEPTED' : 'AGREEMENT_NOT_ACCEPTED';
 
-			client.publish({
+			await client.publish({
 				destination: '/app/support',
 				body: JSON.stringify({ name, email, question, agreementStatus }),
 			});
@@ -139,7 +139,7 @@ function SupportChatOnline({ onClose, showModal }) {
 					</div>
 					<form
 						className="support-chat-form__form"
-						name="supportChatForm"
+						name="supportChatOnline"
 						onSubmit={handleSubmit(onSubmit)}
 					>
 						<input
@@ -204,7 +204,6 @@ function SupportChatOnline({ onClose, showModal }) {
 					setMessages={setMessages}
 					getValues={getValues}
 				/>
-				/* <SupportChatSuccess /> */
 			)}
 		</div>
 	);

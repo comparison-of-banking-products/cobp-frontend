@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from '../../index';
 import { useForm } from 'react-hook-form';
 import { formValidationRules } from '../../../utils/formValidationRules';
@@ -16,14 +16,15 @@ function SupportChatMessages({
 	const {
 		register,
 		handleSubmit,
-		clearErrors,
 		reset,
 		formState: { errors, isValid, isSubmitting },
 	} = useForm({ mode: 'onChange' });
 
-	const onSubmit = async ({ question, agreementStatus = 'AGREEMENT_ACCEPTED' }) => {
+	const onSubmit = async ({ question }) => {
 		try {
 			const formattedDate = getFormattedDateTime();
+
+			const agreementStatus = getValues('agree') ? 'AGREEMENT_ACCEPTED' : 'AGREEMENT_NOT_ACCEPTED';
 
 			client.publish({
 				destination: '/app/support',
@@ -55,7 +56,7 @@ function SupportChatMessages({
 					<input
 						type="text"
 						className={`support-chat-form__input ${
-							errors?.message ? 'support-chat-form__input_error' : ''
+							errors?.question ? 'support-chat-form__input_error' : ''
 						}`}
 						placeholder="Введите текст"
 						{...register('question', formValidationRules.message)}
@@ -66,7 +67,7 @@ function SupportChatMessages({
 						disabled={!isValid || isSubmitting}
 					/>
 				</div>
-				{errors?.message && (
+				{errors?.question && (
 					<span className="support-chat-form__error-message">{errors?.question?.message}</span>
 				)}
 				{isSubmitError && <span className="support-chat-form__error-submit">{isSubmitError}</span>}
