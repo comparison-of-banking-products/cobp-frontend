@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
 import { Client } from '@stomp/stompjs';
-import { Button, SupportChatMessages } from '../../index';
+import { Button, Checkbox, SupportChatMessages } from '../../index';
 import { formValidationRules } from '../../../utils/formValidationRules';
 import { getFormattedDateTime } from '../../../utils/helpers/getFormattedDateTime';
 import { BASE_URL_ONLINE_CHAT } from '../../../utils/constants';
@@ -10,8 +11,10 @@ function SupportChatOnline({ onClose, showModal }) {
 	const {
 		register,
 		handleSubmit,
+		control,
+		setValue,
 		clearErrors,
-		reset,
+		trigger,
 		getValues,
 		formState: { errors, isValid, isSubmitting },
 	} = useForm({ mode: 'onChange' });
@@ -21,8 +24,6 @@ function SupportChatOnline({ onClose, showModal }) {
 	const [client, setClient] = useState(null);
 	const [isConnected, setIsConnected] = useState(false);
 	const [messages, setMessages] = useState([]);
-
-	console.log(messages);
 
 	const handleClose = () => {
 		clearErrors(['name', 'email', 'question', 'agree']);
@@ -67,7 +68,7 @@ function SupportChatOnline({ onClose, showModal }) {
 
 	useEffect(() => {
 		const newCient = new Client();
-		newCient.brokerURL = BASE_URL_ONLINE_CHAT;
+		newCient.brokerURL = `${BASE_URL_ONLINE_CHAT}`;
 
 		newCient.onConnect = () => {
 			setIsConnected(true);
@@ -93,12 +94,7 @@ function SupportChatOnline({ onClose, showModal }) {
 		};
 	}, []);
 
-	const onSubmit = async ({
-		name,
-		email,
-		question = '',
-		agreementStatus = 'AGREEMENT_ACCEPTED',
-	}) => {
+	const onSubmit = async ({ name, email, question = '', agree }) => {
 		try {
 			if (!client) {
 				console.error('Ошибка: подключение к серверу ещё не установлено!');
@@ -109,6 +105,8 @@ function SupportChatOnline({ onClose, showModal }) {
 				console.error('Ошибка: нет активного соединения с сервером!');
 				return;
 			}
+
+			const agreementStatus = agree ? 'AGREEMENT_ACCEPTED' : 'AGREEMENT_NOT_ACCEPTED';
 
 			client.publish({
 				destination: '/app/support',
@@ -162,6 +160,32 @@ function SupportChatOnline({ onClose, showModal }) {
 							{...register('email', formValidationRules.email)}
 						/>
 						<span className="support-chat-form__error-message">{errors?.email?.message}</span>
+						<label className="support-chat-form__label">
+							<Controller
+								name="agree"
+								control={control}
+								defaultValue={false}
+								rules={formValidationRules.agree}
+								render={({ field }) => (
+									<Checkbox
+										type="checkbox"
+										checkboxClass="checkbox checkbox__agree"
+										name="checkbox"
+										onChange={(e) => {
+											setValue('agree', e.target.checked);
+											trigger('agree');
+										}}
+										checked={field.value}
+									/>
+								)}
+							/>
+							Даю&nbsp;
+							<Link to="#" className="support-chat-form__link-agree">
+								согласие
+							</Link>
+							&nbsp;на обработку персональных данных
+						</label>
+						<span className="support-chat-form__error-message">{errors?.agree?.message}</span>
 						<span className="support-chat-form__error-submit">{isSubmitError}</span>
 						<Button
 							type="submit"

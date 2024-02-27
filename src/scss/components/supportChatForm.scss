@@ -106,6 +106,28 @@
 		min-height: 16px;
 	}
 
+	&__label {
+		@include font($font-size-xxs, $font-weight-medium, 14px, normal, $color-text-light-gray);
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		transition: opacity 0.3s;
+		&:hover {
+			.checkbox:not(:checked)::before {
+				opacity: 0.3;
+			}
+		}
+	}
+
+	&__link-agree {
+		@include font($font-size-xxs, $font-weight-medium, 14px, normal, $color-text-light-gray);
+		text-decoration: underline;
+		transition: color 0.3s;
+		&:hover {
+			color: $color-text-white;
+		}
+	}
+
 	&__submit-btn {
 		width: 100%;
 		// margin-top: 4px;
