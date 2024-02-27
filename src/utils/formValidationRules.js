@@ -17,7 +17,7 @@ export const formValidationRules = {
 	email: {
 		required: 'Поле обязательно для заполнения',
 		pattern: {
-			value: /^[a-zA-Z0-9.-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$/i,
+			value: /^[a-zA-Z0-9.-]+@[a-zA-Z0-9_.]+\.[a-z]{2,6}$/i,
 			message: 'Введите корректный email: example@example.ru',
 		},
 		minLength: {
@@ -27,13 +27,6 @@ export const formValidationRules = {
 		maxLength: {
 			value: 100,
 			message: 'Введите не более 100 символов',
-		},
-	},
-	question: {
-		required: 'Поле обязательно для заполнения',
-		maxLength: {
-			value: 1000,
-			message: 'Введите не более 1000 символов',
 		},
 	},
 	agree: {

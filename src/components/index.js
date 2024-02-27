@@ -21,7 +21,6 @@ import SupportCard from './SupportCard/SupportCard';
 import ExchangeRateList from './ExchangeRateList/ExchangeRateList';
 import Promo from './Promo/Promo';
 import SupportChat from './SupportChat/SupportChat';
-import SupportChatForm from './SupportChat/SupportChatForm/SupportChatForm';
 import SupportChatOnline from './SupportChat/SupportChatOnline/SupportChatOnline';
 import SupportChatMessages from './SupportChat/SupportChatMessages/SupportChatMessages';
 import SupportChatMessagesList from './SupportChat/SupportChatMessages/SupportChatMessagesList/SupportChatMessagesList';
@@ -53,7 +52,6 @@ export {
 	ExchangeRateList,
 	Promo,
 	SupportChat,
-	SupportChatForm,
 	SupportChatOnline,
 	SupportChatMessages,
 	SupportChatMessagesList,
