@@ -24,6 +24,7 @@ function SupportChatOnline({ onClose, showModal }) {
 	const [client, setClient] = useState(null);
 	const [isConnected, setIsConnected] = useState(false);
 	const [messages, setMessages] = useState([]);
+	const [userEmail, setUserEmail] = useState('');
 
 	const handleClose = () => {
 		clearErrors(['name', 'email', 'question', 'agree']);
@@ -72,7 +73,7 @@ function SupportChatOnline({ onClose, showModal }) {
 
 		newCient.onConnect = () => {
 			setIsConnected(true);
-			newCient.subscribe('/topic/support', (message) => {
+			newCient.subscribe(`/queue/support/${userEmail}`, (message) => {
 				const formattedDate = getFormattedDateTime();
 
 				setMessages((prev) => [
@@ -92,7 +93,7 @@ function SupportChatOnline({ onClose, showModal }) {
 		return () => {
 			newCient.deactivate();
 		};
-	}, []);
+	}, [userEmail]);
 
 	const onSubmit = async ({ name, email, question = '', agree }) => {
 		try {
@@ -106,12 +107,14 @@ function SupportChatOnline({ onClose, showModal }) {
 				return;
 			}
 
-			const agreementStatus = agree ? 'AGREEMENT_ACCEPTED' : 'AGREEMENT_NOT_ACCEPTED';
+			// const agreementStatus = agree ? 'AGREEMENT_ACCEPTED' : 'AGREEMENT_NOT_ACCEPTED';
 
-			await client.publish({
-				destination: '/app/support',
-				body: JSON.stringify({ name, email, question, agreementStatus }),
-			});
+			// await client.publish({
+			// 	destination: '/app/support',
+			// 	body: JSON.stringify({ name, email, question, agreementStatus }),
+			// });
+
+			setUserEmail(email);
 			setIsSuccessSubmit(true);
 		} catch (error) {
 			console.error('Ошибка при отправке сообщения:', error);

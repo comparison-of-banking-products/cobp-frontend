@@ -24,13 +24,15 @@ function SupportChatMessages({
 		try {
 			const formattedDate = getFormattedDateTime();
 
-			const agreementStatus = getValues('agree') ? 'AGREEMENT_ACCEPTED' : 'AGREEMENT_NOT_ACCEPTED';
+			const { name, email, agree } = getValues();
+
+			const agreementStatus = agree ? 'AGREEMENT_ACCEPTED' : 'AGREEMENT_NOT_ACCEPTED';
 
 			client.publish({
 				destination: '/app/support',
 				body: JSON.stringify({
-					name: getValues('name'),
-					email: getValues('email'),
+					name: name,
+					email: email,
 					question,
 					agreementStatus,
 				}),
