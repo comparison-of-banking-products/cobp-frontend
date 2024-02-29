@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import ChatLogo from '../../../../images/icons/logo-icon.svg';
 
 function SupportChatMessagesList({ messages }) {
+	const messagesEndRef = useRef(null);
+
+	const scrollToBottom = () => {
+		messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+	};
+
+	useEffect(() => {
+		scrollToBottom();
+	}, [messages]);
+
 	return (
 		<div className="support-chat-form__messages">
 			<ul className="support-chat-form__list">
@@ -11,6 +21,7 @@ function SupportChatMessagesList({ messages }) {
 							message.isUser ? 'support-chat-form__item_user' : ''
 						}`}
 						key={index}
+						ref={index === messages.length - 1 ? messagesEndRef : null}
 					>
 						<div className="support-chat-form__message-content">
 							{!message.isUser && (
