@@ -10,6 +10,7 @@
 @import './depositsCardList.scss';
 @import './depositsCard.scss';
 @import './exchangeRateList.scss';
+@import './exchangeRate.scss';
 @import './UI/button.scss';
 @import './UI/input.scss';
 @import './productCards.scss';
@@ -20,9 +21,13 @@
 @import './UI/checkbox.scss';
 @import './promo.scss';
 @import './supportChat.scss';
-@import './supportChatForm.scss';
+@import './supportChatOnline.scss';
 @import './depositFilter';
 @import './creditFilter';
+@import './creditCardList.scss';
+@import './creditCard.scss';
+@import './preloader.scss';
 @import './UI/selectMultiple';
 @import './UI/sort';
+@import './UI/errorCard';
 // В случае создании новых scss файлов в данную папку, не забудьте добавить сюда импорт.

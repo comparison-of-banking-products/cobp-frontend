@@ -12,8 +12,7 @@ import axios from 'axios';
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['calculator', 'exchangeRate', 'deposits'],
-	// blacklist: ['deposits']
+	whitelist: ['calculator', 'exchangeRate', 'deposits', 'credits'],
 };
 
 const rootReducer = combineReducers({

@@ -21,9 +21,11 @@ import SupportCard from './SupportCard/SupportCard';
 import ExchangeRateList from './ExchangeRateList/ExchangeRateList';
 import Promo from './Promo/Promo';
 import SupportChat from './SupportChat/SupportChat';
-import SupportChatForm from './SupportChat/SupportChatForm/SupportChatForm';
-import SupportChatSuccess from './SupportChat/SupportChatSuccess/SupportChatSuccess';
+import SupportChatOnline from './SupportChat/SupportChatOnline/SupportChatOnline';
+import SupportChatMessages from './SupportChat/SupportChatMessages/SupportChatMessages';
+import SupportChatMessagesList from './SupportChat/SupportChatMessages/SupportChatMessagesList/SupportChatMessagesList';
 import DepositsCardList from './DepositsCardList/DepositsCardList';
+import CreditsCardList from './CreditsCardList/CreditsCardList';
 import DepositFilter from './DepositFilter/DepositFilter';
 import CreditFilter from './CreditFilter/CreditFilter';
 import SelectMultiple from './UI/SelectMultiple/SelectMultiple';
@@ -49,10 +51,12 @@ export {
 	ExchangeRateList,
 	Promo,
 	SupportChat,
-	SupportChatForm,
-	SupportChatSuccess,
+	SupportChatOnline,
+	SupportChatMessages,
+	SupportChatMessagesList,
 	Checkbox,
 	DepositsCardList,
+	CreditsCardList,
 	CalculatorResult,
 	DepositFilter,
 	SelectMultiple,

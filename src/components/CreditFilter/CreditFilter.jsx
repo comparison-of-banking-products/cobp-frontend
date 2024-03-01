@@ -1,17 +1,18 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Range, Button, Select, SelectMultiple } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCredits } from '../../store/credits/creditsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { debounce } from 'lodash';
 import { currencyList } from '../../utils/constants';
+import { initialVisibleCount } from '../../utils/constants';
 
-function CreditFilter({ setIsSubmitted, isSubmitted }) {
+function CreditFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
-	//const creditsList = useSelector((state) => state.credits);
-	//console.log('creditsList', creditsList);
+	const credits = useSelector((state) => state.credits);
+	// console.log('credits.credits', credits.credits);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 
@@ -20,9 +21,37 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	const [isOnlineApprove, setIsOnlineApprove] = useState(false);
 	const [isCollateral, setIsCollateral] = useState(false);
 
+	const creditFilterRef = useRef(null);
+
 	const [validate, setValidate] = useState();
 
+	const [isSubmitting, setIsSubmitting] = useState(false);
+
 	useEffect(() => {
+		if (isSubmitted) {
+			creditFilterRef.current.scrollIntoView({ behavior: 'smooth' });
+		}
+	}, [isSubmitted]);
+
+	useEffect(() => {
+		if (isSubmitted) {
+			creditFilterRef.current.scrollIntoView({ behavior: 'smooth' });
+		}
+	}, [isSubmitted]);
+
+	useEffect(() => {
+		isSubmitted && requestCreditsList();
+	}, [
+		calculator.creditAmount,
+		calculator.creditTerm,
+		isCreditOnline,
+		isOnlineApprove,
+		isCollateral,
+		selectedBanks,
+		setVisibleCards,
+	]);
+
+	const requestCreditsList = () => {
 		dispatch(
 			loadCredits({
 				amount: calculator.creditAmount,
@@ -32,12 +61,11 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 				collateral: isCollateral,
 				banks: selectedBanks,
 			})
-		);
-	}, [calculator, isCreditOnline, isOnlineApprove, isCollateral, selectedBanks]);
-
-	useEffect(() => {
-		setIsAllCredits(true);
-	}, []);
+		).then(() => {
+			setIsSubmitting(false);
+		});
+		setVisibleCards(initialVisibleCount);
+	};
 
 	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
@@ -45,9 +73,10 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	}, 500);
 
 	const handleSubmit = (e) => {
+		setIsSubmitting(true);
 		e.preventDefault();
+		requestCreditsList();
 		setIsSubmitted(true);
-		console.log('можно рендерить кредиты:', isSubmitted);
 	};
 
 	const handleButtonClick = (buttonType) => {
@@ -69,7 +98,7 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 	};
 
 	return (
-		<section className="credit-filter">
+		<section className="credit-filter" ref={creditFilterRef}>
 			<div className="credit-filter__container">
 				<form className="credit-filter__form" onSubmit={handleSubmit}>
 					<div className="credit-filter__inputs">
@@ -80,11 +109,12 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 							defaultValue={calculator.creditAmount}
 							getValue={getCurrencyValue}
 							max="1000000000"
+							min="10000"
 						/>
 						<Range
 							name="creditTerm"
 							placeHolder="Срок"
-							min={3}
+							min={1}
 							max={120}
 							step={3}
 							startValue={calculator.creditTerm}
@@ -95,9 +125,17 @@ function CreditFilter({ setIsSubmitted, isSubmitted }) {
 							placeHolder="Банки"
 							selectedBanks={selectedBanks}
 							setSelectedBanks={setSelectedBanks}
+							isDeposist={false}
 						/>
 					</div>
-					<Button textBtn={'Показать'} btnClass={'credit-filter__submit'} type={'submit'} />
+					<Button
+						textBtn={'Показать'}
+						btnClass={`credit-filter__submit ${
+							isSubmitting ? 'credit-filter__submit_submitting' : ''
+						}`}
+						type={'submit'}
+						disabled={!isSubmitted && selectedBanks.length === 0}
+					/>
 				</form>
 				<div className="credit-filter__checkboxes">
 					<Button

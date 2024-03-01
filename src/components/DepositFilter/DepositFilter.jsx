@@ -1,15 +1,17 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Range, Button, Select, SelectMultiple } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadDeposits } from '../../store/deposits/depositsSlice';
 import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { debounce } from 'lodash';
 import { currencyList } from '../../utils/constants';
+import { initialVisibleCount } from '../../utils/constants';
 
-function DepositFilter({ setIsSubmitted, isSubmitted }) {
+function DepositFilter({ setIsSubmitted, isSubmitted, setVisibleCards }) {
 	const dispatch = useDispatch();
 	const calculator = useSelector((state) => state.calculator);
+	console.log(calculator);
 
 	const [selectedBanks, setSelectedBanks] = useState([]);
 
@@ -18,9 +20,30 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	const [isWithdraw, setIsWithdraw] = useState(false);
 	const [isReplenishment, setIsReplenishment] = useState(false);
 
+	const depositFilterRef = useRef(null);
+
 	const [validate, setValidate] = useState();
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	useEffect(() => {
+		if (isSubmitted) {
+			depositFilterRef.current.scrollIntoView({ behavior: 'smooth' });
+		}
+	}, [isSubmitted]);
+
+	useEffect(() => {
+		isSubmitted && requestDepositsList();
+	}, [
+		calculator.depositAmount,
+		calculator.depositTerm,
+		isCapitalisation,
+		isReplenishment,
+		isWithdraw,
+		selectedBanks,
+		setVisibleCards,
+	]);
+
+	const requestDepositsList = () => {
 		dispatch(
 			loadDeposits({
 				amount: calculator.depositAmount,
@@ -30,12 +53,11 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 				partialWithdrawal: isWithdraw,
 				banks: selectedBanks,
 			})
-		);
-	}, [calculator, isCapitalisation, isReplenishment, isWithdraw, selectedBanks]);
-
-	useEffect(() => {
-		setIsAllDepo(true);
-	}, []);
+		).then(() => {
+			setIsSubmitting(false);
+		});
+		setVisibleCards(initialVisibleCount);
+	};
 
 	const getCurrencyValue = debounce((values, valid) => {
 		setValidate(valid.validate);
@@ -43,7 +65,9 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	}, 500);
 
 	const handleSubmit = (e) => {
+		setIsSubmitting(true);
 		e.preventDefault();
+		requestDepositsList();
 		setIsSubmitted(true);
 	};
 
@@ -66,7 +90,7 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 	};
 
 	return (
-		<section className="deposit-filter">
+		<section className="deposit-filter" ref={depositFilterRef}>
 			<div className="deposit-filter__container">
 				<form className="deposit-filter__form" onSubmit={handleSubmit}>
 					<div className="deposit-filter__inputs">
@@ -74,16 +98,17 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 							name="depositAmount"
 							placeHolder="Сумма"
 							currency={currencyList}
-							defaultValue={calculator.depositAmount}
+							defaultValue={calculator.depositAmount || 100000}
 							getValue={getCurrencyValue}
-							max="1000000000"
+							max="100000000"
+							min="10000"
 						/>
 						<Range
 							name="depositTerm"
 							placeHolder="Срок"
-							min={3}
+							min={1}
 							max={120}
-							step={3}
+							// step={3}
 							startValue={calculator.depositTerm}
 							getValue={getCurrencyValue}
 						/>
@@ -92,9 +117,17 @@ function DepositFilter({ setIsSubmitted, isSubmitted }) {
 							placeHolder="Банки"
 							selectedBanks={selectedBanks}
 							setSelectedBanks={setSelectedBanks}
+							isDeposist={true}
 						/>
 					</div>
-					<Button textBtn={'Показать'} btnClass={'deposit-filter__submit'} type={'submit'} />
+					<Button
+						textBtn={'Показать'}
+						btnClass={`deposit-filter__submit ${
+							isSubmitting ? 'deposit-filter__submit_submitting' : ''
+						}`}
+						type={'submit'}
+						disabled={!isSubmitted && selectedBanks.length === 0}
+					/>
 				</form>
 				<div className="deposit-filter__checkboxes">
 					<Button

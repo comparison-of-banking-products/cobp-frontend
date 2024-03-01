@@ -1,5 +1,5 @@
 import React from 'react';
-import { SupportChatForm } from '../index';
+import { SupportChatOnline } from '../index';
 import useTogglePopup from '../../hooks/useTogglePopup';
 
 function SupportChat() {
@@ -11,7 +11,7 @@ function SupportChat() {
 				className={`support-chat__btn ${showModal ? 'support-chat__btn_open' : ''}`}
 				onClick={handleOpenModal}
 			/>
-			<SupportChatForm onClose={handleCloseModal} showModal={showModal} />
+			<SupportChatOnline onClose={handleCloseModal} showModal={showModal} />
 		</>
 	);
 }

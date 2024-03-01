@@ -1,6 +1,6 @@
 .button__primary {
 	width: fit-content;
-	background: $color-accent;
+	background-color: $color-accent;
 	padding: 14px 24px;
 	border: none;
 	outline: none;
@@ -8,12 +8,12 @@
 	text-decoration: none;
 	@include font($font-size-s, $font-weight-bold, 20px, 0px, $color-text-white);
 	cursor: pointer;
-	transition: background 0.3s;
+	transition: background-color 0.3s;
 	&:hover {
-		background: lighten($color-accent, 2%);
+		background-color: lighten($color-accent, 2%);
 	}
 	&:disabled {
-		background: $color-text-gray;
+		background-color: $color-text-gray;
 		pointer-events: none;
 	}
 

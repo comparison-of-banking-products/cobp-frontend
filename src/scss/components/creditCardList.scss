@@ -1,0 +1,21 @@
+.credits-card-list {
+	&__button-more {
+		display: block;
+		margin: 32px auto 127px auto;
+		width: fit-content;
+		background: #2d2d31;
+		padding: 14px 24px;
+		border: none;
+		outline: none;
+		border-radius: $primary-border-radius;
+		text-decoration: none;
+		@include font($font-size-s, $font-weight-bold, 20px, 0px, $color-text-white);
+		cursor: pointer;
+		transition: opacity 0.5s;
+
+		&:hover {
+			opacity: 0.6;
+			transition: opacity 0.5s;
+		}
+	}
+}

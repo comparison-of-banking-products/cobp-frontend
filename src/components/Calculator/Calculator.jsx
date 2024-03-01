@@ -7,6 +7,7 @@ import { editCalculatorValues } from '../../store/calculator/calculatorSlice';
 import { loadCredits } from '../../store/credits/creditsSlice';
 import { debounce } from 'lodash';
 import { currencyList } from '../../utils/constants';
+import info from '../../images/icons/info.svg';
 
 function Calculator() {
 	const navigate = useNavigate();
@@ -14,21 +15,14 @@ function Calculator() {
 	const deposits = useSelector((state) => state.deposits);
 
 	const calculator = useSelector((state) => state.calculator);
-	console.log('calculator', calculator);
 	const credits = useSelector((state) => state.credits);
 	const sliderRef = useRef();
 	const [validate, setValidate] = useState();
 
-	const depositResults = deposits?.deposits?.calculatedDeposits?.[0];
-	const creditResults = credits?.credits?.calculatedCredits?.[0];
+	const depositResults = deposits?.deposits?.[0];
+	const creditResults = credits?.credits?.[0];
 
-	useEffect(() => {
-		if (calculator.isCredit) {
-			sliderRef.current.classList.add('calculator__slider_position_right');
-		} else {
-			sliderRef.current.classList.remove('calculator__slider_position_right');
-		}
-	}, [calculator.isCredit, deposits]);
+	// console.log(credits);
 
 	useEffect(() => {
 		dispatch(
@@ -47,6 +41,14 @@ function Calculator() {
 			})
 		);
 	}, [calculator.creditAmount, calculator.creditTerm]);
+
+	useEffect(() => {
+		if (calculator.isCredit) {
+			sliderRef.current.classList.add('calculator__slider_position_right');
+		} else {
+			sliderRef.current.classList.remove('calculator__slider_position_right');
+		}
+	}, [calculator.isCredit, deposits]);
 
 	const chooseCredit = () => {
 		dispatch(editCalculatorValues({ isCredit: true }));
@@ -83,7 +85,7 @@ function Calculator() {
 			dispatch(loadCredits({ amount: calculator.creditAmount, term: calculator.creditTerm }))
 				.then(() => {
 					if (!credits.error && !credits.isLoading) {
-						navigate('/credits');
+						navigate('/credits', { state: { fromCalculatorButton: true } });
 					}
 				})
 				.catch(() => {
@@ -103,7 +105,13 @@ function Calculator() {
 	return (
 		<section className="calculator">
 			<h2 className="calculator__title title">Калькулятор</h2>
-			<div className="calculator__container">
+			<div
+				className={`calculator__container ${
+					(!calculator.isCredit && !depositResults) || (calculator.isCredit && !creditResults)
+						? 'calculator__container_extended'
+						: ''
+				}`}
+			>
 				<div className="calculator__products">
 					<span
 						className={`calculator__product ${
@@ -124,7 +132,13 @@ function Calculator() {
 					<div className="calculator__slider" ref={sliderRef} />
 				</div>
 				<form onSubmit={handleSubmit}>
-					<div className="calculator__calculation">
+					<div
+						className={`calculator__calculation ${
+							(!calculator.isCredit && !depositResults) || (calculator.isCredit && !creditResults)
+								? 'calculator__calculation_extended'
+								: ''
+						}`}
+					>
 						<div className="calculator__items">
 							{!calculator.isCredit && (
 								<>
@@ -134,12 +148,12 @@ function Calculator() {
 										currency={currencyList}
 										defaultValue={calculator.depositAmount}
 										getValue={getValues}
-										max="100000000"
+										max="10000000"
 										min="10000"
 									/>
 									<Range
 										name="depositTerm"
-										placeHolder="Срок в месяцах"
+										placeHolder="Срок"
 										min="3"
 										max="120"
 										step="3"
@@ -162,7 +176,7 @@ function Calculator() {
 									/>
 									<Range
 										name="creditTerm"
-										placeHolder="Срок в годах"
+										placeHolder="Срок"
 										min="3"
 										max="120"
 										step="3"
@@ -172,7 +186,13 @@ function Calculator() {
 								</>
 							)}
 						</div>
-						<div className="calculator__results">
+						<div
+							className={`calculator__results ${
+								(!calculator.isCredit && !depositResults) || (calculator.isCredit && !creditResults)
+									? 'calculator__results_extended'
+									: ''
+							}`}
+						>
 							<div className="calculator__results-display">
 								{!calculator.isCredit && deposits?.deposits ? (
 									<>
@@ -206,21 +226,31 @@ function Calculator() {
 											name="Ставка"
 											value={
 												creditResults
-													? `до ${replacePointNumber(creditResults.credit.rate)} %`
+													? `от ${replacePointNumber(creditResults.credit.rate)} %`
 													: '-'
 											}
 											isLoading={credits}
 										/>
 										<CalculatorResult
-											name="Платеж от"
+											name="Платеж"
 											value={
-												creditResults ? `до ${roundNumber(creditResults.monthlyPayment)}` : '-'
+												creditResults ? `от ${roundNumber(creditResults.monthlyPayment)}` : '-'
 											}
 											currency={creditResults ? calculator.currency.split(' ')[1] : ''}
 										/>
 									</>
 								)}
 							</div>
+							{((!calculator.isCredit && !depositResults) ||
+								(calculator.isCredit && !creditResults)) && (
+								<div className="calculator__results-notification">
+									<img src={info} className="calculator__results-icon" alt="иконка информации" />
+									<p className="calculator__results-text">
+										К сожалению, мы не нашли подходящих предложений по заданным параметрам,
+										пожалуйста измените их и попробуйте снова
+									</p>
+								</div>
+							)}
 							<Button
 								textBtn={calculator.isCredit ? 'Подобрать кредит' : 'Подобрать вклад'}
 								btnClass="button__primary"

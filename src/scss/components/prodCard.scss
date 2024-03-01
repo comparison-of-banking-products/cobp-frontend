@@ -46,7 +46,7 @@
 		text-decoration: none;
 
 		//задают неактивность
-		background-color: rgba($color-bg-dark-gray, 0.3);
+		background-color: $color-bg-dark-gray;
 		pointer-events: none;
 		opacity: 0.3;
 	}
@@ -66,8 +66,6 @@
 
 	&__text {
 		max-width: 268px;
-		// margin: 0;
-		// padding: 0;
 		@include font($font-size-s, $font-weight-medium, 20px, -0.16px, $color-text-light-gray);
 	}
 }
@@ -78,19 +76,21 @@
 			min-width: calc(59% - 18px);
 
 			background-image: url('../../images/credit-png-l.png');
-			background-size: 231px 187px;
+			//background-size: 231px 187px;
+			background-size: 231px 153px;
 
 			&:last-of-type {
 				background-image: url('../../images/deposit-png-l.png');
-				background-size: 210px 176px;
+				//background-size: 210px 176px;
+				background-size: 233px 153px;
 			}
 
 			&:hover {
-				background-size: calc(231px * 1.2) calc(187px * 1.2);
+				background-size: calc(231px * 1.2) calc(153px * 1.2);
 			}
 
 			&:last-of-type:hover {
-				background-size: calc(210px * 1.2) calc(176px * 1.2);
+				background-size: calc(233px * 1.2) calc(153px * 1.2);
 			}
 		}
 
@@ -148,12 +148,10 @@
 
 			background-image: url('../../images/credit-png-s.png');
 			background-size: 125px 127px;
-			// order: 1;
 
 			&:last-of-type {
 				background-image: url('../../images/deposit-png-s.png');
 				background-size: 125px 122px;
-				// order: 2;
 			}
 
 			&:hover {

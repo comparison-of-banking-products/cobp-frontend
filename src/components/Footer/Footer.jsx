@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { linkNavForFooterData } from '../../utils/constansForFooter';
+import { linksData } from '../../utils/linksData';
 
 function Footer() {
 	return (
@@ -15,16 +15,14 @@ function Footer() {
 				<div className="footer__information">
 					<div className="footer__column">
 						<nav className="footer__navigation">
-							{linkNavForFooterData
-								.slice(linkNavForFooterData[0].id, linkNavForFooterData[4].id)
-								.map((link) => (
-									<Link className="footer__navigation-link" to={link.page} key={link.id}>
-										{link.title}
-									</Link>
-								))}
+							{linksData.slice(linksData[0].id, linksData[4].id).map((link) => (
+								<Link className="footer__navigation-link" to={link.page} key={link.id}>
+									{link.title}
+								</Link>
+							))}
 						</nav>
 						<nav className="footer__navigation">
-							{linkNavForFooterData.slice(linkNavForFooterData[4].id).map((link) => (
+							{linksData.slice(linksData[4].id).map((link) => (
 								<Link className="footer__navigation-link" to={link.page} key={link.id}>
 									{link.title}
 								</Link>
@@ -42,8 +40,8 @@ function Footer() {
 					</div>
 					<div className="footer__footnote">
 						<p className="footer__footnote-text">
-							benchmark не является кредитной организацией. предложения на сайте не являются
-							публичной офертой. окончательные условия предоставления банковских продуктов
+							benchmark не является кредитной организацией. Предложения на сайте не являются
+							публичной офертой. Окончательные условия предоставления банковских продуктов
 							определяются договором с выбранным банком
 						</p>
 					</div>

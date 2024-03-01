@@ -14,16 +14,16 @@ function ExchangeRateList() {
 	}, []);
 
 	return (
-		<section className="exchange-rate">
-			<h2 className="exchange-rate__title">Курс биржи</h2>
-			<div className="exchange-rate__container">
-				<ul className="exchange-rate__currency-list">
+		<section className="exchange-rate-list">
+			<h2 className="exchange-rate-list__title">Курс биржи</h2>
+			<div className="exchange-rate-list__container">
+				<ul className="exchange-rate-list__currency-list">
 					{selectedCurrencies.map((selectedCurrency) => {
 						const valute = exchangeRate.find((v) => v.base === selectedCurrency);
 						return <ExchangeRate key={selectedCurrency} valute={valute} />;
 					})}
 				</ul>
-				<Link className="exchange-rate__converter-link">конвертер валют</Link>
+				<Link className="exchange-rate-list__converter-link">конвертер валют</Link>
 			</div>
 		</section>
 	);

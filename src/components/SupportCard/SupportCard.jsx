@@ -9,13 +9,13 @@ function SupportCard() {
 			<BankCard name="support"></BankCard>
 			<img className="support__foto" src={supportFoto} alt="-"></img>
 			<h2 className="support__name">Анастасия Константиновна</h2>
-			<p className="support__position">начальник управления клиентского опыта и развития сети</p>
+			<p className="support__position">Начальник управления клиентского опыта и развития сети</p>
 			<Button
 				type="button"
 				btnClass="button__primary"
 				// onClick={onClick}
 				disabled={true}
-				textBtn="спросить"
+				textBtn="Спросить"
 			></Button>
 		</li>
 	);

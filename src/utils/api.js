@@ -1,4 +1,5 @@
-const BASE_URL = 'http://80.87.107.99:8080/';
+const BASE_URL = 'https://benchmark.com.ru/api/';
+// const BASE_URL = 'http://37.77.104.247:8080/';
 
 export const getDeposits = ({
 	amount,
@@ -8,7 +9,7 @@ export const getDeposits = ({
 	partialWithdrawal = false,
 	banks = null,
 	page = 0,
-	size = 6,
+	size = 100,
 }) => {
 	const capitalizationParam = capitalization ? '&capitalization=true' : '';
 	const replenishmentParam = replenishment ? '&replenishment=true' : '';
@@ -41,8 +42,8 @@ export const getCredits = ({
 	);
 };
 
-export const getBanksList = () => {
-	return BASE_URL + `v1/banks`;
+export const getBanksList = ({ sort }) => {
+	return BASE_URL + `v1/banks?sort=${sort}`;
 };
 
 export const getLogoName = (logoName) => {

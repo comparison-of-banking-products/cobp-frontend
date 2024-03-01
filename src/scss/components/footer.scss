@@ -79,6 +79,7 @@
 
 	&__for-user {
 		display: flex;
+		flex-direction: row;
 		margin: 0 0 33px 0;
 	}
 
@@ -110,7 +111,65 @@
 
 @include screen-size-lg {
 	.footer {
+		&__description {
+			margin-bottom: 248px;
+		}
+
+		&__information {
+			max-width: 324px;
+		}
+
+		&__for-user {
+			flex-direction: column;
+		}
+
+		&__for-user-link {
+			margin-bottom: 12px;
+		}
+	}
+}
+
+@include mobile {
+	.footer {
+		&__description {
+			margin-bottom: 384px;
+		}
+
+		&__column {
+			flex-direction: column;
+			margin-left: 0;
+			margin-right: auto;
+		}
+
+		&__navigation-link {
+			&:last-child {
+				margin-bottom: 12px;
+			}
+		}
+	}
+}
+
+@include screen-size-sm {
+	.footer {
 		&__container {
+			flex-direction: column;
+		}
+
+		&__information {
+			margin-left: 32px;
+			margin-top: 30px;
+		}
+
+		&__column {
+			display: none;
+		}
+
+		&__specification {
+			margin-bottom: 0;
+		}
+
+		&__description {
+			margin-bottom: 12px;
 		}
 	}
 }

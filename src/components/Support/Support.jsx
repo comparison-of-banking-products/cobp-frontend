@@ -5,13 +5,15 @@ function Support() {
 	return (
 		<section className="support">
 			<div className="support__banner">
-				<h1 className="support__title">остались вопросы?</h1>
+				<h1 className="support__title">Остались вопросы?</h1>
 				<p className="support__instruction">
-					задай вопрос эксперту по продуктам и услугам компаний
+					Задай вопрос эксперту по продуктам и услугам компаний
 				</p>
 			</div>
 
 			<ul className="support__lists">
+				<SupportCard />
+				<SupportCard />
 				<SupportCard />
 				<SupportCard />
 				<SupportCard />
