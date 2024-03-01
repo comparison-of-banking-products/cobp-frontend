@@ -219,6 +219,7 @@
 		bottom: 0;
 		right: 0;
 		width: 100%;
+		gap: 15px;
 		// align-items: flex-start;
 
 		&__line {
@@ -241,6 +242,11 @@
 		&__title {
 			@include font($font-size-mml, $font-weight-bold, 32px, -0.28px, $color-text-white);
 			align-self: flex-start;
+		}
+
+		&__time-work {
+			height: 230px;
+			padding-bottom: 10px;
 		}
 
 		&__form {

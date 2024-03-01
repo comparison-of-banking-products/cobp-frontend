@@ -24,7 +24,6 @@ import SupportChat from './SupportChat/SupportChat';
 import SupportChatOnline from './SupportChat/SupportChatOnline/SupportChatOnline';
 import SupportChatMessages from './SupportChat/SupportChatMessages/SupportChatMessages';
 import SupportChatMessagesList from './SupportChat/SupportChatMessages/SupportChatMessagesList/SupportChatMessagesList';
-import SupportChatSuccess from './SupportChat/SupportChatSuccess/SupportChatSuccess';
 import DepositsCardList from './DepositsCardList/DepositsCardList';
 import CreditsCardList from './CreditsCardList/CreditsCardList';
 import DepositFilter from './DepositFilter/DepositFilter';
@@ -55,7 +54,6 @@ export {
 	SupportChatOnline,
 	SupportChatMessages,
 	SupportChatMessagesList,
-	SupportChatSuccess,
 	Checkbox,
 	DepositsCardList,
 	CreditsCardList,

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { Client } from '@stomp/stompjs';
@@ -6,6 +6,7 @@ import { Button, Checkbox, SupportChatMessages } from '../../index';
 import { formValidationRules } from '../../../utils/formValidationRules';
 import { getFormattedDateTime } from '../../../utils/helpers/getFormattedDateTime';
 import { BASE_URL_ONLINE_CHAT } from '../../../utils/constants';
+import useSwipeToClose from '../../../hooks/useSwipeToClose';
 
 function SupportChatOnline({ onClose, showModal }) {
 	const {
@@ -32,40 +33,7 @@ function SupportChatOnline({ onClose, showModal }) {
 		onClose();
 	};
 
-	const formRef = useRef(null);
-	const [touchStartY, setTouchStartY] = useState(null);
-
-	useEffect(() => {
-		const handleTouchStart = (e) => {
-			setTouchStartY(e.touches[0].clientY);
-		};
-
-		const handleTouchMove = (e) => {
-			const touchEndY = e.touches[0].clientY;
-			if (touchStartY && touchEndY - touchStartY > 50) {
-				handleClose();
-			}
-		};
-
-		const handleTouchEnd = () => {
-			setTouchStartY(null);
-		};
-
-		const formElement = formRef.current;
-		if (formElement) {
-			formElement.addEventListener('touchstart', handleTouchStart);
-			formElement.addEventListener('touchmove', handleTouchMove);
-			formElement.addEventListener('touchend', handleTouchEnd);
-		}
-
-		return () => {
-			if (formElement) {
-				formElement.removeEventListener('touchstart', handleTouchStart);
-				formElement.removeEventListener('touchmove', handleTouchMove);
-				formElement.removeEventListener('touchend', handleTouchEnd);
-			}
-		};
-	}, [touchStartY]);
+	const formRef = useSwipeToClose(handleClose);
 
 	useEffect(() => {
 		const newCient = new Client();
